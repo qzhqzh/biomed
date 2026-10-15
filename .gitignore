@@ -85,3 +85,13 @@ online-vep/test_data/vep_output.txt
 *.pyc
 *.bak
 *.tmp
+
+# biomed runtime, backups and local agent state
+/var/
+.local/
+.codex/
+.agents/
+.aws/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm

@@ -1,4 +1,4 @@
-"""Django settings for online-biotools."""
+"""Django settings for biomed."""
 
 from pathlib import Path
 import os
@@ -69,11 +69,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "apps.portal",
+    "apps.evidence",
+    "apps.curation",
     "apps.annotations",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "apps.annotations.middleware.RequestContextMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -105,7 +108,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.environ.get("DJANGO_DB_PATH", str(BASE_DIR / "db.sqlite3")),
+        "OPTIONS": {"timeout": 30, "transaction_mode": "IMMEDIATE"},
+        "NAME": os.environ.get(
+            "DATABASE_PATH",
+            os.environ.get("DJANGO_DB_PATH", str(BASE_DIR / "var/django/db.sqlite3")),
+        ),
     }
 }
 
@@ -123,6 +130,17 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+# This project is currently served over plain HTTP on a trusted LAN. Browsers
+# ignore COOP on non-trustworthy origins, so do not emit a misleading header.
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -193,6 +211,9 @@ KNOWLEDGE_DIR = os.environ.get(
     "KNOWLEDGE_DIR",
     str(BASE_DIR / "data" / "knowledge"),
 )
+KNOWLEDGE_UPDATES_DIR = os.environ.get(
+    "KNOWLEDGE_UPDATES_DIR", str(BASE_DIR / "data" / "knowledge-updates")
+)
 
 # --- Annotation engines ---
 VEP_BIN = os.environ.get("VEP_BIN", "/opt/vep/src/ensembl-vep/vep")
@@ -241,3 +262,17 @@ ANNOVAR_MAX_CONCURRENCY = int(os.environ.get("ANNOVAR_MAX_CONCURRENCY", "1"))
 ANNOVAR_VERSION_LABEL = os.environ.get("ANNOVAR_VERSION_LABEL", "2018-04-16")
 # Gate public/online ANNOVAR usage until license is confirmed by the operator.
 ANNOVAR_PUBLIC_ENABLED = env_bool("ANNOVAR_PUBLIC_ENABLED", False)
+
+# Internal evidence service; the browser only uses Django on the public port.
+EVIDENCE_API_URL = os.environ.get("EVIDENCE_API_URL", "http://127.0.0.1:18765")
+
+# Versioned document storage and the optional, explicitly configured model adapter.
+CURATION_STORAGE_DIR = Path(os.environ.get("CURATION_STORAGE_DIR", BASE_DIR / "var" / "library"))
+CURATION_MODEL_BACKEND = os.environ.get("CURATION_MODEL_BACKEND", "")
+CURATION_POLICY_VERSION = "ai-publish-human-audit-v1"
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024
+FILE_UPLOAD_HANDLERS = [
+    "apps.curation.uploads.BoundedUploadHandler",
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+]

@@ -70,6 +70,7 @@ class VariantResultSerializer(serializers.Serializer):
 
 
 class AnnotationResponseSerializer(serializers.Serializer):
+    knowledge_version = serializers.JSONField(required=False)
     assembly = serializers.CharField()
     engine = serializers.CharField()
     results = VariantResultSerializer(many=True)

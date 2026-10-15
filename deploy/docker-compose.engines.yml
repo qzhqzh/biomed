@@ -1,0 +1,9 @@
+# Optional engine access; use only after explicitly choosing a Docker engine mode.
+# docker compose -f docker-compose.yml -f deploy/docker-compose.engines.yml up -d --no-build
+services:
+  web:
+    volumes:
+      - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock
+  annotation-worker:
+    volumes:
+      - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock

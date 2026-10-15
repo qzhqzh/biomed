@@ -1,0 +1,15 @@
+{% load static vite %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}生信与基因知识库{% endblock %} · biomed</title>
+  <link rel="icon" href="{% static 'portal/dist/favicon.svg' %}" type="image/svg+xml" />
+  {% vite_assets %}
+</head>
+<body>
+  {% block app %}{% endblock %}
+  <noscript>请启用 JavaScript 以使用 biomed 工作台。</noscript>
+</body>
+</html>

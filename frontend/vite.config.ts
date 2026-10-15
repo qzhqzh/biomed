@@ -22,9 +22,9 @@ export default defineConfig({
     rollupOptions: {
       input: path.resolve(rootDir, "index.html"),
       output: {
-        entryFileNames: "assets/annotate.js",
-        chunkFileNames: "assets/[name].js",
-        assetFileNames: "assets/[name][extname]",
+        entryFileNames: "assets/biomed-[hash].js",
+        chunkFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
   },

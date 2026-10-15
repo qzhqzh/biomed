@@ -85,7 +85,8 @@ def parse_mane_readme(text: str) -> dict[str, str]:
 
 
 def strip_version(acc: str) -> str:
-    return acc.split(".", 1)[0].strip()
+    value = acc.split(".", 1)[0].strip()
+    return "" if value == "-" else value
 
 
 def parse_gene_info(path: Path, out_jsonl: Path) -> dict:

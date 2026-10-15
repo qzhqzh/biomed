@@ -8,6 +8,7 @@ from apps.annotations.api.views import (
     KnowledgeGenesView,
     KnowledgeMetaView,
     KnowledgeTranscriptsView,
+    KnowledgeUpdatesView,
     LegacyAnnotateView,
 )
 
@@ -17,6 +18,7 @@ urlpatterns = [
     path("jobs/", JobsView.as_view(), name="jobs"),
     path("jobs/<uuid:job_id>/", JobDetailView.as_view(), name="job-detail"),
     path("knowledge/meta/", KnowledgeMetaView.as_view(), name="knowledge-meta"),
+    path("knowledge/updates/", KnowledgeUpdatesView.as_view(), name="knowledge-updates"),
     path("knowledge/genes/", KnowledgeGenesView.as_view(), name="knowledge-genes"),
     path(
         "knowledge/transcripts/",

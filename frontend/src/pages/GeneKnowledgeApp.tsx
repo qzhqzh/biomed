@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import { Loader2, Search } from "lucide-react"
+import { FileSearch, Loader2, Search } from "lucide-react"
 
 import {
   ExternalRef,
@@ -41,6 +41,10 @@ import { cn } from "@/lib/utils"
 
 const DEFAULT_GENE = "TP53"
 
+function initialGeneQuery() {
+  return new URLSearchParams(window.location.search).get("q")?.trim() || DEFAULT_GENE
+}
+
 function AccessionLink({ id }: { id: string }) {
   const href = accessionLookupUrl(id)
   if (!href) return <span className="font-mono text-xs">{id}</span>
@@ -62,10 +66,13 @@ export default function GeneKnowledgeApp() {
   const [meta, setMeta] = useState<KnowledgeMeta | null>(null)
   const [metaError, setMetaError] = useState<string | null>(null)
 
-  const [geneQ, setGeneQ] = useState(DEFAULT_GENE)
+  const [geneQ, setGeneQ] = useState(initialGeneQuery)
   const [geneLoading, setGeneLoading] = useState(false)
   const [genes, setGenes] = useState<KnowledgeGene[]>([])
   const [geneTotal, setGeneTotal] = useState(0)
+  const [geneError, setGeneError] = useState<string | null>(null)
+  const [resolution, setResolution] = useState<string | null>(null)
+  const [txError, setTxError] = useState<string | null>(null)
   const [selected, setSelected] = useState<KnowledgeGene | null>(null)
 
   const [txLoading, setTxLoading] = useState(false)
@@ -80,13 +87,14 @@ export default function GeneKnowledgeApp() {
 
   useEffect(() => {
     let cancelled = false
+    setGeneLoading(true); setGeneError(null); setResolution(null); setSelected(null); setGenes([]); setTranscripts([])
     const t = window.setTimeout(() => {
-      setGeneLoading(true)
-      searchKnowledgeGenes({ q: geneQ, limit: 30, type: "protein-coding" })
+      searchKnowledgeGenes({ q: geneQ, limit: 30 })
         .then((data) => {
           if (cancelled) return
           setGenes(data.results)
           setGeneTotal(data.total)
+          setResolution(data.query_resolution ? `按 MANE 主编号 ${data.query_resolution.accession} 定位基因；输入中的版本号未核验。` : null)
           setSelected((prev) => {
             if (prev && data.results.some((g) => g.gene_id === prev.gene_id)) {
               return prev
@@ -94,8 +102,9 @@ export default function GeneKnowledgeApp() {
             return pickDefaultGene(data.results, geneQ)
           })
         })
-        .catch(() => {
+        .catch((error: Error) => {
           if (!cancelled) {
+            setGeneError(error.message)
             setGenes([])
             setGeneTotal(0)
             setSelected(null)
@@ -113,11 +122,11 @@ export default function GeneKnowledgeApp() {
 
   useEffect(() => {
     if (!selected?.symbol) {
-      setTranscripts([])
+      setTranscripts([]); setTxLoading(false); setTxError(null)
       return
     }
     let cancelled = false
-    setTxLoading(true)
+    setTxLoading(true); setTranscripts([]); setTxError(null)
     searchKnowledgeTranscripts({
       q: selected.symbol,
       maneOnly: true,
@@ -129,10 +138,10 @@ export default function GeneKnowledgeApp() {
         const mine = data.results.filter(
           (r) => (r.gene || "").toUpperCase() === selected.symbol.toUpperCase(),
         )
-        setTranscripts(mine.length ? mine : data.results)
+        setTranscripts(mine)
       })
-      .catch(() => {
-        if (!cancelled) setTranscripts([])
+      .catch((error: Error) => {
+        if (!cancelled) { setTranscripts([]); setTxError(error.message) }
       })
       .finally(() => {
         if (!cancelled) setTxLoading(false)
@@ -151,11 +160,11 @@ export default function GeneKnowledgeApp() {
 
   return (
     <AppShell
-      title="基因知识库"
-      description="搜索人类基因，查看基本信息与 MANE 常用转录本（ENST ↔ NM）。"
+      title="基因"
+      description="以基因为主条目，查看标准 ID、转录本和本地 MANE 映射，再核对关联证据。"
       crumbs={[
         { label: "知识库" },
-        { label: "基因知识库" },
+        { label: "基因" },
       ]}
     >
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-start">
@@ -165,7 +174,8 @@ export default function GeneKnowledgeApp() {
             <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               className="h-11 pl-10 text-base"
-              placeholder="搜索基因符号 / 别名 / GeneID / ENSG…"
+              aria-label="搜索基因与转录本"
+              placeholder="搜索基因符号 / 别名 / GeneID / NM_ / ENST…"
               value={geneQ}
               onChange={(e) => setGeneQ(e.target.value)}
               autoFocus
@@ -196,12 +206,14 @@ export default function GeneKnowledgeApp() {
             )}
           </div>
 
+          {resolution && <p className="text-sm/relaxed text-muted-foreground" role="status">{resolution}</p>}
+          {geneError && <p className="text-sm text-destructive" role="alert">基因查询失败：{geneError}</p>}
           <div className="grid gap-4 md:grid-cols-[13rem_minmax(0,1fr)]">
             {/* Hit list */}
             <div className="max-h-[28rem] overflow-y-auto rounded-xl border">
               {genes.length === 0 ? (
                 <p className="p-3 text-sm text-muted-foreground">
-                  {meta?.ready === false ? "请先导入知识库" : "无匹配基因"}
+                  {geneLoading ? "正在查询…" : geneError ? "无法读取，请重试查询" : meta?.ready === false ? "请先导入知识库" : "无匹配基因"}
                 </p>
               ) : (
                 <ul className="divide-y">
@@ -257,7 +269,8 @@ export default function GeneKnowledgeApp() {
                       <Badge variant="secondary">{selected.type}</Badge>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-5">
+                  <CardContent className="flex flex-col gap-5">
+                    <Button asChild variant="outline" className="w-fit"><a href={`/evidence/clinical/?q=${encodeURIComponent(selected.symbol)}`}><FileSearch data-icon="inline-start" />查看关联证据</a></Button>
                     <dl className="grid gap-3 sm:grid-cols-2">
                       <div className="rounded-lg border px-3 py-2">
                         <dt className="text-xs text-muted-foreground">NCBI GeneID</dt>
@@ -360,7 +373,7 @@ export default function GeneKnowledgeApp() {
                                 >
                                   {txLoading
                                     ? "加载中…"
-                                    : "该基因暂无 MANE 映射（或未导入）"}
+                                    : txError ? `映射读取失败：${txError}` : "该基因暂无 MANE 映射（或未导入）"}
                                 </TableCell>
                               </TableRow>
                             ) : (

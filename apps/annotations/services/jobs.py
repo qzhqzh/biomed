@@ -15,6 +15,7 @@ from django.utils import timezone
 
 from apps.annotations.engines.base import AnnotationError
 from apps.annotations.models import AnnotationJob
+from apps.annotations.knowledge import store as knowledge_store
 from apps.annotations.services import annotate as annotate_service
 
 logger = logging.getLogger("biotools.jobs")
@@ -168,6 +169,7 @@ def run_job_safe(job_id: str) -> None:
         close_old_connections()
 
 
+@knowledge_store.pin_snapshot()
 def _run_job(job_id: str) -> None:
     try:
         job = AnnotationJob.objects.get(
@@ -214,7 +216,8 @@ def _run_job(job_id: str) -> None:
             )
 
     ok_count = sum(1 for run in runs if run.get("status") == "ok")
-    result = {"assembly": job.assembly, "runs": runs}
+    result = {"assembly": job.assembly, "runs": runs,
+              "knowledge_version": knowledge_store.data_version()}
     finished_at = timezone.now()
 
     if ok_count == 0:

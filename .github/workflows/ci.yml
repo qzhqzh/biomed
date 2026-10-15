@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  backend:
+  web:
     runs-on: ubuntu-latest
     env:
       DJANGO_SECRET_KEY: ci-only-secret-key
@@ -16,20 +16,27 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
-      - run: python manage.py test apps.annotations
-
-  frontend:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
-    steps:
-      - uses: actions/checkout@v4
+          cache-dependency-path: requirements.lock
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - run: npm ci
-      - run: npm run build
+      - run: pip install -r requirements.lock
+      - run: npm --prefix frontend ci
+      - run: npm --prefix frontend run build
+      - run: python manage.py test apps.curation apps.annotations apps.evidence apps.portal --noinput
+
+  oncology:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/oncology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install uv
+      - run: uv sync --locked --group dev
+      - run: PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 uv run --locked pytest -q

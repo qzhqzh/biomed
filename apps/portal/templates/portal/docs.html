@@ -1,14 +1,3 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>API Docs — online-biotools</title>
-  <link rel="stylesheet" href="{% static 'portal/dist/assets/index.css' %}" />
-</head>
-<body>
-  <div id="docs-root"></div>
-  <script type="module" src="{% static 'portal/dist/assets/annotate.js' %}"></script>
-</body>
-</html>
+{% extends "portal/base.html" %}
+{% block title %}API 说明{% endblock %}
+{% block app %}<div id="docs-root"></div>{% endblock %}

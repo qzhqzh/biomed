@@ -1,6 +1,7 @@
 from django.test import SimpleTestCase, Client, override_settings
 from pathlib import Path
 import tempfile
+from unittest.mock import patch
 
 from apps.annotations.normalize import normalize_variant
 from apps.annotations.engines import vep as vep_engine
@@ -170,8 +171,12 @@ class AnnovarUnitTests(SimpleTestCase):
         self.assertEqual(results[0].engine, "annovar")
         self.assertIn("c.1G>A", results[0].cdot or "")
 
-    def test_parse_multianno_prefers_mane_select(self):
+    @patch("apps.annotations.engines.transcript_prefer.knowledge_store.lookup_transcript")
+    def test_parse_multianno_prefers_mane_select(self, lookup_transcript):
         """When AAChange lists a non-MANE isoform first, prefer MANE Select NM."""
+        lookup_transcript.side_effect = lambda accession: (
+            {"mane": True, "mane_status": "select"} if accession == "NM_000546" else None
+        )
         # NM_001126115 is non-MANE; NM_000546 is MANE Select for TP53.
         aachange = (
             "TP53:NM_001126115.1:exon4:c.422G>A:p.R141H,"
