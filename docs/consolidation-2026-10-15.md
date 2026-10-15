@@ -22,7 +22,7 @@ fetch 后确认：`origin/main` 为 `76683dd`，`origin/refactor/architecture-dj
 - 非调试启动要求密钥；主机白名单和代理信任显式配置。现用 `DATABASE_PATH` 优先，兼容旧 `DJANGO_DB_PATH`。
 - CI 先生成前端 manifest，再检查所有 Django 模块；肿瘤模块沿用 uv.lock 的独立测试。
 
-本轮进行本地保存和同步，没有请求向远端发布或合入 main；原分支与保存分支保留。
+整合提交为 `b7a31c9`。本轮进行本地保存和同步，没有向远端推送或合入 main；原分支与保存分支保留。本地 main 与原重构分支分别安全快进到对应远端，当前开发分支为 `codex/biomed-consolidation-20261015`。
 
 ## 运行兼容
 
@@ -43,4 +43,11 @@ Compose 保留 web、资料 worker 和内部 oncology API，新增独立 annotat
 
 ## 清理和最终运行状态
 
-清理与运行核对完成后补充实际结果。
+- 删除空闲构建器 `online-biotool-proxy`，使用 `docker buildx rm --keep-state` 保留 `buildx_buildkit_online-biotool-proxy0_state` 缓存卷。清理前确认 7 条构建记录均已结束，保存了构建器配置和历史；未清理其他构建器。
+- 删除旧标签 `online-biotool-web:latest`。它与 `biomed-web:runtime-20261012` 指向同一镜像，后者及其镜像 ID 保留。
+- 删除没有容器引用的旧镜像 `oncology-workbench:0.1.0`。现用 `biomed-oncology:local` 是不同镜像，保持不变。
+- 现用 curation/runtime、oncology 和 ANNOVAR 四个镜像 ID 均与清理前一致；所有已有 Docker volume 均保留，没有执行全局 prune。数据、备份、专属参考库及 `legacy/` 继续保留。
+- 本地服务复用已有镜像，加载整合后的代码和前端静态文件。web、资料 worker、oncology 均为 healthy；独立 annotation-worker 正常运行，不使用 Web HTTP 健康探针。
+- 局域网 `http://192.168.124.2:50011/` 与本机 `http://localhost:50011/` 的首页、`/health/ready` 均返回 200；旧端口 18765 关闭。相同桌面和手机浏览器流程已在局域网实际入口再次通过。
+- 最终两个数据库 quick_check 均为 ok；Django 21 张表共 47,052 条记录、教学问题库 1 条记录，各表数量与操作前一致。
+- Docker 清理结果、最终服务和数据库状态保存在上述备份目录；`qa/` 保存局域网浏览器结果及三张截图。临时验证服务已停止，不保留第二套活动工作目录。
