@@ -1,8 +1,15 @@
+name: biomed
+
 x-app-environment: &app-environment
   DJANGO_DEBUG: ${DJANGO_DEBUG:-0}
-  DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1}
+  DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,192.168.124.2}
   DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set DJANGO_SECRET_KEY in .env}
-  DJANGO_DB_PATH: /data/db/db.sqlite3
+  DATABASE_PATH: /app/var/db.sqlite3
+  EVIDENCE_API_URL: http://oncology:8000
+  CURATION_STORAGE_DIR: /app/library
+  CURATION_MODEL_BACKEND: ${CURATION_MODEL_BACKEND:-}
+  KNOWLEDGE_DIR: /data/knowledge
+  KNOWLEDGE_UPDATES_DIR: /data/knowledge-updates
   DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-}
   DJANGO_TRUST_X_FORWARDED_PROTO: ${DJANGO_TRUST_X_FORWARDED_PROTO:-0}
   DJANGO_SECURE_SSL_REDIRECT: ${DJANGO_SECURE_SSL_REDIRECT:-0}
@@ -33,29 +40,32 @@ x-app-environment: &app-environment
   ANNOVAR_TIMEOUT_SECONDS: ${ANNOVAR_TIMEOUT_SECONDS:-300}
 
 x-app-volumes: &app-volumes
-  - biotools-db:/data/db
-  - ${VEP_HOST_CACHE:-./data/vep}:/data/vep:ro
-  # Overlay GRCh37 when data/vep uses a host symlink (Docker does not follow it).
-  - ${VEP_HOST_CACHE_GRCh37:-./legacy/online-tool/online-vep/cache/homo_sapiens_merged/116_GRCh37}:/data/vep/homo_sapiens_merged/116_GRCh37:ro
-  - ${ANNOVAR_HOST_DB:-./data/annovar/humandb}:/data/annovar:ro
+  - ./var/django:/app/var
+  - ./var/library:/app/library
+  # Reuse the verified runtime; code and assets come only from this project.
+  - ./config:/app/config:ro
+  - ./apps:/app/apps:ro
+  - ./manage.py:/app/manage.py:ro
+  - ./scripts/import_gene_knowledge.py:/app/scripts/import_gene_knowledge.py:ro
+  - ./reference-manifest.yaml:/app/reference-manifest.yaml:ro
+  - ./staticfiles:/app/staticfiles:ro
+  - ${KNOWLEDGE_HOST_DIR:-./data/knowledge}:/data/knowledge:ro
+  - ${KNOWLEDGE_UPDATES_HOST_DIR:-./data/knowledge-updates}:/data/knowledge-updates
+  - ${VEP_HOST_CACHE:-./var/reference/vep}:/data/vep:ro
+  - ${VEP_HOST_CACHE_GRCh37:-./var/reference/vep/homo_sapiens_merged/116_GRCh37}:/data/vep/homo_sapiens_merged/116_GRCh37:ro
+  - ${ANNOVAR_HOST_DB:-./var/reference/annovar/humandb}:/data/annovar:ro
 
 services:
-  migrate:
-    build: .
-    image: online-biotools:local
-    environment: *app-environment
-    volumes: *app-volumes
-    command: ["python", "manage.py", "migrate", "--noinput"]
-    restart: "no"
-
   web:
-    image: online-biotools:local
-    container_name: online-biotools-web
+    build: .
+    image: ${BIOMED_IMAGE:-biomed-web:curation-20261012}
+    container_name: biomed-web
     depends_on:
-      migrate:
-        condition: service_completed_successfully
+      oncology:
+        condition: service_healthy
+    command: ["sh", "-c", "python manage.py migrate --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 320"]
     ports:
-      - "${BIOTOOLS_PORT:-8000}:8000"
+      - "${BIOTOOLS_HOST_PORT:-${BIOTOOLS_PORT:-50011}}:8000"
     environment: *app-environment
     volumes: *app-volumes
     restart: unless-stopped
@@ -65,16 +75,85 @@ services:
       timeout: 10s
       retries: 3
 
-  worker:
-    image: online-biotools:local
-    container_name: online-biotools-worker
+  annotation-worker:
+    image: ${BIOMED_IMAGE:-biomed-web:curation-20261012}
+    container_name: biomed-annotation-worker
+    command: ["python", "manage.py", "run_annotation_worker"]
     depends_on:
-      migrate:
-        condition: service_completed_successfully
+      web:
+        condition: service_healthy
     environment: *app-environment
     volumes: *app-volumes
-    command: ["python", "manage.py", "run_annotation_worker"]
     restart: unless-stopped
+    # The web image's HTTP probe does not apply to a queue consumer.
+    healthcheck:
+      disable: true
 
-volumes:
-  biotools-db:
+  worker:
+    image: ${BIOMED_IMAGE:-biomed-web:curation-20261012}
+    container_name: biomed-worker
+    command: ["python", "manage.py", "curation_worker"]
+    depends_on:
+      web:
+        condition: service_healthy
+    environment: *app-environment
+    volumes:
+      - ./var/django:/app/var
+      - ./var/library:/app/library
+      - ./config:/app/config:ro
+      - ./apps:/app/apps:ro
+      - ./manage.py:/app/manage.py:ro
+      - ${KNOWLEDGE_HOST_DIR:-./data/knowledge}:/data/knowledge:ro
+      - ${KNOWLEDGE_UPDATES_HOST_DIR:-./data/knowledge-updates}:/data/knowledge-updates
+    read_only: true
+    tmpfs:
+      - /tmp:size=256m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 2g
+    cpus: 2.0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "manage.py", "curation_worker_health"]
+      interval: 20s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  oncology:
+    build: ./services/oncology
+    image: biomed-oncology:local
+    container_name: biomed-oncology
+    user: "${ONCO_UID:-1000}:${ONCO_GID:-1000}"
+    expose:
+      - "8000"
+    volumes:
+      - ./var/oncology:/app/var
+      - ./services/oncology/src:/app/src:ro
+      - ./services/oncology/data/demo:/app/data/demo:ro
+    environment:
+      ONCO_DATA_DIR: /app/var
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    cpus: 1.0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: "${ONCO_SUBNET:-10.254.220.0/28}"

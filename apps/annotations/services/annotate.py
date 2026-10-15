@@ -9,6 +9,7 @@ from django.conf import settings
 from apps.annotations.engines import annovar as annovar_engine
 from apps.annotations.engines import vep as vep_engine
 from apps.annotations.engines.base import AnnotationError
+from apps.annotations.knowledge import store as knowledge_store
 
 
 def list_engines() -> list[dict[str, Any]]:
@@ -44,6 +45,7 @@ def _run_one(engine: str, variants: list[str], assembly: str) -> list[dict[str, 
     )
 
 
+@knowledge_store.pin_snapshot()
 def annotate(
     *,
     variants: list[str],
@@ -70,6 +72,7 @@ def annotate(
             "assembly": assembly,
             "engine": "both",
             "results": results,
+            "knowledge_version": knowledge_store.data_version(),
         }
 
     if engine not in ("vep", "annovar"):
@@ -83,6 +86,7 @@ def annotate(
         "assembly": assembly,
         "engine": engine,
         "results": _run_one(engine, variants, assembly),
+        "knowledge_version": knowledge_store.data_version(),
     }
 
 

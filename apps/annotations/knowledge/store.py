@@ -6,33 +6,43 @@ from bisect import bisect_left, bisect_right
 import json
 import re
 import threading
+from contextlib import contextmanager
+from contextvars import ContextVar
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from django.conf import settings
+from apps.annotations.knowledge.releases import active_dir
 
 _lock = threading.Lock()
-_genes: list[dict[str, Any]] | None = None
-_transcript_records: dict[str, dict[str, Any]] | None = None
-_meta: dict[str, Any] | None = None
 
-_gene_rows: list[dict[str, Any]] | None = None
-_gene_search_blobs: list[str] | None = None
-_gene_symbol_keys: list[str] | None = None
-_gene_exact: dict[str, list[int]] | None = None
-_transcript_rows: list[dict[str, Any]] | None = None
-_transcript_search_blobs: list[str] | None = None
-_transcript_accession_keys: list[str] | None = None
-_transcript_exact: dict[str, int] | None = None
 
-_REFSEQ_RE = re.compile(r"^(NM|NR|NP|XM|XR)_?(\d+)$")
-_ENSEMBL_RE = re.compile(r"^(ENST|ENSP|ENSG)_?(\d+)$")
+@dataclass(frozen=True)
+class Snapshot:
+    path: Path
+    genes: list[dict[str, Any]]
+    transcripts: dict[str, dict[str, Any]]
+    meta: dict[str, Any]
+    gene_rows: list[dict[str, Any]]
+    gene_search_blobs: list[str]
+    gene_symbol_keys: list[str]
+    gene_exact: dict[str, list[int]]
+    transcript_rows: list[dict[str, Any]]
+    transcript_search_blobs: list[str]
+    transcript_accession_keys: list[str]
+    transcript_exact: dict[str, int]
+
+
+_snapshot: Snapshot | None = None
+_pinned: ContextVar[Snapshot | None] = ContextVar("knowledge_snapshot", default=None)
 
 
 def knowledge_dir() -> Path:
-    return Path(
-        getattr(settings, "KNOWLEDGE_DIR", settings.BASE_DIR / "data" / "knowledge")
-    )
+    return active_dir()
+
+
+_REFSEQ_RE = re.compile(r"^(NM|NR|NP|XM|XR)_?(\d+)$")
+_ENSEMBL_RE = re.compile(r"^(ENST|ENSP|ENSG)_?(\d+)$")
 
 
 def normalize_accession(accession: str) -> str:
@@ -48,8 +58,8 @@ def normalize_accession(accession: str) -> str:
     return raw
 
 
-def _load_meta() -> dict[str, Any]:
-    path = knowledge_dir() / "meta.json"
+def _load_meta(directory: Path) -> dict[str, Any]:
+    path = directory / "meta.json"
     if not path.is_file():
         return {
             "ready": False,
@@ -65,8 +75,8 @@ def _load_meta() -> dict[str, Any]:
     return data
 
 
-def _load_genes() -> list[dict[str, Any]]:
-    path = knowledge_dir() / "genes.jsonl"
+def _load_genes(directory: Path) -> list[dict[str, Any]]:
+    path = directory / "genes.jsonl"
     if not path.is_file():
         return []
     rows: list[dict[str, Any]] = []
@@ -86,8 +96,8 @@ def _load_genes() -> list[dict[str, Any]]:
     return rows
 
 
-def _load_transcripts() -> dict[str, dict[str, Any]]:
-    path = knowledge_dir() / "transcript-map.json"
+def _load_transcripts(directory: Path) -> dict[str, dict[str, Any]]:
+    path = directory / "transcript-map.json"
     if not path.is_file():
         return {}
     try:
@@ -114,13 +124,23 @@ def _add_gene_exact(index: dict[str, list[int]], token: Any, row_index: int) -> 
         bucket.append(row_index)
 
 
-def _build_indexes_locked() -> None:
-    global _gene_rows, _gene_search_blobs, _gene_symbol_keys, _gene_exact
-    global _transcript_rows, _transcript_search_blobs
-    global _transcript_accession_keys, _transcript_exact
+def _load_snapshot(directory: Path) -> Snapshot:
+    # Build the data and its indexes together, then publish one snapshot.
+    genes = _load_genes(directory)
+    transcripts = _load_transcripts(directory)
+    meta = _load_meta(directory)
+    return _build_snapshot(directory, genes, transcripts, meta)
+
+
+def _build_snapshot(
+    directory: Path,
+    genes: list[dict[str, Any]],
+    transcripts: dict[str, dict[str, Any]],
+    meta: dict[str, Any],
+) -> Snapshot:
 
     gene_rows = sorted(
-        _genes or [], key=lambda row: str(row.get("symbol") or "").casefold()
+        genes, key=lambda row: str(row.get("symbol") or "").casefold()
     )
     gene_search_blobs: list[str] = []
     gene_symbol_keys: list[str] = []
@@ -143,7 +163,7 @@ def _build_indexes_locked() -> None:
             _add_gene_exact(gene_exact, token, index)
 
     transcript_rows: list[dict[str, Any]] = []
-    for accession, record in (_transcript_records or {}).items():
+    for accession, record in transcripts.items():
         transcript_rows.append({"accession": accession, **record})
     transcript_rows.sort(key=lambda row: normalize_accession(str(row["accession"])))
 
@@ -173,71 +193,60 @@ def _build_indexes_locked() -> None:
             if normalized:
                 transcript_exact.setdefault(normalized, index)
 
-    _gene_rows = gene_rows
-    _gene_search_blobs = gene_search_blobs
-    _gene_symbol_keys = gene_symbol_keys
-    _gene_exact = gene_exact
-    _transcript_rows = transcript_rows
-    _transcript_search_blobs = transcript_search_blobs
-    _transcript_accession_keys = transcript_accession_keys
-    _transcript_exact = transcript_exact
+    return Snapshot(
+        path=directory, genes=genes, transcripts=transcripts, meta=meta,
+        gene_rows=gene_rows, gene_search_blobs=gene_search_blobs,
+        gene_symbol_keys=gene_symbol_keys, gene_exact=gene_exact,
+        transcript_rows=transcript_rows, transcript_search_blobs=transcript_search_blobs,
+        transcript_accession_keys=transcript_accession_keys, transcript_exact=transcript_exact,
+    )
 
 
-def ensure_loaded() -> None:
-    global _genes, _transcript_records, _meta
-    if (
-        _meta is not None
-        and _genes is not None
-        and _transcript_records is not None
-        and _gene_rows is not None
-        and _transcript_rows is not None
-    ):
-        return
+def ensure_loaded() -> Snapshot:
+    global _snapshot
+    pinned = _pinned.get()
+    if pinned is not None:
+        return pinned
+    directory = knowledge_dir()
+    if _snapshot is not None and _snapshot.path == directory:
+        return _snapshot
     with _lock:
-        if _meta is None:
-            _meta = _load_meta()
-        if _genes is None:
-            _genes = _load_genes()
-        if _transcript_records is None:
-            _transcript_records = _load_transcripts()
-        _build_indexes_locked()
+        directory = knowledge_dir()
+        if _snapshot is None or _snapshot.path != directory:
+            # Publish only after all three files were read successfully.
+            _snapshot = _load_snapshot(directory)
+        return _snapshot
 
 
 def reload() -> None:
-    global _genes, _transcript_records, _meta
+    global _snapshot
     with _lock:
-        _meta = _load_meta()
-        _genes = _load_genes()
-        _transcript_records = _load_transcripts()
-        _build_indexes_locked()
+        directory = knowledge_dir()
+        _snapshot = _load_snapshot(directory)
 
 
-def _require_indexes() -> None:
-    if any(
-        value is None
-        for value in (
-            _meta,
-            _genes,
-            _transcript_records,
-            _gene_rows,
-            _gene_search_blobs,
-            _gene_symbol_keys,
-            _gene_exact,
-            _transcript_rows,
-            _transcript_search_blobs,
-            _transcript_accession_keys,
-            _transcript_exact,
-        )
-    ):
-        raise RuntimeError("knowledge store failed to initialize")
+@contextmanager
+def pin_snapshot():
+    """An annotation task keeps one version even if an update is published."""
+    token = _pinned.set(ensure_loaded())
+    try:
+        yield
+    finally:
+        _pinned.reset(token)
+
+
+def data_version() -> dict[str, Any]:
+    meta = ensure_loaded().meta
+    return {"release": meta.get("release", "initial"),
+            "imported_at": meta.get("imported_at"),
+            "mane_version": meta.get("mane", {}).get("version")}
 
 
 def get_meta() -> dict[str, Any]:
-    ensure_loaded()
-    _require_indexes()
-    meta = dict(_meta or {})
-    meta["gene_loaded"] = len(_gene_rows or [])
-    meta["transcript_loaded"] = len(_transcript_rows or [])
+    snapshot = ensure_loaded()
+    meta = dict(snapshot.meta)
+    meta["gene_loaded"] = len(snapshot.genes)
+    meta["transcript_loaded"] = len(snapshot.transcripts)
     return meta
 
 
@@ -254,13 +263,30 @@ def search_genes(
     limit: int = 50,
     offset: int = 0,
 ) -> dict[str, Any]:
-    ensure_loaded()
-    _require_indexes()
-    rows = _gene_rows or []
-    blobs = _gene_search_blobs or []
-    symbol_keys = _gene_symbol_keys or []
-    exact = _gene_exact or {}
+    snapshot = ensure_loaded()
+    rows = snapshot.gene_rows
+    blobs = snapshot.gene_search_blobs
+    symbol_keys = snapshot.gene_symbol_keys
+    exact = snapshot.gene_exact
     needle = q.strip().casefold()
+
+    # Resolve accession bases without claiming validation of version suffixes.
+    accession = normalize_accession(q)
+    if _REFSEQ_RE.fullmatch(accession) or re.fullmatch(r"ENS[TP]\d+", accession):
+        index = snapshot.transcript_exact.get(accession)
+        mapping = snapshot.transcript_rows[index] if index is not None else {}
+        symbol = mapping.get("gene", "")
+        matches = [
+            rows[index] for index in exact.get(symbol.casefold(), [])
+            if rows[index].get("symbol") == symbol
+            and (not gene_type or rows[index].get("type") == gene_type)
+        ]
+        return {
+            "total": len(matches), "offset": offset, "limit": limit,
+            "results": matches[offset:offset + limit],
+            "query_resolution": {"requested": q.strip(), "accession": accession,
+                                 "gene": symbol or None, "version_checked": False},
+        }
 
     if not needle:
         matched = [row for row in rows if not gene_type or row.get("type") == gene_type]
@@ -317,12 +343,11 @@ def search_transcripts(
     limit: int = 50,
     offset: int = 0,
 ) -> dict[str, Any]:
-    ensure_loaded()
-    _require_indexes()
-    rows = _transcript_rows or []
-    blobs = _transcript_search_blobs or []
-    keys = _transcript_accession_keys or []
-    exact = _transcript_exact or {}
+    snapshot = ensure_loaded()
+    rows = snapshot.transcript_rows
+    blobs = snapshot.transcript_search_blobs
+    keys = snapshot.transcript_accession_keys
+    exact = snapshot.transcript_exact
     needle = normalize_accession(q) if q.strip() else ""
 
     if not needle:
@@ -352,10 +377,9 @@ def search_transcripts(
 
 
 def lookup_transcript(accession: str) -> dict[str, Any] | None:
-    ensure_loaded()
-    _require_indexes()
+    snapshot = ensure_loaded()
     normalized = normalize_accession(accession)
-    index = (_transcript_exact or {}).get(normalized)
+    index = snapshot.transcript_exact.get(normalized)
     if index is None:
         return None
-    return dict((_transcript_rows or [])[index])
+    return dict(snapshot.transcript_rows[index])

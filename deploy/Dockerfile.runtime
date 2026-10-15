@@ -1,0 +1,8 @@
+# Reproducible dependency layer over the already verified local VEP runtime.
+# Full clean builds use the root Dockerfile. This path avoids the host's broken BuildKit.
+ARG RUNTIME_BASE=biomed-web:runtime-20261012
+FROM ${RUNTIME_BASE}
+USER root
+COPY requirements.lock /app/requirements.lock
+RUN /opt/biotools/bin/pip install --no-cache-dir -r /app/requirements.lock
+USER biotools

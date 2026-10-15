@@ -1,4 +1,6 @@
 from django.conf import settings
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -12,6 +14,7 @@ from apps.annotations.api.serializers import (
 )
 from apps.annotations.engines.base import AnnotationError
 from apps.annotations.knowledge import store as knowledge_store
+from apps.annotations.knowledge import updater as knowledge_updater
 from apps.annotations.models import AnnotationJob
 from apps.annotations.services import annotate as annotate_service
 from apps.annotations.services import jobs as jobs_service
@@ -33,6 +36,27 @@ def _bounded_query_int(
     if maximum is not None:
         value = min(maximum, value)
     return value
+
+
+@method_decorator(csrf_protect, name="dispatch")
+class KnowledgeUpdatesView(APIView):
+    authentication_classes = [APIKeyAuthentication]
+    permission_classes = [HasAPIKeyOrOpen]
+
+    def get(self, request):
+        return Response(knowledge_updater.get_status())
+
+    def post(self, request):
+        action = request.data.get("action") if isinstance(request.data, dict) else None
+        if not isinstance(action, str) or action not in {"check", "update"}:
+            return Response({"detail": "action 只能是 check 或 update"}, status=400)
+        try:
+            result = knowledge_updater.start_update(action)
+        except knowledge_updater.UpdateBusy as exc:
+            return Response({"detail": str(exc)}, status=409)
+        except OSError:
+            return Response({"detail": "更新目录不可写或空间不足，请检查服务端配置"}, status=503)
+        return Response(result, status=202)
 
 
 class EnginesView(APIView):

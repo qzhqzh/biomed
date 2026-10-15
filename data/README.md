@@ -1,5 +1,7 @@
 # 注释资源目录（不进 Git）
 
+迁移后，`data/vep` 与 `data/annovar` 为指向 `../var/reference/` 的相对链接；参考数据只有这一份实体，Docker 直接挂载实体目录。`knowledge` 与 `knowledge-updates` 保留原路径和全部版本。
+
 ```
 data/
 ├── knowledge/                        # 基因 / MANE 知识库
@@ -10,8 +12,8 @@ data/
 ├── vep/                              # VEP_CACHE_DIR
 │   ├── .downloads/                   # tar.gz + 下载日志 / pid
 │   └── homo_sapiens_merged/
-│       ├── 116_GRCh37/               # 可软链到 legacy cache
-│       └── 116_GRCh38/               # 下载解压后出现
+│       ├── 116_GRCh37/               # 实体在 var/reference/vep
+│       └── 116_GRCh38/               # 实体在 var/reference/vep
 └── annovar/
     └── humandb/                      # ANNOVAR_DB_DIR（hg19 + hg38 同目录）
         ├── hg19_refGeneWithVer.txt

@@ -1,34 +1,31 @@
-import { StrictMode, type ReactNode } from "react"
+import { lazy, StrictMode, Suspense } from "react"
 import { createRoot } from "react-dom/client"
-
 import "./index.css"
-import AnnotateApp from "./pages/AnnotateApp"
-import AminoAcidKnowledgeApp from "./pages/AminoAcidKnowledgeApp"
-import DocsApp from "./pages/DocsApp"
-import EnginesApp from "./pages/EnginesApp"
-import GeneKnowledgeApp from "./pages/GeneKnowledgeApp"
-import HomeApp from "./pages/HomeApp"
-import JobsApp from "./pages/JobsApp"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
-function mount(id: string, node: ReactNode) {
-  const el = document.getElementById(id)
-  if (!el) return
-  createRoot(el).render(
-    <StrictMode>
-      <TooltipProvider>
-        {node}
-        <Toaster />
-      </TooltipProvider>
-    </StrictMode>
-  )
+// Load only the current page. In particular, gene/evidence lookup needs no Monaco editor.
+const pages = {
+  "standards-root": lazy(() => import("./pages/StandardsApp")),
+  "library-root": lazy(() => import("./pages/LibraryApp")),
+  "workflows-root": lazy(() => import("./pages/WorkflowsApp")),
+  "clinical-evidence-root": lazy(() => import("./pages/ClinicalEvidenceApp")),
+  "home-root": lazy(() => import("./pages/HomeApp")),
+  "annotate-root": lazy(() => import("./pages/AnnotateApp")),
+  "jobs-root": lazy(() => import("./pages/JobsApp")),
+  "engines-root": lazy(() => import("./pages/EnginesApp")),
+  "docs-root": lazy(() => import("./pages/DocsApp")),
+  "data-updates-root": lazy(() => import("./pages/DataUpdatesApp")),
+  "gene-knowledge-root": lazy(() => import("./pages/GeneKnowledgeApp")),
+  "amino-acid-knowledge-root": lazy(() => import("./pages/AminoAcidKnowledgeApp")),
+  "evidence-root": lazy(() => import("./pages/EvidenceApp")),
+  "issues-root": lazy(() => import("./pages/IssuesApp")),
 }
-
-mount("home-root", <HomeApp />)
-mount("annotate-root", <AnnotateApp />)
-mount("jobs-root", <JobsApp />)
-mount("engines-root", <EnginesApp />)
-mount("docs-root", <DocsApp />)
-mount("gene-knowledge-root", <GeneKnowledgeApp />)
-mount("amino-acid-knowledge-root", <AminoAcidKnowledgeApp />)
+for (const [id, Page] of Object.entries(pages)) {
+  const root = document.getElementById(id)
+  if (!root) continue
+  createRoot(root).render(<StrictMode><TooltipProvider>
+    <Suspense fallback={<p className="p-8 text-sm text-muted-foreground" role="status">正在打开 biomed…</p>}><Page /></Suspense>
+    <Toaster />
+  </TooltipProvider></StrictMode>)
+}

@@ -327,12 +327,52 @@ export async function fetchKnowledgeMeta(): Promise<KnowledgeMeta> {
   return res.json()
 }
 
+export type KnowledgeSourceStatus = {
+  url: string
+  changed: boolean
+  content_sha256: string
+  last_modified?: string | null
+  last_updated_at?: string | null
+  version?: string
+}
+
+export type KnowledgeUpdateStatus = {
+  status: "idle" | "running" | "succeeded" | "failed" | "interrupted"
+  message: string
+  last_checked_at?: string | null
+  started_at?: string
+  finished_at?: string
+  update_available?: boolean
+  published?: boolean
+  sources?: Record<string, KnowledgeSourceStatus>
+  current: KnowledgeMeta & {
+    release?: string
+    updates?: { sources: Record<string, KnowledgeSourceStatus> }
+  }
+  sources_config: Record<string, string>
+}
+
+export async function fetchKnowledgeUpdates(signal?: AbortSignal): Promise<KnowledgeUpdateStatus> {
+  const res = await fetch("/api/v1/knowledge/updates/", { headers: authHeaders(), signal, cache: "no-store" })
+  if (!res.ok) throw await parseError(res)
+  return res.json()
+}
+
+export async function startKnowledgeUpdate(action: "check" | "update"): Promise<void> {
+  const res = await fetch("/api/v1/knowledge/updates/", {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ action }),
+  })
+  if (!res.ok) throw await parseError(res)
+}
+
 export async function searchKnowledgeGenes(opts: {
   q?: string
   type?: string
   limit?: number
   offset?: number
-}): Promise<{ total: number; results: KnowledgeGene[]; offset: number; limit: number }> {
+}): Promise<{ total: number; results: KnowledgeGene[]; offset: number; limit: number; query_resolution?: { requested: string; accession: string; gene: string | null; version_checked: false } }> {
   const params = new URLSearchParams()
   if (opts.q) params.set("q", opts.q)
   if (opts.type) params.set("type", opts.type)

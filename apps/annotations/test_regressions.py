@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from datetime import timedelta
 import json
+import os
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 from unittest.mock import patch
 
@@ -191,6 +194,34 @@ class LegacyViewRegressionTests(SimpleTestCase):
 
 
 class DurableWorkerRegressionTests(TestCase):
+    def test_job_result_keeps_version_when_snapshot_changes_during_execution(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            baseline = root / "baseline"
+            updates = root / "updates"
+            release = "a" * 32
+            replacement = updates / "releases" / release
+            for directory, version in ((baseline, "initial"), (replacement, release)):
+                directory.mkdir(parents=True)
+                (directory / "meta.json").write_text(json.dumps({"release": version}))
+            with override_settings(KNOWLEDGE_DIR=str(baseline), KNOWLEDGE_UPDATES_DIR=str(updates)):
+                knowledge_store.reload()
+                job = jobs_service.create_and_enqueue(
+                    variants=["17:7577120 C>T"], assembly="GRCh37", engines=["vep"]
+                )
+
+                def annotate(**kwargs):
+                    (updates / "current.json").write_text(json.dumps({"release": release}))
+                    knowledge_store.reload()
+                    return {"results": [{"input": "17:7577120 C>T"}]}
+
+                with patch.object(jobs_service.annotate_service, "annotate", side_effect=annotate):
+                    jobs_service.run_job_safe(jobs_service.claim_next_job())
+                job.refresh_from_db()
+                self.assertEqual(job.status, AnnotationJob.Status.SUCCEEDED)
+                self.assertEqual(job.result["knowledge_version"]["release"], "initial")
+                self.assertEqual(knowledge_store.data_version()["release"], release)
+
     def test_claim_and_recover_stale_job(self):
         job = AnnotationJob.objects.create(
             assembly="GRCh37",
@@ -232,3 +263,30 @@ class DurableWorkerRegressionTests(TestCase):
         job.refresh_from_db()
         self.assertEqual(job.status, AnnotationJob.Status.SUCCEEDED)
         self.assertEqual(job.result["runs"][0]["status"], "ok")
+
+
+class SettingsCompatibilityTests(SimpleTestCase):
+    def test_database_path_preserves_current_and_legacy_configuration(self):
+        for current, legacy, expected in (
+            ("/tmp/current.sqlite3", "/tmp/legacy.sqlite3", "/tmp/current.sqlite3"),
+            (None, "/tmp/legacy.sqlite3", "/tmp/legacy.sqlite3"),
+        ):
+            env = {key: value for key, value in os.environ.items()
+                   if key not in {"DATABASE_PATH", "DJANGO_DB_PATH"}}
+            env.update(DJANGO_DEBUG="1", DJANGO_DB_PATH=legacy)
+            if current:
+                env["DATABASE_PATH"] = current
+            result = subprocess.check_output(
+                [sys.executable, "-c", "from config.settings import DATABASES; print(DATABASES['default']['NAME'])"],
+                env=env, text=True,
+            )
+            self.assertEqual(result.strip(), expected)
+
+    def test_non_debug_startup_requires_a_secret(self):
+        env = {key: value for key, value in os.environ.items() if key != "DJANGO_SECRET_KEY"}
+        env["DJANGO_DEBUG"] = "0"
+        result = subprocess.run(
+            [sys.executable, "-c", "import config.settings"], env=env, text=True, capture_output=True,
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("DJANGO_SECRET_KEY is required", result.stderr)

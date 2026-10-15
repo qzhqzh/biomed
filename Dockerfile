@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1
-
 FROM node:22-bookworm AS frontend
 WORKDIR /frontend
 COPY frontend/package.json frontend/package-lock.json ./
@@ -21,15 +19,18 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
+COPY requirements.lock /app/requirements.lock
 RUN python3 -m venv /opt/biotools && \
-    /opt/biotools/bin/pip install --no-cache-dir -r /app/requirements.txt
+    /opt/biotools/bin/pip install --no-cache-dir -r /app/requirements.lock
 
 COPY manage.py /app/manage.py
 COPY config /app/config
 COPY apps /app/apps
+COPY scripts/import_gene_knowledge.py /app/scripts/import_gene_knowledge.py
 COPY reference-manifest.yaml /app/reference-manifest.yaml
 COPY --from=frontend /frontend/dist /app/apps/portal/static/portal/dist
+
+RUN DJANGO_DEBUG=1 /opt/biotools/bin/python manage.py collectstatic --noinput
 
 ENV PATH="/opt/biotools/bin:$PATH" \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -40,7 +41,7 @@ ENV PATH="/opt/biotools/bin:$PATH" \
     DJANGO_DEBUG=0 \
     DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
 
-RUN mkdir -p /data/vep /data/tmp /data/db && \
+RUN mkdir -p /data/vep /data/tmp /app/var && \
     useradd --create-home --uid 10001 biotools && \
     chown -R biotools:biotools /app /data
 
@@ -48,4 +49,4 @@ USER biotools
 
 EXPOSE 8000
 
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "2", "--timeout", "320"]
+CMD ["sh", "-c", "python manage.py migrate --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 320"]
