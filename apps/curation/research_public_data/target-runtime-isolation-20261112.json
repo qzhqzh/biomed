@@ -1,0 +1,152 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "target-runtime-isolation-20261112",
+  "title": "036 · 两条知识的目标运行路径隔离验证",
+  "date": "2026-11-12T07:36:32.574809+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 2,
+  "sample_unit": "条知识",
+  "summary": "2条未分级知识可隔离保存和检索；模拟启用后可匹配，但治疗报告报错且条件不自动约束。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "target-runtime-isolation-v1",
+    "sample_versions": [
+      "574cc368ec9c980bf1c713653968b2504000675c2ebea8d9b5175eb03420cb8c",
+      "afb810ec7e5a0723bdbc476dc0692fa1a3cc94ddc8f45648192f6d820451fcfb"
+    ],
+    "method_versions": [
+      "e946f7556aa5f534143c8527ce29ab743e4cb969d4d463962bcd23493f28bf86",
+      "253e55003049838db60f20a4b16b5aa3716b1ac288c9b381fe7e8a74161b3ab2",
+      "081b84f5cc47bff226299ec8e0007ccd442d93d821e6e52863f1db14a729000c"
+    ],
+    "reference_versions": [
+      "41c42b20d463d1529286f775bcd32e8b044822a57ab2e4f134250695eb0c4ea3",
+      "406a6aa139127f921f4c8ac29827876a9f11235e9ea6734a9a5a431cc98d9568"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "不强行给证据分级时，两条知识能否在目标证据中心保存、检索和按原文条件使用？",
+    "outputs": [
+      "四个目标实体ID的有限只读核对",
+      "目标真实serializer在内存库的保存和搜索",
+      "真实位点匹配及反例",
+      "未分级报告行为和原文条件对照"
+    ],
+    "not_measured": [
+      "真实患者及生产数据匹配",
+      "真实转录本等价",
+      "全库语义去重",
+      "自动条件抽取准确率"
+    ]
+  },
+  "dataset": {
+    "label": "两篇真实文章的知识与合成样本",
+    "role": "isolated_target_consumption",
+    "document_count": 2
+  },
+  "reference": {
+    "label": "当前目标代码、实际serializer与SQLite隔离实测",
+    "status": "model_reference_not_human_gold",
+    "note": "Astra原文参考沿用035；目标运行结果基于同镜像和合成样本，不是临床专家判断。"
+  },
+  "methods": [
+    {
+      "id": "identities",
+      "label": "有限只读核对与隔离保存",
+      "version": "target-memory-storage-v3",
+      "conclusion": "未分级知识可以作为待处理且未启用的证据信息保存和检索。",
+      "metrics": [
+        {
+          "label": "目标药物和癌种 ID 存在",
+          "numerator": 4,
+          "denominator": 4,
+          "note": "当前目标库有限只读查询。"
+        },
+        {
+          "label": "未分级保存和管理搜索",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "真实目标serializer及ORM；仅一次性SQLite。"
+        },
+        {
+          "label": "精确重复被拒绝",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "不代表全库语义去重。"
+        }
+      ]
+    },
+    {
+      "id": "consumer",
+      "label": "模拟目标样本匹配与报告消费",
+      "version": "target-runtime-synthetic-v2",
+      "conclusion": "精确变异可命中；当前报告不能直接消费未分级治疗证据。",
+      "metrics": [
+        {
+          "label": "模拟审核启用、正确位点命中",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "仅合成样本，不代表真实患者。"
+        },
+        {
+          "label": "错误基因、替换、主癌种及缺失蛋白变化未命中",
+          "numerator": 8,
+          "denominator": 8,
+          "note": "两条各4个反例；另发现KRAS基因注释冲突时仍可能命中。"
+        },
+        {
+          "label": "未分级治疗报告触发错误",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "目标报告实现限制，不为通过而虚构等级。"
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "label": "来源条件的独立比较原型",
+      "version": "target-context-comparison-v1",
+      "conclusion": "比较规则可表达一致、不同和未知；条件自动抽取及目标接入尚未完成。",
+      "metrics": [
+        {
+          "label": "已知相同范围",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "一线治疗与卵巢亚型两条合成对照。"
+        },
+        {
+          "label": "已知不同范围",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "目标自身均命中；原型仅标出与文献范围不同，不隐藏知识。"
+        },
+        {
+          "label": "缺少范围信息",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "输出未知，不自动判患者不适用。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留未分级知识并供信息检索，不编造证据等级或药物敏感性。",
+    "设计目标消费者对未分级、未知药效和原文范围的展示与处理；验证前不启用生产报告匹配。",
+    "在新文章中验证条件的自动提取与标准化，缺失时保留未知，不阻止知识检索。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/target-runtime-isolation-20261112.json",
+      "sha256": "d0442284060921b4352c54f708c14ffeef885437e7bf8bef5f99afcf354f88fa"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "6eeca50cd0053ecc4c67e5bb8cc7c234c17c8c98a1c04b59ea946b2e739aa9b5",
+  "content_sha256": "5ed892a4ed2f8e5a9404384b0f2742606e4fbf90068109df98df623a05bd5c27"
+}

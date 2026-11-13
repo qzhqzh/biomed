@@ -9,6 +9,7 @@ import {
   accessionLookupUrl,
   geneLookupUrl,
 } from "@/components/knowledge/KnowledgeSources"
+import { TranscriptStructures } from "@/components/knowledge/TranscriptStructures"
 import { AppShell } from "@/layouts/AppShell"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -74,6 +75,7 @@ export default function GeneKnowledgeApp() {
   const [resolution, setResolution] = useState<string | null>(null)
   const [txError, setTxError] = useState<string | null>(null)
   const [selected, setSelected] = useState<KnowledgeGene | null>(null)
+  const [resolvedGeneQuery, setResolvedGeneQuery] = useState<string | null>(null)
 
   const [txLoading, setTxLoading] = useState(false)
   const [transcripts, setTranscripts] = useState<KnowledgeTranscript[]>([])
@@ -94,6 +96,7 @@ export default function GeneKnowledgeApp() {
           if (cancelled) return
           setGenes(data.results)
           setGeneTotal(data.total)
+          setResolvedGeneQuery(geneQ)
           setResolution(data.query_resolution ? `按 MANE 主编号 ${data.query_resolution.accession} 定位基因；输入中的版本号未核验。` : null)
           setSelected((prev) => {
             if (prev && data.results.some((g) => g.gene_id === prev.gene_id)) {
@@ -157,6 +160,10 @@ export default function GeneKnowledgeApp() {
     ? `https://www.ncbi.nlm.nih.gov/gene/${selected.gene_id}`
     : null
   const geneHref = selected ? geneLookupUrl(selected.symbol) : null
+  const trimmedQuery = geneQ.trim()
+  const structureQuery = /^(?:(?:NM|NR)_?\d+|ENST\d+)(?:\.\d+)?$/i.test(trimmedQuery)
+    ? trimmedQuery
+    : resolvedGeneQuery === geneQ ? selected?.symbol || "" : ""
 
   return (
     <AppShell
@@ -422,6 +429,8 @@ export default function GeneKnowledgeApp() {
               )}
             </Card>
           </div>
+
+          <TranscriptStructures key={`${geneQ}:${structureQuery}`} query={structureQuery} />
 
           <div className="pt-2">
             <Button

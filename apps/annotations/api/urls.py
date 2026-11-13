@@ -7,6 +7,7 @@ from apps.annotations.api.views import (
     JobsView,
     KnowledgeGenesView,
     KnowledgeMetaView,
+    KnowledgeTranscriptStructuresView,
     KnowledgeTranscriptsView,
     KnowledgeUpdatesView,
     LegacyAnnotateView,
@@ -24,6 +25,11 @@ urlpatterns = [
         "knowledge/transcripts/",
         KnowledgeTranscriptsView.as_view(),
         name="knowledge-transcripts",
+    ),
+    path(
+        "knowledge/transcript-structures/",
+        KnowledgeTranscriptStructuresView.as_view(),
+        name="knowledge-transcript-structures",
     ),
     # Temporary FastAPI compatibility
     path("legacy/annotate", LegacyAnnotateView.as_view(), name="legacy-annotate"),

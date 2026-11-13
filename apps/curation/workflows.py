@@ -11,21 +11,29 @@ from django.utils import timezone
 
 from apps.curation.models import WorkAttempt, WorkItem
 from apps.curation.network import SourceBlocked, TransientSourceError
+from config.database import safe_failure_location
 
 LEASE_SECONDS = 90
 
 
-def enqueue(kind, payload):
+def job_key(kind, payload):
     encoded = json.dumps(
         {"kind": kind, "payload": payload}, sort_keys=True, separators=(",", ":")
     )
-    key = hashlib.sha256(encoded.encode()).hexdigest()
+    return hashlib.sha256(encoded.encode()).hexdigest()
+
+
+def enqueue(kind, payload):
+    key = job_key(kind, payload)
     return WorkItem.objects.get_or_create(
-        dedup_key=key, defaults={"kind": kind, "payload": payload}
+        dedup_key=key,
+        defaults={"kind": kind, "payload": payload, "available_at": timezone.now()},
     )[0]
 
 
 def recover_expired():
+    from apps.curation.collection_recovery import recover_collection_job
+
     now = timezone.now()
     for item in WorkItem.objects.filter(state="running", lease_until__lt=now):
         with transaction.atomic():
@@ -35,7 +43,9 @@ def recover_expired():
                 lease_token=item.lease_token,
                 lease_until__lt=now,
             ).update(
-                state="queued" if item.attempts < 3 else "failed",
+                state="queued"
+                if item.attempts < 3 and item.kind != "collect_literature"
+                else "failed",
                 lease_token=None,
                 lease_until=None,
                 available_at=now,
@@ -48,10 +58,15 @@ def recover_expired():
                 WorkAttempt.objects.filter(
                     token=item.lease_token, outcome="running"
                 ).update(outcome="interrupted", finished_at=now, message="任务租约过期")
+                if item.kind == "collect_literature":
+                    recover_collection_job(item, "采集进程租约过期，已保留当前断点")
 
 
 def claim():
+    from apps.curation.collection_recovery import reconcile_collection_jobs
+
     recover_expired()
+    reconcile_collection_jobs()
     for item in WorkItem.objects.filter(
         state="queued", available_at__lte=timezone.now()
     ).order_by("created_at")[:10]:
@@ -73,8 +88,14 @@ def claim():
 
 
 def finish(item, state, result=None, message="", retry=False):
+    from apps.curation.collection_recovery import recover_collection_job
+
     now = timezone.now()
-    state = "queued" if retry and item.attempts < 3 else state
+    state = (
+        "queued"
+        if retry and item.attempts < 3 and item.kind != "collect_literature"
+        else state
+    )
     with transaction.atomic():
         changed = WorkItem.objects.filter(
             pk=item.pk, state="running", lease_token=item.lease_token
@@ -93,10 +114,14 @@ def finish(item, state, result=None, message="", retry=False):
                 finished_at=now,
                 message=message[:2000],
             )
+            if item.kind == "collect_literature" and state == "failed":
+                recover_collection_job(item, message or "采集进程中断，已保留当前断点")
     return bool(changed)
 
 
 def dispatch(item):
+    from apps.curation.collection_notifications import deliver_notification
+    from apps.curation.collections import collection_step
     from apps.curation.materials import (
         acquire_pmc,
         acquire_pubmed,
@@ -107,6 +132,8 @@ def dispatch(item):
     from apps.curation.standards import sync_standard
 
     handlers = {
+        "notify_collection": lambda: deliver_notification(item),
+        "collect_literature": lambda: collection_step(item),
         "sync_standard": lambda: sync_standard(item.payload["namespace"]),
         "pubmed_search": lambda: pubmed_search(item.payload["query"]),
         "acquire_pubmed": lambda: acquire_pubmed(item.payload["pmid"]),
@@ -135,12 +162,15 @@ def execute(item):
         return finish(item, "blocked", message=str(exc))
     except TransientSourceError as exc:
         return finish(item, "failed", message=str(exc), retry=True)
-    except Exception:  # noqa: BLE001 — worker boundary persists a safe failure for every task
+    except Exception as exc:  # noqa: BLE001 — worker boundary persists a safe failure for every task
         # Avoid copying uploaded content, model credentials or external response bodies into logs.
         import logging
 
         logging.getLogger(__name__).error(
-            "curation_job_failed job=%s kind=%s", item.pk, item.kind
+            "curation_job_failed job=%s kind=%s location=%s",
+            item.pk,
+            item.kind,
+            safe_failure_location(exc),
         )
         return finish(
             item,

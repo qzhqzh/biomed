@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { CATEGORY_LABELS, createIssue, updateIssue, type Issue, type IssueCategory } from "@/lib/evidence"
+import { useUnsavedChanges } from "@/lib/navigation"
 
 function IssueEditor({ issue, runId, onSaved }: { issue: Issue | null; runId: string | null; onSaved: () => void }) {
   const [title, setTitle] = useState("")
@@ -19,6 +20,8 @@ function IssueEditor({ issue, runId, onSaved }: { issue: Issue | null; runId: st
   const [status, setStatus] = useState<Issue["status"]>(issue?.status ?? "open")
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState("")
+  const dirty = issue ? lesson !== issue.lesson || status !== issue.status : Boolean(title || observation || expected || lesson || category !== "other")
+  useUnsavedChanges(dirty || busy, "问题记录还有未保存的编辑。")
   async function save(event: FormEvent) {
     event.preventDefault(); setBusy(true); setError("")
     try {

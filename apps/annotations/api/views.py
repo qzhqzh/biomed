@@ -1,3 +1,5 @@
+import sqlite3
+
 from django.conf import settings
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
@@ -14,6 +16,7 @@ from apps.annotations.api.serializers import (
 )
 from apps.annotations.engines.base import AnnotationError
 from apps.annotations.knowledge import store as knowledge_store
+from apps.annotations.knowledge import transcript_structures
 from apps.annotations.knowledge import updater as knowledge_updater
 from apps.annotations.models import AnnotationJob
 from apps.annotations.services import annotate as annotate_service
@@ -222,6 +225,29 @@ class KnowledgeTranscriptsView(APIView):
                 q, mane_only=mane_only, limit=limit, offset=offset
             )
         )
+
+
+class KnowledgeTranscriptStructuresView(APIView):
+    """Version-specific exon evidence, independent of the legacy MANE index."""
+
+    authentication_classes = ()
+    permission_classes = ()
+
+    def get(self, request):
+        query = request.query_params.get("q", "").strip()
+        if len(query) > 128:
+            return Response({"detail": "转录本或基因查询最长为128个字符"}, status=400)
+        limit = _bounded_query_int(
+            request.query_params, "limit", 20, minimum=1, maximum=100
+        )
+        offset = _bounded_query_int(request.query_params, "offset", 0)
+        try:
+            result = transcript_structures.search_structures(
+                query, limit=limit, offset=offset
+            )
+        except (OSError, ValueError, sqlite3.Error):
+            return Response({"detail": "转录本结构库暂不可读取，请检查资源快照"}, status=503)
+        return Response(result)
 
 
 class LegacyAnnotateView(APIView):

@@ -1,0 +1,299 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "compact-facts-five-papers-20261024",
+  "title": "007 · 紧凑事实、脚本组装与定向核验",
+  "date": "2026-10-24",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "组",
+  "summary": "同15组回归：紧凑事实＋脚本组装完整通过1/15、平均39.56秒；追加一次9B定向核验后0/15、累计82.74秒。006为0/15、97.44秒。中心陈述由9/15升至13/15，但协议与条件绑定仍阻塞完整知识；本轮补丁核验不采用。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "compact-facts-evaluation-v1",
+    "sample_versions": [
+      "a186af8678d4e974080406d3219f1da78ccb6888daf778a7eb5acc9cbcfb3dcf",
+      "a328debae5e555fe7a0b718eb6ae53ad7eb91aff65bb022e126765e988ea0f9b"
+    ],
+    "method_versions": [
+      "abeddae8d8a09b257af938a1a5eca5e73eb89e4702d9f748086fbce31ae9b707",
+      "73c2a20e8a3d194444bfcf1aae8419dc96f250580d8e3587d997826265a461b2",
+      "2de6e6ff0d1516b8693fdce862d2b5c7162e6e898dcb7cf2ad897932690a6f15",
+      "7ed6e350fe2def90080f6e5113a66be55e67f42e7235349e88aa6a9471c0509b",
+      "edfd83424566d1e65ea6e9fd8546f88b1661e9daf47106f3e5ceed5a2cab81f0"
+    ],
+    "reference_versions": [
+      "cca596cc01491a24c6a5cb1b8768403ba99a36bbc16bdc598e84140e62940c42",
+      "adec4cd51e115e75590cfc71d10b26323e603f3b9921408d23fd5e5c82d302ce",
+      "77435e131bc0d90807d34c8f06463f82619fdb87d933ecb8c8632850697b787a",
+      "1988c6f7bbd89ac43b5f668f256060fd6f18a1cceba8639f8c2ae99241854bc7"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "同15组文本下，紧凑抽取、脚本组装和定向核验能否改善完整通过率与总耗时？",
+    "outputs": [
+      "紧凑事实与实体关系",
+      "脚本定位及原v1字段组装",
+      "组别、条件和数值的一次定向核验",
+      "前后完整通过率和全部处理耗时",
+      "文章与片段两层出处及不可提交映射"
+    ],
+    "not_measured": [
+      "独立新论文泛化",
+      "全篇/全库抽取召回率",
+      "微调收益",
+      "生产API写入或临床适用性"
+    ]
+  },
+  "dataset": {
+    "label": "5篇实体瘤治疗论文的同15个开发片段组",
+    "role": "已用于改进的开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "复用006冻结Astra参考，独立核验前后两版",
+    "status": "model_reference_not_human_gold",
+    "note": "旧参考和旧定义哈希原样保留；9B定向核验不读取Astra答案。Astra对前后整条记录评审，非人工金标准或盲法评审。"
+  },
+  "methods": [
+    {
+      "id": "compact-baseline",
+      "label": "006 · 9B一次输出完整记录",
+      "version": "abeddae8d8a09b257af938a1a5eca5e73eb89e4702d9f748086fbce31ae9b707",
+      "conclusion": "保留006原成绩：中心陈述9/15有支持，完整通过0/15；一次生成复杂记录的字段、定位及语义错误均保留。",
+      "metrics": [
+        {
+          "label": "完整通过（主指标）",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "原v1结构/出处检查通过，且Astra整条supported；弃答、非法或信息不完整均保留在15条分母。"
+        },
+        {
+          "label": "完整结构与出处检查",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "所有最终字段仍接受006原契约检查；定位成功不代表医学语义正确。"
+        },
+        {
+          "label": "Astra整条语义支持",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "核对中心发现、必要实体、完整方案、组别、条件、数值和字段证据；模型参考，非人工金标准。"
+        },
+        {
+          "label": "中心陈述获支持（诊断）",
+          "numerator": 9,
+          "denominator": 15,
+          "note": "只看中心陈述的诊断指标，不能替代整条通过率或发布门槛。"
+        },
+        {
+          "label": "实体严格定位",
+          "numerator": 52,
+          "denominator": 69,
+          "note": "全部原始实体数组项为分母，含非法项和组装失败输出；仅计算通过最终校验的定位，不代表类型/关系正确。"
+        },
+        {
+          "label": "唯一精确别名链接",
+          "numerator": 13,
+          "denominator": 69,
+          "note": "仅为现有MONDO/RxNorm/NCBIGene字典的精确别名候选，不是标准化准确率或目标内部UUID。"
+        },
+        {
+          "label": "可组装候选的精确引句",
+          "numerator": 52,
+          "denominator": 58,
+          "note": "仅对已形成canonical字段的引句统计；失败输出没有合法引句，不据此抬高整条通过率。精确引用不等于语义支持。"
+        },
+        {
+          "label": "可直接导入tumor_api",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "目标UUID、非空触发器和完整溯源适配未完成；全部仍为不可提交的研究预览。"
+        },
+        {
+          "label": "总处理时间",
+          "value": 1461.62,
+          "unit": "秒",
+          "note": "006为原逐条推理总和；新方案包含截至本阶段全部推理及逐条脚本组装/链接。加载、预热和评测独立，不代表线上吞吐。"
+        },
+        {
+          "label": "平均每组",
+          "value": 97.44,
+          "unit": "秒/组",
+          "note": "固定15个片段组，不剔除失败或弃答。"
+        }
+      ]
+    },
+    {
+      "id": "compact-before",
+      "label": "007 · 9B紧凑抽取 + 脚本组装",
+      "version": "73c2a20e8a3d194444bfcf1aae8419dc96f250580d8e3587d997826265a461b2",
+      "conclusion": "完整通过1/15（K05），结构与出处2/15，中心陈述诊断13/15。相对006耗时减少59.4%，但数组形状、层级、实体定位和条件遗漏仍多，尚不能自动入库。",
+      "metrics": [
+        {
+          "label": "完整通过（主指标）",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "原v1结构/出处检查通过，且Astra整条supported；弃答、非法或信息不完整均保留在15条分母。"
+        },
+        {
+          "label": "完整结构与出处检查",
+          "numerator": 2,
+          "denominator": 15,
+          "note": "所有最终字段仍接受006原契约检查；定位成功不代表医学语义正确。"
+        },
+        {
+          "label": "Astra整条语义支持",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "核对中心发现、必要实体、完整方案、组别、条件、数值和字段证据；模型参考，非人工金标准。"
+        },
+        {
+          "label": "中心陈述获支持（诊断）",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "只看中心陈述的诊断指标，不能替代整条通过率或发布门槛。"
+        },
+        {
+          "label": "实体严格定位",
+          "numerator": 6,
+          "denominator": 51,
+          "note": "全部原始实体数组项为分母，含非法项和组装失败输出；仅计算通过最终校验的定位，不代表类型/关系正确。"
+        },
+        {
+          "label": "唯一精确别名链接",
+          "numerator": 2,
+          "denominator": 51,
+          "note": "仅为现有MONDO/RxNorm/NCBIGene字典的精确别名候选，不是标准化准确率或目标内部UUID。"
+        },
+        {
+          "label": "可组装候选的精确引句",
+          "numerator": 5,
+          "denominator": 5,
+          "note": "仅对已形成canonical字段的引句统计；失败输出没有合法引句，不据此抬高整条通过率。精确引用不等于语义支持。"
+        },
+        {
+          "label": "可直接导入tumor_api",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "目标UUID、非空触发器和完整溯源适配未完成；全部仍为不可提交的研究预览。"
+        },
+        {
+          "label": "总处理时间",
+          "value": 593.47,
+          "unit": "秒",
+          "note": "006为原逐条推理总和；新方案包含截至本阶段全部推理及逐条脚本组装/链接。加载、预热和评测独立，不代表线上吞吐。"
+        },
+        {
+          "label": "平均每组",
+          "value": 39.56,
+          "unit": "秒/组",
+          "note": "固定15个片段组，不剔除失败或弃答。"
+        },
+        {
+          "label": "本阶段合法JSON",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "抽取后看抽取JSON，核验后看核验JSON；仅格式统计，不等于核验通过或知识正确。"
+        }
+      ]
+    },
+    {
+      "id": "compact-after",
+      "label": "007 · 再作9B定向核验 + 脚本重组",
+      "version": "2de6e6ff0d1516b8693fdce862d2b5c7162e6e898dcb7cf2ad897932690a6f15",
+      "conclusion": "新增完整通过0条，失去1条（K05）。追加647.57秒后完整通过0/15，累计耗时仅较006减少15.1%。格式补丁失败之外，发现亚组数值混用、定位和统计范围退化；本轮方案不采用。",
+      "metrics": [
+        {
+          "label": "完整通过（主指标）",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "原v1结构/出处检查通过，且Astra整条supported；弃答、非法或信息不完整均保留在15条分母。"
+        },
+        {
+          "label": "完整结构与出处检查",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "所有最终字段仍接受006原契约检查；定位成功不代表医学语义正确。"
+        },
+        {
+          "label": "Astra整条语义支持",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "核对中心发现、必要实体、完整方案、组别、条件、数值和字段证据；模型参考，非人工金标准。"
+        },
+        {
+          "label": "中心陈述获支持（诊断）",
+          "numerator": 10,
+          "denominator": 15,
+          "note": "只看中心陈述的诊断指标，不能替代整条通过率或发布门槛。"
+        },
+        {
+          "label": "实体严格定位",
+          "value": "无可计数输出",
+          "note": "全部原始实体数组项为分母，含非法项和组装失败输出；仅计算通过最终校验的定位，不代表类型/关系正确。"
+        },
+        {
+          "label": "唯一精确别名链接",
+          "value": "无可计数输出",
+          "note": "仅为现有MONDO/RxNorm/NCBIGene字典的精确别名候选，不是标准化准确率或目标内部UUID。"
+        },
+        {
+          "label": "可组装候选的精确引句",
+          "value": "无可计数输出",
+          "note": "仅对已形成canonical字段的引句统计；失败输出没有合法引句，不据此抬高整条通过率。精确引用不等于语义支持。"
+        },
+        {
+          "label": "可直接导入tumor_api",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "目标UUID、非空触发器和完整溯源适配未完成；全部仍为不可提交的研究预览。"
+        },
+        {
+          "label": "总处理时间",
+          "value": 1241.04,
+          "unit": "秒",
+          "note": "006为原逐条推理总和；新方案包含截至本阶段全部推理及逐条脚本组装/链接。加载、预热和评测独立，不代表线上吞吐。"
+        },
+        {
+          "label": "平均每组",
+          "value": 82.74,
+          "unit": "秒/组",
+          "note": "固定15个片段组，不剔除失败或弃答。"
+        },
+        {
+          "label": "本阶段合法JSON",
+          "numerator": 9,
+          "denominator": 15,
+          "note": "抽取后看抽取JSON，核验后看核验JSON；仅格式统计，不等于核验通过或知识正确。"
+        },
+        {
+          "label": "定向核验额外耗时",
+          "value": 647.57,
+          "unit": "秒",
+          "note": "全部15次定向核验推理，加核验后的脚本组装/链接；没有只计算成功修订。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保持9B及最终知识契约，先改为清晰字段并验证结构化约束生成；先降低协议失败，不降低必要实体、组别、条件和引用要求。",
+    "脚本承担给定证据内可确定的实体定位；唯一精确命中可定位，多处命中保留歧义。模型保留研究组、完整方案、终点、数值与限制之间的绑定。此方案待实测。",
+    "下一次核验先输出问题和原文依据，不自动改写整条。只对明确问题试受限修订，分别计修复与退化；本轮全量自由补丁核验不作为默认流程。",
+    "协议稳定后先同15组回归，再用新论文检验泛化。采集保持2秒间隔、256KiB/s，暂不微调或启动全库知识抽取。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/compact-facts-five-papers-20261024.json",
+      "sha256": "3b47d64d41fd72ab9db652109bd3c2e9bb3f9984f478405aea6a53044cd8cea2"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "70697c13dca7e15424fe803d4d0c44881186aa75ecb6a5f490c4bb1be2b82b3f",
+  "content_sha256": "d3acad4985a1018739fb63e84cc1a1a6edd52d7ceb428b1dea9e76482be24cad"
+}

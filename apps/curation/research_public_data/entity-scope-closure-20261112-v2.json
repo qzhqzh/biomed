@@ -1,0 +1,129 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "entity-scope-closure-20261112-v2",
+  "title": "035 · 基因位点、癌种别名与条件对照（含逐条预览）",
+  "date": "2026-11-12T07:03:25.187843+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 8,
+  "sample_unit": "条候选",
+  "summary": "8条定向样本：离线结构2→3→4；相对上轮多1条，2条候选经Astra原文参考支持。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "entity-scope-closure-v7-display-v2",
+    "sample_versions": [
+      "1211ef48a0fccb1cc1a98c6edf200a20a87aacadf421d512d59f1ac58b78d7b0",
+      "22ee70ad24e696116d1c34f5760e67ca5e3f737f790f2b4e4065c3a24c209903"
+    ],
+    "method_versions": [
+      "c4798f7d9c181d7ee85702a63c59cb1a7efec119ad25a5bf457ca6f9e9887838",
+      "96c25d0827bd28008e26d2c0a8f6ebbf359d7bfc3bede878479796396cc029d8",
+      "e9e8170149548377a520db2045ec97b83c04b924a7a634d770ae8da8f7feb079"
+    ],
+    "reference_versions": [
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737",
+      "0bc0b8ffbbbc75fa5c1c209726c645dada2aebba170b06fbbad4dae38194f7c9",
+      "121c427574b0fa42bcb9887d2f966ba94afe4b1703fd799fa196c2e017effaff",
+      "e958ffa1eed93de0d7bb6916265dda3689987c3531f5de114abbf860e25b9899",
+      "574603ba8227aa9b4372855ab458f317c416e950461bee3086adda65e1c8e68f"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "准确归属基因位点、归并癌种别名并保留必要条件后，是否增加目标结构候选？",
+    "outputs": [
+      "基因—位点来源关系",
+      "癌种别名与主癌种映射",
+      "必要条件及文章、段落两层来源",
+      "离线目标结构与独立Astra来源核验"
+    ],
+    "not_measured": [
+      "随机样本准确率",
+      "生产目标库全量去重或实际位点匹配",
+      "临床条件的自动执行"
+    ]
+  },
+  "dataset": {
+    "label": "定向开发样本：8篇、8条",
+    "role": "selected_development_cases",
+    "document_count": 8
+  },
+  "reference": {
+    "label": "Astra 先看原文后核对候选",
+    "status": "model_reference_not_human_gold",
+    "note": "两条候选核心描述有来源支持；模型参考不是临床专家金标准，也不验证生产匹配。"
+  },
+  "methods": [
+    {
+      "id": "original",
+      "label": "原始旧候选",
+      "version": "original-saved-candidates",
+      "conclusion": "两个诊断性正例均未形成可通过结构检查的旧导出。",
+      "metrics": [
+        {
+          "label": "离线结构通过",
+          "numerator": 2,
+          "denominator": 8,
+          "note": "仅两条历史对照；结构通过不等于实际临床适配。"
+        }
+      ]
+    },
+    {
+      "id": "prior",
+      "label": "此前来源绑定原型",
+      "version": "source-linked-target-preview-v1",
+      "conclusion": "找回卵巢癌病例；肺癌基因角色和癌种别名仍未处理。",
+      "metrics": [
+        {
+          "label": "离线结构通过",
+          "numerator": 3,
+          "denominator": 8,
+          "note": "卵巢病例已通过结构，但尚缺给药频次等描述。"
+        }
+      ]
+    },
+    {
+      "id": "repaired",
+      "label": "本次来源归属与条件修复",
+      "version": "source-linked-target-repair-v1",
+      "conclusion": "肺癌候选新增通过；卵巢癌补全给药与病例条件。",
+      "metrics": [
+        {
+          "label": "离线结构通过",
+          "numerator": 4,
+          "denominator": 8,
+          "note": "相对上一原型新增1条；四条反例未放行。"
+        },
+        {
+          "label": "新增候选Astra原文支持",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "仅核心事实；条件自动约束、真实目标ID和全库去重未验证。"
+        },
+        {
+          "label": "离线适配耗时",
+          "value": 2.392,
+          "unit": "秒",
+          "note": "8条复用已有模型输出；不含整条流水线和Astra核验。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "在少量未参与开发的新文章中复测，并在隔离环境验证目标库ID、去重和实际位点匹配。",
+    "明确消费者如何使用一线、亚型和给药条件；保持后台现状，验证前不导入目标生产。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/entity-scope-closure-20261112-v2.json",
+      "sha256": "0f6172d9d10ed2c65499bf624d4498db6d009fb32c39f6b19cbcd7ce8666b57e"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "8954ffc024c29f60b3906f3a017898d57b42d32e8536dd11719eb3ca4b9a3d98",
+  "content_sha256": "4394ac70201c1cffd7c07a8866497fbafc8769263fc649148e2ae1af348c118c"
+}

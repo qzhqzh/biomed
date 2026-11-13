@@ -1,0 +1,273 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "minimal-knowledge-20261101",
+  "title": "021 · 最小知识闭环：保留独立实体步骤",
+  "date": "2026-11-01T12:15:24+08:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同5篇15组，保留9B实体+Bonsai关系。核心正确A 15/15、B 11/15；目标覆盖A 14/15、B 13/15；最终参与层A 15/15、B 3/15。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "minimal-knowledge-publication-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8",
+      "426d3e45af585dd0c3bb27d9a40249446e5c68999b12e85aa77807f652e93165",
+      "58f20161bd46ac0f5397477818083349ec24b82037c31fb133b878c59e7600a5",
+      "a4ea5a499aaaf2b32b480b426de35903608571cb5d8c611c84a5b284acb0b861",
+      "a0bd558e45c775bf29649653adb4c03fb81c6f1416676cc5e51e83b086b164ab"
+    ],
+    "method_versions": [
+      "c32130485bfa595e7a814467e8ae8c59793d56480653d74fb677909670e321fb",
+      "c9ccffa7ed987165b8c2575764ab26411cabad910fbdd618d28e0e01f284cf17",
+      "f84afbbe1fb158b8ea49eb8baaeeda5165dfbcb26c1db16628be0adc7503cf40",
+      "6dfb63a0a8cac5d9a851f7145ec2d66059bcbe1e58f49448af6b4d1a6c3b9bef",
+      "e12774da73025f09101bd34deaf35fbd460aa1f9b4656d83899858b2a26ba04f",
+      "c781e9ac1bc11d870a715affdf66183bcc5e7c54eb93cd3196bc91ae4ce6b2bf",
+      "3b17baa3aa2712d039d1aa98d61473c6ef344678561fa0b560d5a464e6158daa",
+      "0e70c818a448b38e3d88aa19b1e1d11e90a7dca03bdb27ac4252b8cb6d5869e9",
+      "01125bf433ff4017ac765a09345ce8a0eb76782acb329d0ad1b5997ca92d45b4",
+      "7495803727ce28c07b9011be2b4eed7c46c7e67b2f5a77773708936fbb73b3ee",
+      "d85779f3ab9c8646d406cac0057d6b320b90613103557f72e45b132541167620",
+      "7236a82fca4d971832b372637b54364918e60eeb877cfb1222af126cbcb6cbfe",
+      "f3638bd720928ea0cd20b3067ca326a2e5ef0d20c26be2e4adf30880b5a7ec80",
+      "ae37255794a9ec6c4dfd6c19a8c3daaa206ed4ca4e726cf695cdf2e93dd32908",
+      "198b44cb6fdd1370df567f906ae0459b845738388253d4f405bdca6d2994c082",
+      "aa86c70bff8d8fb181cc3d78205ef59b0891a8daa4d6f9b0a2f260726f962c8e",
+      "53f65192cb4a361261c9e5771e742eedb5993d2eac2550733aeb040bc2a7e49e",
+      "c914f404ad441a0eab95ca6c07c43cde04498ca59635905b128079ca64176275",
+      "f4ae9731cb520c94850674868a993ed38a4bc42c7785bb6e2c48b46e7531e61e",
+      "80296ad3baa623eb52f3be30f303f90df9e74cc2e85872536555d4745ea60728",
+      "0c9de55f252aea57ba73bb63331631d4983e6ec3629f83d23d0e0e56c323020d",
+      "717fee186624695946d3d3f5cbd068d2b35226d0cfa6d3af70bfbbe6bbcf7560",
+      "dfd73c419491d39ee41e625b1ec861c8c0cb6958a8f6c7e75a22f7c132b5ae55",
+      "801f99c7776469e7e61cf3bf84b6f60d82a3f42a13335eaa1ef39a6d19cb32d8",
+      "e2f83f4266af3ff608fb6b984703cdec4cf2e83f3346f855edb92cd18e7625c9",
+      "412097e4cbc991bfcebae8b6dc7f30d943984343002954b59fdfbca28587275e",
+      "4ac4b507eca93c3cd403b2b31212872439c748a2ea5db3d705cc19857527443e",
+      "4e964d1d8e13f2454502b96bb2e8cdb416ab77d4e866c9af5ef85b6be244181d",
+      "e33d3299d98393e8ac192f3bae07e7125db500631b69423cf81c419dc027c989",
+      "0d7fa865f6494a0172142045816354cfd2156456fdf910ffa2ce23bc2e808bc9",
+      "872d4176b5f542792f23622b19410611e5486ed231aff4e08f8bf7a297964b61",
+      "db5dcd6260e27ffa39d89326a7117a02162031fd73b98082c67a4a34094e2c57",
+      "940ee0f5502c092a31db49cfd0b1c2a93451b8128a3aa73b081f620a85f9ef96",
+      "0414deec66fcb6be0f240359a25f483160de5be12a4723e56f0b43216070390f",
+      "6f6d32d9fa46e8f0c206eb35aa07bf57663527db5a9a517cfc496aad041f791e",
+      "46160bdc1a3cb129a7db3eb9facacdda91ac0f8ab5f934ff043c088b0a0c07b1",
+      "9f6ee05ff16231e2b3cdc8947451c5c3de038513b3f08ce644a7b1b15547014c",
+      "1f0b83f037ab55ac161d397d35c1d7649ee137200db1a951b8741bf81f60c35e",
+      "4a382585aa211ea25fb0ae5d82506e48a54fb695ce8329fb46681b21a776e00d",
+      "087821f7a1d7c18c11dcd3c3d932e2ddcb53544bb984a4ad99c28926bf46c6f4",
+      "d582ad7db73b8c78cd1f05ddd532d885d6faac85d22a41f72b4929650341ad4b",
+      "a72b3bea8757ac9ad7fe7cc5b32e75146a0de3d81d6cd8f571e4d5cb30d24f66",
+      "0ff89fbb57ef9ae9609da3f26f728c4c50ac6d0dec1433dd5bd5f207778f3a89",
+      "0cee13798d341613258f0c89d17f485a11f39b7f7507164f2ce524762892af88",
+      "4edeb1d4f8007178de5d225a70b0dcf1d76eb85e1f371c31de16d4cdd4b0fc81",
+      "7d902800776153bf4e093917bb185ad3ca54c09ab0fe76c68640c7495d3638cf",
+      "3b6a0d2cf5edb76a899c3c3e4fad8ed865a0150acff8c03cd91b970898008323",
+      "add8d99b521362561d0cdcf1750a8c4f3d7d7173096e85ed794896033dcd5969",
+      "f99538d246f3cbf0384c0546271757613f7f1398707755caa6674996f8c6b37b",
+      "5a6f163d4d7588c48b8b071b8163bb1ca703a63ce44c49af114c5cc068e7f18e",
+      "14d6ba5b1b7501a87bdb086039cfdcc0eff97e465a2c9371a4f38180fa64d7fb",
+      "0113866ebff168971ff22970a78db81c69617ddb12dd53cdab783ea237a74500",
+      "7dd74ca95f1c8946e3031395f05e547a29233db387192b5395772e58c7789ac0",
+      "04015dbb0d1527ab68d484c3cbb34a3376bf9823b523d26d35ed3cce28604570",
+      "1c83e03f97edb2174aaee2e4c6e2ba897d7dca78fb8fe035b3e3c48292f6da77",
+      "e8cfa6543a417e9d929e771aa3bdaf96b9ba21232ebe525586ad93e0dc4e555c",
+      "02c5ba0c66461d4c5ec93269e37ca5e96160326f6e9e7e1d801817b513742cf1",
+      "3fa8d1fc5ad0cacd30a8d67e6a1a60028be12c7fa90e3b2750b060e23324365b",
+      "2889685ff8fc27191d8e1a03a0ed3d9163bf77c6bccbd26aab1560d05de9f310",
+      "9992efd50f2ca271d4a66055ee883142e7074c736c72519bfa5a0e6e1762ebfd",
+      "f969e670afef8dcd45818c7abad5cedc676f1bb658fea4a51640d49fb081f1a5",
+      "7b04620be80f8487c95bc6b6e066b9916165d0e0a923ec15fefb0eb7c9b6ff30",
+      "f1a98045605fdc71b3da28c3a03428bd2ffdf494fedafcdc657eb1ebe0ac03b4",
+      "3f5f7f1c46c224160a7af9b43b7041d8f3a58046b25b13b980a484fe2c56aa2f",
+      "de3c675c0cdb3725346a7fb34b68884b3f97039b314ab2d70b602f9a192bdbad",
+      "a9fb67c4611dd26e55613a38d7b9f7eb5c24bc25785e9981b3735a6cea006578",
+      "3e817fc5423820a48782a6f15f4a34352c2742c974a8d759c690a879fdeb2ace",
+      "d864bb097f271e70c6d8a9139fbfe67df70355ece4efdba826e9344c2b5cac57",
+      "9662322dcc1937efa3ba8cec9227fbb22edd4fe821ad86588faf4c9273eb1708",
+      "42c678455e08f18220ae85bed1f362ff27ce5b7c8142c2c882f450e233c4635c",
+      "5d39185ad2083a28fa750e5932224e000e2f04ddc5ddad8e51dc4e33dfa92508"
+    ],
+    "reference_versions": [
+      "d043607bb72170c19433116e8fd3dfa2981b76286603e17e0a8da03e4a4f6d04",
+      "b7e58ce4187d85535aaa3c19d4ab75856e46ba2354ac65069721aa91d99d5976",
+      "4cbe7d0d3582c763fc98b1dd93dbe85e8bb65cd7b1217291388afa7108981567",
+      "3bdc191e32b8b61461b4747e494c3adbaaaed5972a4b32aa551e219bc6279f67",
+      "c31049a7fe501e698db3d20d1312c57e3e72806cda5226be4d8a34ff97c15177"
+    ]
+  },
+  "task": {
+    "question": "能否删除独立实体模型，用一次Bonsai抽取同时得到可追溯、可用的实体与关系？",
+    "outputs": [
+      "核心正确、目标覆盖、参与实体与角色三项独立评分",
+      "同组原文和主要错误",
+      "原输出与最终组装结果分开保留"
+    ],
+    "not_measured": [
+      "新文献独立测试和全库效果",
+      "全文到知识的端到端速度",
+      "标准ID准确率及生产临床适用性"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇15组开发回归消融",
+    "role": "冻结开发集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "冻结最小核心目标 + Astra逐条原文审核",
+    "status": "model_reference_not_human_gold",
+    "note": "采用新的最小目标参考重新审核A/B，不沿用019通过率。组装复核继承初审核心与覆盖，另审参与层；AI参考不是人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "A",
+      "label": "A · 9B独立实体 + Bonsai关系",
+      "version": "minimal-knowledge-publication-v1",
+      "conclusion": "效果优先，保留独立9B实体与Bonsai关系方案。",
+      "metrics": [
+        {
+          "label": "核心关系正确",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "只评实际输出的核心癌种、治疗、方向及必要条件；与是否完成指定目标独立。"
+        },
+        {
+          "label": "指定目标覆盖",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "覆盖ANCHOR主题；覆盖不表示核心关系正确。"
+        },
+        {
+          "label": "最终组装参与实体及角色可用",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "审核实际组装身份、类型及角色；不能用实体库存存在替代关系参与。"
+        },
+        {
+          "label": "三项同时通过",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "以上三项交集；不等于标准ID确认或生产临床验证。"
+        },
+        {
+          "label": "初版参与层可用（保留）",
+          "numerator": 5,
+          "denominator": 15,
+          "note": "最终分数包含组装修复及明确的非目标诊断口径澄清，不把全部变化归因为模型或工程改进。"
+        },
+        {
+          "label": "完整JSON输出",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "B截断保持失败，不补全或二次模型修复。"
+        },
+        {
+          "label": "输出截断",
+          "value": 0,
+          "note": "按原始结果status计数。"
+        },
+        {
+          "label": "累计推理耗时",
+          "value": 650.74,
+          "unit": "秒",
+          "note": "010实体与019关系历史分段耗时相加，未实测串联端到端耗时。"
+        },
+        {
+          "label": "9B实体进程显存",
+          "value": 19246.0,
+          "unit": "MiB",
+          "note": "历史单进程NVML峰值，非串联/同时驻留总显存。"
+        },
+        {
+          "label": "Bonsai关系进程显存",
+          "value": 7854.0,
+          "unit": "MiB",
+          "note": "历史单进程NVML峰值，非串联/同时驻留总显存。"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "label": "B · Bonsai单次实体与关系",
+      "version": "minimal-knowledge-publication-v1",
+      "conclusion": "本轮删除独立实体步骤损失质量，停止对直接方案继续调参。",
+      "metrics": [
+        {
+          "label": "核心关系正确",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "只评实际输出的核心癌种、治疗、方向及必要条件；与是否完成指定目标独立。"
+        },
+        {
+          "label": "指定目标覆盖",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "覆盖ANCHOR主题；覆盖不表示核心关系正确。"
+        },
+        {
+          "label": "最终组装参与实体及角色可用",
+          "numerator": 3,
+          "denominator": 15,
+          "note": "审核实际组装身份、类型及角色；不能用实体库存存在替代关系参与。"
+        },
+        {
+          "label": "三项同时通过",
+          "numerator": 3,
+          "denominator": 15,
+          "note": "以上三项交集；不等于标准ID确认或生产临床验证。"
+        },
+        {
+          "label": "初版参与层可用（保留）",
+          "numerator": 3,
+          "denominator": 15,
+          "note": "最终分数包含组装修复及明确的非目标诊断口径澄清，不把全部变化归因为模型或工程改进。"
+        },
+        {
+          "label": "完整JSON输出",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "B截断保持失败，不补全或二次模型修复。"
+        },
+        {
+          "label": "输出截断",
+          "value": 2,
+          "note": "按原始结果status计数。"
+        },
+        {
+          "label": "累计推理耗时",
+          "value": 261.62,
+          "unit": "秒",
+          "note": "15条来自1个实际推理会话；不含加载、预热、脚本及审核。保留原summary的非完整整批计时标记，不据此声称端到端提速。"
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 8004.0,
+          "unit": "MiB",
+          "note": "本轮NVML进程峰值。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留9B实体+Bonsai关系，先处理仍阻塞必要身份/角色绑定的组装问题。",
+    "更多全文段落的工程验证单独归档，通过与本页相同的出处和状态校验后再评估生产使用。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/minimal-knowledge-20261101.json",
+      "sha256": "3305cca8c0331ddc717b57729934ca63f175dd565451c80690648e13096ca3f1"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "da7703561c07b2c230135628958364ceaa439a3579f85d873c178fca7ecfa3fc",
+  "content_sha256": "92782e406f2f0f0ca4a14dc664131e8432a77686b4968986d376e84816cf75f2"
+}

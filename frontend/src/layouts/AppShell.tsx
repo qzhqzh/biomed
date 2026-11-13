@@ -1,4 +1,5 @@
-import type { ReactNode } from "react"
+import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useState, type ReactNode } from "react"
+import { CollectionAlerts } from "@/components/curation/CollectionAlerts"
 import {
   BookOpen,
   Workflow,
@@ -43,6 +44,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 export type Crumb = {
@@ -57,7 +59,11 @@ const NAV_WORKSPACE = [
 const NAV_DATABASES = [
   { title: "基因", href: "/knowledge/genes/", icon: Dna },
   { title: "疾病", href: "/knowledge/diseases/", icon: BookOpen },
+  { title: "癌种分类", href: "/knowledge/cancers/", icon: BookOpen },
   { title: "药物", href: "/knowledge/drugs/", icon: Pill },
+  { title: "知识检索", href: "/knowledge/search/", icon: FileSearch },
+  { title: "知识候选", href: "/knowledge/candidates/", icon: FileSearch },
+  { title: "实体库与名称对齐", href: "/knowledge/entities/", icon: Database },
 ]
 
 const NAV_EVIDENCE = [
@@ -79,6 +85,7 @@ const NAV_TOOLS = [
 
 const NAV_SYSTEM = [
   { title: "工作流", href: "/management/workflows/", icon: Workflow },
+  { title: "研究历程", href: "/management/research/", icon: FlaskConical },
   { title: "数据更新", href: "/tools/data-updates/", icon: Database },
   { title: "引擎与设置", href: "/tools/engines/", icon: Settings2 },
   { title: "问题与经验", href: "/knowledge/issues/", icon: MessageSquare },
@@ -98,7 +105,8 @@ function isActive(href: string) {
   let path = window.location.pathname
   const params = new URLSearchParams(window.location.search)
   if (path === "/knowledge/standards/") {
-    path = params.get("namespace") === "RXNORM" ? "/knowledge/drugs/" : "/knowledge/diseases/"
+    path = params.get("namespace") === "RXNORM" ? "/knowledge/drugs/"
+      : params.get("namespace") === "ONCOTREE" ? "/knowledge/cancers/" : "/knowledge/diseases/"
   } else if (path === "/library/") {
     path = params.get("kind") === "guideline" ? "/evidence/sources/guidelines/"
       : params.get("kind") === "paper" ? "/evidence/sources/papers/" : "/evidence/sources/"
@@ -113,6 +121,38 @@ type AppShellProps = {
   crumbs?: Crumb[]
   actions?: ReactNode
   children: ReactNode
+}
+
+type ShellMetadata = Omit<AppShellProps, "children">
+const EMPTY_CRUMBS: Crumb[] = []
+const PersistentShell = createContext<((metadata: ShellMetadata) => void) | null>(null)
+
+/** Pages supply their title/actions while the navigation shell stays mounted. */
+export function AppShell({ title, description, crumbs = EMPTY_CRUMBS, actions, children }: AppShellProps) {
+  const update = useContext(PersistentShell)
+  useLayoutEffect(() => {
+    update?.({ title, description, crumbs, actions })
+  }, [update, title, description, crumbs, actions])
+  if (update) return <>{children}</>
+  return <ShellLayout title={title} description={description} crumbs={crumbs} actions={actions}>{children}</ShellLayout>
+}
+
+function CloseMobileNavigation({ routeKey }: { routeKey: string }) {
+  const { setOpenMobile } = useSidebar()
+  useEffect(() => { setOpenMobile(false) }, [routeKey, setOpenMobile])
+  return null
+}
+
+export function PersistentAppShell({ routeKey, title, children }: { routeKey: string; title: string; children: ReactNode }) {
+  const [metadata, setMetadata] = useState<{ routeKey: string; value: ShellMetadata } | null>(null)
+  const update = useCallback((value: ShellMetadata) => setMetadata({ routeKey, value }), [routeKey])
+  const current = metadata?.routeKey === routeKey ? metadata.value : { title }
+  return <PersistentShell.Provider value={update}>
+    <ShellLayout {...current}>
+      <CloseMobileNavigation routeKey={routeKey} />
+      {children}
+    </ShellLayout>
+  </PersistentShell.Provider>
 }
 
 function NavGroup({
@@ -172,13 +212,16 @@ function NavGroup({
   )
 }
 
-export function AppShell({
+function ShellLayout({
   title,
   description,
   crumbs = [],
   actions,
   children,
 }: AppShellProps) {
+  useEffect(() => { document.title = `${title} · biomed` }, [title])
+  const username = document.body.dataset.biomedUser ?? ""
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content") ?? ""
   return (
     <SidebarProvider>
       <Sidebar collapsible="icon" variant="sidebar">
@@ -218,7 +261,7 @@ export function AppShell({
         <SidebarRail />
       </Sidebar>
 
-      <SidebarInset>
+      <SidebarInset data-biomed-shell="persistent" className="min-w-0">
         <header className="sticky top-0 z-20 flex h-12 shrink-0 items-center gap-2 border-b bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/80">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
@@ -241,7 +284,16 @@ export function AppShell({
               ))}
             </BreadcrumbList>
           </Breadcrumb>
-          {actions ? <div className="ml-auto flex items-center gap-2">{actions}</div> : null}
+          <div className="ml-auto flex min-w-0 items-center gap-2">
+            {actions}
+            {username ? (
+              <form method="post" action="/accounts/logout/" className="flex items-center gap-2">
+                <input type="hidden" name="csrfmiddlewaretoken" value={csrfToken} />
+                <span className="hidden max-w-32 truncate text-xs text-muted-foreground sm:inline">{username}</span>
+                <button type="submit" className="rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-muted hover:text-foreground">退出</button>
+              </form>
+            ) : null}
+          </div>
         </header>
 
         <div className="flex min-w-0 flex-1 flex-col gap-6 p-4 md:p-6 lg:p-8">
@@ -251,6 +303,7 @@ export function AppShell({
               <p className="text-sm text-muted-foreground">{description}</p>
             ) : null}
           </div>
+          <CollectionAlerts />
           {children}
         </div>
       </SidebarInset>

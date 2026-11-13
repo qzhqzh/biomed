@@ -1,0 +1,3823 @@
+{
+  "version": "biomed-rxclass-zh-2026-10-25-v1",
+  "source": "https://lhncbc.nlm.nih.gov/RxNav/applications/RxClassIntro.html",
+  "source_version": "MEDRT 2026.09.08",
+  "source_sha256": "3624b452be0c1d8108239400436ac71727df4b84f6524674d3949bc8753701db",
+  "seed_sha256": "42ac7818ad706227d831992337019b3e9026b5b37256c317b039b6c4a9d8ed5d",
+  "method": "assistant_authored_exact_id_and_english_label_translation; no model training; no regulatory Chinese-name verification",
+  "status": "project_draft",
+  "language": "zh-Hans",
+  "note": "项目对冻结英文类别的中文展示草稿。保留原类别语义；不是FDA/NLM官方中文，也不推断用药适应证或类别等价。",
+  "labels": {
+    "N0000175413": {
+      "en": "Platinum-based Drug",
+      "zh": "铂类药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175414": {
+      "en": "Anthracycline Topoisomerase Inhibitor",
+      "zh": "蒽环类拓扑异构酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175415": {
+      "en": "Nitrate Vasodilator",
+      "zh": "硝酸酯类血管扩张剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175416": {
+      "en": "Prostacycline Vasodilator",
+      "zh": "前列环素类血管扩张剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175418": {
+      "en": "Potassium-sparing Diuretic",
+      "zh": "保钾利尿剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175419": {
+      "en": "Thiazide Diuretic",
+      "zh": "噻嗪类利尿剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175420": {
+      "en": "Thiazide-like Diuretic",
+      "zh": "噻嗪样利尿剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175421": {
+      "en": "Dihydropyridine Calcium Channel Blocker",
+      "zh": "二氢吡啶类钙通道阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175423": {
+      "en": "Sympathomimetic Amine Anorectic",
+      "zh": "拟交感胺类食欲抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175425": {
+      "en": "Amphetamine Anorectic",
+      "zh": "苯丙胺类食欲抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175426": {
+      "en": "Antiarrhythmic",
+      "zh": "抗心律失常药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175427": {
+      "en": "Anti-anginal",
+      "zh": "抗心绞痛药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175428": {
+      "en": "Glinide",
+      "zh": "格列奈类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175429": {
+      "en": "Antidote",
+      "zh": "解毒剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175430": {
+      "en": "Atypical Antipsychotic",
+      "zh": "非典型抗精神病药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175431": {
+      "en": "Macrolide Antibacterial",
+      "zh": "大环内酯类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175434": {
+      "en": "Pleuromutilin Antibacterial",
+      "zh": "截短侧耳素类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175435": {
+      "en": "Nitroimidazole Antimicrobial",
+      "zh": "硝基咪唑类抗微生物药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175443": {
+      "en": "Lincosamide Antibacterial",
+      "zh": "林可酰胺类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175453": {
+      "en": "Insulin Analog",
+      "zh": "胰岛素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175454": {
+      "en": "Prostaglandin Analog",
+      "zh": "前列腺素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175457": {
+      "en": "Calcineurin Inhibitor Immunosuppressant",
+      "zh": "钙调神经磷酸酶抑制类免疫抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175461": {
+      "en": "Cytomegalovirus Nucleoside Analog DNA Polymerase Inhibitor",
+      "zh": "巨细胞病毒核苷类似物DNA聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175462": {
+      "en": "Human Immunodeficiency Virus Nucleoside Analog Reverse Transcriptase Inhibitor",
+      "zh": "人类免疫缺陷病毒核苷类似物逆转录酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175463": {
+      "en": "Human Immunodeficiency Virus 1 Non-Nucleoside Analog Reverse Transcriptase Inhibitor",
+      "zh": "人类免疫缺陷病毒1型非核苷类似物逆转录酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175466": {
+      "en": "Nucleoside Analog Antiviral",
+      "zh": "核苷类似物抗病毒药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175467": {
+      "en": "Nucleoside Analog Antifungal",
+      "zh": "核苷类似物抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175468": {
+      "en": "Herpesvirus Nucleoside Analog DNA Polymerase Inhibitor",
+      "zh": "疱疹病毒核苷类似物DNA聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175470": {
+      "en": "Pyrophosphate Analog DNA Polymerase Inhibitor",
+      "zh": "焦磷酸类似物DNA聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175473": {
+      "en": "Metal Chelator",
+      "zh": "金属螯合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175474": {
+      "en": "Unfractionated Heparin",
+      "zh": "普通肝素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175476": {
+      "en": "Vitamin K Antagonist",
+      "zh": "维生素K拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175477": {
+      "en": "Aminoglycoside Antibacterial",
+      "zh": "氨基糖苷类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175480": {
+      "en": "Amphenicol-class Antibacterial",
+      "zh": "酰胺醇类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175481": {
+      "en": "Anthelmintic",
+      "zh": "驱蠕虫药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175482": {
+      "en": "Antimalarial",
+      "zh": "抗疟药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175483": {
+      "en": "Antimycobacterial",
+      "zh": "抗分枝杆菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175484": {
+      "en": "Antiparasitic",
+      "zh": "抗寄生虫药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175485": {
+      "en": "Antiprotozoal",
+      "zh": "抗原虫药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175486": {
+      "en": "Antiseptic",
+      "zh": "防腐消毒剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175487": {
+      "en": "Azole Antifungal",
+      "zh": "唑类抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175488": {
+      "en": "Cephalosporin Antibacterial",
+      "zh": "头孢菌素类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175489": {
+      "en": "Dihydrofolate Reductase Inhibitor Antibacterial",
+      "zh": "二氢叶酸还原酶抑制类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175491": {
+      "en": "Glycopeptide Antibacterial",
+      "zh": "糖肽类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175492": {
+      "en": "Ketolide Antibacterial",
+      "zh": "酮内酯类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175493": {
+      "en": "Monobactam Antibacterial",
+      "zh": "单环β-内酰胺类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175494": {
+      "en": "Nitrofuran Antibacterial",
+      "zh": "硝基呋喃类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175495": {
+      "en": "Oxazolidinone Antibacterial",
+      "zh": "噁唑烷酮类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175496": {
+      "en": "Penem Antibacterial",
+      "zh": "青霉烯类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175497": {
+      "en": "Penicillin-class Antibacterial",
+      "zh": "青霉素类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175498": {
+      "en": "Polyene Antifungal",
+      "zh": "多烯类抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175499": {
+      "en": "Polymyxin-class Antibacterial",
+      "zh": "多黏菌素类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175500": {
+      "en": "Rifamycin Antibacterial",
+      "zh": "利福霉素类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175501": {
+      "en": "Rifamycin Antimycobacterial",
+      "zh": "利福霉素类抗分枝杆菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175503": {
+      "en": "Sulfonamide Antibacterial",
+      "zh": "磺胺类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175504": {
+      "en": "Sulfonamide Antimicrobial",
+      "zh": "磺胺类抗微生物药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175505": {
+      "en": "Tetracycline-class Antimicrobial",
+      "zh": "四环素类抗微生物药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175507": {
+      "en": "Echinocandin Antifungal",
+      "zh": "棘白菌素类抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175509": {
+      "en": "Lipopeptide Antibacterial",
+      "zh": "脂肽类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175510": {
+      "en": "Lipid-based Polyene Antifungal",
+      "zh": "脂质制剂多烯类抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175511": {
+      "en": "Methylated Sulfonamide Antibacterial",
+      "zh": "甲基化磺胺类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175514": {
+      "en": "Renal Dehydropeptidase Inhibitor",
+      "zh": "肾脱氢肽酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175515": {
+      "en": "RNA Synthetase Inhibitor Antibacterial",
+      "zh": "RNA合成酶抑制类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175517": {
+      "en": "Carbonic Anhydrase Inhibitor",
+      "zh": "碳酸酐酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175518": {
+      "en": "Direct Thrombin Inhibitor",
+      "zh": "直接凝血酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175519": {
+      "en": "Histamine-1 Receptor Inhibitor",
+      "zh": "组胺H1受体抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175521": {
+      "en": "Interferon alpha",
+      "zh": "干扰素α",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175522": {
+      "en": "Iron Chelator",
+      "zh": "铁螯合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175524": {
+      "en": "Neuraminidase Inhibitor",
+      "zh": "神经氨酸酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175525": {
+      "en": "Proton Pump Inhibitor",
+      "zh": "质子泵抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175526": {
+      "en": "Thrombolytic Agent",
+      "zh": "溶栓剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175530": {
+      "en": "Copper Absorption Inhibitor",
+      "zh": "铜吸收抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175531": {
+      "en": "Endoglycosidase",
+      "zh": "内切糖苷酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175535": {
+      "en": "Demulcent",
+      "zh": "黏膜保护缓和剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175536": {
+      "en": "Diagnostic Dye",
+      "zh": "诊断用染料",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175539": {
+      "en": "Local Anesthetic",
+      "zh": "局部麻醉药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175540": {
+      "en": "Photoenhancer",
+      "zh": "光效增强剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175541": {
+      "en": "Interferon gamma",
+      "zh": "干扰素γ",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175543": {
+      "en": "Influenza A M2 Protein Inhibitor",
+      "zh": "甲型流感病毒M2蛋白抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175552": {
+      "en": "alpha-Adrenergic Agonist",
+      "zh": "α肾上腺素能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175553": {
+      "en": "alpha-Adrenergic Blocker",
+      "zh": "α肾上腺素能受体阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175554": {
+      "en": "Central alpha-2 Adrenergic Agonist",
+      "zh": "中枢α2肾上腺素能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175555": {
+      "en": "beta-Adrenergic Agonist",
+      "zh": "β肾上腺素能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175556": {
+      "en": "beta-Adrenergic Blocker",
+      "zh": "β肾上腺素能受体阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175557": {
+      "en": "Aldosterone Antagonist",
+      "zh": "醛固酮拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175558": {
+      "en": "Alkylating Drug",
+      "zh": "烷化药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175559": {
+      "en": "alpha-Glucosidase Inhibitor",
+      "zh": "α-葡萄糖苷酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175560": {
+      "en": "Androgen Receptor Inhibitor",
+      "zh": "雄激素受体抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175561": {
+      "en": "Angiotensin 2 Receptor Blocker",
+      "zh": "血管紧张素II受体阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175562": {
+      "en": "Angiotensin Converting Enzyme Inhibitor",
+      "zh": "血管紧张素转换酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175563": {
+      "en": "Aromatase Inhibitor",
+      "zh": "芳香化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175564": {
+      "en": "Arteriolar Vasodilator",
+      "zh": "小动脉扩张剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175565": {
+      "en": "Biguanide",
+      "zh": "双胍类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175566": {
+      "en": "Calcium Channel Blocker",
+      "zh": "钙通道阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175567": {
+      "en": "Calcium Binder",
+      "zh": "钙结合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175568": {
+      "en": "Cardiac Glycoside",
+      "zh": "强心苷",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175569": {
+      "en": "Catecholamine Synthesis Inhibitor",
+      "zh": "儿茶酚胺合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175570": {
+      "en": "Catecholamine",
+      "zh": "儿茶酚胺",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175571": {
+      "en": "CD33-directed Immunoconjugate",
+      "zh": "靶向CD33的免疫偶联药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175572": {
+      "en": "CCR5 Co-receptor Antagonist",
+      "zh": "CCR5共受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175573": {
+      "en": "Chloride Channel Activator",
+      "zh": "氯离子通道激活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175574": {
+      "en": "Anticholinergic",
+      "zh": "抗胆碱能药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175575": {
+      "en": "Complement Inhibitor",
+      "zh": "补体抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175576": {
+      "en": "Corticosteroid",
+      "zh": "皮质类固醇",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175578": {
+      "en": "Platelet Aggregation Inhibitor",
+      "zh": "血小板聚集抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175579": {
+      "en": "Bisphosphonate",
+      "zh": "双膦酸盐",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175580": {
+      "en": "Dopaminergic Agonist",
+      "zh": "多巴胺能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175581": {
+      "en": "Endothelin Receptor Antagonist",
+      "zh": "内皮素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175582": {
+      "en": "Estrogen Receptor Antagonist",
+      "zh": "雌激素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175583": {
+      "en": "Omega-3 Fatty Acid",
+      "zh": "ω-3脂肪酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175584": {
+      "en": "Folate Analog Metabolic Inhibitor",
+      "zh": "叶酸类似物代谢抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175586": {
+      "en": "Low Molecular Weight Heparin",
+      "zh": "低分子量肝素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175587": {
+      "en": "Histamine-1 Receptor Antagonist",
+      "zh": "组胺H1受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175588": {
+      "en": "Histone Deacetylase Inhibitor",
+      "zh": "组蛋白去乙酰化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175589": {
+      "en": "HMG-CoA Reductase Inhibitor",
+      "zh": "HMG-CoA还原酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175590": {
+      "en": "Loop Diuretic",
+      "zh": "袢利尿剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175591": {
+      "en": "Intestinal Lipase Inhibitor",
+      "zh": "肠道脂肪酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175592": {
+      "en": "Microtubule Inhibitor",
+      "zh": "微管抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175594": {
+      "en": "Nicotinic Acid",
+      "zh": "烟酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175595": {
+      "en": "Nucleoside Metabolic Inhibitor",
+      "zh": "核苷代谢抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175596": {
+      "en": "Peroxisome Proliferator-activated Receptor alpha Agonist",
+      "zh": "过氧化物酶体增殖物激活受体α激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175597": {
+      "en": "Phosphate Binder",
+      "zh": "磷结合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175598": {
+      "en": "Phosphodiesterase 3 Inhibitor",
+      "zh": "磷酸二酯酶3抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175599": {
+      "en": "Phosphodiesterase 5 Inhibitor",
+      "zh": "磷酸二酯酶5抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175600": {
+      "en": "Potassium Salt",
+      "zh": "钾盐",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175601": {
+      "en": "Progesterone",
+      "zh": "孕酮",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175602": {
+      "en": "Progestin",
+      "zh": "孕激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175603": {
+      "en": "Prostacycline",
+      "zh": "前列环素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175604": {
+      "en": "Proteasome Inhibitor",
+      "zh": "蛋白酶体抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175605": {
+      "en": "Kinase Inhibitor",
+      "zh": "激酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175606": {
+      "en": "Recombinant Human Growth Hormone",
+      "zh": "重组人生长激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175607": {
+      "en": "Retinoid",
+      "zh": "维A酸类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175608": {
+      "en": "Sulfonylurea",
+      "zh": "磺酰脲类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175609": {
+      "en": "Topoisomerase Inhibitor",
+      "zh": "拓扑异构酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175610": {
+      "en": "Tumor Necrosis Factor Blocker",
+      "zh": "肿瘤坏死因子阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175611": {
+      "en": "Urease Inhibitor",
+      "zh": "脲酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175612": {
+      "en": "Vinca Alkaloid",
+      "zh": "长春花生物碱",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175613": {
+      "en": "Antimetabolite Immunosuppressant",
+      "zh": "抗代谢类免疫抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175622": {
+      "en": "Interleukin-2 Receptor Blocking Antibody",
+      "zh": "白细胞介素2受体阻断抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175623": {
+      "en": "Respiratory Syncytial Virus Anti-F Protein Monoclonal Antibody",
+      "zh": "抗呼吸道合胞病毒F蛋白单克隆抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175625": {
+      "en": "mTOR Inhibitor Immunosuppressant",
+      "zh": "mTOR抑制类免疫抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175630": {
+      "en": "Mast Cell Stabilizer",
+      "zh": "肥大细胞稳定剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175634": {
+      "en": "Antifibrinolytic Agent",
+      "zh": "抗纤维蛋白溶解剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175637": {
+      "en": "Factor Xa Inhibitor",
+      "zh": "凝血因子Xa抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175638": {
+      "en": "Platelet-reducing Agent",
+      "zh": "血小板降低药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175640": {
+      "en": "Catecholamine-depleting Sympatholytic",
+      "zh": "儿茶酚胺耗竭型交感神经抑制药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175641": {
+      "en": "Autonomic Ganglionic Blocker",
+      "zh": "自主神经节阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175655": {
+      "en": "Gonadotropin Releasing Hormone Receptor Agonist",
+      "zh": "促性腺激素释放激素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175656": {
+      "en": "Hepatitis B Virus Nucleoside Analog Reverse Transcriptase Inhibitor",
+      "zh": "乙型肝炎病毒核苷类似物逆转录酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175657": {
+      "en": "CD20-directed Cytolytic Antibody",
+      "zh": "靶向CD20的细胞溶解抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175658": {
+      "en": "CD20-directed Radiotherapeutic Antibody",
+      "zh": "靶向CD20的放射治疗抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175659": {
+      "en": "CD52-directed Cytolytic Antibody",
+      "zh": "靶向CD52的细胞溶解抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175661": {
+      "en": "HER2/neu Receptor Antagonist",
+      "zh": "HER2/neu受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175664": {
+      "en": "Epidermal Growth Factor Receptor Antagonist",
+      "zh": "表皮生长因子受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175665": {
+      "en": "Erythropoiesis-stimulating Agent",
+      "zh": "促红细胞生成药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175666": {
+      "en": "Leukocyte Growth Factor",
+      "zh": "白细胞生长因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175667": {
+      "en": "Lymphocyte Growth Factor",
+      "zh": "淋巴细胞生长因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175669": {
+      "en": "Asparagine-specific Enzyme",
+      "zh": "天冬酰胺特异性酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175670": {
+      "en": "Uric Acid-specific Enzyme",
+      "zh": "尿酸特异性酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175671": {
+      "en": "Mucocutaneous Epithelial Cell Growth Factor",
+      "zh": "黏膜皮肤上皮细胞生长因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175679": {
+      "en": "Aldehyde Dehydrogenase Inhibitor",
+      "zh": "乙醛脱氢酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175680": {
+      "en": "Benzodiazepine Antagonist",
+      "zh": "苯二氮䓬受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175681": {
+      "en": "General Anesthetic",
+      "zh": "全身麻醉药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175682": {
+      "en": "Amide Local Anesthetic",
+      "zh": "酰胺类局部麻醉药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175683": {
+      "en": "Ester Local Anesthetic",
+      "zh": "酯类局部麻醉药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175688": {
+      "en": "Partial Opioid Agonist/Antagonist",
+      "zh": "阿片受体部分激动剂/拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175689": {
+      "en": "Partial Opioid Agonist",
+      "zh": "阿片受体部分激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175690": {
+      "en": "Opioid Agonist",
+      "zh": "阿片受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175691": {
+      "en": "Opioid Antagonist",
+      "zh": "阿片受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175692": {
+      "en": "Opioid Agonist/Antagonist",
+      "zh": "阿片受体激动剂/拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175693": {
+      "en": "Barbiturate",
+      "zh": "巴比妥类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175694": {
+      "en": "Benzodiazepine",
+      "zh": "苯二氮䓬类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175695": {
+      "en": "Norepinephrine Reuptake Inhibitor",
+      "zh": "去甲肾上腺素再摄取抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175696": {
+      "en": "Serotonin Reuptake Inhibitor",
+      "zh": "5-羟色胺再摄取抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175697": {
+      "en": "N-type Calcium Channel Antagonist",
+      "zh": "N型钙通道拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175698": {
+      "en": "Xanthine Oxidase Inhibitor",
+      "zh": "黄嘌呤氧化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175700": {
+      "en": "Cholinergic Muscarinic Antagonist",
+      "zh": "胆碱能毒蕈碱受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175705": {
+      "en": "Partial Cholinergic Nicotinic Agonist",
+      "zh": "胆碱能烟碱受体部分激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175706": {
+      "en": "Cholinergic Nicotinic Agonist",
+      "zh": "胆碱能烟碱受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175710": {
+      "en": "Interleukin-1 Receptor Antagonist",
+      "zh": "白细胞介素1受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175712": {
+      "en": "Purine Antimetabolite",
+      "zh": "嘌呤类抗代谢药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175713": {
+      "en": "Antirheumatic Agent",
+      "zh": "抗风湿药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175714": {
+      "en": "Vitamin B Complex Member",
+      "zh": "B族维生素成分",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175716": {
+      "en": "Respiratory Stimulant",
+      "zh": "呼吸兴奋药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175719": {
+      "en": "Depolarizing Neuromuscular Blocker",
+      "zh": "去极化型神经肌肉阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175720": {
+      "en": "Nondepolarizing Neuromuscular Blocker",
+      "zh": "非去极化型神经肌肉阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175722": {
+      "en": "Nonsteroidal Anti-inflammatory Drug",
+      "zh": "非甾体抗炎药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175723": {
+      "en": "Cholinesterase Inhibitor",
+      "zh": "胆碱酯酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175737": {
+      "en": "Muscle Relaxant",
+      "zh": "肌肉松弛药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175738": {
+      "en": "Skeletal Muscle Relaxant",
+      "zh": "骨骼肌松弛药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175739": {
+      "en": "Central Nervous System Stimulant",
+      "zh": "中枢神经系统兴奋药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175740": {
+      "en": "Benzothiazole",
+      "zh": "苯并噻唑类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175742": {
+      "en": "Cholinesterase Reactivator",
+      "zh": "胆碱酯酶复活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175743": {
+      "en": "Melatonin Receptor Agonist",
+      "zh": "褪黑素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175744": {
+      "en": "Monoamine Oxidase Inhibitor",
+      "zh": "单胺氧化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175745": {
+      "en": "N-methyl-D-aspartate Receptor Antagonist",
+      "zh": "N-甲基-D-天冬氨酸受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175746": {
+      "en": "Phenothiazine",
+      "zh": "吩噻嗪类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175749": {
+      "en": "Serotonin and Norepinephrine Reuptake Inhibitor",
+      "zh": "5-羟色胺和去甲肾上腺素再摄取抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175750": {
+      "en": "Antihistamine",
+      "zh": "抗组胺药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175751": {
+      "en": "Mood Stabilizer",
+      "zh": "心境稳定剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175752": {
+      "en": "Tricyclic Antidepressant",
+      "zh": "三环类抗抑郁药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175753": {
+      "en": "Anti-epileptic Agent",
+      "zh": "抗癫痫药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175754": {
+      "en": "Aromatic Amino Acid Decarboxylation Inhibitor",
+      "zh": "芳香族氨基酸脱羧抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175757": {
+      "en": "Catechol-O-Methyltransferase Inhibitor",
+      "zh": "儿茶酚-O-甲基转移酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175758": {
+      "en": "Central Nervous System Depressant",
+      "zh": "中枢神经系统抑制药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175759": {
+      "en": "gamma-Aminobutyric Acid-ergic Agonist",
+      "zh": "γ-氨基丁酸能激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175762": {
+      "en": "Monoamine Oxidase Type B Inhibitor",
+      "zh": "B型单胺氧化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175765": {
+      "en": "Serotonin-1b and Serotonin-1d Receptor Agonist",
+      "zh": "5-羟色胺1B和1D受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175766": {
+      "en": "Ergotamine Derivative",
+      "zh": "麦角胺衍生物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175767": {
+      "en": "Ergot-derived Dopamine Receptor Agonist",
+      "zh": "麦角衍生多巴胺受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175768": {
+      "en": "Nonergot Dopamine Agonist",
+      "zh": "非麦角类多巴胺激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175769": {
+      "en": "Sympathomimetic-like Agent",
+      "zh": "拟交感样药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175771": {
+      "en": "Acetylcholine Release Inhibitor",
+      "zh": "乙酰胆碱释放抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175775": {
+      "en": "Integrin Receptor Antagonist",
+      "zh": "整合素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175776": {
+      "en": "Mucolytic",
+      "zh": "黏液溶解剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175777": {
+      "en": "Leukotriene Receptor Antagonist",
+      "zh": "白三烯受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175778": {
+      "en": "Surfactant",
+      "zh": "表面活性剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175779": {
+      "en": "beta2-Adrenergic Agonist",
+      "zh": "β2肾上腺素能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175780": {
+      "en": "Amino Acid",
+      "zh": "氨基酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175781": {
+      "en": "Aminosalicylate",
+      "zh": "氨基水杨酸盐",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175782": {
+      "en": "Cannabinoid",
+      "zh": "大麻素类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175783": {
+      "en": "Glucosylceramide Synthase Inhibitor",
+      "zh": "葡萄糖神经酰胺合成酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175784": {
+      "en": "Histamine-2 Receptor Antagonist",
+      "zh": "组胺H2受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175785": {
+      "en": "Prostaglandin E1 Analog",
+      "zh": "前列腺素E1类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175786": {
+      "en": "Substance P/Neurokinin-1 Receptor Antagonist",
+      "zh": "P物质/神经激肽1受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175790": {
+      "en": "Methylxanthine",
+      "zh": "甲基黄嘌呤类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175794": {
+      "en": "Anti-IgE",
+      "zh": "抗IgE药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175796": {
+      "en": "Non-narcotic Antitussive",
+      "zh": "非麻醉性镇咳药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175797": {
+      "en": "Amino Acid Hypertonic Solution",
+      "zh": "氨基酸高渗溶液",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175798": {
+      "en": "Cholecystokinin Analog",
+      "zh": "胆囊收缩素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175800": {
+      "en": "Dopamine-2 Receptor Antagonist",
+      "zh": "多巴胺D2受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175801": {
+      "en": "Aluminum Complex",
+      "zh": "铝复合物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175802": {
+      "en": "Bile Acid",
+      "zh": "胆汁酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175805": {
+      "en": "Methylating Agent",
+      "zh": "甲基化剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175807": {
+      "en": "Nitrogen Binding Agent",
+      "zh": "氮结合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175809": {
+      "en": "4-Hydroxyphenyl-Pyruvate Dioxygenase Inhibitor",
+      "zh": "4-羟基苯丙酮酸双加氧酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175810": {
+      "en": "Osmotic Diuretic",
+      "zh": "渗透性利尿剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175811": {
+      "en": "Osmotic Laxative",
+      "zh": "渗透性泻药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175812": {
+      "en": "Stimulant Laxative",
+      "zh": "刺激性泻药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175813": {
+      "en": "Secretin-class Hormone",
+      "zh": "促胰液素类激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175814": {
+      "en": "Sclerosing Agent",
+      "zh": "硬化剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175818": {
+      "en": "Serotonin-3 Receptor Antagonist",
+      "zh": "5-羟色胺3受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175819": {
+      "en": "Sucrose-specific Enzyme",
+      "zh": "蔗糖特异性酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175820": {
+      "en": "Hydrolytic Lysosomal Glucocerebroside-specific Enzyme",
+      "zh": "溶酶体葡萄糖脑苷脂特异性水解酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175821": {
+      "en": "Hydrolytic Lysosomal Glycogen-specific Enzyme",
+      "zh": "溶酶体糖原特异性水解酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175822": {
+      "en": "Hydrolytic Lysosomal Neutral Glycosphingolipid-specific Enzyme",
+      "zh": "溶酶体中性糖鞘脂特异性水解酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175823": {
+      "en": "Hydrolytic Lysosomal Glycosaminoglycan-specific Enzyme",
+      "zh": "溶酶体糖胺聚糖特异性水解酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175824": {
+      "en": "Androgen",
+      "zh": "雄激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175825": {
+      "en": "Estrogen",
+      "zh": "雌激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175826": {
+      "en": "Estrogen Agonist/Antagonist",
+      "zh": "雌激素受体激动剂/拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175827": {
+      "en": "Ergot Derivative",
+      "zh": "麦角衍生物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175828": {
+      "en": "Oxytocic",
+      "zh": "催产药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175831": {
+      "en": "Copper-containing Intrauterine Device",
+      "zh": "含铜宫内节育器",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175832": {
+      "en": "Progestin-containing Intrauterine System",
+      "zh": "含孕激素宫内系统",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175835": {
+      "en": "Calculi Dissolution Agent",
+      "zh": "结石溶解剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175836": {
+      "en": "5-alpha Reductase Inhibitor",
+      "zh": "5α-还原酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175837": {
+      "en": "Glycosaminoglycan",
+      "zh": "糖胺聚糖",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175838": {
+      "en": "Gonadotropin",
+      "zh": "促性腺激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175839": {
+      "en": "Gonadotropin Releasing Hormone Receptor Antagonist",
+      "zh": "促性腺激素释放激素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175840": {
+      "en": "Cholinergic Muscarinic Agonist",
+      "zh": "胆碱能毒蕈碱受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175841": {
+      "en": "Progestin Antagonist",
+      "zh": "孕激素拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175842": {
+      "en": "alpha-Hydroxy Acid",
+      "zh": "α-羟基酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175843": {
+      "en": "Collagen-specific Enzyme",
+      "zh": "胶原特异性酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175845": {
+      "en": "Decarboxylase Inhibitor",
+      "zh": "脱羧酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175846": {
+      "en": "Porphyrin Precursor",
+      "zh": "卟啉前体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175847": {
+      "en": "Pyrethroid",
+      "zh": "拟除虫菊酯",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175848": {
+      "en": "Tubulin Inhibiting Agent",
+      "zh": "微管蛋白抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175849": {
+      "en": "Vitamin D Analog",
+      "zh": "维生素D类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175854": {
+      "en": "Melanin Synthesis Inhibitor",
+      "zh": "黑色素合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175864": {
+      "en": "Contrast Agent for Ultrasound Imaging",
+      "zh": "超声成像造影剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175866": {
+      "en": "Inhalation Diagnostic Agent",
+      "zh": "吸入性诊断药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175872": {
+      "en": "Radioactive Therapeutic Agent",
+      "zh": "放射性治疗药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175874": {
+      "en": "Allylamine Antifungal",
+      "zh": "烯丙胺类抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175875": {
+      "en": "Benzylamine Antifungal",
+      "zh": "苄胺类抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175877": {
+      "en": "Macrolide",
+      "zh": "大环内酯类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175879": {
+      "en": "Psoralen",
+      "zh": "补骨脂素类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175881": {
+      "en": "Sulfone",
+      "zh": "砜类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175882": {
+      "en": "Tetracycline-class Drug",
+      "zh": "四环素类药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175883": {
+      "en": "Adrenergic Receptor Agonist",
+      "zh": "肾上腺素能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175884": {
+      "en": "Cholinergic Receptor Agonist",
+      "zh": "胆碱能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175885": {
+      "en": "Human Platelet-derived Growth Factor",
+      "zh": "人血小板源性生长因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175886": {
+      "en": "Helicobacter pylori Diagnostic",
+      "zh": "幽门螺杆菌诊断药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175887": {
+      "en": "Human Immunodeficiency Virus Integrase Strand Transfer Inhibitor",
+      "zh": "人类免疫缺陷病毒整合酶链转移抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175889": {
+      "en": "Protease Inhibitor",
+      "zh": "蛋白酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175895": {
+      "en": "Blood Viscosity Reducer",
+      "zh": "降低血液黏度药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175896": {
+      "en": "Metabolic Alkalinizer",
+      "zh": "代谢性碱化剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175898": {
+      "en": "Reducing and Complexing Thiol",
+      "zh": "具有还原和络合作用的巯基化合物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175900": {
+      "en": "Renin Inhibitor",
+      "zh": "肾素抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175901": {
+      "en": "Calcium",
+      "zh": "钙",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175902": {
+      "en": "Calcium-sensing Receptor Agonist",
+      "zh": "钙敏感受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175903": {
+      "en": "Carnitine Analog",
+      "zh": "肉碱类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175904": {
+      "en": "Somatostatin Analog",
+      "zh": "生长抑素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175905": {
+      "en": "Vasopressin Analog",
+      "zh": "血管加压素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175907": {
+      "en": "Vitamin D2 Analog",
+      "zh": "维生素D2类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175908": {
+      "en": "Vitamin D3 Analog",
+      "zh": "维生素D3类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175909": {
+      "en": "Provitamin D2 Compound",
+      "zh": "维生素D2前体化合物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175911": {
+      "en": "Dietary Cholesterol Absorption Inhibitor",
+      "zh": "膳食胆固醇吸收抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175913": {
+      "en": "Dipeptidyl Peptidase 4 Inhibitor",
+      "zh": "二肽基肽酶4抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175916": {
+      "en": "Factor VIII Activator",
+      "zh": "凝血因子VIII激活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175918": {
+      "en": "Thyroid Hormone Synthesis Inhibitor",
+      "zh": "甲状腺激素合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175928": {
+      "en": "Adrenal Steroid Synthesis Inhibitor",
+      "zh": "肾上腺类固醇合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175930": {
+      "en": "beta Lactamase Inhibitor",
+      "zh": "β-内酰胺酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175934": {
+      "en": "Dihydrofolate Reductase Inhibitor Antimalarial",
+      "zh": "二氢叶酸还原酶抑制类抗疟药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175935": {
+      "en": "Macrolide Antimicrobial",
+      "zh": "大环内酯类抗微生物药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175936": {
+      "en": "Polyene Antimicrobial",
+      "zh": "多烯类抗微生物药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175937": {
+      "en": "Quinolone Antimicrobial",
+      "zh": "喹诺酮类抗微生物药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175938": {
+      "en": "Tetracycline-class Antibacterial",
+      "zh": "四环素类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175939": {
+      "en": "Cyclooxygenase Inhibitor",
+      "zh": "环氧合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175940": {
+      "en": "Vasodilator",
+      "zh": "血管扩张剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175941": {
+      "en": "Adrenocorticotropic Hormone",
+      "zh": "促肾上腺皮质激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175942": {
+      "en": "Calcitonin",
+      "zh": "降钙素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175944": {
+      "en": "Insulin",
+      "zh": "胰岛素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175945": {
+      "en": "l-Thyroxine",
+      "zh": "左甲状腺素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175946": {
+      "en": "l-Triiodothyronine",
+      "zh": "左三碘甲状腺原氨酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175949": {
+      "en": "Thyroid Stimulating Hormone",
+      "zh": "促甲状腺激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175950": {
+      "en": "Vitamin A",
+      "zh": "维生素A",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175951": {
+      "en": "Vitamin B12",
+      "zh": "维生素B12",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175952": {
+      "en": "Vitamin D",
+      "zh": "维生素D",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175956": {
+      "en": "5-Lipoxygenase Inhibitor",
+      "zh": "5-脂氧合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175958": {
+      "en": "Recombinant Human Deoxyribonuclease 1",
+      "zh": "重组人脱氧核糖核酸酶1",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175961": {
+      "en": "Antidote for Acetaminophen Overdose",
+      "zh": "对乙酰氨基酚过量解毒剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175963": {
+      "en": "Lead Chelator",
+      "zh": "铅螯合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175966": {
+      "en": "Warfarin Reversal Agent",
+      "zh": "华法林逆转剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175973": {
+      "en": "Thrombopoietin Receptor Agonist",
+      "zh": "血小板生成素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175980": {
+      "en": "Anti-coagulant",
+      "zh": "抗凝药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175983": {
+      "en": "Heparin Reversal Agent",
+      "zh": "肝素逆转剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000175984": {
+      "en": "Photoactivated Radical Generator",
+      "zh": "光激活自由基生成剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000177910": {
+      "en": "Amylin Analog",
+      "zh": "胰淀素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000177912": {
+      "en": "CD25-directed Cytotoxin",
+      "zh": "靶向CD25的细胞毒素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000177913": {
+      "en": "Parenteral Iron Replacement",
+      "zh": "肠外补铁药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000177914": {
+      "en": "Radioactive Diagnostic Agent",
+      "zh": "放射性诊断药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178326": {
+      "en": "Hematopoietic Stem Cell Mobilizer",
+      "zh": "造血干细胞动员剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178369": {
+      "en": "Folate Analog",
+      "zh": "叶酸类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178372": {
+      "en": "Antiemetic",
+      "zh": "止吐药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178374": {
+      "en": "Antidiarrheal",
+      "zh": "止泻药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178375": {
+      "en": "Adenosine Receptor Agonist",
+      "zh": "腺苷受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178376": {
+      "en": "Vasopressin Receptor Antagonist",
+      "zh": "血管加压素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178378": {
+      "en": "Potassium Binder",
+      "zh": "钾结合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000178480": {
+      "en": "GLP-1 Receptor Agonist",
+      "zh": "GLP-1受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180182": {
+      "en": "Typical Antipsychotic",
+      "zh": "典型抗精神病药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180183": {
+      "en": "Bismuth",
+      "zh": "铋",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180184": {
+      "en": "Paramagnetic Contrast Agent",
+      "zh": "顺磁性造影剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180185": {
+      "en": "Radiographic Contrast Agent",
+      "zh": "X线造影剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180186": {
+      "en": "Peroxisome Proliferator-activated Receptor gamma Agonist",
+      "zh": "过氧化物酶体增殖物激活受体γ激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180187": {
+      "en": "Herpes Simplex Virus Nucleoside Analog DNA Polymerase Inhibitor",
+      "zh": "单纯疱疹病毒核苷类似物DNA聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180188": {
+      "en": "Herpes Zoster Virus Nucleoside Analog DNA Polymerase Inhibitor",
+      "zh": "带状疱疹病毒核苷类似物DNA聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180189": {
+      "en": "Prostaglandin E1 Agonist",
+      "zh": "前列腺素E1激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180190": {
+      "en": "Thiazolidinedione",
+      "zh": "噻唑烷二酮类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180191": {
+      "en": "Vitamin K",
+      "zh": "维生素K",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180292": {
+      "en": "Bile Acid Sequestrant",
+      "zh": "胆汁酸螯合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180850": {
+      "en": "Actinomycin",
+      "zh": "放线菌素类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180851": {
+      "en": "Parathyroid Hormone",
+      "zh": "甲状旁腺激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180852": {
+      "en": "Parathyroid Hormone Analog",
+      "zh": "甲状旁腺激素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180853": {
+      "en": "Antimetabolite",
+      "zh": "抗代谢药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180854": {
+      "en": "Cytoprotective Agent",
+      "zh": "细胞保护剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000180855": {
+      "en": "Aminoketone",
+      "zh": "氨基酮类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000181811": {
+      "en": "Pediculicide",
+      "zh": "灭虱药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000181816": {
+      "en": "Sphingosine 1-phosphate Receptor Modulator",
+      "zh": "鞘氨醇1-磷酸受体调节剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000181821": {
+      "en": "Uncompetitive N-methyl-D-aspartate Receptor Antagonist",
+      "zh": "反竞争性N-甲基-D-天冬氨酸受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182135": {
+      "en": "Cytochrome P450 2D6 Inhibitor",
+      "zh": "细胞色素P450 2D6抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182142": {
+      "en": "P2Y12 Platelet Inhibitor",
+      "zh": "P2Y12血小板抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182144": {
+      "en": "Growth Hormone Releasing Factor Analog",
+      "zh": "生长激素释放因子类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182149": {
+      "en": "Sigma-1 Agonist",
+      "zh": "σ1受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182159": {
+      "en": "Selective T Cell Costimulation Modulator",
+      "zh": "选择性T细胞共刺激调节剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182633": {
+      "en": "Cytochrome P450 17A1 Inhibitor",
+      "zh": "细胞色素P450 17A1抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182635": {
+      "en": "CTLA-4-directed Blocking Antibody",
+      "zh": "靶向CTLA-4的阻断抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182637": {
+      "en": "B Lymphocyte Stimulator-specific Inhibitor",
+      "zh": "B淋巴细胞刺激因子特异性抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182639": {
+      "en": "Hepatitis C Virus NS3/4A Protease Inhibitor",
+      "zh": "丙型肝炎病毒NS3/4A蛋白酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182830": {
+      "en": "Selective T Cell Costimulation Blocker",
+      "zh": "选择性T细胞共刺激阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182961": {
+      "en": "Phosphodiesterase 4 Inhibitor",
+      "zh": "磷酸二酯酶4抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182965": {
+      "en": "Bradykinin B2 Receptor Antagonist",
+      "zh": "缓激肽B2受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000182967": {
+      "en": "CD30-directed Immunoconjugate",
+      "zh": "靶向CD30的免疫偶联药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183360": {
+      "en": "gamma-Aminobutyric Acid A Receptor Agonist",
+      "zh": "γ-氨基丁酸A受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183362": {
+      "en": "Gadolinium-based Contrast Agent",
+      "zh": "钆基造影剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183887": {
+      "en": "Inactivated Corynebacterium Diphtheriae Vaccine",
+      "zh": "白喉棒状杆菌灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183888": {
+      "en": "Inactivated Haemophilus Influenzae B Vaccine",
+      "zh": "b型流感嗜血杆菌灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183889": {
+      "en": "Inactivated Hepatitis A Virus Vaccine",
+      "zh": "甲型肝炎病毒灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183890": {
+      "en": "Inactivated Hepatitis B Virus Vaccine",
+      "zh": "乙型肝炎病毒灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183891": {
+      "en": "Inactivated Human Papillomavirus Vaccine",
+      "zh": "人乳头瘤病毒灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183892": {
+      "en": "Inactivated Influenza A Virus Vaccine",
+      "zh": "甲型流感病毒灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183894": {
+      "en": "Inactivated Japanese Encephalitis Virus Vaccine",
+      "zh": "乙型脑炎病毒灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183895": {
+      "en": "Inactivated Meningococcal Vaccine",
+      "zh": "脑膜炎球菌灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183896": {
+      "en": "Inactivated Bordetella Pertussis Vaccine",
+      "zh": "百日咳鲍特菌灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183897": {
+      "en": "Inactivated Pneumococcal Vaccine",
+      "zh": "肺炎球菌灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183898": {
+      "en": "Inactivated Poliovirus Vaccine",
+      "zh": "脊髓灰质炎病毒灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183899": {
+      "en": "Inactivated Rabies Virus Vaccine",
+      "zh": "狂犬病病毒灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183900": {
+      "en": "Inactivated Clostridium Tetani Vaccine",
+      "zh": "破伤风梭菌灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183901": {
+      "en": "Inactivated Salmonella Typhi Vaccine",
+      "zh": "伤寒沙门菌灭活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183903": {
+      "en": "Live Attenuated Bacillus Anthracis Vaccine",
+      "zh": "炭疽杆菌减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183904": {
+      "en": "Live Attenuated Bacillus Calmette-Guerin Vaccine",
+      "zh": "卡介苗减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183905": {
+      "en": "Live Attenuated Herpes Zoster Virus Vaccine",
+      "zh": "带状疱疹病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183906": {
+      "en": "Live Attenuated Bacillus Calmette-Guerin Immunotherapy",
+      "zh": "减毒活卡介菌免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183907": {
+      "en": "Live Attenuated Measles Virus Vaccine",
+      "zh": "麻疹病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183908": {
+      "en": "Live Attenuated Rotavirus Vaccine",
+      "zh": "轮状病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183909": {
+      "en": "Live Attenuated Rubella Virus Vaccine",
+      "zh": "风疹病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183910": {
+      "en": "Live Attenuated Salmonella Typhi Vaccine",
+      "zh": "伤寒沙门菌减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183911": {
+      "en": "Live Attenuated Varicella Zoster Virus Vaccine",
+      "zh": "水痘-带状疱疹病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183912": {
+      "en": "Live Attenuated Yellow Fever Virus Vaccine",
+      "zh": "黄热病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183913": {
+      "en": "Live Human Adenovirus Type 4 Vaccine",
+      "zh": "人腺病毒4型活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183914": {
+      "en": "Live Human Adenovirus Type 7 Vaccine",
+      "zh": "人腺病毒7型活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183916": {
+      "en": "Live Rotavirus Vaccine",
+      "zh": "轮状病毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183917": {
+      "en": "Live Vaccinia Virus Vaccine",
+      "zh": "痘苗病毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000183918": {
+      "en": "Live Attenuated Mumps Virus Vaccine",
+      "zh": "腮腺炎病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184013": {
+      "en": "Carboxypeptidase",
+      "zh": "羧肽酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184014": {
+      "en": "Thalidomide Analog",
+      "zh": "沙利度胺类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184144": {
+      "en": "Carbamoyl Phosphate Synthetase 1 Activator",
+      "zh": "氨甲酰磷酸合成酶1激活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184146": {
+      "en": "Cystic Fibrosis Transmembrane Conductance Regulator Potentiator",
+      "zh": "囊性纤维化跨膜电导调节蛋白增效剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184149": {
+      "en": "Hedgehog Pathway Inhibitor",
+      "zh": "Hedgehog通路抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184162": {
+      "en": "Antivenin",
+      "zh": "抗毒液血清",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184163": {
+      "en": "Immunoglobulin G",
+      "zh": "免疫球蛋白G",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184164": {
+      "en": "Human Immunoglobulin",
+      "zh": "人免疫球蛋白",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184165": {
+      "en": "Human Immunoglobulin G",
+      "zh": "人免疫球蛋白G",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184166": {
+      "en": "Anti-inhibitor Coagulant Complex",
+      "zh": "抗抑制物凝血复合物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184167": {
+      "en": "Human Antihemophilic Factor",
+      "zh": "人抗血友病因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184168": {
+      "en": "Blood Coagulation Factor",
+      "zh": "凝血因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184169": {
+      "en": "Human Blood Coagulation Factor",
+      "zh": "人凝血因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184171": {
+      "en": "Human alpha-1 Proteinase Inhibitor",
+      "zh": "人α1蛋白酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184172": {
+      "en": "Human C1 Esterase Inhibitor",
+      "zh": "人C1酯酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184174": {
+      "en": "Human Serum Albumin",
+      "zh": "人血清白蛋白",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184175": {
+      "en": "Plasma Volume Expander",
+      "zh": "血浆容量扩充剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184315": {
+      "en": "Tuberculosis Skin Test",
+      "zh": "结核菌素皮肤试验用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184316": {
+      "en": "Skin Test Antigen",
+      "zh": "皮肤试验用抗原",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184318": {
+      "en": "Allogeneic Cord Blood Hematopoietic Progenitor Cell Therapy",
+      "zh": "异体脐血造血祖细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184319": {
+      "en": "Allogeneic Cultured Cell Scaffold",
+      "zh": "异体培养细胞支架",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000184997": {
+      "en": "Autologous Cellular Immunotherapy",
+      "zh": "自体细胞免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185003": {
+      "en": "Standardized Animal Hair Allergenic Extract",
+      "zh": "标准化动物毛发变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185004": {
+      "en": "Standardized Animal Skin Allergenic Extract",
+      "zh": "标准化动物皮肤变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185005": {
+      "en": "Standardized Insect Allergenic Extract",
+      "zh": "标准化昆虫变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185006": {
+      "en": "Standardized Pollen Allergenic Extract",
+      "zh": "标准化花粉变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185008": {
+      "en": "beta3-Adrenergic Agonist",
+      "zh": "β3肾上腺素能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185010": {
+      "en": "Serotonin-2c Receptor Agonist",
+      "zh": "5-羟色胺2C受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185021": {
+      "en": "Standardized Insect Venom Allergenic Extract",
+      "zh": "标准化昆虫毒液变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185363": {
+      "en": "Non-Standardized Animal Hair Allergenic Extract",
+      "zh": "非标准化动物毛发变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185364": {
+      "en": "Non-Standardized Animal Skin Allergenic Extract",
+      "zh": "非标准化动物皮肤变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185365": {
+      "en": "Non-Standardized Insect Allergenic Extract",
+      "zh": "非标准化昆虫变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185366": {
+      "en": "Non-Standardized Insect Venom Allergenic Extract",
+      "zh": "非标准化昆虫毒液变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185367": {
+      "en": "Non-Standardized Pollen Allergenic Extract",
+      "zh": "非标准化花粉变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185368": {
+      "en": "Non-Standardized Animal Dander Allergenic Extract",
+      "zh": "非标准化动物皮屑变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185369": {
+      "en": "Non-Standardized Bacterial Allergenic Extract",
+      "zh": "非标准化细菌变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185370": {
+      "en": "Non-Standardized Chemical Allergen",
+      "zh": "非标准化化学变应原",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185371": {
+      "en": "Non-Standardized Food Allergenic Extract",
+      "zh": "非标准化食物变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185372": {
+      "en": "Non-Standardized Fungal Allergenic Extract",
+      "zh": "非标准化真菌变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185373": {
+      "en": "Non-Standardized Feather Allergenic Extract",
+      "zh": "非标准化羽毛变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185374": {
+      "en": "Non-Standardized House Dust Allergenic Extract",
+      "zh": "非标准化屋尘变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185375": {
+      "en": "Non-Standardized Plant Allergenic Extract",
+      "zh": "非标准化植物变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185376": {
+      "en": "Non-Standardized Plant Fiber Allergenic Extract",
+      "zh": "非标准化植物纤维变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185500": {
+      "en": "Guanylate Cyclase-C Agonist",
+      "zh": "鸟苷酸环化酶C激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185502": {
+      "en": "Pyrimidine Synthesis Inhibitor",
+      "zh": "嘧啶合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000185508": {
+      "en": "Standardized Chemical Allergen",
+      "zh": "标准化化学变应原",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000186105": {
+      "en": "alpha-1 Adrenergic Agonist",
+      "zh": "α1肾上腺素能受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000186106": {
+      "en": "Noncompetitive AMPA Glutamate Receptor Antagonist",
+      "zh": "非竞争性AMPA型谷氨酸受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000186775": {
+      "en": "Diarylquinoline Antimycobacterial",
+      "zh": "二芳基喹啉类抗分枝杆菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000186779": {
+      "en": "Microsomal Triglyceride Transfer Protein Inhibitor",
+      "zh": "微粒体甘油三酯转运蛋白抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000187051": {
+      "en": "Cystine Depleting Agent",
+      "zh": "胱氨酸耗竭剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000187053": {
+      "en": "Radioactive alpha-Particle Emitting Therapeutic Agent",
+      "zh": "放射性α粒子发射治疗药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000187055": {
+      "en": "RANK Ligand Inhibitor",
+      "zh": "RANK配体抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000187059": {
+      "en": "Sodium-Glucose Cotransporter 2 Inhibitor",
+      "zh": "钠-葡萄糖协同转运蛋白2抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000189939": {
+      "en": "Established Pharmacologic Classes",
+      "zh": "既定药理类别",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190119": {
+      "en": "Growth Hormone Receptor Antagonist",
+      "zh": "生长激素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190480": {
+      "en": "Interleukin-6 Receptor Antagonist",
+      "zh": "白细胞介素6受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190483": {
+      "en": "Phenylalanine Hydroxylase Activator",
+      "zh": "苯丙氨酸羟化酶激活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190485": {
+      "en": "Soluble Guanylate Cyclase Stimulator",
+      "zh": "可溶性鸟苷酸环化酶刺激剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190851": {
+      "en": "Antileishmanial",
+      "zh": "抗利什曼原虫药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190852": {
+      "en": "Antihypoglycemic Agent",
+      "zh": "抗低血糖药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190853": {
+      "en": "Gastrointestinal Motility Inhibitor",
+      "zh": "胃肠动力抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190854": {
+      "en": "Leptin Analog",
+      "zh": "瘦素类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190856": {
+      "en": "Vesicular Monoamine Transporter 2 Inhibitor",
+      "zh": "囊泡单胺转运蛋白2抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190858": {
+      "en": "Janus Kinase Inhibitor",
+      "zh": "Janus激酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190992": {
+      "en": "GLP-2 Analog",
+      "zh": "GLP-2类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000190996": {
+      "en": "Protease-activated Receptor-1 Antagonist",
+      "zh": "蛋白酶激活受体1拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191000": {
+      "en": "Orexin Receptor Antagonist",
+      "zh": "食欲素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191001": {
+      "en": "Cytochrome P450 3A Inhibitor",
+      "zh": "细胞色素P450 3A抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191006": {
+      "en": "Interleukin-6 Antagonist",
+      "zh": "白细胞介素6拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191009": {
+      "en": "Vascular Endothelial Growth Factor Receptor 2 Antagonist",
+      "zh": "血管内皮生长因子受体2拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191256": {
+      "en": "Hepatitis C Virus NS5A Inhibitor",
+      "zh": "丙型肝炎病毒NS5A抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191260": {
+      "en": "Programmed Death Receptor-1 Blocking Antibody",
+      "zh": "程序性死亡受体1（PD-1）阻断抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191261": {
+      "en": "Lipid Emulsion",
+      "zh": "脂肪乳剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191263": {
+      "en": "Progesterone Agonist/Antagonist",
+      "zh": "孕激素受体激动剂/拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191279": {
+      "en": "Oxaborole Antifungal",
+      "zh": "氧硼杂环类抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191281": {
+      "en": "Lipoglycopeptide Antibacterial",
+      "zh": "脂糖肽类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191420": {
+      "en": "Pyridone",
+      "zh": "吡啶酮类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191421": {
+      "en": "Bispecific CD19-directed CD3-directed T Cell Engager",
+      "zh": "靶向CD19和CD3的双特异性T细胞衔接器",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191493": {
+      "en": "Hepatitis C Virus Nucleotide Analog NS5B Polymerase Inhibitor",
+      "zh": "丙型肝炎病毒核苷酸类似物NS5B聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191495": {
+      "en": "Interleukin-17A Antagonist",
+      "zh": "白细胞介素17A拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191500": {
+      "en": "Glycolipid Disialoganglioside-directed Antibody",
+      "zh": "靶向糖脂二唾液酸神经节苷脂的抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191544": {
+      "en": "Hyperpolarization-activated Cyclic Nucleotide-gated Channel Blocker",
+      "zh": "超极化激活环核苷酸门控通道阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191548": {
+      "en": "Cytolytic Agent",
+      "zh": "细胞溶解剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191623": {
+      "en": "Poly(ADP-Ribose) Polymerase Inhibitor",
+      "zh": "多聚ADP核糖聚合酶（PARP）抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191625": {
+      "en": "Interferon beta",
+      "zh": "干扰素β",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191626": {
+      "en": "Antisense Oligonucleotide",
+      "zh": "反义寡核苷酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191627": {
+      "en": "Apolipoprotein B-100 Synthesis Inhibitor",
+      "zh": "载脂蛋白B-100合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191728": {
+      "en": "Neprilysin Inhibitor",
+      "zh": "脑啡肽酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191731": {
+      "en": "PCSK9 Inhibitor",
+      "zh": "PCSK9抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191809": {
+      "en": "Pyrimidine Analog",
+      "zh": "嘧啶类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191865": {
+      "en": "Tissue-nonspecific Alkaline Phosphatase",
+      "zh": "组织非特异性碱性磷酸酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191867": {
+      "en": "mu-Opioid Receptor Agonist",
+      "zh": "μ阿片受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191870": {
+      "en": "Thymidine Phosphorylase Inhibitor",
+      "zh": "胸苷磷酸化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191872": {
+      "en": "Interleukin-5 Antagonist",
+      "zh": "白细胞介素5拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000191873": {
+      "en": "Humanized Monoclonal Antibody Fragment",
+      "zh": "人源化单克隆抗体片段",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192336": {
+      "en": "CD38-directed Cytolytic Antibody",
+      "zh": "靶向CD38的细胞溶解抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192338": {
+      "en": "SLAMF7-directed Immunostimulatory Antibody",
+      "zh": "靶向SLAMF7的免疫刺激抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192339": {
+      "en": "Prostacyclin Receptor Agonist",
+      "zh": "前列环素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192342": {
+      "en": "Hydrolytic Lysosomal Cholesteryl Ester-specific Enzyme",
+      "zh": "溶酶体胆固醇酯特异性水解酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192343": {
+      "en": "Hydrolytic Lysosomal Triacylglycerol-specific Enzyme",
+      "zh": "溶酶体三酰甘油特异性水解酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192515": {
+      "en": "BCL-2 Inhibitor",
+      "zh": "BCL-2抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192516": {
+      "en": "Oxidation-Reduction Agent",
+      "zh": "氧化还原剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192562": {
+      "en": "Vasoconstrictor",
+      "zh": "血管收缩剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192563": {
+      "en": "Norepinephrine Releasing Agent",
+      "zh": "去甲肾上腺素释放剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192701": {
+      "en": "Lymphocyte Function-Associated Antigen-1 Antagonist",
+      "zh": "淋巴细胞功能相关抗原1拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192703": {
+      "en": "Anthrax Protective Antigen-directed Antibody",
+      "zh": "靶向炭疽保护性抗原的抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192750": {
+      "en": "Plasma Kallikrein Inhibitor",
+      "zh": "血浆激肽释放酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192795": {
+      "en": "Potassium Channel Blocker",
+      "zh": "钾通道阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192797": {
+      "en": "Interleukin-12 Antagonist",
+      "zh": "白细胞介素12拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192799": {
+      "en": "Interleukin-23 Antagonist",
+      "zh": "白细胞介素23拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192800": {
+      "en": "Vitamin B6 Analog",
+      "zh": "维生素B6类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000192801": {
+      "en": "Decorporation Agent",
+      "zh": "体内污染物促排剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193181": {
+      "en": "Vasopressin V2 Receptor Antagonist",
+      "zh": "血管加压素V2受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193220": {
+      "en": "Aromatic Amino Acid",
+      "zh": "芳香族氨基酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193222": {
+      "en": "Survival Motor Neuron-2-directed RNA Interaction",
+      "zh": "靶向运动神经元存活基因2的RNA相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193223": {
+      "en": "Fluoroquinolone Antibacterial",
+      "zh": "氟喹诺酮类抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193276": {
+      "en": "Interleukin-17 Receptor A Antagonist",
+      "zh": "白细胞介素17受体A拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193303": {
+      "en": "Tryptophan Hydroxylase Inhibitor",
+      "zh": "色氨酸羟化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193338": {
+      "en": "Programmed Death Ligand-1 Blocker",
+      "zh": "程序性死亡配体1（PD-L1）阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193342": {
+      "en": "Interleukin-4 Receptor alpha Antagonist",
+      "zh": "白细胞介素4受体α拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193414": {
+      "en": "Hydrolytic Lysosomal N-terminal Tripeptidyl Peptidase",
+      "zh": "溶酶体N端三肽基肽酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193453": {
+      "en": "Parathyroid Hormone-Related Peptide Analog",
+      "zh": "甲状旁腺激素相关肽类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193543": {
+      "en": "Vascular Endothelial Growth Factor Inhibitor",
+      "zh": "血管内皮生长因子抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193546": {
+      "en": "CD19-directed Chimeric Antigen Receptor",
+      "zh": "靶向CD19的嵌合抗原受体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193549": {
+      "en": "Genetically-modified Autologous T Cells",
+      "zh": "基因修饰自体T细胞",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193615": {
+      "en": "Isocitrate Dehydrogenase 2 Inhibitor",
+      "zh": "异柠檬酸脱氢酶2抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193617": {
+      "en": "CD22-directed Immunoconjugate",
+      "zh": "靶向CD22的免疫偶联药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193618": {
+      "en": "Vitamin C",
+      "zh": "维生素C",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193785": {
+      "en": "Growth Hormone Secretagogue Receptor Agonist",
+      "zh": "生长激素促分泌素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193788": {
+      "en": "Rho Kinase Inhibitor",
+      "zh": "Rho激酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193790": {
+      "en": "Adeno-associated Virus Vector",
+      "zh": "腺相关病毒载体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193800": {
+      "en": "Cytomegalovirus DNA Terminase Complex Inhibitor",
+      "zh": "巨细胞病毒DNA末端酶复合物抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193803": {
+      "en": "Interleukin-5 Receptor alpha-directed Cytolytic Antibody",
+      "zh": "靶向白细胞介素5受体α的细胞溶解抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193804": {
+      "en": "Lysosomal beta Glucuronidase",
+      "zh": "溶酶体β-葡萄糖醛酸苷酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193806": {
+      "en": "CD4-directed Blocking Antibody",
+      "zh": "靶向CD4的阻断抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193808": {
+      "en": "Human Immunodeficiency Virus 1 Post-attachment Fusion Inhibitor",
+      "zh": "人类免疫缺陷病毒1型附着后融合抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193848": {
+      "en": "Small Interfering RNA",
+      "zh": "小干扰RNA",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193849": {
+      "en": "Transthyretin-directed RNA Interaction",
+      "zh": "靶向转甲状腺素蛋白的RNA相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193852": {
+      "en": "Polymerase Acidic Endonuclease Inhibitor",
+      "zh": "聚合酶酸性蛋白内切酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193854": {
+      "en": "Recombinant Human Nerve Growth Factor",
+      "zh": "重组人神经生长因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193856": {
+      "en": "Interferon gamma Blocker",
+      "zh": "干扰素γ阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193857": {
+      "en": "Orthopoxvirus VP37 Envelope Wrapping Protein Inhibitor",
+      "zh": "正痘病毒VP37包膜包裹蛋白抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193858": {
+      "en": "Phenylalanine Metabolizing Enzyme",
+      "zh": "苯丙氨酸代谢酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193862": {
+      "en": "Cytotoxin",
+      "zh": "细胞毒素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193863": {
+      "en": "Monoclonal Antibody",
+      "zh": "单克隆抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193864": {
+      "en": "CD123 Interaction",
+      "zh": "CD123相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193866": {
+      "en": "Chemokine Receptor Type 4 Interaction",
+      "zh": "趋化因子受体4型相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193871": {
+      "en": "Serotonin-4 Receptor Agonist",
+      "zh": "5-羟色胺4受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193872": {
+      "en": "Antibody or Antibody Fragment",
+      "zh": "抗体或抗体片段",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193873": {
+      "en": "Diuretic",
+      "zh": "利尿剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193874": {
+      "en": "Hormone",
+      "zh": "激素",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193875": {
+      "en": "Imaging Agent",
+      "zh": "成像药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193877": {
+      "en": "Vitamin or Mineral",
+      "zh": "维生素或矿物质",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193878": {
+      "en": "Anesthetic",
+      "zh": "麻醉药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193879": {
+      "en": "Anti-infective",
+      "zh": "抗感染药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193880": {
+      "en": "Antibacterial",
+      "zh": "抗细菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193881": {
+      "en": "Antifungal",
+      "zh": "抗真菌药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193882": {
+      "en": "Antimicrobial",
+      "zh": "抗微生物药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193884": {
+      "en": "Enzyme",
+      "zh": "酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193885": {
+      "en": "Growth Factor",
+      "zh": "生长因子",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193886": {
+      "en": "Receptor Agonist",
+      "zh": "受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193887": {
+      "en": "Receptor Antagonist",
+      "zh": "受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193888": {
+      "en": "Receptor Interaction",
+      "zh": "受体相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193889": {
+      "en": "Allergen",
+      "zh": "变应原",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193890": {
+      "en": "Allergenic Extract",
+      "zh": "变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193891": {
+      "en": "Blood Glucose Regulator",
+      "zh": "血糖调节药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193892": {
+      "en": "Calcium Channel Agent",
+      "zh": "钙通道作用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193893": {
+      "en": "Cardiovascular Agent",
+      "zh": "心血管系统用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193894": {
+      "en": "Chemical Structure",
+      "zh": "化学结构分类",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193895": {
+      "en": "Diagnostic Agent",
+      "zh": "诊断药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193896": {
+      "en": "Enzyme Activator",
+      "zh": "酶激活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193897": {
+      "en": "Enzyme Inhibitor",
+      "zh": "酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193898": {
+      "en": "Enzyme Interaction",
+      "zh": "酶相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193899": {
+      "en": "Epidermal and Animal Specific Allergenic Extract",
+      "zh": "表皮及动物特异性变应原提取物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193900": {
+      "en": "Gastrointestinal Agent",
+      "zh": "胃肠系统用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193901": {
+      "en": "Hematology Agent",
+      "zh": "血液系统用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193902": {
+      "en": "Immunologic Agent",
+      "zh": "免疫作用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193903": {
+      "en": "Interleukin Agent",
+      "zh": "白细胞介素作用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193904": {
+      "en": "Ion Channel or Pump Agent",
+      "zh": "离子通道或离子泵作用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193905": {
+      "en": "Nervous System Agent",
+      "zh": "神经系统用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193906": {
+      "en": "Nucleic Acid Related Agent",
+      "zh": "核酸相关药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193907": {
+      "en": "Nucleic Acid Synthesis Inhibitor",
+      "zh": "核酸合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193908": {
+      "en": "Physical or Chemical Agent",
+      "zh": "物理或化学作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193909": {
+      "en": "Respiratory Agent",
+      "zh": "呼吸系统用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193910": {
+      "en": "Sympathomimetic Agent",
+      "zh": "拟交感药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193911": {
+      "en": "Tubulin Agent",
+      "zh": "微管蛋白作用药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193912": {
+      "en": "Vaccine",
+      "zh": "疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193913": {
+      "en": "Adenosine Triphosphate-Citrate Lyase Inhibitor",
+      "zh": "ATP柠檬酸裂解酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193915": {
+      "en": "Angiopoietin-like 3 Inhibitor",
+      "zh": "血管生成素样蛋白3抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193917": {
+      "en": "Calcitonin Gene-related Peptide Receptor Antagonist",
+      "zh": "降钙素基因相关肽受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193919": {
+      "en": "Cyclic Pyranopterin Monophosphate",
+      "zh": "环吡喃蝶呤单磷酸",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193926": {
+      "en": "Insulin-like Growth Factor-1 Receptor Inhibitor",
+      "zh": "胰岛素样生长因子1受体抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193930": {
+      "en": "Methyltransferase Inhibitor",
+      "zh": "甲基转移酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193935": {
+      "en": "Cortisol Synthesis Inhibitor",
+      "zh": "皮质醇合成抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193938": {
+      "en": "Farnesyltransferase Inhibitor",
+      "zh": "法尼基转移酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193940": {
+      "en": "Melanocortin 4 Receptor Agonist",
+      "zh": "黑皮质素4受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193946": {
+      "en": "RNA Polymerase Inhibitor",
+      "zh": "RNA聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193948": {
+      "en": "SARS-CoV-2 Nucleotide Analog RNA Polymerase Inhibitor",
+      "zh": "SARS-CoV-2核苷酸类似物RNA聚合酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193949": {
+      "en": "Alkaloid",
+      "zh": "生物碱",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193951": {
+      "en": "Amyloid Beta-directed Antibody",
+      "zh": "靶向β淀粉样蛋白的抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193952": {
+      "en": "Calcitonin Gene-related Peptide Antagonist",
+      "zh": "降钙素基因相关肽拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193956": {
+      "en": "Expectorant",
+      "zh": "祛痰药",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193957": {
+      "en": "Ileal Bile Acid Transporter Inhibitor",
+      "zh": "回肠胆汁酸转运蛋白抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193962": {
+      "en": "Neuromuscular Blocker",
+      "zh": "神经肌肉阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193963": {
+      "en": "Pharmacologic Cardiac Stress Test Agent",
+      "zh": "药理性心脏负荷试验药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193967": {
+      "en": "Type I interferon Receptor Antagonist",
+      "zh": "I型干扰素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193970": {
+      "en": "Nonsteroidal Mineralocorticoid-Receptor Antagonist",
+      "zh": "非甾体盐皮质激素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193971": {
+      "en": "Autologous Hematopoietic Stem-Cell-Based Gene Therapy",
+      "zh": "自体造血干细胞基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193973": {
+      "en": "Complement 5a Receptor Antagonist",
+      "zh": "补体5a受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193976": {
+      "en": "Cytomegalovirus pUL97 Kinase Inhibitor",
+      "zh": "巨细胞病毒pUL97激酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193980": {
+      "en": "C-type Natriuretic Peptide Analog",
+      "zh": "C型利钠肽类似物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193982": {
+      "en": "Interferon alfa-2b",
+      "zh": "干扰素α-2b",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193983": {
+      "en": "Optical Imaging Agent",
+      "zh": "光学成像药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193985": {
+      "en": "Interleukin-13 Antagonist",
+      "zh": "白细胞介素13拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193987": {
+      "en": "Isocitrate Dehydrogenase 1 Inhibitor",
+      "zh": "异柠檬酸脱氢酶1抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193989": {
+      "en": "Bispecific gp100 Peptide-HLA-directed CD3 T Cell Engager",
+      "zh": "靶向gp100肽-HLA和CD3的双特异性T细胞衔接器",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193991": {
+      "en": "Classical Complement Pathway Inhibitor",
+      "zh": "经典补体通路抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000193999": {
+      "en": "Hypoxia-inducible Factor Inhibitor",
+      "zh": "缺氧诱导因子抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194001": {
+      "en": "Kappa Opioid Receptor Agonist",
+      "zh": "κ阿片受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194003": {
+      "en": "Lymphocyte Activation Gene-3 Blocker",
+      "zh": "淋巴细胞活化基因3（LAG-3）阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194004": {
+      "en": "Neonatal Fc Receptor Blocker",
+      "zh": "新生儿Fc受体阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194006": {
+      "en": "Neuroactive Steroid Gamma-Aminobutyric Acid A Receptor Positive Modulator",
+      "zh": "神经活性类固醇γ-氨基丁酸A受体正向调节剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194008": {
+      "en": "Pyruvate Kinase Activator",
+      "zh": "丙酮酸激酶激活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194010": {
+      "en": "Thymic Stromal Lymphopoietin Blocker",
+      "zh": "胸腺基质淋巴细胞生成素阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194012": {
+      "en": "Gene Therapy",
+      "zh": "基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194013": {
+      "en": "CD19-directed Cytolytic Antibody",
+      "zh": "靶向CD19的细胞溶解抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194014": {
+      "en": "Copper Chelator",
+      "zh": "铜螯合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194015": {
+      "en": "Glucose-dependent Insulinotropic Polypeptide Receptor Agonist",
+      "zh": "葡萄糖依赖性促胰岛素多肽受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194017": {
+      "en": "Radioligand Therapeutic Agent",
+      "zh": "放射性配体治疗药物",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194018": {
+      "en": "Aryl Hydrocarbon Receptor Agonist",
+      "zh": "芳香烃受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194020": {
+      "en": "Disclosing Agent",
+      "zh": "显色指示剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194021": {
+      "en": "Nuclear Export Inhibitor",
+      "zh": "核输出抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194023": {
+      "en": "Medium-chain Triglyceride",
+      "zh": "中链甘油三酯",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194024": {
+      "en": "Aminolevulinate Synthase 1-directed RNA Interaction",
+      "zh": "靶向氨基乙酰丙酸合酶1的RNA相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194025": {
+      "en": "Erythroid Maturation Agent",
+      "zh": "红系细胞成熟促进剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194027": {
+      "en": "Hemoglobin S Polymerization Inhibitor",
+      "zh": "血红蛋白S聚合抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194029": {
+      "en": "Melanocortin Receptor Agonist",
+      "zh": "黑皮质素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194032": {
+      "en": "Selectin Blocker",
+      "zh": "选择素阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194034": {
+      "en": "Steroid",
+      "zh": "类固醇",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194038": {
+      "en": "Zaire Ebolavirus Glycoprotein-directed Antibody",
+      "zh": "靶向扎伊尔埃博拉病毒糖蛋白的抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194039": {
+      "en": "Interleukin-36 Receptor Antagonist",
+      "zh": "白细胞介素36受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194041": {
+      "en": "Prostaglandin E2 Receptor Agonist",
+      "zh": "前列腺素E2受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194043": {
+      "en": "Tyrosine Kinase 2 Inhibitor",
+      "zh": "酪氨酸激酶2抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194045": {
+      "en": "Vasopressin Receptor Agonist",
+      "zh": "血管加压素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194047": {
+      "en": "Cardiac Myosin Inhibitor",
+      "zh": "心肌肌球蛋白抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194049": {
+      "en": "Dopamine and Norepinephrine Reuptake Inhibitor",
+      "zh": "多巴胺和去甲肾上腺素再摄取抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194050": {
+      "en": "Ectoparasiticide",
+      "zh": "体外寄生虫杀灭剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194053": {
+      "en": "Histamine-3 Receptor Antagonist/Inverse Agonist",
+      "zh": "组胺H3受体拮抗剂/反向激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194056": {
+      "en": "Sodium-Hydrogen Exchanger 3 Inhibitor",
+      "zh": "钠-氢交换体3抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194059": {
+      "en": "Survival of Motor Neuron 2 Splicing Modifier",
+      "zh": "运动神经元存活基因2剪接调节剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194063": {
+      "en": "Bispecific CD20-directed CD3 T Cell Engager",
+      "zh": "靶向CD20和CD3的双特异性T细胞衔接器",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194065": {
+      "en": "Adeno-associated Virus Vector-based Gene Therapy",
+      "zh": "腺相关病毒载体基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194066": {
+      "en": "Adenovirus Vector-Based Gene Therapy",
+      "zh": "腺病毒载体基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194067": {
+      "en": "B-cell Maturation Antigen-directed Genetically Modified Autologous T Cell Immunotherapy",
+      "zh": "靶向B细胞成熟抗原的基因修饰自体T细胞免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194068": {
+      "en": "CD19-directed Genetically Modified Autologous T Cell Immunotherapy",
+      "zh": "靶向CD19的基因修饰自体T细胞免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194069": {
+      "en": "Cell Therapy",
+      "zh": "细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194070": {
+      "en": "Immunotherapy",
+      "zh": "免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194071": {
+      "en": "Semifluorinated Alkane",
+      "zh": "半氟化烷烃",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194073": {
+      "en": "Viral Therapy",
+      "zh": "病毒治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194074": {
+      "en": "Allogeneic Cellularized Scaffold Cell Therapy",
+      "zh": "异体细胞化支架细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194075": {
+      "en": "Allogeneic Pancreatic Islet Cellular Therapy",
+      "zh": "异体胰岛细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194076": {
+      "en": "Allogeneic Processed Thymus Tissue-based Immunotherapy",
+      "zh": "异体处理胸腺组织免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194077": {
+      "en": "Enzyme Stabilizer",
+      "zh": "酶稳定剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194080": {
+      "en": "Hypoxia-inducible Factor Prolyl Hydroxylase Inhibitor",
+      "zh": "缺氧诱导因子脯氨酰羟化酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194081": {
+      "en": "Nicotinamide Modified Allogeneic Hematopoietic Progenitor Cell Therapy",
+      "zh": "烟酰胺修饰异体造血祖细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194082": {
+      "en": "Recombinant Human Lysosomal alpha-Mannosidase",
+      "zh": "重组人溶酶体α-甘露糖苷酶",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194083": {
+      "en": "gamma-Aminobutyric Acid A Receptor Positive Modulator",
+      "zh": "γ-氨基丁酸A受体正向调节剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194084": {
+      "en": "CD3-directed Antibody",
+      "zh": "靶向CD3的抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194087": {
+      "en": "Herpes Simplex Virus Type 1 Vector-based Gene Therapy",
+      "zh": "单纯疱疹病毒1型载体基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194088": {
+      "en": "Human Immunodeficiency Virus 1 Capsid Inhibitor",
+      "zh": "人类免疫缺陷病毒1型衣壳抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194089": {
+      "en": "Hyperpolarized Contrast Agent",
+      "zh": "超极化造影剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194090": {
+      "en": "Neurokinin 3 Receptor Antagonist",
+      "zh": "神经激肽3受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194097": {
+      "en": "COVID-19 mRNA Vaccine",
+      "zh": "新冠mRNA疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194099": {
+      "en": "Tumor-derived Autologous T Cell Immunotherapy",
+      "zh": "肿瘤来源自体T细胞免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194100": {
+      "en": "Activin Signaling Inhibitor",
+      "zh": "激活素信号抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194103": {
+      "en": "Autologous Genome-Edited Hematopoietic Stem-Cell-Based Gene Therapy",
+      "zh": "自体基因组编辑造血干细胞基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194104": {
+      "en": "CXC Chemokine Receptor 4 Antagonist",
+      "zh": "CXC趋化因子受体4拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194107": {
+      "en": "Claudin 18.2-directed Cytolytic Antibody",
+      "zh": "靶向Claudin 18.2的细胞溶解抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194108": {
+      "en": "Colony Stimulating Factor-1 Receptor Blocker",
+      "zh": "集落刺激因子1受体阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194109": {
+      "en": "Complement C5 Inhibitor",
+      "zh": "补体C5抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194111": {
+      "en": "Complement Factor B Inhibitor",
+      "zh": "补体因子B抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194113": {
+      "en": "Complement Factor D Inhibitor",
+      "zh": "补体因子D抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194115": {
+      "en": "Gamma Secretase Inhibitor",
+      "zh": "γ分泌酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194118": {
+      "en": "Interleukin-15 Receptor Agonist",
+      "zh": "白细胞介素15受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194121": {
+      "en": "Interleukin-31 Receptor alpha Antagonist",
+      "zh": "白细胞介素31受体α拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194123": {
+      "en": "Melanoma-associated Antigen A4-directed Genetically Modified Autologous T Cell Immunotherapy",
+      "zh": "靶向黑色素瘤相关抗原A4的基因修饰自体T细胞免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194124": {
+      "en": "Nitric Oxide Releasing Agent",
+      "zh": "一氧化氮释放剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194125": {
+      "en": "Oligonucleotide Telomerase Inhibitor",
+      "zh": "寡核苷酸端粒酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194127": {
+      "en": "Peroxisome Proliferator-activated Receptor delta Agonist",
+      "zh": "过氧化物酶体增殖物激活受体δ激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194128": {
+      "en": "Peroxisome Proliferator-activated Receptor Agonist",
+      "zh": "过氧化物酶体增殖物激活受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194131": {
+      "en": "Thyroid Hormone Receptor beta Agonist",
+      "zh": "甲状腺激素受体β激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194134": {
+      "en": "Transthyretin Stabilizer",
+      "zh": "转甲状腺素蛋白稳定剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194136": {
+      "en": "Potassium-competitive Acid Blocker",
+      "zh": "钾离子竞争性酸阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194137": {
+      "en": "Bispecific HER2-directed Antibody",
+      "zh": "靶向HER2的双特异性抗体",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194139": {
+      "en": "Menin Inhibitor",
+      "zh": "Menin蛋白抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194141": {
+      "en": "Sodium Channel Blocker",
+      "zh": "钠通道阻滞剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194142": {
+      "en": "Triazaacenaphthylene Bacterial Type II Topoisomerase Inhibitor",
+      "zh": "三氮杂苊类细菌II型拓扑异构酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194144": {
+      "en": "APOC-III-directed RNA Interaction",
+      "zh": "靶向载脂蛋白C-III的RNA相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194145": {
+      "en": "Allogeneic Dermal Fibroblast Cell Therapy",
+      "zh": "异体真皮成纤维细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194146": {
+      "en": "Allogeneic Epidermal Keratinocyte Cell Therapy",
+      "zh": "异体表皮角质形成细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194148": {
+      "en": "Antithrombin-directed RNA Interaction",
+      "zh": "靶向抗凝血酶的RNA相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194149": {
+      "en": "Autologous Chondrocyte Cell Therapy",
+      "zh": "自体软骨细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194150": {
+      "en": "Autologous Fibroblast Cell Therapy",
+      "zh": "自体成纤维细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194151": {
+      "en": "Corticotropin-releasing Factor Type 1 Receptor Antagonist",
+      "zh": "促肾上腺皮质激素释放因子1型受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194156": {
+      "en": "Renal Tubular Transport Inhibitor",
+      "zh": "肾小管转运抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194157": {
+      "en": "Respiratory Syncytial Virus mRNA Vaccine",
+      "zh": "呼吸道合胞病毒mRNA疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194159": {
+      "en": "Tick-Borne Encephalitis Vaccine",
+      "zh": "蜱传脑炎疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194160": {
+      "en": "Tissue Factor Pathway Inhibitor Antagonist",
+      "zh": "组织因子途径抑制物拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194163": {
+      "en": "Acellular Tissue Engineered Vessel",
+      "zh": "无细胞组织工程血管",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194164": {
+      "en": "Allogeneic Bone Marrow-derived Mesenchymal Stromal Cell Therapy",
+      "zh": "异体骨髓来源间充质基质细胞治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194166": {
+      "en": "Bispecific B Cell Maturation Antigen-directed CD3 T Cell Engager",
+      "zh": "靶向B细胞成熟抗原和CD3的双特异性T细胞衔接器",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194168": {
+      "en": "Pneumococcal 21-valent Conjugate Vaccine",
+      "zh": "21价肺炎球菌结合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194170": {
+      "en": "Protease Activator",
+      "zh": "蛋白酶激活剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194172": {
+      "en": "TRPM8 Thermoreceptor Agonist",
+      "zh": "TRPM8温度感受受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194175": {
+      "en": "Adsorbed Bacillus Anthracis Vaccine",
+      "zh": "吸附炭疽杆菌疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194176": {
+      "en": "Adsorbed Diphtheria and Tetanus Toxoids, Acellular Pertussis, Inactivated Poliovirus, Haemophilus B Conjugate and Hepatitis B Vaccine",
+      "zh": "吸附白喉和破伤风类毒素、无细胞百日咳、灭活脊髓灰质炎、b型流感嗜血杆菌结合及乙肝联合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194177": {
+      "en": "Adsorbed Diphtheria and Tetanus Toxoids, Acellular Pertussis, Inactivated Poliovirus, and Haemophilus B Conjugate Vaccine",
+      "zh": "吸附白喉和破伤风类毒素、无细胞百日咳、灭活脊髓灰质炎及b型流感嗜血杆菌结合联合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194178": {
+      "en": "Adsorbed Diphtheria and Tetanus Toxoids, Acellular Pertussis, Recombinant Hepatitis B, and Inactivated Poliovirus Vaccine",
+      "zh": "吸附白喉和破伤风类毒素、无细胞百日咳、重组乙肝及灭活脊髓灰质炎联合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194179": {
+      "en": "Adsorbed Diphtheria and Tetanus Toxoids, Acellular Pertussis, and Inactivated Poliovirus Vaccine",
+      "zh": "吸附白喉和破伤风类毒素、无细胞百日咳及灭活脊髓灰质炎联合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194180": {
+      "en": "Adsorbed Diphtheria and Tetanus Toxoids, and Acellular Pertussis Vaccine",
+      "zh": "吸附白喉和破伤风类毒素及无细胞百日咳联合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194181": {
+      "en": "Conjugate Meningococcal Groups A, C, Y, and W Vaccine",
+      "zh": "A、C、Y、W群脑膜炎球菌结合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194182": {
+      "en": "Live Attenuated Chikungunya Vaccine",
+      "zh": "基孔肯雅减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194183": {
+      "en": "Live Attenuated Cholera Vaccine",
+      "zh": "霍乱减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194184": {
+      "en": "Live Attenuated Dengue Tetravalent Vaccine",
+      "zh": "四价登革热减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194185": {
+      "en": "Live Attenuated Measles, Mumps, Rubella and Varicella Virus Vaccine",
+      "zh": "麻疹、腮腺炎、风疹及水痘病毒减毒活联合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194186": {
+      "en": "Live Attenuated Measles, Mumps, and Rubella Virus Vaccine",
+      "zh": "麻疹、腮腺炎及风疹病毒减毒活联合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194187": {
+      "en": "Live Attenuated Quadrivalent Influenza Vaccine",
+      "zh": "四价流感减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194188": {
+      "en": "Live Attenuated Recombinant Ebola Zaire Vaccine",
+      "zh": "重组扎伊尔埃博拉减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194189": {
+      "en": "Live Attenuated Rotavirus Pentavalent Vaccine",
+      "zh": "五价轮状病毒减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194190": {
+      "en": "Live Human Adenovirus Type 4 and Type 7 Vaccine",
+      "zh": "人腺病毒4型及7型活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194191": {
+      "en": "Live Non-replicating Smallpox and Mpox Vaccine",
+      "zh": "非复制型天花及猴痘活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194192": {
+      "en": "Pneumococcal 13-valent Conjugate Vaccine",
+      "zh": "13价肺炎球菌结合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194193": {
+      "en": "Pneumococcal 15-valent Conjugate Vaccine",
+      "zh": "15价肺炎球菌结合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194194": {
+      "en": "Pneumococcal 20-valent Conjugate Vaccine",
+      "zh": "20价肺炎球菌结合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194195": {
+      "en": "Pneumococcal 23-valent Polysaccharide Vaccine",
+      "zh": "23价肺炎球菌多糖疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194196": {
+      "en": "Recombinant Chikungunya Virus-like Particle Vaccine",
+      "zh": "重组基孔肯雅病毒样颗粒疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194197": {
+      "en": "Recombinant Human Papillomavirus Virus-like Particle 9-valent Vaccine",
+      "zh": "九价重组人乳头瘤病毒样颗粒疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194198": {
+      "en": "Recombinant Human Papillomavirus Virus-like Particle Bivalent Vaccine",
+      "zh": "二价重组人乳头瘤病毒样颗粒疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194199": {
+      "en": "Recombinant Human Papillomavirus Virus-like Particle Quadrivalent Vaccine",
+      "zh": "四价重组人乳头瘤病毒样颗粒疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194200": {
+      "en": "Recombinant Meningococcal Group B Vaccine",
+      "zh": "重组B群脑膜炎球菌疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194201": {
+      "en": "Recombinant Meningococcal Groups A, B, C, W, and Y Conjugate Vaccine",
+      "zh": "重组A、B、C、W、Y群脑膜炎球菌结合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194202": {
+      "en": "Allogeneic Encapsulated Cell-Based Gene Therapy",
+      "zh": "异体包裹细胞基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194203": {
+      "en": "Autologous Cell Sheet-based Gene Therapy",
+      "zh": "自体细胞片基因治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194204": {
+      "en": "Mitochondrial Cardiolipin Binder",
+      "zh": "线粒体心磷脂结合剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194206": {
+      "en": "Pyrimidine Nucleoside",
+      "zh": "嘧啶核苷",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194208": {
+      "en": "Somatostatin Receptor Agonist",
+      "zh": "生长抑素受体激动剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194210": {
+      "en": "Haemophilus B Conjugate Vaccine",
+      "zh": "b型流感嗜血杆菌结合疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194211": {
+      "en": "Live Attenuated Salmonella Typhi Ty21a Vaccine",
+      "zh": "伤寒沙门菌Ty21a减毒活疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194212": {
+      "en": "Prekallikrein-directed RNA Interaction",
+      "zh": "靶向前激肽释放酶的RNA相互作用制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194213": {
+      "en": "Salmonella Typhi Vi Polysaccharide Vaccine",
+      "zh": "伤寒沙门菌Vi多糖疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194214": {
+      "en": "Interleukin-23 Receptor Antagonist",
+      "zh": "白细胞介素23受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194217": {
+      "en": "Non-replicating Adenoviral Vector-based Immunotherapy",
+      "zh": "非复制型腺病毒载体免疫治疗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194218": {
+      "en": "A Proliferation Inducing Ligand Blocker",
+      "zh": "增殖诱导配体（APRIL）阻断剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194220": {
+      "en": "Aldosterone Synthase Inhibitor",
+      "zh": "醛固酮合成酶抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194227": {
+      "en": "Glucocorticoid Receptor Antagonist",
+      "zh": "糖皮质激素受体拮抗剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194228": {
+      "en": "Heterobifunctional Protein Degrader",
+      "zh": "异双功能蛋白降解剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194230": {
+      "en": "Norepinephrine, Dopamine and Serotonin Reuptake Inhibitor",
+      "zh": "去甲肾上腺素、多巴胺和5-羟色胺再摄取抑制剂",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    },
+    "N0000194233": {
+      "en": "Recombinant Zoster Virus Vaccine",
+      "zh": "重组带状疱疹病毒疫苗",
+      "match_basis": "project_translation_of_exact_rxclass_id_and_english_label"
+    }
+  }
+}

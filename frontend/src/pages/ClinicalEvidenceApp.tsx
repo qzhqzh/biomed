@@ -21,6 +21,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { ErrorMessage, NoData, Status } from "@/components/curation/Common";
+import { useUnsavedChanges } from "@/lib/navigation";
 import {
   curation,
   date,
@@ -46,6 +47,7 @@ export default function ClinicalEvidenceApp() {
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
+  useUnsavedChanges(Boolean(reason.trim()) || (signIn && Boolean(password)), "证据页面还有未提交的备注或登录输入。");
   const list = useCuration<{ total: number; results: ClinicalEvidence[] }>(
     `evidence/?status=${scope}&q=${encodeURIComponent(query)}&offset=${offset}`,
   );
@@ -76,7 +78,7 @@ export default function ClinicalEvidenceApp() {
     setError("");
     try {
       await curation("session/", { method: "DELETE" });
-      session.refresh();
+      window.location.reload();
     } catch (err) {
       setError((err as Error).message);
     } finally {

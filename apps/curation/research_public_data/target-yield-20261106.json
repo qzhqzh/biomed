@@ -1,0 +1,201 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "target-yield-20261106",
+  "title": "029 · 五篇分子临床文献：独立兼容知识2→4",
+  "date": "2026-11-06T16:40:00+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 5,
+  "sample_unit": "篇文献（五个固定片段组）",
+  "summary": "同5篇、6条关系，独立目标兼容知识2→4，净新增2条诊断证据；新增治疗证据0条。关系推理76.45→82.53秒。只读研究文件与离线包，未写候选运行库或tumor_api。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "target-yield-five-v1",
+    "sample_versions": [
+      "98005d110bd1044ec0de64dec082ab14fcb74e22232efecc10ba811d7b12a882",
+      "98005d110bd1044ec0de64dec082ab14fcb74e22232efecc10ba811d7b12a882",
+      "664c302b966e5b85cb98c40963177ba6aaf90ca7d326afad1ebe037cedf66e48"
+    ],
+    "method_versions": [
+      "6cc0b4cce094c6562013bd2f1bd0c347a94d6f04587cdd15290e1e1fa68c01ee",
+      "11aab68c70e3c2edb8dad7b7fbc74a52a589169c8c64f895d91686eb39bc10ef",
+      "44f80444177b333a69bb9c915f9e60759be0d5cbb6dea6b7e435faec76baf86b"
+    ],
+    "reference_versions": [
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737",
+      "602aec1e8c0fb15673989d184944f2b4c799bf1fbeeb9d2c5e7892a14696ed82",
+      "a77fa056c8fec4b8a6e7140617beb1c3048d1d4a9881ccdee01ba00416aefd1c"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "优先修复选文和必要适配缺口，能否提高真正符合目标字段及原文的独立知识产出？",
+    "outputs": [
+      "四组消融：2/3/2/4条独立兼容知识",
+      "两条新增诊断证据的真实目标ID、字段和文章／段落来源",
+      "逐条核读、真实推理计时及95条历史回归"
+    ],
+    "not_measured": [
+      "随机留出集准确率和全库召回率",
+      "全文全量知识覆盖及五篇完整流水线速度",
+      "生产serializer、实时目标字典和真实患者匹配"
+    ]
+  },
+  "dataset": {
+    "label": "固定5篇分子临床开发样本",
+    "role": "development_regression",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "原文逐条核读＋真实目标只读合同",
+    "status": "model_reference_not_human_gold",
+    "note": "Codex核读：通过知识2/2→4/4均受原文支持，不外推全库准确率；六条中FGFR3保留必要条件不完整。H3编号差异及SS18未知融合伙伴保留，未升级诊断或治疗强度。"
+  },
+  "methods": [
+    {
+      "id": "baseline-legacy",
+      "label": "现行提示词＋现行适配",
+      "version": "baseline-legacy",
+      "conclusion": "同输入消融，模型与事实原文保持。",
+      "metrics": [
+        {
+          "label": "独立目标兼容知识",
+          "value": 2,
+          "unit": "条",
+          "note": "同五篇；不把重复终点拆分为新增知识。"
+        },
+        {
+          "label": "本次新增独立知识",
+          "value": 0,
+          "unit": "条",
+          "note": "排除两条既有治疗对照。新增均为诊断证据。"
+        },
+        {
+          "label": "同组关系推理",
+          "value": 76.45,
+          "unit": "秒",
+          "note": "同GPU0、Bonsai权重；配同一提示词的两种适配器复用输出，不重复累计。"
+        },
+        {
+          "label": "脚本适配",
+          "value": 0.458,
+          "unit": "秒",
+          "note": "单次脚本回放计时，不代表全流水线吞吐。"
+        }
+      ]
+    },
+    {
+      "id": "baseline-clinical",
+      "label": "仅补诊断适配与实体对应",
+      "version": "baseline-clinical",
+      "conclusion": "同输入消融，模型与事实原文保持。",
+      "metrics": [
+        {
+          "label": "独立目标兼容知识",
+          "value": 3,
+          "unit": "条",
+          "note": "同五篇；不把重复终点拆分为新增知识。"
+        },
+        {
+          "label": "本次新增独立知识",
+          "value": 1,
+          "unit": "条",
+          "note": "排除两条既有治疗对照。新增均为诊断证据。"
+        },
+        {
+          "label": "同组关系推理",
+          "value": 76.45,
+          "unit": "秒",
+          "note": "同GPU0、Bonsai权重；配同一提示词的两种适配器复用输出，不重复累计。"
+        },
+        {
+          "label": "脚本适配",
+          "value": 0.259,
+          "unit": "秒",
+          "note": "单次脚本回放计时，不代表全流水线吞吐。"
+        }
+      ]
+    },
+    {
+      "id": "focused-legacy",
+      "label": "仅补诊断抽取要求",
+      "version": "focused-legacy",
+      "conclusion": "同输入消融，模型与事实原文保持。",
+      "metrics": [
+        {
+          "label": "独立目标兼容知识",
+          "value": 2,
+          "unit": "条",
+          "note": "同五篇；不把重复终点拆分为新增知识。"
+        },
+        {
+          "label": "本次新增独立知识",
+          "value": 0,
+          "unit": "条",
+          "note": "排除两条既有治疗对照。新增均为诊断证据。"
+        },
+        {
+          "label": "同组关系推理",
+          "value": 82.53,
+          "unit": "秒",
+          "note": "同GPU0、Bonsai权重；配同一提示词的两种适配器复用输出，不重复累计。"
+        },
+        {
+          "label": "脚本适配",
+          "value": 0.243,
+          "unit": "秒",
+          "note": "单次脚本回放计时，不代表全流水线吞吐。"
+        }
+      ]
+    },
+    {
+      "id": "focused-clinical",
+      "label": "诊断抽取＋诊断适配（采用）",
+      "version": "focused-clinical",
+      "conclusion": "两项修复各有独立收益，合用新增2条；新增治疗证据仍为0。",
+      "metrics": [
+        {
+          "label": "独立目标兼容知识",
+          "value": 4,
+          "unit": "条",
+          "note": "同五篇；不把重复终点拆分为新增知识。"
+        },
+        {
+          "label": "本次新增独立知识",
+          "value": 2,
+          "unit": "条",
+          "note": "排除两条既有治疗对照。新增均为诊断证据。"
+        },
+        {
+          "label": "同组关系推理",
+          "value": 82.53,
+          "unit": "秒",
+          "note": "同GPU0、Bonsai权重；配同一提示词的两种适配器复用输出，不重复累计。"
+        },
+        {
+          "label": "脚本适配",
+          "value": 0.281,
+          "unit": "秒",
+          "note": "单次脚本回放计时，不代表全流水线吞吐。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "在批次边界将已验证诊断配置接入常驻流程，保持历史方法可重放。",
+    "仅针对实际阻止目标使用的事件集合和必要条件补齐；先不扩展模型或训练。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/target-yield-20261106.json",
+      "sha256": "c1152f1a9d98c8daa11cecfa19073ac38591c8ab11d87cf683cb1fa8ab051615"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "052a532154b370b4eef94c6ba404eac8c551c649b0f944dbd2116c11342c36b5",
+  "content_sha256": "c8355aaad8f731418a408b159aef36ef519b57a4162ab3bc2836cf4bb69b6f28"
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "qwen-multi-axis-20261016",
+  "title": "Qwen3-1.7B v1：范围与多标签联合输出",
+  "date": "2026-10-16",
+  "stage": "classification",
+  "status": "evaluated",
+  "sample_count": 20,
+  "summary": "同一组开发样本 20 篇，整份输出合格且范围一致 6/20，结构及引句校验通过 17/20；没有训练。",
+  "identity": {
+    "task_version": "solid-tumor-decision-v1",
+    "sample_versions": [
+      "documented:solid-tumor-eval-v1/development-stratified20"
+    ],
+    "method_versions": [
+      "qwen3-1.7b-pilot-v1",
+      "multi_axis",
+      "solid-tumor-rules-v3"
+    ],
+    "reference_versions": [
+      "assistant_reviewed_provisional"
+    ],
+    "completeness": "documented_only"
+  },
+  "task": {
+    "question": "文章实际研究对象属于哪个肿瘤范围？",
+    "outputs": [
+      "实体瘤",
+      "血液肿瘤",
+      "实体/血液混合",
+      "实体/良性或癌前边界",
+      "良性",
+      "癌前线索",
+      "待判定",
+      "器官、组织学、研究类型、主题、人群候选标签"
+    ],
+    "not_measured": [
+      "癌种/器官等多标签轴的准确率",
+      "全文证据抽取质量",
+      "临床有效性"
+    ]
+  },
+  "dataset": {
+    "label": "原 60 篇开发集的 5 个抽样层各取 4 篇",
+    "role": "development"
+  },
+  "reference": {
+    "label": "助手逐篇暂定核读参考",
+    "status": "assistant_reviewed_provisional",
+    "note": "非人工金标准；没有第二位独立标注者，不能解释为临床准确率。"
+  },
+  "methods": [
+    {
+      "id": "rules",
+      "label": "同样本规则 v3",
+      "version": "solid-tumor-rules-v3",
+      "conclusion": "保留为相同样本基线；本轮未单独测速。",
+      "metrics": [
+        {
+          "label": "范围一致",
+          "numerator": 19,
+          "denominator": 20,
+          "note": "开发样本及助手暂定参考，不代表全库正确率。"
+        }
+      ]
+    },
+    {
+      "id": "qwen",
+      "label": "Qwen3-1.7B v1",
+      "version": "qwen3-1.7b-pilot-v1 / multi_axis",
+      "conclusion": "16 篇输出泛癌类型未定；3 份输出因非法标签/角色或引句不合格被拒。",
+      "metrics": [
+        {
+          "label": "整份合格且范围一致",
+          "numerator": 6,
+          "denominator": 20,
+          "note": "输出失败保留在分母，不能解释为所有原始文字判断都错。"
+        },
+        {
+          "label": "结构及引句校验通过",
+          "numerator": 17,
+          "denominator": 20,
+          "note": "仅协议通过率，不是语义正确率。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 201.6,
+          "unit": "秒",
+          "note": "不含加载、排队和参考标注。"
+        },
+        {
+          "label": "平均推理耗时",
+          "value": 10.08,
+          "unit": "秒/篇",
+          "note": "包含失败输出的 20 次尝试，不是端到端吞吐。"
+        },
+        {
+          "label": "峰值显存分配",
+          "value": 3687.4,
+          "unit": "MiB",
+          "note": "物理 GPU 3，FP16，仅本地推理。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "拆开主分类与附加标签校验；先查提示词、解码与格式约束，再讨论后训练。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/qwen-multi-axis-20261016.json",
+      "sha256": "32cd234b2f07e739643e9250e7be2e6c70358ef43fe8276578788ee135639223"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "2b5aaa2704c6970634584c9e5e62baf59bc52fce78e88fb5c4d6d02af03e5f08",
+  "content_sha256": "62b612e372e8dcf20f4b97824c8940bb62f7f85e41ef625e3059c7bb38ffcccc"
+}

@@ -1,0 +1,260 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "summary-ablation-20261029",
+  "title": "014 · 概括是否帮助结构化抽取",
+  "date": "2026-10-29T19:28:15+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同15组仅去掉概括：共同字段可用13/15→12/15，药物与癌种关联均15/15，推理耗时减少17%。未发现概括普遍有害，暂保留为辅助解释，英文原文单独保存。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "summary-ablation-evaluation-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "58f20161bd46ac0f5397477818083349ec24b82037c31fb133b878c59e7600a5",
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8"
+    ],
+    "method_versions": [
+      "28b3d0e693e8e6a46014e312de740f9f4217f15006856d386ae671e13ff6c4d4",
+      "c9ccffa7ed987165b8c2575764ab26411cabad910fbdd618d28e0e01f284cf17",
+      "23ceaeb56599e05085880963b093170cff041e4f67ea7376f279be744e8582bf",
+      "5f101c90300a0975a86f902c804218e11131551d5ca40bb2aa0ebf6bc106a3cf"
+    ],
+    "reference_versions": [
+      "a7bad1b52187719754bfe2b8b4d1bdf91473859afe46a96c87ae0d362a976265",
+      "a9113d632264dc54c6a5b45da0f2fa4bf5b173884921c7458066ec1a29a53138"
+    ]
+  },
+  "task": {
+    "question": "同15组、同9B，保留或取消概括字段如何影响共同结构字段的可用性、错误与成本？",
+    "outputs": [
+      "共同结构字段双臂审核及配对四格",
+      "错误类型、输出tokens、耗时与显存",
+      "15组英文原文与双臂完整原始输出"
+    ],
+    "not_measured": [
+      "全库效果与独立临床准确率",
+      "人工审核耗时",
+      "生产知识库导入"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇15组开发回归集",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "Astra冻结共同字段参考与双臂审核",
+    "status": "model_reference_not_human_gold",
+    "note": "原始英文为依据，概括不作为共同字段的支持证据；不是人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "with_summary",
+      "label": "有概括（复用012）",
+      "version": "summary-ablation-evaluation-v1",
+      "conclusion": "同5篇15组开发样本；共同字段审核与概括本身诊断分开。",
+      "metrics": [
+        {
+          "label": "共同字段核心可用",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "Astra依据英文原文评共同字段，不使用概括证明这些字段。"
+        },
+        {
+          "label": "核心可用且聚焦ANCHOR",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "核心可用并且完成目标段落任务。"
+        },
+        {
+          "label": "严格结构通过",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "原始输出满足共同字段结构，无格式包装。"
+        },
+        {
+          "label": "诊断后核心就绪",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "同样的格式、名称大小写、附加ID诊断后，结构与核心语义均通过。"
+        },
+        {
+          "label": "药物身份与角色",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "不适用 0 组；不适用项不计为失败。"
+        },
+        {
+          "label": "实体类型纯度",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "不适用 0 组；不适用项不计为失败。"
+        },
+        {
+          "label": "数值、条件与场景绑定",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "不适用 0 组；不适用项不计为失败。"
+        },
+        {
+          "label": "输出tokens",
+          "value": 6571,
+          "unit": "tokens",
+          "note": "同15组实测总量。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 616.03,
+          "unit": "秒",
+          "note": "不含载入、预热、Astra审核；每臂一次实测，不能外推全库。"
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 20150.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；不等于模型权重大小。"
+        }
+      ]
+    },
+    {
+      "id": "without_summary",
+      "label": "无概括（本轮）",
+      "version": "summary-ablation-evaluation-v1",
+      "conclusion": "同5篇15组开发样本；共同字段审核与概括本身诊断分开。",
+      "metrics": [
+        {
+          "label": "共同字段核心可用",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "Astra依据英文原文评共同字段，不使用概括证明这些字段。"
+        },
+        {
+          "label": "核心可用且聚焦ANCHOR",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "核心可用并且完成目标段落任务。"
+        },
+        {
+          "label": "严格结构通过",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "原始输出满足共同字段结构，无格式包装。"
+        },
+        {
+          "label": "诊断后核心就绪",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "同样的格式、名称大小写、附加ID诊断后，结构与核心语义均通过。"
+        },
+        {
+          "label": "药物身份与角色",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "不适用 0 组；不适用项不计为失败。"
+        },
+        {
+          "label": "实体类型纯度",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "不适用 0 组；不适用项不计为失败。"
+        },
+        {
+          "label": "数值、条件与场景绑定",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "不适用 0 组；不适用项不计为失败。"
+        },
+        {
+          "label": "输出tokens",
+          "value": 5527,
+          "unit": "tokens",
+          "note": "同15组实测总量。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 511.28,
+          "unit": "秒",
+          "note": "不含载入、预热、Astra审核；每臂一次实测，不能外推全库。"
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 20106.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；不等于模型权重大小。"
+        }
+      ]
+    },
+    {
+      "id": "paired-common-core",
+      "label": "共同字段核心可用：配对四格",
+      "version": "summary-ablation-evaluation-v1",
+      "conclusion": "同组对照，只反映本批样本，不宣称全库效果。",
+      "metrics": [
+        {
+          "label": "两臂均可用",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "组别：K01、K02、K03、K04、K05、K06、K07、K08、K09、K10、K11、K13"
+        },
+        {
+          "label": "仅有概括可用",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "组别：K14"
+        },
+        {
+          "label": "仅无概括可用",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "组别：无"
+        },
+        {
+          "label": "两臂均不可用",
+          "numerator": 2,
+          "denominator": 15,
+          "note": "组别：K12、K15"
+        }
+      ]
+    },
+    {
+      "id": "baseline-statement-diagnostic",
+      "label": "旧概括自身诊断",
+      "version": "summary-ablation-evaluation-v1",
+      "conclusion": "概括自身有据与结构字段正确是两项指标；冲突本身不是因果证据。",
+      "metrics": [
+        {
+          "label": "概括本身有原文支持",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "仅为15条概括自身诊断；不证明概括帮助或导致共同字段错误。"
+        },
+        {
+          "label": "概括与共同字段冲突组数",
+          "value": 2,
+          "unit": "组"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "暂保留概括作为辅助解释，不能当证据原文；核心证据保持英文原句和完整上下文。",
+    "优先研究减少非必需条件的自由重写，保留真实否定、联合/先后关系和证据背景；不追加默认全量模型修订链。",
+    "后续在未见文献验证取舍；暂不微调，不因乳腺癌主题自动认为人体证据，也不自行排除全部临床前资料。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/summary-ablation-20261029.json",
+      "sha256": "70281f0b5a307f5171af263d2647113df50b591ed05abc9d233b21fa2e3b366e"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "a81f0b6144c94194f843a34d526ccdca0c8839b81d2e30c87432eddd63a01d26",
+  "content_sha256": "e152187545b5b9686c41c7f8ed74f969e8ea3f6c3e39d64a4947d7491771efd9"
+}

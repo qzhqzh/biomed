@@ -1,0 +1,145 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "fusion-independent-20261113-progress-v2",
+  "title": "039 · 五篇融合验证与目标身份碰撞（进行中）",
+  "date": "2026-11-13T03:48:11.469821+00:00",
+  "stage": "knowledge",
+  "status": "unscored",
+  "sample_count": 5,
+  "sample_unit": "篇文献",
+  "summary": "已有 1 条诊断结构隔离预览；发现目标实体同名多 ID，3 篇新文献仍在处理。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "fusion-independent-progress-v2",
+    "sample_versions": [
+      "c06fcfd0851e360c17728a11236f392d88aaf7b7f8d397b90a4d7cd883f73257",
+      "2098bd63f76b19d0b0dee527da77fb7810322e7a349544de5c54f19c2b07c3fd"
+    ],
+    "method_versions": [
+      "ffe367325b4e20ca067495404b3917b6c9336eba7839f0dcab2e67d27038eea5",
+      "a9d5c883f9761e0a025fee7cf63b9e6b5bc9d7cbedf3fbbdd2d70027bc03277f",
+      "0ab928f1c768d461bb893a491f088051c4c368aad4b25f797397cf7e4aff72de"
+    ],
+    "reference_versions": [
+      "052f9289a453574ee99ee75d4f38cac871e0a33318fb0d8f278cbb78c1433067",
+      "94acc9ad6d82f71b909d8ace58dd97172abd84d4b35cce4a1ecda0df1fc100d6",
+      "a2a6bab0d83b2ba7205f7dee84c5cb79419b2cd6fab4f151821d0445805ee4a2",
+      "074f1c0ee031237bbf05a6b780a965c947150823d32dbb2bb9ae92ade68c6e33",
+      "2643c07a9c6b000188a72aeccb2f56ef05ca7ba1e7a33b7d4b9d016e5450340f",
+      "a89bbda9ea8cbd10c3e05b418c81ff87dabe501d1c4f64b7322e8da387a0cca1"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "融合知识能否安全用于目标证据中心，哪些条件或来源会造成误收？",
+    "outputs": [
+      "5 篇 Astra 原文参考",
+      "旧候选对照",
+      "目标隔离诊断匹配",
+      "全文发现锁恢复",
+      "目标药物名称碰撞与标准成分覆盖"
+    ],
+    "not_measured": [
+      "3 篇新全文的完整 9B／关系模型输出",
+      "五篇完整端到端新增数",
+      "新诊断规则在独立正例上的效果",
+      "生产患者或临床报告适用性"
+    ]
+  },
+  "dataset": {
+    "label": "5 篇融合相关全文；目的性样本",
+    "role": "independent_sources_then_development",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "Astra 来源参考与目标隔离运行",
+    "status": "model_reference_not_human_gold",
+    "note": "88 处原文引用已逐字核对；目标测试使用合成样本。"
+  },
+  "methods": [
+    {
+      "id": "source",
+      "label": "来源与 4B 文献分类",
+      "version": "fusion-independent-freeze-v1",
+      "conclusion": "5 篇来源已固定；后续逐步比较抽取和目标映射。",
+      "metrics": [
+        {
+          "label": "新增文献的实体瘤分类",
+          "numerator": 3,
+          "denominator": 3,
+          "note": "Astra 参考均为人体实体瘤病例；目的性样本，不能推断全库准确率。"
+        },
+        {
+          "label": "来源参考逐字引用",
+          "value": "88 处",
+          "unit": "",
+          "note": "定位正确不单独证明语义正确。"
+        }
+      ]
+    },
+    {
+      "id": "diagnostic",
+      "label": "诊断融合映射开发",
+      "version": "biomed.source-fusion-diagnostic-preview.v2",
+      "conclusion": "1 条诊断结构已隔离保存并精确匹配；未进入目标生产。",
+      "metrics": [
+        {
+          "label": "旧适配器离线通过",
+          "numerator": 0,
+          "denominator": 65,
+          "note": "仅两篇既有文献的候选。"
+        },
+        {
+          "label": "诊断结构预览",
+          "numerator": 1,
+          "denominator": 65,
+          "note": "看过病例后开发；核心获 Astra 支持，完整预览部分支持。"
+        },
+        {
+          "label": "目标合成反例未命中",
+          "numerator": 5,
+          "denominator": 5,
+          "note": "反向伙伴、不同伙伴、错误癌种、缺失伙伴和错误类别。"
+        }
+      ]
+    },
+    {
+      "id": "target-identity",
+      "label": "目标药物名称与标准成分",
+      "version": "target-name-collisions-v1",
+      "conclusion": "同一成分可能对应多个历史目标 ID，当前保留歧义和全部引用，不自动新建或选择。",
+      "metrics": [
+        {
+          "label": "同名目标药物检索词",
+          "value": "42 个",
+          "unit": "",
+          "note": "在 501 个条目的冻结快照中统计；同名不必然是同一实体。"
+        },
+        {
+          "label": "重复英文名有唯一精确 RxNorm 成分",
+          "numerator": 23,
+          "denominator": 38,
+          "note": "仅完整英文名的精确比较，不能仅据此自动合并目标 ID。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "等待 3 篇新文献的模型抽取及结构对照完成，逐条对照 Astra 和原文并按独立事实去重。",
+    "验证目标身份多 ID 的消费和查重方式，确认后再决定是否用于自动映射。",
+    "观察下一次夜间全文发现任务的实际锁等待和游标进度。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/fusion-independent-20261113-progress-v2.json",
+      "sha256": "6e55181a9b00aa60a96e1ae4b26c4aa5951e29aa950b43a4ee06669cf302c17a"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "5cb5cb567034a95396676a280a4908b732a6e5f8457294f1870c578cd4fb2648",
+  "content_sha256": "ab289333b41803b3f5ee9786388ecde9f92bf4a3ef31a5d8cab58b095b3f5eef"
+}

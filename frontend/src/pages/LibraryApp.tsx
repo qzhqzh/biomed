@@ -23,7 +23,9 @@ import {
 } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import { MaterialProcessing } from "@/components/curation/MaterialProcessing";
+import { LiteratureCollectionPanel } from "@/components/curation/LiteratureCollection";
 import { ErrorMessage, NoData, Status } from "@/components/curation/Common";
+import { useUnsavedChanges } from "@/lib/navigation";
 import {
   curation,
   date,
@@ -35,6 +37,7 @@ import {
 } from "@/lib/curation";
 
 type Article = { pmid: string; title: string; journal: string; date: string };
+type MaterialSummary = Omit<Material, "metadata">;
 const CATEGORIES = {
   all: "全部",
   paper: "文献",
@@ -66,6 +69,7 @@ export default function LibraryApp() {
   const [uploadOpen, setUploadOpen] = useState(false);
   const [uploadMaterial, setUploadMaterial] = useState<string | null>(null);
   const [title, setTitle] = useState("");
+  const [initialUploadTitle, setInitialUploadTitle] = useState("");
   const [kind, setKind] = useState("paper");
   const [startParse, setStartParse] = useState(true);
   const [rights, setRights] = useState("");
@@ -74,19 +78,20 @@ export default function LibraryApp() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  useUnsavedChanges(uploadOpen && Boolean(file || title !== initialUploadTitle || rights || busy), "PDF 上传表单还有未保存的内容。");
   const list = useCuration<{
     total: number;
     counts: Record<string, number>;
-    results: Material[];
+    counts_as_of?: string;
+    results: MaterialSummary[];
   }>(
-    `materials/?offset=${offset}${category !== "all" ? `&kind=${category}` : ""}`,
-    7000,
+    `materials/?summary=1&offset=${offset}${category !== "all" ? `&kind=${category}` : ""}`,
   );
   const detail = useCuration<MaterialDetail>(
     selected
       ? `materials/${selected}/?offset=${passageOffset}${version ? `&version=${version}` : ""}`
       : null,
-    7000,
+    30000,
   );
   const searchJob = useCuration<Work>(
     searchId ? `workflows/${searchId}/` : null,
@@ -108,7 +113,7 @@ export default function LibraryApp() {
     document.title = `${value === "guideline" ? "指南管理" : value === "paper" ? "文献管理" : "文本资料"} · biomed`;
     history.replaceState(null, "", url);
   }
-  function openMaterial(material: Material | null) {
+  function openMaterial(material: MaterialSummary | null) {
     setSelected(material?.id ?? null);
     setVersion("");
     setPassageOffset(0);
@@ -191,11 +196,12 @@ export default function LibraryApp() {
       setBusy(false);
     }
   }
-  function startUpload(material?: Material) {
+  function startUpload(material?: MaterialSummary) {
     const uploadKind =
       material?.kind ?? (category === "all" ? "paper" : category);
     setUploadMaterial(material?.id ?? null);
     setTitle(material?.title ?? "");
+    setInitialUploadTitle(material?.title ?? "");
     setKind(uploadKind);
     setStartParse(uploadKind === "paper");
     setConfirmed(false);
@@ -238,6 +244,10 @@ export default function LibraryApp() {
       }
     >
       <ErrorMessage error={error || list.error} />
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+        <span>资料列表按需读取{list.data?.counts_as_of ? ` · 数量统计于 ${date(list.data.counts_as_of)}` : ""}；采集仍在后台持续运行。</span>
+        <Button type="button" variant="outline" size="sm" onClick={list.refresh}>刷新资料列表</Button>
+      </div>
       <Tabs value={category} onValueChange={changeCategory}>
         <TabsList aria-label="资料分类">
           {Object.entries(CATEGORIES).map(([value, label]) => (
@@ -267,11 +277,15 @@ export default function LibraryApp() {
               className="rounded-lg bg-muted/50 p-5 md:p-6"
               aria-label="获取文献"
             >
-              <Tabs defaultValue="pmid">
+              <Tabs defaultValue="batch">
                 <TabsList>
+                  <TabsTrigger value="batch">批量实体瘤文献</TabsTrigger>
                   <TabsTrigger value="pmid">按 PMID 导入</TabsTrigger>
                   <TabsTrigger value="search">检索 PubMed</TabsTrigger>
                 </TabsList>
+                <TabsContent value="batch" className="mt-5">
+                  <LiteratureCollectionPanel />
+                </TabsContent>
                 <TabsContent value="pmid" className="mt-5">
                   <form
                     onSubmit={(event) => {

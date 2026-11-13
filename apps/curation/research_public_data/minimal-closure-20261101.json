@@ -1,0 +1,130 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "minimal-closure-20261101",
+  "title": "024 · 必要卡点修复与单篇知识闭环",
+  "date": "2026-11-01T08:35:43.290734+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 26,
+  "sample_unit": "入选片段",
+  "summary": "单篇26片段已保存：23条医学关系、3条待处理；50处参与引用归一，1194处原文可回查。修复两条关系类型、三条关键基因参与及慢查询，零新增模型调用。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "minimal-closure-engineering-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "d0f85cce7db529721d2d494a6fd3b4cca8d259f28a80336029a101d4ef822c0a"
+    ],
+    "method_versions": [
+      "1b3f2269aa583b1501dd4bfb1caaecd8d557b59ea8ca1d3f0fb6f5f66b2d5925",
+      "0f45a4a5716719d8d455d34409d1669b694c8eeedd9656c0172cee7a51b6c958"
+    ],
+    "reference_versions": [
+      "9b495e5b0928f566c69a9ded024ab8d962dc007a94856d65b5864d7a2ab2efd7",
+      "e433cd1205e684fa6ad13075a3441c6f31b30e5c5c9f199a78c857a8b4cc2c6e"
+    ]
+  },
+  "task": {
+    "question": "哪些卡点会妨碍文献知识实际保存、检索和溯源，修复后能否闭环？",
+    "outputs": [
+      "可检索的本地知识及确认实体",
+      "文章/段落两层溯源",
+      "独立质量结论与原始/派生版本"
+    ],
+    "not_measured": [
+      "全文知识召回率和全库无人值守推理",
+      "新盲测准确率或临床适用性",
+      "tumor_api生产导入"
+    ]
+  },
+  "dataset": {
+    "label": "一篇三阴性乳腺癌全文的26个既有入选片段",
+    "role": "篇级工程验证与定向修复",
+    "document_count": 1
+  },
+  "reference": {
+    "label": "独立助手原文核对与修复后定向复核",
+    "status": "assistant_reference_not_human_gold",
+    "note": "不是Astra或人工金标准；同篇修复后的23/23不能推为独立泛化准确率。质量结论在保存后单独登记。"
+  },
+  "methods": [
+    {
+      "id": "implemented",
+      "label": "9B实体 + Bonsai关系 + 有原文依据的脚本",
+      "version": "minimal-knowledge-assembly-v5 / source-entity-types-v2 / knowledge-structural-eligibility-v2",
+      "conclusion": "本地保存、归一、检索和两层出处已验证；保留现有模型，不增加概括或模型二次改写。",
+      "metrics": [
+        {
+          "label": "已保存原文片段记录",
+          "value": 26,
+          "note": "23条医学关系、3条非知识记录均保留。"
+        },
+        {
+          "label": "实际知识核心正确（修复后复核）",
+          "numerator": 23,
+          "denominator": 23,
+          "note": "同一篇开发样本，非新盲测或全库准确率。"
+        },
+        {
+          "label": "参与实体可用",
+          "numerator": 23,
+          "denominator": 23,
+          "note": "类型纠正后关键分子可用于关系检索。"
+        },
+        {
+          "label": "指定中心覆盖",
+          "numerator": 21,
+          "denominator": 23,
+          "note": "另2条来自支持段的正确事实，不算中心覆盖。"
+        },
+        {
+          "label": "癌种／药物参与引用归一",
+          "numerator": 50,
+          "denominator": 50,
+          "note": "含安全括号别名复用，不含治疗类别与基因的外部标准ID确认。"
+        },
+        {
+          "label": "原文定位回查",
+          "value": 1194,
+          "unit": "处",
+          "note": "文章版本和段落文字坐标实测。"
+        },
+        {
+          "label": "原批次18处待定引用处理",
+          "numerator": 18,
+          "denominator": 18,
+          "note": "其中RA泛称保留为药物类别，不硬绑具体成分。"
+        },
+        {
+          "label": "q检索API响应",
+          "value": 89.2,
+          "unit": "毫秒",
+          "note": "同一26条范围实测；此前浏览器观察8.69秒，非受控性能基准。"
+        },
+        {
+          "label": "两模型推理总计",
+          "value": 1143.77,
+          "unit": "秒",
+          "note": "不含加载/预热/脚本/复核；后续脚本修复零新增模型调用。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "本轮必要的本地闭环已完成；继续使用已确认规则和现有模型。",
+    "后续扩大应用时另评估漏筛与上下文覆盖；目标接口覆盖扩展独立推进，不补造触发条件。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/minimal-closure-20261101.json",
+      "sha256": "dcb2848da25ea4550e2ace6724a58a1eb5f4aa06fdca5fcb7bec8308476f534e"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "4e5a88839cf00800cfa792c6b3040fe8ec84a584b1f7b6bfe2a9cc4f4928048d",
+  "content_sha256": "5978c4556b56370efa2bbb0735bb07612a750a87d79751c4c1c1ab461bcd5bfc"
+}

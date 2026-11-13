@@ -1,0 +1,113 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "target-compatibility-20261101",
+  "title": "022 · 目标证据中心兼容核对（只读预览）",
+  "date": "2026-11-01T13:13:46.868055+08:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 30,
+  "sample_unit": "条知识",
+  "summary": "30条已提取知识：目标药物/癌种ID预览采用47/89项（16项唯一精确匹配、31项本次提议癌种对应待核对），0项保留歧义；离线结构就绪0/30。未导入tumor_api，结构缺口与知识质量分开。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "target-compatibility-preview-v1",
+    "sample_versions": [
+      "81688c91de553b7a358fb3d866ff098a114e467c09ef347744ad1108e55679cc",
+      "a14bc60c747f8dbd43a482de872bae5e57b2d95da7ed4096ee0d95b8532be408"
+    ],
+    "method_versions": [
+      "50c3fe4391f1866db3b050c11caa8e619ddb5cbb0af816dbe22e987f92b4aa6c"
+    ],
+    "reference_versions": [
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "已有知识如何对应当前证据中心的真实实体ID、条件和治疗逻辑，还缺哪些适配字段？",
+    "outputs": [
+      "逐条真实药物/癌种UUID与对应依据",
+      "目标trigger和多药逻辑、具体缺口",
+      "原知识、文章与段落出处；既有质量结果独立展示"
+    ],
+    "not_measured": [
+      "未调用模型或重新评判知识准确率",
+      "未调用目标创建接口、未导入或写入tumor_api",
+      "未验证临床适用性或覆盖tumor_api的全部旧知识库"
+    ]
+  },
+  "dataset": {
+    "label": "两批已入biomed的30条知识",
+    "role": "compatibility_preview",
+    "document_count": 10
+  },
+  "reference": {
+    "label": "当前证据中心契约与真实目标字典",
+    "status": "snapshot",
+    "note": "范围为当前证据中心的临床证据和靶点规则；旧Diagnosis/Prognosis及GeneFunction不在本轮目标。零就绪不代表目标项目所有库均无法收纳。"
+  },
+  "methods": [
+    {
+      "id": "target-compatibility-preview-v1",
+      "label": "只读实体映射与离线结构检查",
+      "version": "target-compatibility-preview-v1",
+      "conclusion": "保留完整biomed知识；缺trigger、逻辑或目标身份时只显示待适配，不补造条件或自动导入。",
+      "metrics": [
+        {
+          "label": "预览采用目标ID",
+          "numerator": 47,
+          "denominator": 89,
+          "note": "包含本次提议的癌种对应，待用户核对；不是全部已确认，也不等于整条知识可导入。"
+        },
+        {
+          "label": "唯一精确名称匹配",
+          "value": 16,
+          "note": "当前匹配规则在实际目标快照中唯一命中。"
+        },
+        {
+          "label": "本次提议的主癌种对应",
+          "value": 31,
+          "note": "保留原文分期/分子细分条件；仅预览，尚待用户核对。"
+        },
+        {
+          "label": "离线结构就绪",
+          "numerator": 0,
+          "denominator": 30,
+          "note": "仅目标结构契约检查，不是语义准确率或生产写入。"
+        },
+        {
+          "label": "not_representable",
+          "value": 26,
+          "note": "实际导出器逐条状态。"
+        },
+        {
+          "label": "pending_mapping",
+          "value": 3,
+          "note": "实际导出器逐条状态。"
+        },
+        {
+          "label": "invalid_payload",
+          "value": 1,
+          "note": "实际导出器逐条状态。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "按页面逐条核对真实目标ID与源文逻辑。",
+    "依据缺口决定适配范围；本轮不安排目标写入或模型训练。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/target-compatibility-20261101.json",
+      "sha256": "fd36465e45eb6778f4b7398358757556d28ec2902c85174ce42c3713ff57e498"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "16fc62b6832bfdeefb1505ddac3ef8d04cf8b9fbacd37c9d04e734378b5eba72",
+  "content_sha256": "0f1037598a3961447ceeb4f1d39e0d05585bf9cd41b61a11936a4f4f67706dd1"
+}

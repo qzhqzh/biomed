@@ -1,0 +1,120 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "rules-review-20261016",
+  "title": "规则 v2.1 → v3：开发集改善，保留集提升有限",
+  "date": "2026-10-16",
+  "stage": "classification",
+  "status": "evaluated",
+  "sample_count": 100,
+  "summary": "固定 60 篇开发、40 篇保留样本；开发集一致数 46→58，保留集 29→30。不能将开发集成绩外推到全库。",
+  "identity": {
+    "task_version": "solid-tumor-annotation-v1",
+    "sample_versions": [
+      "documented:solid-tumor-eval-v1/development60+holdout40"
+    ],
+    "method_versions": [
+      "solid-tumor-rules-v2.1",
+      "solid-tumor-rules-v3"
+    ],
+    "reference_versions": [
+      "assistant_reviewed_provisional"
+    ],
+    "completeness": "documented_only"
+  },
+  "task": {
+    "question": "文章实际研究对象属于哪个肿瘤范围？",
+    "outputs": [
+      "实体瘤",
+      "血液肿瘤",
+      "实体/血液混合",
+      "实体/良性或癌前边界",
+      "良性",
+      "癌前线索",
+      "待判定"
+    ],
+    "not_measured": [
+      "癌种/器官等多标签轴的准确率",
+      "全文证据抽取质量",
+      "临床有效性"
+    ]
+  },
+  "dataset": {
+    "label": "100 篇分层抽样（60 开发 + 40 保留）",
+    "role": "development_and_historical_holdout"
+  },
+  "reference": {
+    "label": "助手逐篇暂定核读参考",
+    "status": "assistant_reviewed_provisional",
+    "note": "非人工金标准；没有第二位独立标注者，不能解释为临床准确率。"
+  },
+  "methods": [
+    {
+      "id": "rules_v21",
+      "label": "规则 v2.1",
+      "version": "solid-tumor-rules-v2.1",
+      "conclusion": "作为改动前基线保留，未覆盖旧版本。",
+      "metrics": [
+        {
+          "label": "开发集范围一致",
+          "numerator": 46,
+          "denominator": 60,
+          "note": "用于后续规则修订，不能视作泛化表现。"
+        },
+        {
+          "label": "保留集范围一致",
+          "numerator": 29,
+          "denominator": 40,
+          "note": "包含参考为待判定的样本。"
+        },
+        {
+          "label": "保留集明确范围一致",
+          "numerator": 17,
+          "denominator": 26,
+          "note": "排除参考仍为待判定的样本。"
+        }
+      ]
+    },
+    {
+      "id": "rules_v3",
+      "label": "规则 v3",
+      "version": "solid-tumor-rules-v3",
+      "conclusion": "补癌种表达并排除分子名称、正常对照伪命中；背景、既往史与对象关系仍有误判。",
+      "metrics": [
+        {
+          "label": "开发集范围一致",
+          "numerator": 58,
+          "denominator": 60,
+          "note": "开发集用于规则修订。"
+        },
+        {
+          "label": "保留集范围一致",
+          "numerator": 30,
+          "denominator": 40,
+          "note": "仅多一致 1 篇，不能证明稳定提升。"
+        },
+        {
+          "label": "保留集明确范围一致",
+          "numerator": 18,
+          "denominator": 26,
+          "note": "未将正确保留待判定算入此分母。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留错误原因与版本；后续分类任务先明确定义及分母，再使用新的未见样本验证。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/rules-review-20261016.json",
+      "sha256": "bd4f3cdc4866b00ef2dce26986da504d653a72ec66f496e020fa5795e7c53ba1"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "671141aa393dd45d6ca980ba6c743463d57337b617f27fa865927b1b84a59771",
+  "content_sha256": "7136d6b38698e82082749027419691b24312f015ff1586517fe9e09cf5a3d6d9"
+}

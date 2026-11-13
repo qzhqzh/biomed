@@ -1,0 +1,406 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "treatment-passages-five-papers-20261023",
+  "title": "005 · 实体瘤治疗证据段落：5篇全文对照",
+  "date": "2026-10-23",
+  "stage": "passages",
+  "status": "evaluated",
+  "sample_count": 282,
+  "sample_unit": "段",
+  "summary": "5篇已有全文、282段：修订后的Astra参考含122个目标段落。9B召回95.1%、精确率80.6%；4B召回76.2%、精确率78.2%。规则组合有明显取舍，文献三分类继续4B，段落环节优先验证9B。",
+  "task_kind": "passage_screening",
+  "identity": {
+    "task_version": "solid-treatment-passage-screening-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "6619f6dbfce0b01b39380708967afaf06a1bf25112683cc7c07ed780d508fbae",
+      "56826953e525b54cc884e10c42cc537c76574d828d2d15324c3445433ce09904"
+    ],
+    "method_versions": [
+      "e2e75875e009017a39a8a37feb9d5787ad53f554b2763f94b568fe5638207dd0",
+      "9c684f4cbf28fd722366057caf890bc4f9b254ad70fa6da81af8d98c6ed25c79",
+      "001b8265b6e724f9eecc48050fe24e20676dfff12dae878d5b907a168c4649d6",
+      "d31f228421a762de1d9aac1efceb55f3e38d0953fde50e0efad5f2afe0b4653c",
+      "c912565809a547fd3fac5e8f9a404ef531bbd85639f66e3fe44879dc419cec0e",
+      "8c744904ffff325a4b25c4f13aed9df83eecfd3c238f3e904f9947971029a8ec"
+    ],
+    "reference_versions": [
+      "48b5c4f327a5c40a8901157cb497ef54f19f7c08faa9176707f04f3bc1a45020",
+      "805a79e6329f9eae4ba69aef8492ff1fe5c7290d170601b3dbbc0e7d63b57410",
+      "fe4ee353e136946e94757924200216a4e4c1eceac48ba8d2ae87b9a70861e201"
+    ]
+  },
+  "task": {
+    "question": "实体瘤治疗文献中，哪些中心段落包含可继续抽取的治疗证据？",
+    "outputs": [
+      "相关",
+      "不相关",
+      "待判定（处理状态）"
+    ],
+    "not_measured": [
+      "表格和图像全部证据覆盖",
+      "实体与关系抽取",
+      "临床证据强度或适用性",
+      "全库泛化性能"
+    ]
+  },
+  "dataset": {
+    "label": "5篇实体瘤治疗论文 · 282段",
+    "role": "development",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "Astra逐段参考（经分歧复核修订）",
+    "status": "model_reference_not_human_gold",
+    "note": "初始Astra盲标在模型推理前冻结。本次候选分歧复核修订后保留旧参考与初评，全部方案统一重算；最终修订参考不声称完全盲法。282段明确参考用于主指标。正例引文按原文字符位置验证，未决单列。"
+  },
+  "methods": [
+    {
+      "id": "rules",
+      "label": "原规则",
+      "version": "e2e75875e009017a39a8a37feb9d5787ad53f554b2763f94b568fe5638207dd0",
+      "conclusion": "同一段至少命中治疗、结局、生物标志物三类词中的两类。否定词不用于排除。",
+      "metrics": [
+        {
+          "label": "精确率 Precision",
+          "numerator": 94,
+          "denominator": 152,
+          "note": "分母为参考明确且方案选中的段落。"
+        },
+        {
+          "label": "召回率 Recall",
+          "numerator": 94,
+          "denominator": 122,
+          "note": "分母为Astra参考阳性；模型未决或失败计入漏检。"
+        },
+        {
+          "label": "F1",
+          "value": "68.6%",
+          "note": "精确率与召回率的调和平均。"
+        },
+        {
+          "label": "命中 / 漏检 / 误收（TP / FN / FP）",
+          "value": "94 / 28 / 58",
+          "unit": "段",
+          "note": "只统计参考明确的段落。"
+        },
+        {
+          "label": "全部入选 selected_all",
+          "value": 152,
+          "unit": "段",
+          "note": "以全部282段为范围，包含参考未决段落。"
+        },
+        {
+          "label": "待判定 pending",
+          "value": 0,
+          "unit": "段",
+          "note": "模型null、非法输出、超长或截断不能当作确定阴性。"
+        },
+        {
+          "label": "实测总处理时间",
+          "value": 0.087,
+          "unit": "秒",
+          "note": "只计CPU规则扫描，不使用模型。"
+        },
+        {
+          "label": "实测平均每段",
+          "value": 0.0003,
+          "unit": "秒/段",
+          "note": "总处理时间÷全部282段，不只除以模型实际调用数。"
+        },
+        {
+          "label": "模型调用",
+          "value": 0,
+          "unit": "次",
+          "note": "规则方案为0；组合为离线推导所需次数。"
+        }
+      ]
+    },
+    {
+      "id": "qwen35-4b",
+      "label": "Qwen3.5-4B",
+      "version": "9c684f4cbf28fd722366057caf890bc4f9b254ad70fa6da81af8d98c6ed25c79",
+      "conclusion": "逐段判断中心段落；标题和前后段仅供上下文。",
+      "metrics": [
+        {
+          "label": "精确率 Precision",
+          "numerator": 93,
+          "denominator": 119,
+          "note": "分母为参考明确且方案选中的段落。"
+        },
+        {
+          "label": "召回率 Recall",
+          "numerator": 93,
+          "denominator": 122,
+          "note": "分母为Astra参考阳性；模型未决或失败计入漏检。"
+        },
+        {
+          "label": "F1",
+          "value": "77.2%",
+          "note": "精确率与召回率的调和平均。"
+        },
+        {
+          "label": "命中 / 漏检 / 误收（TP / FN / FP）",
+          "value": "93 / 29 / 26",
+          "unit": "段",
+          "note": "只统计参考明确的段落。"
+        },
+        {
+          "label": "全部入选 selected_all",
+          "value": 119,
+          "unit": "段",
+          "note": "以全部282段为范围，包含参考未决段落。"
+        },
+        {
+          "label": "待判定 pending",
+          "value": 0,
+          "unit": "段",
+          "note": "模型null、非法输出、超长或截断不能当作确定阴性。"
+        },
+        {
+          "label": "实测总处理时间",
+          "value": 267.188,
+          "unit": "秒",
+          "note": "包含逐段分词、传输、推理和输出校验；不含模型加载、预热和写文件。"
+        },
+        {
+          "label": "实测平均每段",
+          "value": 0.9475,
+          "unit": "秒/段",
+          "note": "总处理时间÷全部282段，不只除以模型实际调用数。"
+        },
+        {
+          "label": "模型调用",
+          "value": 282,
+          "unit": "次",
+          "note": "规则方案为0；组合为离线推导所需次数。"
+        },
+        {
+          "label": "模型加载（单列）",
+          "value": 157.164,
+          "unit": "秒",
+          "note": "冷启动模型实例；操作系统文件缓存状态未隔离，不包含在逐段处理时间中。"
+        },
+        {
+          "label": "峰值显存",
+          "value": 10.87,
+          "unit": "GiB",
+          "note": "NVML进程显存峰值；0.1秒采样。"
+        }
+      ]
+    },
+    {
+      "id": "qwen35-9b",
+      "label": "Qwen3.5-9B",
+      "version": "001b8265b6e724f9eecc48050fe24e20676dfff12dae878d5b907a168c4649d6",
+      "conclusion": "相同输入、提示词和FP16协议，作为容量对照。",
+      "metrics": [
+        {
+          "label": "精确率 Precision",
+          "numerator": 116,
+          "denominator": 144,
+          "note": "分母为参考明确且方案选中的段落。"
+        },
+        {
+          "label": "召回率 Recall",
+          "numerator": 116,
+          "denominator": 122,
+          "note": "分母为Astra参考阳性；模型未决或失败计入漏检。"
+        },
+        {
+          "label": "F1",
+          "value": "87.2%",
+          "note": "精确率与召回率的调和平均。"
+        },
+        {
+          "label": "命中 / 漏检 / 误收（TP / FN / FP）",
+          "value": "116 / 6 / 28",
+          "unit": "段",
+          "note": "只统计参考明确的段落。"
+        },
+        {
+          "label": "全部入选 selected_all",
+          "value": 144,
+          "unit": "段",
+          "note": "以全部282段为范围，包含参考未决段落。"
+        },
+        {
+          "label": "待判定 pending",
+          "value": 0,
+          "unit": "段",
+          "note": "模型null、非法输出、超长或截断不能当作确定阴性。"
+        },
+        {
+          "label": "实测总处理时间",
+          "value": 286.096,
+          "unit": "秒",
+          "note": "包含逐段分词、传输、推理和输出校验；不含模型加载、预热和写文件。"
+        },
+        {
+          "label": "实测平均每段",
+          "value": 1.0145,
+          "unit": "秒/段",
+          "note": "总处理时间÷全部282段，不只除以模型实际调用数。"
+        },
+        {
+          "label": "模型调用",
+          "value": 282,
+          "unit": "次",
+          "note": "规则方案为0；组合为离线推导所需次数。"
+        },
+        {
+          "label": "模型加载（单列）",
+          "value": 204.753,
+          "unit": "秒",
+          "note": "冷启动模型实例；操作系统文件缓存状态未隔离，不包含在逐段处理时间中。"
+        },
+        {
+          "label": "峰值显存",
+          "value": 19.88,
+          "unit": "GiB",
+          "note": "NVML进程显存峰值；0.1秒采样。"
+        }
+      ]
+    },
+    {
+      "id": "rules-and-4b",
+      "label": "规则 AND 4B",
+      "version": "d31f228421a762de1d9aac1efceb55f3e38d0953fde50e0efad5f2afe0b4653c",
+      "conclusion": "规则先筛，命中的段落再由4B判断；未命中直接不选。组合速度为离线估算。",
+      "metrics": [
+        {
+          "label": "精确率 Precision",
+          "numerator": 73,
+          "denominator": 85,
+          "note": "分母为参考明确且方案选中的段落。"
+        },
+        {
+          "label": "召回率 Recall",
+          "numerator": 73,
+          "denominator": 122,
+          "note": "分母为Astra参考阳性；模型未决或失败计入漏检。"
+        },
+        {
+          "label": "F1",
+          "value": "70.5%",
+          "note": "精确率与召回率的调和平均。"
+        },
+        {
+          "label": "命中 / 漏检 / 误收（TP / FN / FP）",
+          "value": "73 / 49 / 12",
+          "unit": "段",
+          "note": "只统计参考明确的段落。"
+        },
+        {
+          "label": "全部入选 selected_all",
+          "value": 85,
+          "unit": "段",
+          "note": "以全部282段为范围，包含参考未决段落。"
+        },
+        {
+          "label": "待判定 pending",
+          "value": 0,
+          "unit": "段",
+          "note": "模型null、非法输出、超长或截断不能当作确定阴性。"
+        },
+        {
+          "label": "离线估算总处理时间",
+          "value": 148.365,
+          "unit": "秒",
+          "note": "复用同一次4B逐段耗时，按所需调用求和加规则扫描；未单独运行组合流水线。"
+        },
+        {
+          "label": "离线估算平均每段",
+          "value": 0.5261,
+          "unit": "秒/段",
+          "note": "总处理时间÷全部282段，不只除以模型实际调用数。"
+        },
+        {
+          "label": "模型调用",
+          "value": 152,
+          "unit": "次",
+          "note": "规则方案为0；组合为离线推导所需次数。"
+        }
+      ]
+    },
+    {
+      "id": "rules-or-4b",
+      "label": "规则 OR 4B",
+      "version": "c912565809a547fd3fac5e8f9a404ef531bbd85639f66e3fe44879dc419cec0e",
+      "conclusion": "规则命中即保留，未命中再由4B判断以补漏。组合速度为离线估算。",
+      "metrics": [
+        {
+          "label": "精确率 Precision",
+          "numerator": 114,
+          "denominator": 186,
+          "note": "分母为参考明确且方案选中的段落。"
+        },
+        {
+          "label": "召回率 Recall",
+          "numerator": 114,
+          "denominator": 122,
+          "note": "分母为Astra参考阳性；模型未决或失败计入漏检。"
+        },
+        {
+          "label": "F1",
+          "value": "74.0%",
+          "note": "精确率与召回率的调和平均。"
+        },
+        {
+          "label": "命中 / 漏检 / 误收（TP / FN / FP）",
+          "value": "114 / 8 / 72",
+          "unit": "段",
+          "note": "只统计参考明确的段落。"
+        },
+        {
+          "label": "全部入选 selected_all",
+          "value": 186,
+          "unit": "段",
+          "note": "以全部282段为范围，包含参考未决段落。"
+        },
+        {
+          "label": "待判定 pending",
+          "value": 0,
+          "unit": "段",
+          "note": "模型null、非法输出、超长或截断不能当作确定阴性。"
+        },
+        {
+          "label": "离线估算总处理时间",
+          "value": 118.998,
+          "unit": "秒",
+          "note": "复用同一次4B逐段耗时，按所需调用求和加规则扫描；未单独运行组合流水线。"
+        },
+        {
+          "label": "离线估算平均每段",
+          "value": 0.422,
+          "unit": "秒/段",
+          "note": "总处理时间÷全部282段，不只除以模型实际调用数。"
+        },
+        {
+          "label": "模型调用",
+          "value": 130,
+          "unit": "次",
+          "note": "规则方案为0；组合为离线推导所需次数。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留文献三分类4B；治疗证据段落优先沿9B方向，在新论文上检查召回与误收。若部署显存受限，保留4B加规则OR作候选，但先核算额外核验成本。",
+    "下一次只做中心段与邻段边界、图表标题/脚注和二手结果的针对性改进；旧282段作回归，新增独立论文评估泛化，不用本批反复调分后宣称提升。",
+    "段落入口稳定后推进S3/S4：从被保留段落及必要上下文提取疾病、药物、标志物原文跨度并规范化；实体/关系/组别与数值另设指标。保持采集原限速，暂不微调或全库知识抽取。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/treatment-passages-five-papers-20261023.json",
+      "sha256": "ba71793382274de68333315022455c9b285ab4d1b89fd83f773e3f8a241cdb7c"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "260f0d79e5f0367d8d2b65be6b88060e599b0927bf88824904406fc282437183",
+  "content_sha256": "b7f50dfc58c355e6ebbca2004bde0635346b7e44c1afb5e50118d4035ba15599"
+}

@@ -9,6 +9,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { ErrorMessage, NoData, Status } from "@/components/curation/Common";
+import { KnowledgeProcessing } from "@/components/curation/KnowledgeProcessing";
 import {
   curation,
   date,
@@ -22,14 +23,15 @@ export default function WorkflowsApp() {
   const [selected, setSelected] = useState<string | null>(() =>
     new URLSearchParams(location.search).get("job"),
   );
+  const [showLegacy, setShowLegacy] = useState(Boolean(selected));
   const [offset, setOffset] = useState(0);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const list = useCuration<{ total: number; results: Work[] }>(
-    `workflows/?offset=${offset}`,
-    5000,
+    showLegacy ? `workflows/?offset=${offset}` : null,
+    15000,
   );
-  const overview = useCuration<Overview>("overview/", 5000);
+  const overview = useCuration<Pick<Overview, "worker_online" | "model_configured">>("overview/?runtime=1", 15000);
   const detail = useCuration<Work>(
     selected ? `workflows/${selected}/` : null,
     5000,
@@ -54,7 +56,7 @@ export default function WorkflowsApp() {
   return (
     <AppShell
       title="工作流"
-      description="获取资料 → 解析原文 → 抽取候选证据 → AI 审核发布 → 人工抽查。每个任务都有执行记录。"
+      description="跟踪资料采集与自动知识处理，查看执行进度、批次产出和失败原因。"
       crumbs={[{ label: "管理" }, { label: "工作流" }]}
       actions={
         <Button asChild variant="outline" className="h-9">
@@ -62,6 +64,8 @@ export default function WorkflowsApp() {
         </Button>
       }
     >
+      <KnowledgeProcessing />
+      <h2 className="font-semibold">资料与旧版证据任务</h2>
       <div className="flex flex-wrap gap-x-8 gap-y-3 border-y py-4 text-sm">
         <span>
           执行服务：
@@ -72,17 +76,21 @@ export default function WorkflowsApp() {
             : "读取中…"}
         </span>
         <span>
-          知识模型：
+          旧版证据模型：
           {overview.data?.model_configured ? "已配置适配器" : "尚未配置"}
         </span>
         <span>发布规则：AI 通过后发布 · 人工抽查</span>
       </div>
       {!overview.data?.model_configured && (
         <p className="text-sm/relaxed text-muted-foreground">
-          文献下载和基础文本解析可以执行。指南当前先归档，等待定义知识结构。尚未配置的知识抽取会保留在“待配置模型”。
+          这里显示资料与旧版证据任务。旧版模型待配置不影响上方独立运行的4B、9B与Bonsai知识处理。
         </p>
       )}
       <ErrorMessage error={error || list.error || overview.error} />
+      <Button variant="outline" className="self-start" aria-expanded={showLegacy} onClick={() => setShowLegacy(!showLegacy)}>
+        {showLegacy ? "收起资料任务列表" : "查看资料任务列表"}
+      </Button>
+      {showLegacy && <>
       {list.loading && <p role="status">正在读取任务…</p>}
       {list.data?.results.length ? (
         <div className="divide-y border-y">
@@ -135,6 +143,7 @@ export default function WorkflowsApp() {
           </Button>
         </div>
       )}
+      </>}
       <Sheet
         open={Boolean(selected)}
         onOpenChange={(open) => {

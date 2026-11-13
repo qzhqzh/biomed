@@ -1,0 +1,20 @@
+[Unit]
+Description=Biomed continuous literature knowledge processing
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/data/06_project/biomed
+ExecStart=/data/06_project/biomed/.venv/bin/python -B /data/06_project/biomed/scripts/knowledge_worker.py run
+Restart=on-failure
+RestartSec=60
+KillMode=control-group
+TimeoutStopSec=45
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+UMask=0027
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+[Install]
+WantedBy=default.target

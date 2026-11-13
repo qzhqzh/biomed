@@ -170,8 +170,13 @@ async function parseError(res: Response): Promise<ApiError> {
   )
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+function sleep(ms: number, signal?: AbortSignal): Promise<void> {
+  if (signal?.aborted) return Promise.reject(signal.reason)
+  return new Promise((resolve, reject) => {
+    const abort = () => { clearTimeout(timer); reject(signal?.reason) }
+    const timer = setTimeout(() => { signal?.removeEventListener("abort", abort); resolve() }, ms)
+    signal?.addEventListener("abort", abort, { once: true })
+  })
 }
 
 function isTransientPollError(error: unknown): boolean {
@@ -219,8 +224,8 @@ export async function createAnnotationJob(payload: {
   return job
 }
 
-export async function fetchAnnotationJob(id: string): Promise<AnnotationJob> {
-  const res = await fetch(`/api/v1/jobs/${id}/`, { headers: authHeaders() })
+export async function fetchAnnotationJob(id: string, signal?: AbortSignal): Promise<AnnotationJob> {
+  const res = await fetch(`/api/v1/jobs/${id}/`, { headers: authHeaders(), signal })
   if (!res.ok) throw await parseError(res)
   return res.json()
 }
@@ -240,6 +245,7 @@ export async function waitForAnnotationJob(
     intervalMs?: number
     timeoutMs?: number
     maxTransientErrors?: number
+    signal?: AbortSignal
   } = {},
 ): Promise<AnnotationJob> {
   const intervalMs = opts.intervalMs ?? 1500
@@ -249,8 +255,9 @@ export async function waitForAnnotationJob(
   let transientErrors = 0
 
   while (Date.now() - started < timeoutMs) {
+    opts.signal?.throwIfAborted()
     try {
-      const job = await fetchAnnotationJob(id)
+      const job = await fetchAnnotationJob(id, opts.signal)
       transientErrors = 0
       if (job.status === "succeeded" || job.status === "failed") return job
     } catch (error) {
@@ -265,10 +272,10 @@ export async function waitForAnnotationJob(
         intervalMs * 2 ** (transientErrors - 1),
         10_000,
       )
-      await sleep(backoffMs)
+      await sleep(backoffMs, opts.signal)
       continue
     }
-    await sleep(intervalMs)
+    await sleep(intervalMs, opts.signal)
   }
   throw new ApiError("任务等待超时", { status: 504, code: "job_timeout" })
 }
@@ -400,6 +407,73 @@ export async function searchKnowledgeTranscripts(opts: {
   params.set("limit", String(opts.limit ?? 50))
   params.set("offset", String(opts.offset ?? 0))
   const res = await fetch(`/api/v1/knowledge/transcripts/?${params}`)
+  if (!res.ok) throw await parseError(res)
+  return res.json()
+}
+
+export type TranscriptStructureSource = {
+  name?: string
+  url?: string
+  sha256?: string
+  release?: string | null
+  retrieved_at?: string | null
+}
+
+export type TranscriptStructureMapping = {
+  assembly: string
+  chrom: string
+  strand: string
+  start: number
+  end: number
+  raw_exon_count: number
+  exon_starts: number[]
+  exon_ends: number[]
+  source: TranscriptStructureSource
+}
+
+export type TranscriptStructure = {
+  accession: string
+  base_accession: string
+  gene: string
+  gene_id?: string | null
+  mane_status?: string | null
+  ensembl_accessions: string[]
+  exon_count: number | null
+  exon_status: "verified" | "unverified"
+  exon_source: TranscriptStructureSource | null
+  verification_note?: string
+  exon_support?: {
+    method: string
+    accession: string
+    source: TranscriptStructureSource
+  } | null
+  transcript_exons: { start: number; end: number }[]
+  candidate_exon_count: number | null
+  mappings: TranscriptStructureMapping[]
+}
+
+export type TranscriptStructureResults = {
+  ready: boolean
+  release: string | null
+  total: number
+  results: TranscriptStructure[]
+  query: string
+  match_status: string
+  summary: Record<string, unknown>
+}
+
+export async function searchTranscriptStructures(opts: {
+  q: string
+  limit?: number
+  offset?: number
+  signal?: AbortSignal
+}): Promise<TranscriptStructureResults> {
+  const params = new URLSearchParams({
+    q: opts.q,
+    limit: String(opts.limit ?? 20),
+    offset: String(opts.offset ?? 0),
+  })
+  const res = await fetch(`/api/v1/knowledge/transcript-structures/?${params}`, { signal: opts.signal })
   if (!res.ok) throw await parseError(res)
   return res.json()
 }

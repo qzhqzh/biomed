@@ -1,0 +1,232 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "three-class-rules-quick-review-20261023",
+  "title": "004 · 4B与规则补漏：快速对照",
+  "date": "2026-10-23",
+  "stage": "classification",
+  "status": "evaluated",
+  "sample_count": 100,
+  "summary": "宽泛规则覆盖使92.6%降到87.4%；限定标题或MeSH命中后为93.7%。复用100篇既有结果，无训练。",
+  "task_kind": "three_class",
+  "identity": {
+    "task_version": "four-b-existing-rules-quick-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "530a6ea42f7469d8981cf7b6d8c5191595c15a253600b6581c0a0980adc8e72b"
+    ],
+    "method_versions": [
+      "e456aa5fc21407a1dc85a37e880ab3cecc8be2e243904651b390a68be872d0d3",
+      "0f818e31bb93e3767549550f45ddfebc67701cbc4fc118ac55b8c2c9657caf40"
+    ],
+    "reference_versions": [
+      "f6b76381d448d8886158bd5a9ee5ba5cebd49ac36b54e406f0f789106126a0ea",
+      "f61cb7bf3b67dca712245fc00b4e4546ee43e941e75083141593d0b47a6c6de3"
+    ]
+  },
+  "task": {
+    "question": "4B的遗漏是否可接受，现有规则组合能否补漏？",
+    "outputs": [
+      "实体瘤",
+      "血液肿瘤",
+      "非肿瘤"
+    ],
+    "not_measured": [
+      "新样本泛化表现",
+      "二次模型核查收益",
+      "新的模型推理速度与显存"
+    ]
+  },
+  "dataset": {
+    "label": "统一100篇开发样本",
+    "role": "development"
+  },
+  "reference": {
+    "label": "003冻结Astra参考；另存七例助手审核",
+    "status": "model_reference_not_human_gold",
+    "note": "参考不变，不将边界审核改成加分；原文依据见实验review.json。"
+  },
+  "methods": [
+    {
+      "id": "A",
+      "label": "原始4B",
+      "version": "four-b-existing-rules-quick-v1",
+      "conclusion": "复用003的Qwen3.5-4B输出，不再次推理。",
+      "metrics": [
+        {
+          "label": "与冻结参考一致",
+          "numerator": 88,
+          "denominator": 95,
+          "note": "100篇中95篇参考明确，5篇未决不计分。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 47,
+          "denominator": 54,
+          "note": "类别内召回。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 17,
+          "denominator": 17,
+          "note": "观察补漏是否引入误收。"
+        },
+        {
+          "label": "相对4B改对",
+          "value": 0,
+          "unit": "篇"
+        },
+        {
+          "label": "相对4B改错",
+          "value": 0,
+          "unit": "篇"
+        },
+        {
+          "label": "肿瘤误判非肿瘤",
+          "value": 6,
+          "unit": "篇"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "label": "规则优先覆盖",
+      "version": "four-b-existing-rules-quick-v1",
+      "conclusion": "现有v3的solid_candidate或solid_boundary_candidate映射为实体瘤、hematologic_candidate映射为血液肿瘤，有映射就覆盖4B；其余保留。",
+      "metrics": [
+        {
+          "label": "与冻结参考一致",
+          "numerator": 83,
+          "denominator": 95,
+          "note": "100篇中95篇参考明确，5篇未决不计分。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 50,
+          "denominator": 54,
+          "note": "类别内召回。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 9,
+          "denominator": 17,
+          "note": "观察补漏是否引入误收。"
+        },
+        {
+          "label": "相对4B改对",
+          "value": 3,
+          "unit": "篇"
+        },
+        {
+          "label": "相对4B改错",
+          "value": 8,
+          "unit": "篇"
+        },
+        {
+          "label": "肿瘤误判非肿瘤",
+          "value": 3,
+          "unit": "篇"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "label": "仅对非肿瘤补回",
+      "version": "four-b-existing-rules-quick-v1",
+      "conclusion": "使用B的映射，但只覆盖4B判为非肿瘤的文献。",
+      "metrics": [
+        {
+          "label": "与冻结参考一致",
+          "numerator": 83,
+          "denominator": 95,
+          "note": "100篇中95篇参考明确，5篇未决不计分。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 50,
+          "denominator": 54,
+          "note": "类别内召回。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 9,
+          "denominator": 17,
+          "note": "观察补漏是否引入误收。"
+        },
+        {
+          "label": "相对4B改对",
+          "value": 3,
+          "unit": "篇"
+        },
+        {
+          "label": "相对4B改错",
+          "value": 8,
+          "unit": "篇"
+        },
+        {
+          "label": "肿瘤误判非肿瘤",
+          "value": 3,
+          "unit": "篇"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "label": "标题或MeSH命中才覆盖",
+      "version": "four-b-existing-rules-quick-v1",
+      "conclusion": "使用B的映射，并要求决定scope的solid_malignancy/solid_cell_model或hematologic/hematologic_abbreviation标签至少命中标题或MeSH；只在摘要命中时保留4B。",
+      "metrics": [
+        {
+          "label": "与冻结参考一致",
+          "numerator": 89,
+          "denominator": 95,
+          "note": "100篇中95篇参考明确，5篇未决不计分。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 48,
+          "denominator": 54,
+          "note": "类别内召回。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 17,
+          "denominator": 17,
+          "note": "观察补漏是否引入误收。"
+        },
+        {
+          "label": "相对4B改对",
+          "value": 1,
+          "unit": "篇"
+        },
+        {
+          "label": "相对4B改错",
+          "value": 0,
+          "unit": "篇"
+        },
+        {
+          "label": "肿瘤误判非肿瘤",
+          "value": 5,
+          "unit": "篇"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留4B作为主模型研究候选；不采用宽泛规则自动覆盖。",
+    "标题/MeSH限定规则仅保留为候选；若继续，优先把规则冲突送同一4B做原文证据核查，并用新留出样本验证。",
+    "本次到此停止扩展，不微调、不写回正式分类、不扩大模型全库推理。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/three-class-rules-quick-review-20261023.json",
+      "sha256": "452fe3a162ddae72e9f72ce3a097231eceb33c0fc2ce50ea2874eb8e542bd167"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "cf6d3bd46ccaad98cd26b07ebd516d05f5bc90c337ac76188066c7e9cf7ad383",
+  "content_sha256": "05f803334fd704479d33e55352583412ba1650b92700ed141d52c873d9e195ec"
+}

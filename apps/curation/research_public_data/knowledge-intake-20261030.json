@@ -1,0 +1,121 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "knowledge-intake-20261030",
+  "title": "017 · 治疗方式与生物标志物收纳及关联",
+  "date": "2026-10-30",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同5篇15组实际保存为研究候选：106个来源内去重词条、172个已定位实体提及、441条原文定位。治疗方式与生物标志物各26个词条；零新增模型调用，关系内容核验仍为12/15，不把保存成功当作准确率提升。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "knowledge-intake-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8",
+      "835724385463f2347dc468938110db230c1a2e563a5cb93c7cf664ada2ca90a0"
+    ],
+    "method_versions": [
+      "3586c8f064c5cec32de0d868bff1c8215ec99aa1cd3f33aeae1a2598045dc08f",
+      "bbc1aa1ffd4544300227349d1c10b14162afa738c623727ff1488830571a61b6"
+    ],
+    "reference_versions": [
+      "a9113d632264dc54c6a5b45da0f2fa4bf5b173884921c7458066ec1a29a53138"
+    ]
+  },
+  "task": {
+    "question": "治疗方式、生物标志物及变异的用途，能否用简单结构保存并关联到具体知识和英文出处？",
+    "outputs": [
+      "实际候选库和只读查询",
+      "来源内去重的治疗/标志物词条",
+      "关联依据及类型/用途分离",
+      "文章与原段两层定位"
+    ],
+    "not_measured": [
+      "新的抽取准确率",
+      "跨文章缩写等价确认",
+      "新论文泛化",
+      "正式临床证据发布"
+    ]
+  },
+  "dataset": {
+    "label": "现有5篇15组开发回归集",
+    "role": "存储与溯源回归",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "沿用014冻结Astra参考",
+    "status": "model_reference_not_human_gold",
+    "note": "本轮没有重新审核医学语义；K12/K14/K15的原错误仍保存。"
+  },
+  "methods": [
+    {
+      "id": "source-preserving-storage",
+      "label": "词条＋候选关系＋原文定位",
+      "version": "knowledge-intake-v1",
+      "conclusion": "存储结构补齐，没有改变模型成绩。未知标准ID保留候选；按显式ID、事实字段原词、仅上下文区分关联。",
+      "metrics": [
+        {
+          "label": "实际入库候选",
+          "value": 15,
+          "unit": "组"
+        },
+        {
+          "label": "来源内去重词条",
+          "value": 106,
+          "unit": "个"
+        },
+        {
+          "label": "治疗方式词条",
+          "value": 26,
+          "unit": "个"
+        },
+        {
+          "label": "生物标志物词条",
+          "value": 26,
+          "unit": "个"
+        },
+        {
+          "label": "有原文位置的实体提及",
+          "value": 172,
+          "unit": "个"
+        },
+        {
+          "label": "精确原文定位",
+          "value": 441,
+          "unit": "条"
+        },
+        {
+          "label": "沿用关系内容通过",
+          "numerator": 12,
+          "denominator": 15,
+          "value": "12/15"
+        },
+        {
+          "label": "新增模型调用",
+          "value": 0,
+          "unit": "次"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "人工查看ICI、CRP kinetics、治疗组合等实际入库例子，决定哪些候选词条值得跨文献统一。",
+    "继续处理K12范围、K14时间、K15结论限定错误；这与本轮存储能力分开。",
+    "保持原文抽取与脚本关联，不增加概括或独立模型调用。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/knowledge-intake-20261030.json",
+      "sha256": "9455876edac831e79ce0721b2ab339b6c84a0f759b15d11ae1d7d33a067c4b84"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "300848130f1633985815cbe3d5209f4d0de697d92f71a5c94d0989ea56a04d41",
+  "content_sha256": "6894a34df48190e53e7cb3a9c9c95d9e1e93daf47baf5606322010a4ed61f335"
+}

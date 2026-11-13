@@ -1,0 +1,115 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "core-gaps-20261029",
+  "title": "013 · 附加实体解耦与英文原文核验",
+  "date": "2026-10-29T19:11:04+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "复用15组旧输出，附加实体延期使可导出研究条目13→14；核心审核仍14/15，K12生成条件错绑继续阻断。零新9B调用，尚未测概括整体利弊。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "core-knowledge-gaps-evaluation-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8"
+    ],
+    "method_versions": [
+      "2117ca6c0bb22abac30317ad4cd8dae57f15a82361b59cb4240c59583e15a8b9",
+      "3abddf764717b76b6a8daf7ecdac1eb259cec6f3d49a83d9c5bc640a5d5b08ff",
+      "f9d06100b53acf39da2d0e3c1210be0a1636db6266e01c850687c1e866cbb739"
+    ],
+    "reference_versions": [
+      "d5421d8fdb63b49e6eb8b676b7fc492e4b74f01c81ff48746de03f03585cd598",
+      "6bca11ff4a8de39793eda34143a6bd62b8bd828db30b22acdd9afcba2ad3493c"
+    ]
+  },
+  "task": {
+    "question": "能否延期非核心的未定位实体，并分清原文事实与生成字段错误？",
+    "outputs": [
+      "K07附加实体未决及可导出状态",
+      "K12错误字段与精确英文证据核验",
+      "保留原始审核与双层出处的14条研究条目"
+    ],
+    "not_measured": [
+      "取消生成概括的整体收益或损失",
+      "新的9B抽取效果",
+      "全库泛化与独立测试准确率",
+      "临床适用性或生产导入"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇15组开发回归集",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "012冻结审核＋实际Astra对K07/K12定向核验",
+    "status": "model_reference_not_human_gold",
+    "note": "全组语义评分不变；Astra核验原句和错误定位，不是人工金标准，也不是新模型成绩。"
+  },
+  "methods": [
+    {
+      "id": "optional-entity-deferral",
+      "label": "附加实体与核心事实解耦",
+      "version": "core-knowledge-optional-entities-v1",
+      "conclusion": "13→14的增量来自技术解耦；未改变核心语义审核。",
+      "metrics": [
+        {
+          "label": "处理前可导出",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "012名称对齐后结果。"
+        },
+        {
+          "label": "处理后可导出",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "新增K07，K12仍阻断；不是语义准确率上升。"
+        },
+        {
+          "label": "核心流程审核（不变）",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "沿用012resolved_review；原始模型核心及原名评分仍13/15。"
+        },
+        {
+          "label": "结构与定位通过",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "仅延期K07.e20，不回填位置或ID。"
+        },
+        {
+          "label": "新增9B调用",
+          "value": 0,
+          "unit": "次",
+          "note": "Astra仅研究核验，不计为9B生产推理。"
+        },
+        {
+          "label": "脚本处理",
+          "value": 0.0699,
+          "unit": "秒",
+          "note": "15组验证、延期、组装投影；不含文件读写、导出及Astra。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "同15组、同模型比较原概括契约与较窄输出契约，测错误、遗漏、可用性和耗时；本记录尚无该轮结果。",
+    "保留原始英文及完整段落，使候选实体和证据可以检索、追溯；不把摘录展示误当关系结构化已完成。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/core-gaps-20261029.json",
+      "sha256": "5b25ba4958150aea563a33d90c1efb416e8dae4f6fda327fdd010bd228d7673f"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "6416a4a524bd55a8b5e0457d4e54843758a6396a5c41bb5e3de6235f639057ef",
+  "content_sha256": "6964f195df36c6a3256007433436906a68b33429026751748d83010d4f1ec00c"
+}

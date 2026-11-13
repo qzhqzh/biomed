@@ -9,6 +9,29 @@ from django.db import models
 from django.db.models import Q
 from django.utils import timezone
 
+from apps.curation.db import LowerIdentifier
+from apps.curation.entity_registry_models import (  # noqa: F401
+    CanonicalEntity,
+    EntityRegistryDecision,
+    EntityRegistryImport,
+    EntityRegistryMention,
+    EntityResolutionRule,
+)
+from apps.curation.knowledge_models import (  # noqa: F401
+    KnowledgeAnchor,
+    KnowledgeCandidate,
+    KnowledgeEntity,
+    KnowledgeReview,
+    KnowledgeSearchTerm,
+)
+from apps.curation.resource_models import (  # noqa: F401
+    DrugMoleculeLink,
+    EntityTranslation,
+    ResourceAssertion,
+    ResourceDataset,
+    ResourceEntity,
+)
+
 
 class SourceRelease(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -67,6 +90,13 @@ class Material(models.Model):
     identifiers = models.JSONField(default=dict)
     metadata = models.JSONField(default=dict)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        indexes = [
+            models.Index(LowerIdentifier("doi"), name="curation_doi_lookup"),
+            models.Index(LowerIdentifier("pmc"), name="curation_pmc_lookup"),
+            models.Index(fields=["-created_at", "kind", "id"], name="material_list_created"),
+        ]
 
 
 class MaterialVersion(models.Model):
@@ -218,3 +248,174 @@ class Review(models.Model):
 
     class Meta:
         ordering = ["created_at"]
+
+
+class LiteratureCollection(models.Model):
+    """A bounded collection wave; raising limits is an explicit resume operation."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    slot = models.PositiveSmallIntegerField(default=1, editable=False)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    query = models.TextField()
+    taxonomy = models.JSONField()
+    limits = models.JSONField()
+    state = models.CharField(max_length=20, default="estimating")
+    phase = models.CharField(max_length=20, default="estimate")
+    step = models.PositiveIntegerField(default=0)
+    estimate = models.JSONField(default=dict)
+    message = models.TextField(blank=True)
+    consecutive_errors = models.PositiveSmallIntegerField(default=0)
+    retry_not_before = models.DateTimeField(null=True)
+    active_seconds = models.FloatField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    started_at = models.DateTimeField(null=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(condition=Q(slot=1), name="collection_single_slot"),
+            models.UniqueConstraint(
+                fields=["slot"],
+                condition=Q(state__in=["estimating", "running"]),
+                name="one_active_collection",
+            ),
+        ]
+
+
+class CollectionAlert(models.Model):
+    """Durable, deduplicated attention events; resuming resolves without deleting."""
+
+    collection = models.ForeignKey(
+        LiteratureCollection, on_delete=models.PROTECT, related_name="alerts"
+    )
+    step = models.PositiveIntegerField()
+    reason = models.CharField(max_length=40)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    resolved_at = models.DateTimeField(null=True, db_index=True)
+    email_state = models.CharField(max_length=24, default="pending", db_index=True)
+    email_attempts = models.PositiveSmallIntegerField(default=0)
+    email_available_at = models.DateTimeField(null=True)
+    email_sent_at = models.DateTimeField(null=True)
+    email_message_id = models.CharField(max_length=255, blank=True)
+    email_error = models.TextField(blank=True)
+    delivery_token = models.UUIDField(null=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["collection", "step"], name="unique_collection_step_alert"
+            )
+        ]
+
+
+class CollectionPartition(models.Model):
+    collection = models.ForeignKey(
+        LiteratureCollection, on_delete=models.PROTECT, related_name="partitions"
+    )
+    start_date = models.DateField()
+    end_date = models.DateField()
+    uid_start = models.PositiveBigIntegerField(default=1)
+    uid_end = models.PositiveBigIntegerField(default=9999999999)
+    state = models.CharField(max_length=16, default="pending")
+    count = models.PositiveIntegerField(null=True)
+    pmids = models.JSONField(default=list)
+    offset = models.PositiveIntegerField(default=0)
+    captured_at = models.DateTimeField(null=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["collection", "start_date", "end_date", "uid_start", "uid_end"],
+                name="unique_collection_partition",
+            ),
+            models.CheckConstraint(
+                condition=models.Q(uid_start__gte=1, uid_end__lte=9999999999,
+                    uid_start__lte=models.F("uid_end")),
+                name="collection_partition_uid_range",
+            ),
+        ]
+
+
+class CollectionEntry(models.Model):
+    collection = models.ForeignKey(
+        LiteratureCollection, on_delete=models.PROTECT, related_name="entries"
+    )
+    pmid = models.CharField(max_length=10)
+    identifiers = models.JSONField(default=dict)
+    metadata_version = models.ForeignKey(
+        MaterialVersion,
+        null=True,
+        on_delete=models.PROTECT,
+        related_name="collection_entries",
+    )
+    reused = models.BooleanField(default=False)
+    fulltext_state = models.CharField(max_length=24, default="pending")
+    fulltext_version = models.ForeignKey(
+        MaterialVersion,
+        null=True,
+        on_delete=models.PROTECT,
+        related_name="collection_fulltexts",
+    )
+    message = models.TextField(blank=True)
+
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["collection", "fulltext_state", "id", "reused", "metadata_version"],
+                name="collect_entry_fulltext",
+            ),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["collection", "pmid"], name="unique_collection_pmid"
+            )
+        ]
+        ordering = ["id"]
+
+
+class LiteratureClassification(models.Model):
+    version = models.ForeignKey(
+        MaterialVersion, on_delete=models.PROTECT, related_name="classifications"
+    )
+    taxonomy_version = models.CharField(max_length=80)
+    taxonomy_sha256 = models.CharField(max_length=64)
+    result = models.JSONField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["version", "taxonomy_sha256"],
+                name="unique_literature_classification",
+            )
+        ]
+
+
+class CollectionFetch(models.Model):
+    """Reserve response budgets before I/O; crashed requests retain their reservation."""
+
+    collection = models.ForeignKey(
+        LiteratureCollection, on_delete=models.PROTECT, related_name="fetches"
+    )
+    url = models.TextField()
+    state = models.CharField(max_length=16, default="running")
+    http_status = models.PositiveSmallIntegerField(null=True)
+    charged_bytes = models.PositiveBigIntegerField()
+    wire_bytes = models.PositiveBigIntegerField(default=0)
+    decoded_bytes = models.PositiveBigIntegerField(default=0)
+    elapsed_seconds = models.FloatField(default=0)
+    response_sha256 = models.CharField(max_length=64, blank=True)
+    message = models.TextField(blank=True)
+    started_at = models.DateTimeField(auto_now_add=True)
+    finished_at = models.DateTimeField(null=True)
+
+    class Meta:
+        indexes = [
+            models.Index(
+                fields=["collection", "charged_bytes", "wire_bytes", "decoded_bytes", "elapsed_seconds", "state"],
+                name="collect_fetch_budget",
+            ),
+            models.Index(fields=["started_at"], name="collect_fetch_started"),
+        ]

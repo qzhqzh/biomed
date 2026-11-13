@@ -1,0 +1,240 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "relation-facts-20261029",
+  "title": "011 · 现有实体辅助的关系与事实绑定",
+  "date": "2026-10-29T17:38:57+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "现有实体＋9B一次关系抽取：原始可用3/15，无损格式后5/15，来自2篇文献；主要缺口是中心事实与完整治疗条件的绑定。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "relation-facts-evaluation-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8",
+      "8f5b65976ab5b014b92d0e90d3b7b68e1bef0135a1b905f9c979689528e4aa0e"
+    ],
+    "method_versions": [
+      "a692efa8bfb141d218abc05c59f655d00d6277efbe43e83866e524202e2510cf",
+      "077cc02e490cf5957939235f477dab32250a1cf14d0527b5e93b2bea52c6c558",
+      "58d537e9bd1a83fbaa8b92c75ef634e13b935937d50bd5f24af97eda0f1cee40",
+      "47dfba673a9e2e1e14670dba8f8d2036e063cc6b8a33902c8312c69fc831c067",
+      "b5d547508187117963892edf3904de5b02908a3cedf02392cbde50b427c92b53"
+    ],
+    "reference_versions": [
+      "e7aa190f67aa88ed30f9ddf3808cb60aed39703f4fe63b8f52921518c7274e5b",
+      "11d67cf42151a8f85a2df9852d7ee8a8a8f30aa9bd6138e86d2b93001b04c5c1",
+      "e4855ef32386fd85315b6c273386471903cf19ff184918f9efed6bb1356a47f4",
+      "cbbe2fe17ee87f7799e09de9935f81e72cad72a2328c20d2fba86d650efe48be"
+    ]
+  },
+  "task": {
+    "question": "用已有实体和原文，能否一次形成关系、人群、条件、结论及数值正确对应的知识候选？",
+    "outputs": [
+      "每组一个原始事实",
+      "参与实体与两层出处",
+      "人群/治疗/比较/条件/数值/范围",
+      "Astra核验及可用条数、错因和耗时"
+    ],
+    "not_measured": [
+      "临床适用性或生产导出通过",
+      "全库泛化",
+      "人工修改耗时",
+      "微调效果"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇、15组实体辅助事实抽取",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "本轮实际gpt-6-astra盲参考与逐条核验",
+    "status": "model_reference_not_human_gold",
+    "note": "先冻结参考再看9B输出；Astra是模型参考，不是人工金标准。新合法中心需原文依据。"
+  },
+  "methods": [
+    {
+      "id": "raw-and-format",
+      "label": "原始候选与独立无损格式诊断",
+      "version": "usable-relation-candidate-v1",
+      "conclusion": "原始3/15，形状兼容后5/15；另外10条仍存在关键语义或出处问题，不能靠格式通过放行。",
+      "metrics": [
+        {
+          "label": "原始JSON有效",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "原始9B输出，未修复医学文本。"
+        },
+        {
+          "label": "原始结构与引用通过",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "结构通过不等于语义正确。"
+        },
+        {
+          "label": "Astra语义通过",
+          "numerator": 5,
+          "denominator": 15,
+          "note": "K01、K02、K03、K10、K11；纯协议问题与语义问题分开。"
+        },
+        {
+          "label": "原始可用候选",
+          "numerator": 3,
+          "denominator": 15,
+          "note": "K01、K02、K03。结构与语义均通过，失败仍在15条分母。"
+        },
+        {
+          "label": "无损格式后结构通过",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "只兼容reason:null缺失和conditions字符串，未补引用或改事实。"
+        },
+        {
+          "label": "无损格式后可用候选",
+          "numerator": 5,
+          "denominator": 15,
+          "note": "新增K10、K11；5条来自2篇文献，不是5篇独立验证。"
+        },
+        {
+          "label": "格式兼容新增模型调用",
+          "value": 0,
+          "unit": "次",
+          "note": "事后独立诊断，原始结果与原始评分保持冻结。"
+        }
+      ]
+    },
+    {
+      "id": "semantic-axes",
+      "label": "Astra八轴核验 · 分轴不等于完整可用率",
+      "version": "usable-relation-candidate-v1",
+      "conclusion": "治疗与比较、中心事实/证据支持各有5条未通过；数值抄对不代表人群和治疗绑定完整。",
+      "metrics": [
+        {
+          "label": "关系方向",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "未通过1，不确定0，不适用0。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        },
+        {
+          "label": "人群",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "未通过2，不确定0，不适用0。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        },
+        {
+          "label": "治疗与比较",
+          "numerator": 10,
+          "denominator": 15,
+          "note": "未通过5，不确定0，不适用0。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        },
+        {
+          "label": "必要条件",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "未通过3，不确定0，不适用0。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        },
+        {
+          "label": "数值绑定",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "未通过1，不确定0，不适用3。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        },
+        {
+          "label": "研究范围",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "未通过1，不确定0，不适用0。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        },
+        {
+          "label": "参与实体使用",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "未通过1，不确定0，不适用0。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        },
+        {
+          "label": "中心事实及证据支持",
+          "numerator": 10,
+          "denominator": 15,
+          "note": "未通过5，不确定0，不适用0。一条候选可同时有多类问题，不能相加成为总体准确率。"
+        }
+      ]
+    },
+    {
+      "id": "cost",
+      "label": "单次9B关系抽取成本及上游累计",
+      "version": "relation-single-pass-v1",
+      "conclusion": "保持每组一次9B主干。本轮成本不包含Astra参考/核验的研究投入，未测人工修改时间。",
+      "metrics": [
+        {
+          "label": "关系推理",
+          "value": 592.94,
+          "unit": "秒",
+          "note": "15组一次运行；平均约39.53秒/组。"
+        },
+        {
+          "label": "关系脚本组装",
+          "value": 0.0025,
+          "unit": "秒",
+          "note": "只检查协议并挂接原文和已有实体。"
+        },
+        {
+          "label": "无损格式诊断",
+          "value": 0.0049,
+          "unit": "秒",
+          "note": "零模型调用，单独列出事后诊断成本。"
+        },
+        {
+          "label": "010实体阶段",
+          "value": 407.92,
+          "unit": "秒",
+          "note": "既有测量，未重新抽取实体。"
+        },
+        {
+          "label": "实体＋关系累计处理",
+          "value": 1000.87,
+          "unit": "秒",
+          "note": "约16.7分钟/15组；不含冷启动、分类/段落筛选或Astra研究评审。"
+        },
+        {
+          "label": "本轮任务模型调用",
+          "value": 15,
+          "unit": "次",
+          "note": "15次关系抽取；加010共30次任务调用，预热另计。"
+        },
+        {
+          "label": "本轮加载及预热",
+          "value": 81.54,
+          "unit": "秒",
+          "note": "另计1次预热；模型进程wall time约679.72秒。"
+        },
+        {
+          "label": "显存进程峰值",
+          "value": 19.41,
+          "unit": "GiB",
+          "note": "复用/data/models/Qwen3.5-9B，GPU3，未微调。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保持一次9B抽取＋脚本主干，优先明确中心事实与完整治疗/比较限定，不追加全量自由改写。",
+    "继续记录可用候选、最小修复及实际修改负担，再决定是否需要受限补处理。",
+    "保留两条无损形状兼容及原始输出；暂不微调、不改tumor_api，不将研究候选直接发布为生产知识。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/relation-facts-20261029.json",
+      "sha256": "15ae408a05575002e2424d9cf3b96d231794955fec0a25375bfc291f20bdc1d5"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "f8c9655acc3e88c182856a3c481e0b409e8452928e6eb6cf730138bc101f69ec",
+  "content_sha256": "664d5cf700c21c11320df5e2ab95503c1a555825275af90dfa8f2fa91b055bf8"
+}

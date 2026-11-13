@@ -17,7 +17,11 @@ class UnifiedFrontendTests(SimpleTestCase):
             ("/evidence/clinical/", "clinical-evidence-root"),
             ("/knowledge/diseases/", "standards-root"),
             ("/knowledge/drugs/", "standards-root"),
+            ("/knowledge/candidates/", "knowledge-candidates-root"),
+            ("/knowledge/entities/", "entity-registry-root"),
+            ("/knowledge/search/", "knowledge-search-root"),
             ("/management/workflows/", "workflows-root"),
+            ("/management/research/", "research-root"),
             ("/library/", "library-root"),
             ("/workflows/", "workflows-root"),
             ("/knowledge/standards/", "standards-root"),
@@ -26,6 +30,7 @@ class UnifiedFrontendTests(SimpleTestCase):
         ]:
             response = self.client.get(path)
             self.assertContains(response, root)
+            self.assertIn("csrftoken", response.cookies)
             scripts = re.findall(
                 r'<script type="module" src="([^"]+)"', response.content.decode()
             )

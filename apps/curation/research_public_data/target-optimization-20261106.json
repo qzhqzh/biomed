@@ -1,0 +1,134 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "target-optimization-20261106",
+  "title": "028 · 核心知识与目标兼容修复",
+  "date": "2026-11-06T14:20:00+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 2,
+  "sample_unit": "固定片段组",
+  "summary": "两篇真实论文形成3条知识，其中2条通过tumor_api离线兼容；同输入旧方案为1条。补回总体ORR31%，拆开复合实体并保留必要入组条件。已存biomed，未导入生产。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "target-optimization-20261106",
+    "sample_versions": [
+      "20fc364040b1bedfab907862f75ea30948aee5e105a9b6e4d19bde736d8b4908"
+    ],
+    "method_versions": [
+      "6cc0b4cce094c6562013bd2f1bd0c347a94d6f04587cdd15290e1e1fa68c01ee",
+      "b4f2b90e931a443632d794064b87ce6da7141e2a063f8f7e94bae4a2e3d052b8",
+      "afa0513b4e38b12ea5129deced27e4b445da3d0c27c465cfd4528b7234ba86bf"
+    ],
+    "reference_versions": [
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737",
+      "4d66409ff5069d598781f9896ec652e5b3c43fb7f624834fd519b9f98a43ac82"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "能否把已有原文中的有效核心关系自动提取并转换成可用的目标兼容包，同时避免伪造条件？",
+    "outputs": [
+      "逐条核心知识、真实ID映射、文章与段落来源",
+      "同输入前后兼容数量及关系推理时间",
+      "独立核心核读和必要条件防误放对照"
+    ],
+    "not_measured": [
+      "新文献独立泛化与全库准确率",
+      "所有终点的完整数值覆盖",
+      "完整流水线同比吞吐量、生产导入和线上报告匹配"
+    ]
+  },
+  "dataset": {
+    "label": "两篇已知失败案例的开发回归",
+    "role": "development_regression",
+    "document_count": 2
+  },
+  "reference": {
+    "label": "原文逐条核读与冻结目标合同",
+    "status": "model_reference_not_human_gold",
+    "note": "Codex依据完整原段判断核心实体、关系、必要条件与保留的主要结果。未做人类金标准或盲评；目标结构通过不代表临床适用。"
+  },
+  "methods": [
+    {
+      "id": "old",
+      "label": "旧方案：每组单事实",
+      "version": "archived-one-fact",
+      "conclusion": "一段只选一条事实时漏掉ctDNA论文的总体疗效；附带统计存在分母错绑。",
+      "metrics": [
+        {
+          "label": "同两组目标离线兼容条数",
+          "value": 1,
+          "unit": "条",
+          "note": "两条旧知识；不是整个常驻批次的0条。"
+        },
+        {
+          "label": "关系推理累计",
+          "value": 47.93,
+          "unit": "秒",
+          "note": "历史同两组已记录的时间，不含9B、加载和预热。"
+        }
+      ]
+    },
+    {
+      "id": "fixed",
+      "label": "修复后：独立核心事实＋必要上下文",
+      "version": "independent-anchor-facts-v4 / mapping-v6",
+      "conclusion": "采用复合实体拆分、入组上下文、最多3个独立事实和每关系一个主要结果，保持9B与Bonsai选型。",
+      "metrics": [
+        {
+          "label": "保存核心知识",
+          "value": 3,
+          "unit": "条",
+          "note": "两篇、两个输入；每条关系仅保留主要结果。"
+        },
+        {
+          "label": "目标离线兼容",
+          "value": 2,
+          "unit": "条",
+          "note": "另外一条ctDNA分组比较保留biomed，不压成普通突变疗效。"
+        },
+        {
+          "label": "本轮核心核读支持",
+          "numerator": 3,
+          "denominator": 3,
+          "note": "固定开发案例AI核读，不外推全库准确率。"
+        },
+        {
+          "label": "关系推理累计",
+          "value": 33.2,
+          "unit": "秒",
+          "note": "复用9B库存；加载6.08秒、预热11.35秒另计，输出范围已收敛。"
+        },
+        {
+          "label": "Bonsai进程显存峰值",
+          "value": 8008,
+          "unit": "MiB",
+          "note": "GPU3单进程采样峰值，非所有模型并发内存。"
+        },
+        {
+          "label": "旧常驻72条误放为目标兼容",
+          "value": 0,
+          "unit": "条",
+          "note": "重放回归计数，不是72条都已完成语义审核。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "后台按原预算使用新版，观察真实新批次是否复现同类失败。",
+    "仅在新实例影响核心关系或兼容时扩展必要规则，不追加模型选型或训练。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/target-optimization-20261106.json",
+      "sha256": "a2f9c8e082adff8bf1582a3f2705f2bf4c611d2052ea3f45a6ca71069f21dbdc"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "439ecf7250860b0d360ae15f826e35616c60b32813b706c983dbe65805540056",
+  "content_sha256": "5e0ac25f798b357fc1fffd8a4a347eb8353ce098a34ffd42ff77c611e87545af"
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "target-yield-holdout-20261113",
+  "title": "038 · 新文章知识利用率与融合适配缺口",
+  "date": "2026-11-12T20:00:52.213763+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 20,
+  "sample_unit": "篇文献",
+  "summary": "20 篇 58 条旧候选离线通过 0；发现精确融合被遗漏，开发出 1 条未启用结构预览，目标运行验证尚未完成。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "target-yield-holdout-v1",
+    "sample_versions": [
+      "9a0d2592c42e592a6ecf193e609205835735525e420e3a3fc06892e9cd718bc7"
+    ],
+    "method_versions": [
+      "015e16fd679d23044402915486e2b10d95c214e75029041b9b6a56e7e9d88bba"
+    ],
+    "reference_versions": [
+      "e526bc9f18b6960e9a30f24fbd93c0708ccc459dade6e031c1488c23123fa4a3",
+      "eca13517aa7a25cb8689e67d19808ae4b7cd1253311aa45388d5441b0f3a6649",
+      "f4bb4b4a9eec8dd07daaf241382f27a479ad9b55c3cbe02326f96eaa0a0a7cc2"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "新文章中的结构知识为何未通过目标适配？哪些修复有可核对依据？",
+    "outputs": [
+      "Astra 原文参考及更正",
+      "旧候选复核",
+      "精确融合开发预览"
+    ],
+    "not_measured": [
+      "035 点突变修复在新正例上的效果",
+      "目标真实保存与精确匹配",
+      "全文召回、全库比例与新模型吞吐",
+      "真实患者适用性"
+    ]
+  },
+  "dataset": {
+    "label": "20 篇全文、58 条旧候选",
+    "role": "bounded_holdout_and_followup_development",
+    "document_count": 20
+  },
+  "reference": {
+    "label": "Astra 原文参考与逐字引用检查",
+    "status": "model_reference_not_human_gold",
+    "note": "初审 7 篇，后续追加综述中的机构病例；原文支持不等于目标可用。"
+  },
+  "methods": [
+    {
+      "id": "reference",
+      "label": "固定文章与原文参考",
+      "version": "target-holdout-v1",
+      "conclusion": "有可提取线索，但参考样本不等于可用知识。",
+      "metrics": [
+        {
+          "label": "初审和补充后有人类分子事件及临床关系",
+          "numerator": 8,
+          "denominator": 20,
+          "note": "至少 8 篇；不等于治疗有效或目标通过。"
+        },
+        {
+          "label": "原文核对的旧候选核心内容获支持",
+          "numerator": 15,
+          "denominator": 30,
+          "note": "有目的选出的 30 条；另 15 条需补充，不是全库准确率。"
+        }
+      ]
+    },
+    {
+      "id": "fusion",
+      "label": "旧适配与精确融合开发",
+      "version": "source-fusion-pair-development-v1",
+      "conclusion": "明确融合不能简单视为单基因泛融合；尚不能计为目标可用知识。",
+      "metrics": [
+        {
+          "label": "旧适配器离线通过",
+          "numerator": 0,
+          "denominator": 58,
+          "note": "仅这 58 条既有候选。"
+        },
+        {
+          "label": "开发得到的未启用融合结构预览",
+          "numerator": 1,
+          "denominator": 58,
+          "note": "看过参考后开发；Astra 核心支持、完整预览部分支持，目标运行未验证。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "服务器压力缓解后完成目标隔离保存及正确／错误融合伙伴匹配。",
+    "补充未参与开发的新融合正例和反例，比较独立通过数，再考虑后台接入。",
+    "定位新增全文发现的数据库错误，保持查询有界。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/target-yield-holdout-20261113.json",
+      "sha256": "bb558f0beb8e0b04428f4d8888e0301f1d70e2363cac22206aa9ea0c7bfaa612"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "a5911e4b7d55151c1d62f35ee48346a591d4fc9adcad6e4468f528c54b3a7ade",
+  "content_sha256": "d6ed235d21303df11e37fd1a347b6f345d0a52303f5a4183b18272f4f126abab"
+}

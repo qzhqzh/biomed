@@ -1,0 +1,162 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "knowledge-candidates-five-papers-20261023",
+  "title": "006 · 5篇实体瘤文献的实体、关系与条件联合抽取",
+  "date": "2026-10-23",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "条",
+  "summary": "5篇、15个片段组：9B生成15条候选，9/15中心陈述获Astra支持；完整结构与引用仅1/15通过，结构与整条核验同时通过0/15。组别、条件和引用需分层处理；这不是15条全部没读懂。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "knowledge-candidate-evaluation-v1",
+    "sample_versions": [
+      "a186af8678d4e974080406d3219f1da78ccb6888daf778a7eb5acc9cbcfb3dcf"
+    ],
+    "method_versions": [
+      "abeddae8d8a09b257af938a1a5eca5e73eb89e4702d9f748086fbce31ae9b707",
+      "27455b4560d6ddf812ba609b98cee0f4ad616d6a71fca550c1dae41d6f1fc8ea"
+    ],
+    "reference_versions": [
+      "cca596cc01491a24c6a5cb1b8768403ba99a36bbc16bdc598e84140e62940c42",
+      "adec4cd51e115e75590cfc71d10b26323e603f3b9921408d23fd5e5c82d302ce",
+      "c019ae0dde79df0e1b93480724a00f77a44fe9eac4ee5a9262ca4f5a78aaf16c",
+      "14ea7330a022236e59aeaee0095ab7e6a713d6736d0fc62cefd9c47048f77673"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "9B能否从上一环节入选文本一次形成带两层出处、可映射的知识候选？",
+    "outputs": [
+      "实体原文跨度",
+      "关系、条件与结果",
+      "文章+段落及字段级出处",
+      "标准实体候选",
+      "tumor_api只读结构映射预览"
+    ],
+    "not_measured": [
+      "全篇/全库抽取召回率",
+      "拆分模型调用相对收益",
+      "新论文泛化",
+      "生产API写入或临床适用性"
+    ]
+  },
+  "dataset": {
+    "label": "5篇实体瘤治疗论文的15个开发片段组",
+    "role": "目的性开发集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "gpt-6-astra独立参考及逐候选复核",
+    "status": "model_reference_not_human_gold",
+    "note": "参考先冻结，再看9B输出核验；允许不同但有原文支持的中心结论。复核阶段不声称盲法。"
+  },
+  "methods": [
+    {
+      "id": "qwen35-9b-joint",
+      "label": "Qwen3.5-9B联合抽取 + 确定性校验",
+      "version": "abeddae8d8a09b257af938a1a5eca5e73eb89e4702d9f748086fbce31ae9b707",
+      "conclusion": "保留9B做语义抽取，但本轮一次生成整份复杂知识记录尚不可自动入库。下一轮简化模型输出，让脚本处理定位、标准ID和字段组装，对组别/条件冲突再作定向复核；尚未实测拆分收益。",
+      "metrics": [
+        {
+          "label": "合法JSON输出",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "全部固定片段组为分母，包含合法弃权；JSON合法不等于知识正确。"
+        },
+        {
+          "label": "完整结构与引用检查",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "包含字段、实体引用、精确引句、来源版本和字段支持标签；不是语义正确率。"
+        },
+        {
+          "label": "中心陈述获支持（诊断）",
+          "numerator": 9,
+          "denominator": 15,
+          "note": "事后拆分诊断：仅看中心陈述，仍要求中心段原文支持、组别及范围正确；不代表实体、条件、引用等整份输出合格。"
+        },
+        {
+          "label": "Astra整条核验通过",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "核验所选中心结论、条件、实体关系和引用支持；Astra为模型参考，非人工金标准。"
+        },
+        {
+          "label": "结构与语义均通过",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "本轮候选质量门槛；仍未正式发布。"
+        },
+        {
+          "label": "实体原文定位",
+          "numerator": 52,
+          "denominator": 69,
+          "note": "原始实体提及能在指定段落精确定位的比例；不代表实体类型、关系或标准化正确。"
+        },
+        {
+          "label": "精确引用与字段标签",
+          "numerator": 52,
+          "denominator": 58,
+          "note": "原始引句中，可精确定位且字段标签合法的比例；不代表引句在语义上支持这些字段，也不代表全部字段均已引用。"
+        },
+        {
+          "label": "实体精确别名链接",
+          "numerator": 13,
+          "denominator": 69,
+          "note": "全部原始实体提及为分母，未定位提及保留失败；只统计现有字典唯一精确别名，不是实体链接准确率。"
+        },
+        {
+          "label": "可直接导入目标",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "缺内部UUID、分子触发条件或目标无法表达的信息时明确阻塞。"
+        },
+        {
+          "label": "总推理时间",
+          "value": 1461.62,
+          "unit": "秒",
+          "note": "含分词、传输、生成、JSON校验；不含加载、预热和落盘。"
+        },
+        {
+          "label": "平均每条",
+          "value": 97.44,
+          "unit": "秒/条",
+          "note": "包含重启后断点续跑的batch=1逐条计时，不能当作单次连续吞吐。"
+        },
+        {
+          "label": "模型加载（单列）",
+          "value": 459.79,
+          "unit": "秒",
+          "note": "各已记录会话加载耗时合计；受当时磁盘I/O影响，不含未完成加载，未隔离操作系统缓存。"
+        },
+        {
+          "label": "峰值显存",
+          "value": 19.37,
+          "unit": "GiB",
+          "note": "NVML进程峰值，0.1秒采样。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "仍用9B、暂不微调。下一次先比较简化的事实抽取：固定中心段，输出人群/方案/比较组/终点/方向/条件及少量原文定位依据；取消让模型手工生成标准ID和字符偏移。",
+    "脚本负责精确原文定位、枚举与引用检查、唯一别名链接及目标字段组装；定位有歧义、缺字段或冲突时明确失败，不静默补齐。语义难点交给9B定向复核，先不把每个实体拆成一次模型调用。",
+    "用这15组作开发回归，分别比较中心事实、实体类型、组别/条件/数值、引用覆盖、整条通过率与总时间；有改进后再用新论文确认泛化。不能仅补齐JSON标签就宣称知识质量提升。",
+    "一般治疗证据保留在biomed；日后另行验证目标内部ID与触发条件，建立可适配子集。本轮不修改目标生产系统，也不启动全库知识抽取。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/knowledge-candidates-five-papers-20261023.json",
+      "sha256": "146d4179039ab2d6047949a9b2289dd342ab2a424ac629890650644b4f5e08d7"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "ee0ea8bd2b8dbc78deb60038273d7f0843a624e469b019666ea36a28cc85b6d9",
+  "content_sha256": "6ccd4463f71c9da0382236fab2644719d5462337b3fb9bfbf6b508d1a110adc6"
+}

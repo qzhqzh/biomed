@@ -1,0 +1,109 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "continuous-clinical-20261107-v2",
+  "title": "030 · 新版后台首批：1条兼容，净新增0条",
+  "date": "2026-11-07T02:07:47.960285+08:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 2,
+  "sample_unit": "篇尝试（1篇进入提取）",
+  "summary": "新选文、分子诊断筛选、关系及适配已接后台。17条实际保存，1条独立目标兼容；复现已有SS18知识，净新增0。整批34.35分钟。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "continuous-clinical-validation-v1",
+    "sample_versions": [
+      "4402209ba5d389fe5998ddcedbc86429983996336ba6dcc5e527b185713aa4e6"
+    ],
+    "method_versions": [
+      "bf508f8a1d4d0b22da4180f6fcdacfa9c351a40cf49fecb54cbdcc3ca5a86ae4"
+    ],
+    "reference_versions": [
+      "044ab80ec498d7c7a8f7e5555324a6369fa621ed9fcfb636bb806c224c722f6f",
+      "c51ca999c5f7db1508955df04973e069134126bb8d6db096542f8925cf964481"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "无需手工选段，能否自动得到真实可适配目标的独立知识？",
+    "outputs": [
+      "17条候选已保存biomed，172处来源锚点",
+      "同实际输出：旧适配0条、新适配1条",
+      "原文核读支持1/1；历史去重后净新增0条"
+    ],
+    "not_measured": [
+      "全库准确率和持续新增知识效率",
+      "旧完整流水线的同批耗时",
+      "生产导入和真实患者匹配"
+    ]
+  },
+  "dataset": {
+    "label": "首批常驻自动验证，含既有研究对照",
+    "role": "development_regression",
+    "document_count": 2
+  },
+  "reference": {
+    "label": "实际回执＋冻结原文核读",
+    "status": "model_reference_not_human_gold",
+    "note": "只核读唯一目标兼容条目；1/1支持不代表其余16条准确。与029同一诊断关系不计新增。"
+  },
+  "methods": [
+    {
+      "id": "old-adapter",
+      "label": "旧v6适配（同输出重放）",
+      "version": "legacy-v6",
+      "conclusion": "只重放脚本，不新增模型调用。",
+      "metrics": [
+        {
+          "label": "目标兼容独立知识",
+          "value": 0,
+          "unit": "条"
+        }
+      ]
+    },
+    {
+      "id": "clinical",
+      "label": "新临床适配＋自动流程",
+      "version": "target-clinical-focus-v1",
+      "conclusion": "自动复现一条已有知识，不能称为新增发现。",
+      "metrics": [
+        {
+          "label": "实际保存候选",
+          "value": 17,
+          "unit": "条"
+        },
+        {
+          "label": "目标兼容独立知识",
+          "value": 1,
+          "unit": "条"
+        },
+        {
+          "label": "相对历史净新增",
+          "value": 0,
+          "unit": "条"
+        },
+        {
+          "label": "整批运行",
+          "value": 34.35,
+          "unit": "分钟"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "优先补充有明确分子临床关系的合法全文，提高真正新增知识的来源供给。",
+    "之后减少同模型重复加载；保持当前模型选择。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/continuous-clinical-20261107-v2.json",
+      "sha256": "4fab88ef1149f634bf265b9e6693b2272ca52896f0f779de7e180170d14ef1e1"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "e06f04dec7fde8ca5dea2cde874c64531c69260cc04c699f6d737dd0f65b8556",
+  "content_sha256": "4ce18b320d5fd8a860c55aaafa3971bbedd84255c73fca63b4fd1f6308d9d69e"
+}

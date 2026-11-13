@@ -1,16 +1,47 @@
 from django.urls import path
 
-from apps.curation import views
+from apps.curation import (
+    entity_registry_views,
+    knowledge_processing_views,
+    knowledge_search,
+    knowledge_views,
+    research_views,
+    views,
+)
+from apps.curation.drug_hierarchy import drug_tree
 
 urlpatterns = [
+    path("knowledge-processing/", knowledge_processing_views.status),
+    path("entity-registry/summary/", entity_registry_views.summary),
+    path("entity-registry/entities/", entity_registry_views.entities),
+    path("entity-registry/entities/<uuid:pk>/", entity_registry_views.entities),
+    path("entity-registry/entities/<uuid:pk>/review/", entity_registry_views.review_entity),
+    path("entity-registry/rules/", entity_registry_views.rules),
+    path("entity-registry/rules/<uuid:pk>/", entity_registry_views.rules),
+    path("entity-registry/rules/<uuid:pk>/review/", entity_registry_views.review_rule),
+    path("knowledge/", knowledge_search.knowledge),
+    path("knowledge/<uuid:pk>/", knowledge_search.knowledge),
+    path("knowledge/<uuid:pk>/review/", knowledge_search.review_knowledge),
+    path("knowledge-entities/", knowledge_views.entities),
+    path("knowledge-entities/<uuid:pk>/", knowledge_views.entities),
+    path("knowledge-candidates/", knowledge_views.candidates),
+    path("knowledge-candidates/<uuid:pk>/", knowledge_views.candidates),
+    path("research/", research_views.history),
+    path("research/<slug:record_id>/", research_views.history),
     path("overview/", views.overview),
     path("sources/", views.sources),
     path("concepts/", views.concepts),
+    path("drug-resources/", views.drug_resources),
+    path("drug-tree/", drug_tree),
     path("materials/", views.materials),
     path("materials/<uuid:pk>/", views.material_detail),
     path("versions/<uuid:pk>/download/", views.download),
     path("versions/<uuid:pk>/processing/", views.version_processing),
     path("pubmed/<str:action>/", views.pubmed),
+    path("collections/", views.collections),
+    path("collection-alerts/", views.collection_alerts),
+    path("collections/<uuid:pk>/", views.collection_detail),
+    path("literature-taxonomy/", views.literature_taxonomy),
     path("workflows/", views.workflows),
     path("workflows/<uuid:pk>/", views.workflow_detail),
     path("evidence/", views.evidence),

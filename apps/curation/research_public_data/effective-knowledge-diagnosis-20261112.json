@@ -1,0 +1,123 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "effective-knowledge-diagnosis-20261112",
+  "title": "032 · 可用知识诊断：结构改善与留出对照",
+  "date": "2026-11-12T06:16:04.726654+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 16,
+  "sample_unit": "条候选",
+  "summary": "开发诊断样本离线结构通过1→2；留出10条0→0。尚无Astra独立核验，未证明新增有效知识，原型未接入后台。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "effective-knowledge-diagnosis-v1",
+    "sample_versions": [
+      "52bdd5bd8ccd0bb2acbd56193884a908aa8f4c7f583812ee138f2d0fdecb9e0f",
+      "f0b60b5d6a24a0f0d5039977c5aeb75a5fe9b32f3fb90cb7c3650100ab3833f2"
+    ],
+    "method_versions": [
+      "d952e07c6eb7c0e938a93ad388a0bc71f6205803f13e7e215304dcf3749d3c91",
+      "d952e07c6eb7c0e938a93ad388a0bc71f6205803f13e7e215304dcf3749d3c91",
+      "f81715458e6930811018eec3068e6ed65c991f7eae45aa400102f4481b8a3f9c"
+    ],
+    "reference_versions": [
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737",
+      "253bbc83073b091249d15a923e9664b9c87c96c146c555d1fe8f5c034890af00"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "按文章和段落绑定实体、分子事件与治疗关系，能否增加目标可表达的独立知识？",
+    "outputs": [
+      "旧结果与带出处新结构的同样本对照",
+      "不覆盖旧数据的目标结构预览",
+      "区分9B输出截断和模型正常未找到事实"
+    ],
+    "not_measured": [
+      "Astra独立医学语义核验、临床准确率及真实患者匹配",
+      "留出全文的完整正例数及全库召回",
+      "CNV、融合、联合治疗和复杂跨段关系的完整覆盖"
+    ]
+  },
+  "dataset": {
+    "label": "30条冻结候选中的16条对照",
+    "role": "development_and_holdout",
+    "document_count": 16
+  },
+  "reference": {
+    "label": "原文摘要预读与出处机械校验",
+    "status": "not_independent_gold",
+    "note": "当前助手在查看模型结果前记录摘要观察；尚非完整全文、Astra或临床专家核验。模型字段与原文的语义正确率未测。"
+  },
+  "methods": [
+    {
+      "id": "old",
+      "label": "原提取与原目标适配",
+      "version": "frozen-original",
+      "conclusion": "保留全部旧输出及原有通过结果。",
+      "metrics": [
+        {
+          "label": "开发样本离线结构通过",
+          "numerator": 1,
+          "denominator": 6,
+          "note": "原对照不是医学质量评价。"
+        },
+        {
+          "label": "留出样本离线结构通过",
+          "numerator": 0,
+          "denominator": 10,
+          "note": "包含2条没有可引用证据段落的旧记录。"
+        }
+      ]
+    },
+    {
+      "id": "new",
+      "label": "来源绑定与窄范围目标适配原型",
+      "version": "biomed.source-linked-target-preview.v1",
+      "conclusion": "开发案例可形成结构；留出没有净增，真实可用知识提升尚未证明，不接入默认后台。",
+      "metrics": [
+        {
+          "label": "开发样本离线结构通过",
+          "numerator": 2,
+          "denominator": 6,
+          "note": "含1条旧对照与1条新增结构候选；新增未独立核验。"
+        },
+        {
+          "label": "留出样本离线结构通过",
+          "numerator": 0,
+          "denominator": 10,
+          "note": "8条推理、2条无证据未推理；不能据此推断全文不存在正例。"
+        },
+        {
+          "label": "留出关系推理耗时",
+          "value": 94.259141,
+          "unit": "秒",
+          "note": "8次热推理，不含加载、预热和完整流水线。"
+        },
+        {
+          "label": "留出显存峰值",
+          "value": 8002.0,
+          "unit": "MiB",
+          "note": "单次模型进程实测。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "只补充明确有分子事件和临床关系的原发性正例及负例，用Astra基于原文独立核验。",
+    "核验净新增、去重和必要条件，达到接入标准后再考虑批次边界切换；现有后台继续原方法。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/effective-knowledge-diagnosis-20261112.json",
+      "sha256": "2758051200e9ee38906de3a41faf72d8e2bd02be7d01e77191871d9e558bf2cf"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "c22ce95bf42fa2da5804777d95e100f8dafc4bdf1eb55e1e81ccc83ce7e4a077",
+  "content_sha256": "efa49da534cf9bc53b6a2f201ce434eca847f107e33cf884b93c2aae3b72469d"
+}

@@ -7,11 +7,15 @@ x-app-environment: &app-environment
   DATABASE_PATH: /app/var/db.sqlite3
   EVIDENCE_API_URL: http://oncology:8000
   CURATION_STORAGE_DIR: /app/library
+  BIOMED_STORAGE_MARKER: ${BIOMED_STORAGE_MARKER:-}
+  CURATION_MAIL_CONFIG: /run/biomed/mail/config.json
   CURATION_MODEL_BACKEND: ${CURATION_MODEL_BACKEND:-}
   KNOWLEDGE_DIR: /data/knowledge
   KNOWLEDGE_UPDATES_DIR: /data/knowledge-updates
   DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-}
   DJANGO_TRUST_X_FORWARDED_PROTO: ${DJANGO_TRUST_X_FORWARDED_PROTO:-0}
+  BIOMED_REQUIRE_LOGIN: ${BIOMED_REQUIRE_LOGIN:-0}
+  BIOMED_ALL_AUTHENTICATED_CAN_REVIEW: ${BIOMED_ALL_AUTHENTICATED_CAN_REVIEW:-0}
   DJANGO_SECURE_SSL_REDIRECT: ${DJANGO_SECURE_SSL_REDIRECT:-0}
   DJANGO_SESSION_COOKIE_SECURE: ${DJANGO_SESSION_COOKIE_SECURE:-0}
   DJANGO_CSRF_COOKIE_SECURE: ${DJANGO_CSRF_COOKIE_SECURE:-0}
@@ -40,8 +44,18 @@ x-app-environment: &app-environment
   ANNOVAR_TIMEOUT_SECONDS: ${ANNOVAR_TIMEOUT_SECONDS:-300}
 
 x-app-volumes: &app-volumes
-  - ./var/django:/app/var
-  - ./var/library:/app/library
+  - type: bind
+    source: ${DJANGO_HOST_DIR:-./var/django}
+    target: /app/var
+    bind:
+      create_host_path: false
+  - type: bind
+    source: ${LIBRARY_HOST_DIR:-./var/library}
+    target: /app/library
+    bind:
+      create_host_path: false
+  - ./var/private/collection-mail:/run/biomed/mail:ro
+  - /appdata/02_resource/apps/biomed/operations/knowledge-processing:/app/knowledge-processing:ro
   # Reuse the verified runtime; code and assets come only from this project.
   - ./config:/app/config:ro
   - ./apps:/app/apps:ro
@@ -98,8 +112,17 @@ services:
         condition: service_healthy
     environment: *app-environment
     volumes:
-      - ./var/django:/app/var
-      - ./var/library:/app/library
+      - type: bind
+        source: ${DJANGO_HOST_DIR:-./var/django}
+        target: /app/var
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${LIBRARY_HOST_DIR:-./var/library}
+        target: /app/library
+        bind:
+          create_host_path: false
+      - ./var/private/collection-mail:/run/biomed/mail:ro
       - ./config:/app/config:ro
       - ./apps:/app/apps:ro
       - ./manage.py:/app/manage.py:ro
