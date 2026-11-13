@@ -1,0 +1,236 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "source-refinement-20261030",
+  "title": "016 · 直接原文抽取的剩余错误与简单调整",
+  "date": "2026-10-30",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "继续9B、不加概括。两条有源实体规则使核心13→15/15，约0.06秒、零模型调用，采用为实体整理能力；关系仅加三条约束仍12/15，修K15却改坏K01，诊断后可用12→11/15，因此保留原关系提示。原文与历史结果不改。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "source-refinement-evaluation-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8",
+      "58f20161bd46ac0f5397477818083349ec24b82037c31fb133b878c59e7600a5"
+    ],
+    "method_versions": [
+      "13802f47bba927e8a9bc2b56292ab61e2c87fbf989a18086e2e07972636fbf38",
+      "835724385463f2347dc468938110db230c1a2e563a5cb93c7cf664ada2ca90a0",
+      "6c08c82210d0f90974ec7d3b5c98eb13d11e0d4ce82ac9058eaa0c4773ec6d12",
+      "428b3ab0264e741fa621bae1150ff9ae9c356d6f99e2d25cb93d8c6965702889"
+    ],
+    "reference_versions": [
+      "eb328c57dc274466488d0ecd1085f2d7f89d56763a1a82674e72c474fb9ddcd3",
+      "2d2ed43a10ebc490f340a3df2e05538dbb234b034f8b94605aa27490756824b7"
+    ]
+  },
+  "task": {
+    "question": "无概括9B流程中剩余的实体类型、范围、时间和结论限定错误，能否通过简单脚本或同次抽取约束改善？",
+    "outputs": [
+      "原失败字段与英文依据",
+      "实体规则变化及来源",
+      "15组关系配对、退化、耗时",
+      "可采用与不采用的流程调整"
+    ],
+    "not_measured": [
+      "未见论文泛化",
+      "新增实体串联关系的端到端结果",
+      "全量标准ID正确率",
+      "生产导入与人工审核效率"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇15组开发回归集",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "冻结Astra参考与原文核验",
+    "status": "model_reference_not_human_gold",
+    "note": "参考与旧评分先冻结；Astra是模型参考，不是人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "baseline",
+      "label": "原文基线",
+      "version": "source-refinement-evaluation-v1",
+      "conclusion": "实体零新模型调用；关系每组一次9B。原始输入、原文和字段结构相同，评分口径不变。",
+      "metrics": [
+        {
+          "label": "实体核心可用（既有脚本＋本臂规则）",
+          "numerator": 13,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "实体模型原始输出核心可用",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "复用相同010输出；脚本改类型不算模型能力提升。"
+        },
+        {
+          "label": "关系内容核心通过",
+          "numerator": 12,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "关系结构、原文与内容同时通过",
+          "numerator": 12,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "关系推理总耗时",
+          "value": 511.28,
+          "unit": "秒"
+        },
+        {
+          "label": "关系输出tokens",
+          "value": 5527,
+          "unit": "tokens"
+        },
+        {
+          "label": "关系进程显存峰值",
+          "value": 20106.0,
+          "unit": "MiB"
+        }
+      ]
+    },
+    {
+      "id": "refined",
+      "label": "本轮简化调整",
+      "version": "source-refinement-evaluation-v1",
+      "conclusion": "实体零新模型调用；关系每组一次9B。原始输入、原文和字段结构相同，评分口径不变。",
+      "metrics": [
+        {
+          "label": "实体核心可用（既有脚本＋本臂规则）",
+          "numerator": 15,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "实体模型原始输出核心可用",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "复用相同010输出；脚本改类型不算模型能力提升。"
+        },
+        {
+          "label": "关系内容核心通过",
+          "numerator": 12,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "关系结构、原文与内容同时通过",
+          "numerator": 11,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "关系推理总耗时",
+          "value": 491.51,
+          "unit": "秒"
+        },
+        {
+          "label": "关系输出tokens",
+          "value": 5416,
+          "unit": "tokens"
+        },
+        {
+          "label": "关系进程显存峰值",
+          "value": 20324.0,
+          "unit": "MiB"
+        }
+      ]
+    },
+    {
+      "id": "entity-source-rules",
+      "label": "实体规则具体做了什么",
+      "version": "source-entity-types-v1",
+      "conclusion": "规则1：同篇同版本明确全称(缩写)，首字母严格匹配，定义以inhibition/blockade/therapy/treatment等结束且当前片段有治疗用法，才将无明确药物链接的缩写归为治疗。规则2：仅完整的氨基酸替换＋mutant/mutation短语可由biomarker归为variant；表达签名等不套用。不改原词或推断DNA/标准ID。",
+      "metrics": [
+        {
+          "label": "检查已有实体",
+          "value": 173,
+          "unit": "个"
+        },
+        {
+          "label": "有原文依据的类型修正",
+          "value": 2,
+          "unit": "个"
+        },
+        {
+          "label": "完全不变",
+          "value": 171,
+          "unit": "个"
+        },
+        {
+          "label": "脚本总耗时",
+          "value": 0.0605,
+          "unit": "秒"
+        },
+        {
+          "label": "新增实体模型调用",
+          "value": 0,
+          "unit": "次"
+        }
+      ]
+    },
+    {
+      "id": "adoption",
+      "label": "实际得失与流程取舍",
+      "version": "source-refinement-evaluation-v1",
+      "conclusion": "继续9B、不加概括。两条有源实体规则使核心13→15/15，约0.06秒、零模型调用，采用为实体整理能力；关系仅加三条约束仍12/15，修K15却改坏K01，诊断后可用12→11/15，因此保留原关系提示。原文与历史结果不改。",
+      "metrics": [
+        {
+          "label": "新关系提示修复原失败",
+          "value": 1,
+          "unit": "组",
+          "note": "K15"
+        },
+        {
+          "label": "原先通过组退化",
+          "value": 1,
+          "unit": "组",
+          "note": "K01"
+        },
+        {
+          "label": "新关系提示作为默认",
+          "value": "不采用"
+        },
+        {
+          "label": "新增概括调用",
+          "value": 0,
+          "unit": "次"
+        },
+        {
+          "label": "新增关系任务调用",
+          "value": 15,
+          "unit": "次"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "实体整理保留两条保守源规则：同篇同版明确缩写定义＋治疗语境，及完整替换加mutant/mutation；未命中保持原样。复用source_entity_types.refine或refine_source_entity_types.py。",
+    "关系默认继续014无概括9B提示，不替换为016、不拼接逐组最佳输出。本轮停止调参，所有错误保留。",
+    "后续优先减少非必要自由改写，让原文承载时间、范围和统计限定，再用剩余错例及未见论文验证；不增加全量多轮审核，不微调、不改tumor_api或采集设置。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/source-refinement-20261030.json",
+      "sha256": "75b52ae1103e536b3d32f9be9365b05050c7c6f3ebd0168f3e61908f21c438fb"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "a569dd895bac9612bc8330526e45841318a2f7de8b3e80dd1625349f35b71e08",
+  "content_sha256": "8c4d9e1bd70e8aea58baa288c57b2a7c63c17039baf15ee66953f7fe898bc8e2"
+}

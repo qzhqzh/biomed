@@ -64,7 +64,7 @@ def issues_page(request):
 @ensure_csrf_cookie
 def standards_page(request, namespace=None):
     namespace = namespace or request.GET.get("namespace", "MONDO")
-    title = "药物" if namespace == "RXNORM" else "疾病"
+    title = {"RXNORM": "药物", "ONCOTREE": "癌种分类"}.get(namespace, "疾病")
     return render(request, "portal/standards.html", {"page_title": title})
 
 
@@ -78,6 +78,24 @@ def library_page(request, kind=None):
 @ensure_csrf_cookie
 def workflows_page(request):
     return render(request, "portal/workflows.html")
+
+
+def research_page(request):
+    return render(request, "portal/research.html")
+
+
+@ensure_csrf_cookie
+def knowledge_search_page(request):
+    return render(request, "portal/knowledge_search.html")
+
+
+def knowledge_candidates_page(request):
+    return render(request, "portal/knowledge_candidates.html")
+
+
+@ensure_csrf_cookie
+def entity_registry_page(request):
+    return render(request, "portal/entity_registry.html")
 
 
 @ensure_csrf_cookie

@@ -1,0 +1,256 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "lean-entities-20261029",
+  "title": "010 · 少生成、保留原文与保守关联",
+  "date": "2026-10-29T16:46:38+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同15组9B：核心身份完整11→14组，抽取快41%；来源检查减少错链，但完全省去消歧损失10个旧正确关联。",
+  "identity": {
+    "task_version": "lean-entity-evaluation-v1",
+    "sample_versions": [
+      "a186af8678d4e974080406d3219f1da78ccb6888daf778a7eb5acc9cbcfb3dcf"
+    ],
+    "method_versions": [
+      "1f0b83f037ab55ac161d397d35c1d7649ee137200db1a951b8741bf81f60c35e",
+      "0c9861c7b34709ca20d344a20133ebfd4a36bd330531c533f53a891b738de523",
+      "dd6036eb14c06692c7b3c160122d144ea20f15d7214d824f2fbafcae6897d16a"
+    ],
+    "reference_versions": [
+      "e7f5d3b8ffdb4241b06cb85b2dc5102500100e130757f5541529a7d2837f8d69",
+      "97a99ff77b851660151e5ecf90d8b3c79d52d1c04e34c1d33e6bc32afea7b6a0",
+      "96a7d6f770584b8500caed9ff054c69aac363673fcb5170af2548b1f300b67f7",
+      "6fc981ace2f59c401c47afc474a517075d39360d2e9a0a0f358b2730b4f6cc47"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "怎样用更少的生成和少量脚本检查改善实体候选，并保持运行流程简单？",
+    "outputs": [
+      "原文实体及位置",
+      "完整原段落与两层出处",
+      "标准候选、来源检查和未决原因",
+      "独立消融、覆盖与全部处理成本"
+    ],
+    "not_measured": [
+      "完整事实/条件/数值绑定",
+      "全库泛化",
+      "人工修改耗时",
+      "微调和生产发布"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇、15个开发片段组",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "009冻结助手参考与既有Astra依据",
+    "status": "model_reference_not_human_gold",
+    "note": "本轮逐条核验为助手对照原文和标准来源，不是新Astra或人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "extract-009",
+      "label": "009 · 生成实体与修饰",
+      "version": "common-core-009-reference-v1",
+      "conclusion": "冻结历史结果，作为本轮对照，不覆盖原成绩。",
+      "metrics": [
+        {
+          "label": "核心身份覆盖完整",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "只评entities中的核心身份信息，不是完整知识通过率。"
+        },
+        {
+          "label": "共同核心身份遗漏",
+          "numerator": 7,
+          "denominator": 52,
+          "note": "越少越好；实际合法集合分母。另存固定009的52项配对结果，不从原段落补分。"
+        },
+        {
+          "label": "有效JSON",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "原始模型输出，不事后抢救局部片段。"
+        },
+        {
+          "label": "明确类型问题",
+          "value": 7,
+          "unit": "项",
+          "note": "另有1项家族边界；两轮实体数不同，不能当同分母错误率。"
+        },
+        {
+          "label": "实体提及",
+          "value": 113,
+          "unit": "项",
+          "note": "包含缩写、全称和背景提及；010从174条精确去重为173条。"
+        },
+        {
+          "label": "原文精确定位",
+          "numerator": 112,
+          "denominator": 113,
+          "note": "脚本查询全部冻结段落，保留所有位置。"
+        },
+        {
+          "label": "抽取推理",
+          "value": 676.76,
+          "unit": "秒",
+          "note": "相同9B、15组单次运行，包含失败成本；加载及预热另计。"
+        }
+      ]
+    },
+    {
+      "id": "extract-010",
+      "label": "010 · 只生成实体、脚本保留原文",
+      "version": "common-core-009-reference-v1",
+      "conclusion": "核心遗漏减少且推理快41%；类型边界与冗余仍存在。",
+      "metrics": [
+        {
+          "label": "核心身份覆盖完整",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "只评entities中的核心身份信息，不是完整知识通过率。"
+        },
+        {
+          "label": "共同核心身份遗漏",
+          "numerator": 1,
+          "denominator": 52,
+          "note": "越少越好；实际合法集合分母。另存固定009的52项配对结果，不从原段落补分。"
+        },
+        {
+          "label": "有效JSON",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "原始模型输出，不事后抢救局部片段。"
+        },
+        {
+          "label": "明确类型问题",
+          "value": 10,
+          "unit": "项",
+          "note": "另有2项家族边界；两轮实体数不同，不能当同分母错误率。"
+        },
+        {
+          "label": "实体提及",
+          "value": 173,
+          "unit": "项",
+          "note": "包含缩写、全称和背景提及；010从174条精确去重为173条。"
+        },
+        {
+          "label": "原文精确定位",
+          "numerator": 172,
+          "denominator": 173,
+          "note": "脚本查询全部冻结段落，保留所有位置。"
+        },
+        {
+          "label": "抽取推理",
+          "value": 399.1,
+          "unit": "秒",
+          "note": "相同9B、15组单次运行，包含失败成本；加载及预热另计。"
+        }
+      ]
+    },
+    {
+      "id": "guard-ablation",
+      "label": "独立消融 · 旧35条关联加来源检查",
+      "version": "source-scope-class-1",
+      "conclusion": "保留这两条低成本检查；药物类别短名模式当前仅覆盖1类，范围缺失也不等于身份可确认。",
+      "metrics": [
+        {
+          "label": "原支持关联保留",
+          "numerator": 29,
+          "denominator": 29,
+          "note": "同一009输出，只加检查，不重跑抽取。"
+        },
+        {
+          "label": "原错误转为未决",
+          "numerator": 6,
+          "denominator": 6,
+          "note": "只对应2类重复错误；没有改成另一个猜测ID。"
+        },
+        {
+          "label": "原正确被拦截",
+          "value": 0,
+          "unit": "项",
+          "note": "仅本开发集观察，不能推断全库无误伤。"
+        },
+        {
+          "label": "检查耗时",
+          "value": 0.004,
+          "unit": "秒",
+          "note": "不含元数据加载；来源为冻结MONDO范围和RxClass类名。"
+        }
+      ]
+    },
+    {
+      "id": "simple-workflow",
+      "label": "实测分支 · 一次抽取＋脚本，省去消歧",
+      "version": "lean-one-call-workflow-v1",
+      "conclusion": "默认主干保持一次抽取与脚本；关键身份仍按需消歧，不把省去全部消歧作为最终选择。",
+      "metrics": [
+        {
+          "label": "已选ID审查支持",
+          "numerator": 31,
+          "denominator": 31,
+          "note": "只评选中部分；142条未选ID不能隐去，身份正确不证明事实角色正确。"
+        },
+        {
+          "label": "保留未决原文实体",
+          "value": 142,
+          "unit": "项",
+          "note": "85类型未覆盖、28无候选、29有候选未定。"
+        },
+        {
+          "label": "旧正确关联仍保留",
+          "numerator": 19,
+          "denominator": 29,
+          "note": "10个原正确关联转未决，这是完全取消消歧的覆盖损失。"
+        },
+        {
+          "label": "任务模型调用",
+          "value": 15,
+          "unit": "次",
+          "note": "009为15抽取＋7消歧＝22次；预热另计，不为单实体调用。"
+        },
+        {
+          "label": "全部处理耗时",
+          "value": 407.92,
+          "unit": "秒",
+          "note": "009为791.51秒；这是省去消歧的实测成本，不能当成未来按需消歧的成本。"
+        },
+        {
+          "label": "加载及预热",
+          "value": 60.21,
+          "unit": "秒",
+          "note": "与推理成本分开；本轮模型进程wall time为464.76秒。"
+        },
+        {
+          "label": "显存进程峰值",
+          "value": 18.79,
+          "unit": "GiB",
+          "note": "GPU3，模型权重和tokenizer复用/data/models。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留9B实体抽取→脚本定位、保存原文、候选召回及来源检查；关键身份歧义按组处理。",
+    "优先研究实体候选参与最小事实绑定；组别、条件、数值和否定错配分别记录，不新增全量自由改写审核。",
+    "补测可用事实和实际修改负担，再决定是否值得增加处理；不为标准ID齐全而无限扩展前置流程。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/lean-entities-20261029.json",
+      "sha256": "e02078e7e156d7b952f1b8ce49435c3c7d5e714f17b6d3e7ae0104cdfdf3607b"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "fc24e017f4098d8f8326bf43107ae3dda121cc9f610ef27e09cb6155ee91896d",
+  "content_sha256": "7a363fcd77c7d0ed55dc53aed28c40bc80b2001a8e842cf17c9a961d0cc0a00e"
+}

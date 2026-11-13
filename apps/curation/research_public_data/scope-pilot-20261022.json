@@ -1,0 +1,1046 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "scope-pilot-20261022",
+  "title": "最早 20 篇 + 实体瘤 10 篇：定位主类坍缩与协议耦合",
+  "date": "2026-10-22",
+  "stage": "classification",
+  "status": "evaluated",
+  "sample_count": 30,
+  "summary": "原任务是 9 类主分类与多轴标签联合输出。整份合格且主类一致 0/28；事后裸主类一致 1/28。29/30 原始输出都选了泛癌类型未定。",
+  "identity": {
+    "task_version": "document_disease_scope/title_abstract_mesh_publication_types/v1",
+    "sample_versions": [
+      "72f63ba1495b7bb05be2ea670d6bb2a46679bb2ba491fd0e9c3fbacad6baab65",
+      "b0d45e9fe1d9b9695a5beec25f5ec1f1a21c782b585b787bc41495f50dd283ab"
+    ],
+    "method_versions": [
+      "1a5573f97f5af63ee0d3f3004ec98832661d91f95f592da501de05e81b4525b5",
+      "2462918498aac804c8b37449ad8b3ca57a5e16f01b5098e2dd50827f11509ebc"
+    ],
+    "reference_versions": [
+      "7e9f3d722f633239cea5e64f6dd1469c7ccce9a4140001b998e0a627cf37b957",
+      "54182c444bde7728be6bc0b929214634771dda1ab11d4297a60005fd6106e952"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "根据标题和摘要等信息，文章实际研究对象属于哪种肿瘤/非肿瘤范围？",
+    "outputs": [
+      "实体瘤 solid",
+      "血液肿瘤 hematologic",
+      "实体/血液混合 mixed",
+      "实体/良性或癌前边界 solid_boundary",
+      "良性 benign",
+      "癌前 precursor",
+      "泛癌类型未定 oncology_unspecified",
+      "非肿瘤 non_neoplastic",
+      "信息不足 insufficient",
+      "附加器官、组织学、研究类型、主题、人群标签及原文引句"
+    ],
+    "not_measured": [
+      "三类简化任务的表现（尚未运行）",
+      "器官和癌种标签的总体准确率",
+      "全文证据提取质量",
+      "实体与关系抽取质量",
+      "后训练收益（本轮未训练）"
+    ]
+  },
+  "dataset": {
+    "label": "固定最早入库 20 篇 + 独立补充实体瘤 10 篇",
+    "role": "development"
+  },
+  "reference": {
+    "label": "Astra 独立参考 v1",
+    "status": "model_reference_not_human_gold",
+    "note": "gpt-6-astra 在未看规则/小模型输出前核读同一元数据；2 篇保留歧义。是模型参考，非人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "rules_first20",
+      "label": "最早入库 20 篇 · 规则 v3",
+      "version": "solid-tumor-rules-v3",
+      "conclusion": "同一参考下的开发样本范围基线；不代表全库准确率。",
+      "metrics": [
+        {
+          "label": "明确范围一致",
+          "numerator": 14,
+          "denominator": 16,
+          "note": "仅参考范围明确的样本；泛癌/非肿瘤/信息不足映射到旧 scope 的待判定，不能作为正确非肿瘤计分。"
+        },
+        {
+          "label": "保留待判定",
+          "value": 0,
+          "unit": "篇",
+          "note": "在上述明确范围分母内，模型未给出具体范围。"
+        },
+        {
+          "label": "输出失败",
+          "value": 0,
+          "unit": "篇",
+          "note": "在上述明确范围分母内；未丢弃失败样本。"
+        }
+      ]
+    },
+    {
+      "id": "local_model_first20",
+      "label": "最早入库 20 篇 · Qwen3-1.7B",
+      "version": "solid-tumor-decision-v1 / multi_axis",
+      "conclusion": "合格输出全部为泛癌类型未定，不能用于分流明确实体或血液肿瘤。",
+      "metrics": [
+        {
+          "label": "明确范围一致",
+          "numerator": 0,
+          "denominator": 16,
+          "note": "仅参考范围明确的样本；泛癌/非肿瘤/信息不足映射到旧 scope 的待判定，不能作为正确非肿瘤计分。"
+        },
+        {
+          "label": "保留待判定",
+          "value": 14,
+          "unit": "篇",
+          "note": "在上述明确范围分母内，模型未给出具体范围。"
+        },
+        {
+          "label": "输出失败",
+          "value": 2,
+          "unit": "篇",
+          "note": "在上述明确范围分母内；未丢弃失败样本。"
+        },
+        {
+          "label": "平均推理耗时",
+          "value": 9.63,
+          "unit": "秒/篇",
+          "note": "本组所有尝试，含失败；不含模型加载、参考核读和导出。"
+        }
+      ]
+    },
+    {
+      "id": "rules_solid10",
+      "label": "实体瘤补充 10 篇 · 规则 v3",
+      "version": "solid-tumor-rules-v3",
+      "conclusion": "同一参考下的开发样本范围基线；不代表全库准确率。",
+      "metrics": [
+        {
+          "label": "明确范围一致",
+          "numerator": 8,
+          "denominator": 10,
+          "note": "仅参考范围明确的样本；泛癌/非肿瘤/信息不足映射到旧 scope 的待判定，不能作为正确非肿瘤计分。"
+        },
+        {
+          "label": "保留待判定",
+          "value": 1,
+          "unit": "篇",
+          "note": "在上述明确范围分母内，模型未给出具体范围。"
+        },
+        {
+          "label": "输出失败",
+          "value": 0,
+          "unit": "篇",
+          "note": "在上述明确范围分母内；未丢弃失败样本。"
+        }
+      ]
+    },
+    {
+      "id": "local_model_solid10",
+      "label": "实体瘤补充 10 篇 · Qwen3-1.7B",
+      "version": "solid-tumor-decision-v1 / multi_axis",
+      "conclusion": "合格输出全部为泛癌类型未定，不能用于分流明确实体或血液肿瘤。",
+      "metrics": [
+        {
+          "label": "明确范围一致",
+          "numerator": 0,
+          "denominator": 10,
+          "note": "仅参考范围明确的样本；泛癌/非肿瘤/信息不足映射到旧 scope 的待判定，不能作为正确非肿瘤计分。"
+        },
+        {
+          "label": "保留待判定",
+          "value": 9,
+          "unit": "篇",
+          "note": "在上述明确范围分母内，模型未给出具体范围。"
+        },
+        {
+          "label": "输出失败",
+          "value": 1,
+          "unit": "篇",
+          "note": "在上述明确范围分母内；未丢弃失败样本。"
+        },
+        {
+          "label": "平均推理耗时",
+          "value": 10.63,
+          "unit": "秒/篇",
+          "note": "本组所有尝试，含失败；不含模型加载、参考核读和导出。"
+        }
+      ]
+    },
+    {
+      "id": "model_all",
+      "label": "Qwen3-1.7B · 全部 30 篇诊断",
+      "version": "solid-tumor-decision-v1 / multi_axis",
+      "conclusion": "本次失败同时包含主类集中输出泛癌，以及附加标签校验拖累端到端结果；不能概括为模型每个字段都错或模型没有分类能力。",
+      "metrics": [
+        {
+          "label": "整份合格且主类一致",
+          "numerator": 0,
+          "denominator": 28,
+          "note": "28 篇参考明确，另外 2 篇有歧义不计；4 份协议失败保留在分母。不是所有原始判断都错。"
+        },
+        {
+          "label": "事后裸主类一致",
+          "numerator": 1,
+          "denominator": 28,
+          "note": "只读取原始 JSON 的 relevance；1 篇非肿瘤判断一致，但 population=female 非法导致整份失败。非新实验，未将它改为合格。"
+        },
+        {
+          "label": "结构及引句校验通过",
+          "numerator": 26,
+          "denominator": 30,
+          "note": "26 份合格输出全为 oncology_unspecified；协议通过不代表语义正确。"
+        },
+        {
+          "label": "原始输出泛癌类型未定",
+          "value": 29,
+          "unit": "篇",
+          "note": "30 份原始 JSON 中 29 份；包括未通过附加标签/引句校验的输出。"
+        },
+        {
+          "label": "平均推理耗时",
+          "value": 9.96,
+          "unit": "秒/篇",
+          "note": "含失败尝试；不含加载、环境准备、Astra 核读及导出。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "已选定下一版只用三个业务类别：实体瘤、血液肿瘤、非肿瘤，与后续数据库对应；三分类尚未实测。",
+    "无法可靠判定或处理错误记录为处理状态，category=null，不增加第四个业务类别；良性、癌前和混合研究如何映射需在标注规范中核对，不能自动归入非肿瘤。",
+    "只输出一个主类和一条原文依据，主类、引句、格式分别评分；癌种与其他标签后置。",
+    "先固定同一组参考和输入，对提示词/结构约束作单变量对照，再决定是否扩展模型或后训练。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/scope-pilot-20261022.json",
+      "sha256": "16361a5f7c23a263e50119a52fd3ea17ec1abc7bbd0e899ecf1ed828f48b3940"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "cases": [
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 1,
+      "pmid": "35388217",
+      "title": "A joint NCBI and EMBL-EBI transcript set for clinical genomics and research.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "non_neoplastic",
+      "reference_scope": "uncertain",
+      "acceptable_relevance": [
+        "non_neoplastic"
+      ],
+      "scope_eligible": false,
+      "rule_scope": "uncertain",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 18.06,
+      "rule_outcome": "unscored",
+      "model_outcome": "unscored",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 2,
+      "pmid": "42871195",
+      "title": "The Resection Ability of Low-power Pure-cut Hot Snare Polypectomy for Nonpedunculated Colorectal Polyps Smaller Than 10 mm: A Single-center Prospective Study.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "precursor",
+      "reference_scope": "precursor_candidate",
+      "acceptable_relevance": [
+        "precursor"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_boundary_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 10.598,
+      "rule_outcome": "disagreed",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 3,
+      "pmid": "42852132",
+      "title": "Therapeutic Balloon-Assisted Enteroscopy: Recent Advances in the Management of Small Bowel Diseases.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "precursor",
+      "reference_scope": "precursor_candidate",
+      "acceptable_relevance": [
+        "precursor"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "precursor_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.549,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 4,
+      "pmid": "42857718",
+      "title": "Influence of gut microbiota on chronic lymphocytic leukemia development and aggressiveness.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "hematologic",
+      "reference_scope": "hematologic_candidate",
+      "acceptable_relevance": [
+        "hematologic"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "hematologic_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.587,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 5,
+      "pmid": "42873150",
+      "title": "Targeting tumor-selective membrane-associated PCNA enables selective antibody-drug conjugate therapy.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "ambiguous",
+      "reference_relevance": "oncology_unspecified",
+      "reference_scope": "uncertain",
+      "acceptable_relevance": [
+        "oncology_unspecified",
+        "solid"
+      ],
+      "scope_eligible": false,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.74,
+      "rule_outcome": "unscored",
+      "model_outcome": "unscored",
+      "model_relevance_outcome": "unscored",
+      "rule_acceptable_scope": true,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": true,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 6,
+      "pmid": "42868199",
+      "title": "Estradiol-associated extracellular signaling in the human breast in vivo identifies mast cells as tumor-supportive stromal mediators.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.971,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 7,
+      "pmid": "42858231",
+      "title": "RecurIndex-derived molecular features associated with total pathological complete response in triple-negative breast cancer: An exploratory prospective cohort study with single-cell transcriptomic contextualization.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.008,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 8,
+      "pmid": "42850778",
+      "title": "Statement of Retraction: Long noncoding RNA MALAT1 knockdown inhibits progression of anaplastic thyroid carcinoma by regulating miR-200a-3p/FOXA1.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": null,
+      "model_relevance": null,
+      "model_status": "invalid_output",
+      "model_seconds": 7.62,
+      "rule_outcome": "matched",
+      "model_outcome": "failed",
+      "model_relevance_outcome": "failed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 9,
+      "pmid": "42848714",
+      "title": "ARHGAP40 suppresses clear cell renal cell carcinoma progression and is associated with altered glutamine-related metabolism and redox balance.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 10.001,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 10,
+      "pmid": "42848643",
+      "title": "UBE2S promotes gastric cancer progression through RACGAP1 stabilization associated with K292-dependent K63-linked ubiquitination.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.442,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 11,
+      "pmid": "42845214",
+      "title": "Inhibition of WNT signaling sensitizes CRC cells to anti-tumor effects of retinoids: basis for new drug combinations in oncology.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.657,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 12,
+      "pmid": "42832379",
+      "title": "World's first case report of live birth following autologous ovarian tissue cryopreservation and transplantation in a patient with colon carcinoma.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.712,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 13,
+      "pmid": "42826770",
+      "title": "rsRNA-28S-21 promotes endometrial cancer by regulating ferroptosis through the NSUN5-FTH1/FTL pathway.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.951,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 14,
+      "pmid": "42876345",
+      "title": "Structure-activity relationship of Cu(II) and Pd(II) thiosemicarbazone complexes with anticancer and antibacterial properties.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.151,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 15,
+      "pmid": "42875898",
+      "title": "Rational structure-guided identification of a Bcl-2-targeting peptide with antiproliferative effects on colorectal cancer cells.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.307,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 16,
+      "pmid": "42875375",
+      "title": "Research progress on ATP-citrate lyase and its inhibitors: a metabolic-epigenetic perspective.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "ambiguous",
+      "reference_relevance": "non_neoplastic",
+      "reference_scope": "uncertain",
+      "acceptable_relevance": [
+        "non_neoplastic",
+        "oncology_unspecified"
+      ],
+      "scope_eligible": false,
+      "rule_scope": "uncertain",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 10.527,
+      "rule_outcome": "unscored",
+      "model_outcome": "unscored",
+      "model_relevance_outcome": "unscored",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": true,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 17,
+      "pmid": "42872786",
+      "title": "Early extracranial dissemination with prolonged survival in IDH-wildtype glioblastoma: case study and comprehensive literature review.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.614,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 18,
+      "pmid": "42872560",
+      "title": "Vitamin D status and inflammatory Interleukins in women with and without polyendocrine metabolic ovarian syndrome: a cross-sectional exploratory study.",
+      "source_scope": "abstract_only",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "non_neoplastic",
+      "reference_scope": "uncertain",
+      "acceptable_relevance": [
+        "non_neoplastic"
+      ],
+      "scope_eligible": false,
+      "rule_scope": "uncertain",
+      "model_scope": null,
+      "model_relevance": null,
+      "model_status": "invalid_output",
+      "model_seconds": 9.307,
+      "rule_outcome": "unscored",
+      "model_outcome": "unscored",
+      "model_relevance_outcome": "failed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "non_neoplastic"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 19,
+      "pmid": "42872089",
+      "title": "Aggressive primary mediastinal synovial sarcoma resulting in catastrophic airway compromise and fatal hemoptysis.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.886,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-first20",
+      "rank": 20,
+      "pmid": "42872084",
+      "title": "Computed tomography findings of a retroperitoneal chronic expanding hematoma with multiple hemangiomas: A case report and literature review.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "benign",
+      "reference_scope": "benign_candidate",
+      "acceptable_relevance": [
+        "benign"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_boundary_candidate",
+      "model_scope": null,
+      "model_relevance": null,
+      "model_status": "invalid_output",
+      "model_seconds": 8.942,
+      "rule_outcome": "disagreed",
+      "model_outcome": "failed",
+      "model_relevance_outcome": "failed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 1,
+      "pmid": "42869886",
+      "title": "Camrelizumab plus chemotherapy as induction therapy followed by concurrent chemoradiotherapy and camrelizumab consolidation in limited-stage small cell lung cancer: a randomized phase II trial.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 10.303,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 2,
+      "pmid": "42873849",
+      "title": "Immune biomarkers of response and resistance to ipilimumab and nivolumab in metastatic castration-resistant prostate cancer.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 11.982,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 3,
+      "pmid": "42870461",
+      "title": "Evaluation of early C-reactive protein kinetics as an early response marker in biliary tract cancer treated with combined chemoimmunotherapy: A multicenter observational study.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "uncertain",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 11.181,
+      "rule_outcome": "abstained",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 4,
+      "pmid": "42272324",
+      "title": "Predictive Biomarkers in Metastatic Colorectal Cancer Patients Treated With Bevacizumab: A Turkish Oncology Group (TOG) Study.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 8.335,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 5,
+      "pmid": "42050770",
+      "title": "Indirect Comparison of Neoadjuvant Treatment Strategies for Muscle-Invasive Bladder Cancer: ddMVAC and Perioperative Durvalumab-Gemcitabine-Cisplatin Versus Gemcitabine-Cisplatin: A Systematic Review and Network Meta-Analysis of Randomised Controlled Trials.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 12.909,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 6,
+      "pmid": "42860552",
+      "title": "Development and validation of a metabolic syndrome-based nomogram to predict 1-year metastasis after radiotherapy in locally advanced nasopharyngeal carcinoma.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.91,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 7,
+      "pmid": "42467226",
+      "title": "Targetable S100-RAGE Signaling Mediates Intrinsic Trastuzumab Deruxtecan Resistance in Metastatic Breast Cancer.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 10.544,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 8,
+      "pmid": "42871965",
+      "title": "PTTG1 drives intestinal-type gastric cancer progression via G2/M checkpoint-mediated cell-cycle reprogramming.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid_boundary",
+      "reference_scope": "solid_boundary_candidate",
+      "acceptable_relevance": [
+        "solid_boundary"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 9.497,
+      "rule_outcome": "disagreed",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 9,
+      "pmid": "42068240",
+      "title": "Combination of Lenvatinib and Antibiotics: A Potential Approach to Enhance Sensitivity in Differentiated Thyroid Cancer.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": "uncertain",
+      "model_relevance": "oncology_unspecified",
+      "model_status": "validated_candidate",
+      "model_seconds": 11.407,
+      "rule_outcome": "matched",
+      "model_outcome": "abstained",
+      "model_relevance_outcome": "disagreed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    },
+    {
+      "cohort": "evidence-pilot-20261022-solid10",
+      "rank": 10,
+      "pmid": "42872145",
+      "title": "Adult Thalamic Diffuse Midline Glioma, H3 K27-Altered, With KRAS Comutation and Potential Early Subependymal Dissemination.",
+      "source_scope": "parsed_fulltext",
+      "classification_input_scope": "title_abstract_mesh_publication_types",
+      "reference_state": "determinate",
+      "reference_relevance": "solid",
+      "reference_scope": "solid_candidate",
+      "acceptable_relevance": [
+        "solid"
+      ],
+      "scope_eligible": true,
+      "rule_scope": "solid_candidate",
+      "model_scope": null,
+      "model_relevance": null,
+      "model_status": "invalid_output",
+      "model_seconds": 10.205,
+      "rule_outcome": "matched",
+      "model_outcome": "failed",
+      "model_relevance_outcome": "failed",
+      "rule_acceptable_scope": null,
+      "model_acceptable_scope": null,
+      "model_acceptable_relevance": null,
+      "model_raw_relevance": "oncology_unspecified"
+    }
+  ],
+  "fingerprint": "607dcb3880033724d1c3c6cdea04c3ea59223ba7cf6d8b2f65823262f06f0f15",
+  "content_sha256": "909fd9658355fa9b22277a0bf24e5bd1105749e55efaaaf637c39d495425ed20"
+}

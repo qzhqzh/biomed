@@ -36,6 +36,7 @@ import {
   type CompareKind,
 } from "@/lib/annotation-knowledge"
 import { cn } from "@/lib/utils"
+import { useUnsavedChanges } from "@/lib/navigation"
 
 const TOOLS = [
   { id: "vep", label: "VEP", short: "VEP" },
@@ -351,6 +352,7 @@ export default function AnnotateApp() {
   const [genome, setGenome] = useState<GenomeId>("GRCh37")
   const [tools, setTools] = useState<Set<ToolId>>(() => new Set<ToolId>(["vep"]))
   const [text, setText] = useState(SAMPLE_BY_GENOME.GRCh37)
+  const [savedText, setSavedText] = useState(SAMPLE_BY_GENOME.GRCh37)
   /** True only while createAnnotationJob request is in flight (not while waiting for result). */
   const [submitting, setSubmitting] = useState(false)
   /** Job id currently being polled for results (may run past the 10s submit cooldown). */
@@ -366,6 +368,18 @@ export default function AnnotateApp() {
   const [cooldownLeft, setCooldownLeft] = useState(0)
   const resultsRef = useRef<HTMLDivElement | null>(null)
   const waitingJobIdRef = useRef<string | null>(null)
+  const pollingController = useRef(new AbortController())
+  useUnsavedChanges(text !== savedText || submitting, "变异注释还有未提交的输入。")
+
+  useEffect(() => {
+    pollingController.current = new AbortController()
+    return () => { pollingController.current.abort(); waitingJobIdRef.current = null }
+  }, [])
+
+  function resetText(value: string) {
+    setText(value)
+    setSavedText(value)
+  }
 
   const busyWaiting = Boolean(waitingJobId)
 
@@ -389,7 +403,7 @@ export default function AnnotateApp() {
     setGenome(nextGenome)
     if (nextTools.length) setTools(new Set(nextTools))
     if (variants.length) {
-      setText(variants.join("\n"))
+      resetText(variants.join("\n"))
       setSubmittedVariants(variants)
     }
     setRuns(outcomes)
@@ -415,7 +429,7 @@ export default function AnnotateApp() {
           setTools(new Set([readyTools[0]]))
         }
         setGenome(defaultGenome)
-        setText(SAMPLE_BY_GENOME[defaultGenome])
+        resetText(SAMPLE_BY_GENOME[defaultGenome])
       })
       .catch((err: Error) => setError(err.message))
     void refreshHistory()
@@ -445,7 +459,7 @@ export default function AnnotateApp() {
   function changeGenome(next: GenomeId) {
     if (next === genome) return
     setGenome(next)
-    setText(SAMPLE_BY_GENOME[next])
+    resetText(SAMPLE_BY_GENOME[next])
     setRuns([])
     setSubmittedVariants([])
     setLocusIndex(0)
@@ -473,7 +487,7 @@ export default function AnnotateApp() {
   }
 
   function loadSample() {
-    setText(SAMPLE_BY_GENOME[genome])
+    resetText(SAMPLE_BY_GENOME[genome])
   }
 
   async function loadHistoryJob(jobId: string) {
@@ -532,6 +546,7 @@ export default function AnnotateApp() {
         variants,
       })
       createdId = created.id
+      setSavedText(text)
       waitingJobIdRef.current = created.id
       setWaitingJobId(created.id)
       toast.message("任务已提交，正在后台运行…")
@@ -555,7 +570,7 @@ export default function AnnotateApp() {
     if (!createdId) return
     const jobId = createdId
     try {
-      const finished = await waitForAnnotationJob(jobId)
+      const finished = await waitForAnnotationJob(jobId, { signal: pollingController.current.signal })
       // Ignore stale completion if user already submitted a newer job.
       if (waitingJobIdRef.current !== jobId) return
 

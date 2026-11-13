@@ -1,0 +1,17 @@
+[Unit]
+Description=Biomed overnight knowledge observation report, 2026-11-07
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+WorkingDirectory=/data/06_project/biomed
+ExecStart=/data/06_project/biomed/.venv/bin/python -B /data/06_project/biomed/scripts/knowledge_observation_notify.py --root /appdata/02_resource/apps/biomed/operations/knowledge-processing --observation /appdata/02_resource/apps/biomed/operations/knowledge-processing/observations/overnight-20261107 --mail-config /data/06_project/biomed/var/private/collection-mail/config.json --send
+Restart=on-failure
+RestartSec=300
+TimeoutStartSec=180
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+UMask=0027
+Environment=PYTHONDONTWRITEBYTECODE=1

@@ -1,0 +1,2586 @@
+{
+  "version": "biomed-rxnorm-zh-supplement-2026-10-25-v1",
+  "source_version": "05-Oct-2026",
+  "source_input_sha256": "c6f32278417558189ee0551545c28ee5feccf7857910df63aa8d2a85a96e0624",
+  "source_url": "https://www.nlm.nih.gov/research/umls/rxnorm/overview.html",
+  "method": "assistant_curated_exact_ingredient_names; NHC bilingual headings where available; no fuzzy/salt/ADC normalization",
+  "inputs": {
+    "seed_sha256": "a006694a30be48f32403e855a6f5166453dfa3c05fed9129c3b2a741528205ef",
+    "nhc_headings_sha256": "fbd0987b753baafd6800993a408fc5f42470f82fe2617e3208939bfba1eaf324",
+    "nhc_pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e"
+  },
+  "entries": [
+    {
+      "identifier": "RXNORM:1000082",
+      "en": "alcaftadine",
+      "status": "project_draft",
+      "zh": "阿卡他定"
+    },
+    {
+      "identifier": "RXNORM:1000577",
+      "en": "microcrystalline cellulose",
+      "status": "project_draft",
+      "zh": "微晶纤维素"
+    },
+    {
+      "identifier": "RXNORM:10014",
+      "en": "squalene",
+      "status": "project_draft",
+      "zh": "角鲨烯"
+    },
+    {
+      "identifier": "RXNORM:10046",
+      "en": "starch",
+      "status": "project_draft",
+      "zh": "淀粉"
+    },
+    {
+      "identifier": "RXNORM:1005921",
+      "en": "ulipristal",
+      "status": "project_draft",
+      "zh": "乌利司他"
+    },
+    {
+      "identifier": "RXNORM:1009",
+      "en": "antithrombin III",
+      "status": "project_draft",
+      "zh": "抗凝血酶III"
+    },
+    {
+      "identifier": "RXNORM:10159",
+      "en": "sucrose",
+      "status": "project_draft",
+      "zh": "蔗糖"
+    },
+    {
+      "identifier": "RXNORM:10323",
+      "en": "talc",
+      "status": "project_draft",
+      "zh": "滑石粉"
+    },
+    {
+      "identifier": "RXNORM:10432",
+      "en": "thalidomide",
+      "status": "project_draft",
+      "zh": "沙利度胺",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=244",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "沙利度胺",
+        "en": "Thalidomide",
+        "pdf_page": 244,
+        "source_heading": "十六、沙利度胺 Thalidomide",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:10454",
+      "en": "thiamine",
+      "status": "project_draft",
+      "zh": "硫胺素"
+    },
+    {
+      "identifier": "RXNORM:1094833",
+      "en": "ipilimumab",
+      "status": "project_draft",
+      "zh": "伊匹木单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=118",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "伊匹木单抗",
+        "en": "Ipilimumab",
+        "pdf_page": 118,
+        "source_heading": "五十二、伊匹木单抗 Ipilimumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1100072",
+      "en": "abiraterone",
+      "status": "project_draft",
+      "zh": "阿比特龙",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=387",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿比特龙",
+        "en": "Abiraterone",
+        "pdf_page": 387,
+        "source_heading": "九、阿比特龙 Abiraterone",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:11002",
+      "en": "urea",
+      "status": "project_draft",
+      "zh": "尿素"
+    },
+    {
+      "identifier": "RXNORM:11232",
+      "en": "virginiamycin",
+      "status": "project_draft",
+      "zh": "维吉尼亚霉素"
+    },
+    {
+      "identifier": "RXNORM:11423",
+      "en": "zinc oxide",
+      "status": "project_draft",
+      "zh": "氧化锌"
+    },
+    {
+      "identifier": "RXNORM:1147220",
+      "en": "vemurafenib",
+      "status": "project_draft",
+      "zh": "维莫非尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=485",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "维莫非尼",
+        "en": "Vemurafenib",
+        "pdf_page": 485,
+        "source_heading": "一、维莫非尼 Vemurafenib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1147320",
+      "en": "brentuximab vedotin",
+      "status": "project_draft",
+      "zh": "维布妥昔单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=307",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "维布妥昔单抗",
+        "en": "Brentuximab Vedotin",
+        "pdf_page": 307,
+        "source_heading": "四十、维布妥昔单抗 Brentuximab Vedotin",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1148495",
+      "en": "crizotinib",
+      "status": "project_draft",
+      "zh": "克唑替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=42",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "克唑替尼",
+        "en": "Crizotinib",
+        "pdf_page": 42,
+        "source_heading": "十五、克唑替尼 Crizotinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:114979",
+      "en": "rabeprazole",
+      "status": "project_draft",
+      "zh": "雷贝拉唑"
+    },
+    {
+      "identifier": "RXNORM:1151",
+      "en": "ascorbic acid",
+      "status": "project_draft",
+      "zh": "抗坏血酸"
+    },
+    {
+      "identifier": "RXNORM:1193326",
+      "en": "ruxolitinib",
+      "status": "project_draft",
+      "zh": "芦可替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=321",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "芦可替尼",
+        "en": "Ruxolitinib",
+        "pdf_page": 321,
+        "source_heading": "四十六、芦可替尼 Ruxolitinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:121191",
+      "en": "rituximab",
+      "status": "project_draft",
+      "zh": "利妥昔单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=290",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "利妥昔单抗",
+        "en": "Rituximab",
+        "pdf_page": 290,
+        "source_heading": "三十四、利妥昔单抗 Rituximab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1242999",
+      "en": "axitinib",
+      "status": "project_draft",
+      "zh": "阿昔替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=381",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿昔替尼",
+        "en": "Axitinib",
+        "pdf_page": 381,
+        "source_heading": "四、阿昔替尼 Axitinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1298944",
+      "en": "pertuzumab",
+      "status": "project_draft",
+      "zh": "帕妥珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=413",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "帕妥珠单抗",
+        "en": "Pertuzumab",
+        "pdf_page": 413,
+        "source_heading": "三、帕妥珠单抗 Pertuzumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1302966",
+      "en": "carfilzomib",
+      "status": "project_draft",
+      "zh": "卡非佐米",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=239",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "卡非佐米",
+        "en": "Carfilzomib",
+        "pdf_page": 239,
+        "source_heading": "十四、卡非佐米 Carfilzomib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1307298",
+      "en": "enzalutamide",
+      "status": "project_draft",
+      "zh": "恩扎卢胺",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=389",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "恩扎卢胺",
+        "en": "Enzalutamide",
+        "pdf_page": 389,
+        "source_heading": "十一、恩扎卢胺 Enzalutamide",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1307404",
+      "en": "linaclotide",
+      "status": "project_draft",
+      "zh": "利那洛肽"
+    },
+    {
+      "identifier": "RXNORM:1311261",
+      "en": "maltose",
+      "status": "project_draft",
+      "zh": "麦芽糖"
+    },
+    {
+      "identifier": "RXNORM:1311566",
+      "en": "salinomycin",
+      "status": "project_draft",
+      "zh": "盐霉素"
+    },
+    {
+      "identifier": "RXNORM:1312397",
+      "en": "regorafenib",
+      "status": "project_draft",
+      "zh": "瑞戈非尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=144",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "瑞戈非尼",
+        "en": "Regorafenib",
+        "pdf_page": 144,
+        "source_heading": "二、瑞戈非尼 Regorafenib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1364105",
+      "en": "pasireotide",
+      "status": "project_draft",
+      "zh": "帕瑞肽"
+    },
+    {
+      "identifier": "RXNORM:1364347",
+      "en": "ponatinib",
+      "status": "project_draft",
+      "zh": "泊那替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=219",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "泊那替尼",
+        "en": "Ponatinib",
+        "pdf_page": 219,
+        "source_heading": "六、泊那替尼 Ponatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1369713",
+      "en": "pomalidomide",
+      "status": "project_draft",
+      "zh": "泊马度胺",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=246",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "泊马度胺",
+        "en": "Pomalidomide",
+        "pdf_page": 246,
+        "source_heading": "十八、泊马度胺 Pomalidomide",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1375",
+      "en": "bentonite",
+      "status": "project_draft",
+      "zh": "膨润土"
+    },
+    {
+      "identifier": "RXNORM:141704",
+      "en": "everolimus",
+      "status": "project_draft",
+      "zh": "依维莫司",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=63",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "依维莫司",
+        "en": "Everolimus",
+        "pdf_page": 63,
+        "source_heading": "二十六、依维莫司 Everolimus",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1424911",
+      "en": "dabrafenib",
+      "status": "project_draft",
+      "zh": "达拉非尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=76",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "达拉非尼",
+        "en": "Dabrafenib",
+        "pdf_page": 76,
+        "source_heading": "三十四、达拉非尼 Dabrafenib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1425099",
+      "en": "trametinib",
+      "status": "project_draft",
+      "zh": "曲美替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=78",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "曲美替尼",
+        "en": "Trametinib",
+        "pdf_page": 78,
+        "source_heading": "三十五、曲美替尼 Trametinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1426",
+      "en": "benzyl alcohol",
+      "status": "project_draft",
+      "zh": "苯甲醇"
+    },
+    {
+      "identifier": "RXNORM:1430438",
+      "en": "afatinib",
+      "status": "project_draft",
+      "zh": "阿法替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=25",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿法替尼",
+        "en": "Afatinib",
+        "pdf_page": 25,
+        "source_heading": "四、阿法替尼 Afatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1433693",
+      "en": "ferric carboxymaltose",
+      "status": "project_draft",
+      "zh": "羧基麦芽糖铁"
+    },
+    {
+      "identifier": "RXNORM:1440051",
+      "en": "lixisenatide",
+      "status": "project_draft",
+      "zh": "利司那肽"
+    },
+    {
+      "identifier": "RXNORM:1442172",
+      "en": "enilconazole",
+      "status": "project_draft",
+      "zh": "恩尼康唑"
+    },
+    {
+      "identifier": "RXNORM:1442981",
+      "en": "ibrutinib",
+      "status": "project_draft",
+      "zh": "伊布替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=224",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "伊布替尼",
+        "en": "Ibrutinib",
+        "pdf_page": 224,
+        "source_heading": "八、伊布替尼 Ibrutinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1535218",
+      "en": "siltuximab",
+      "status": "project_draft",
+      "zh": "司妥昔单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=329",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "司妥昔单抗",
+        "en": "Siltuximab",
+        "pdf_page": 329,
+        "source_heading": "五十一、司妥昔单抗 Siltuximab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1535457",
+      "en": "ceritinib",
+      "status": "project_draft",
+      "zh": "塞瑞替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=46",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "塞瑞替尼",
+        "en": "Ceritinib",
+        "pdf_page": 46,
+        "source_heading": "十七、塞瑞替尼 Ceritinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1535498",
+      "en": "ronidazole",
+      "status": "project_draft",
+      "zh": "洛硝哒唑"
+    },
+    {
+      "identifier": "RXNORM:1535922",
+      "en": "ramucirumab",
+      "status": "project_draft",
+      "zh": "雷莫西尤单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=173",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "雷莫西尤单抗",
+        "en": "Ramucirumab",
+        "pdf_page": 173,
+        "source_heading": "十六、雷莫西尤单抗 Ramucirumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1547545",
+      "en": "pembrolizumab",
+      "status": "project_draft",
+      "zh": "帕博利珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=102",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "帕博利珠单抗",
+        "en": "Pembrolizumab",
+        "pdf_page": 102,
+        "source_heading": "四十六、帕博利珠单抗 Pembrolizumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1551291",
+      "en": "dulaglutide",
+      "status": "project_draft",
+      "zh": "度拉糖肽"
+    },
+    {
+      "identifier": "RXNORM:1588",
+      "en": "biotin",
+      "status": "project_draft",
+      "zh": "生物素"
+    },
+    {
+      "identifier": "RXNORM:1594675",
+      "en": "ferric citrate",
+      "status": "project_draft",
+      "zh": "枸橼酸铁"
+    },
+    {
+      "identifier": "RXNORM:1597258",
+      "en": "blinatumomab",
+      "status": "project_draft",
+      "zh": "贝林妥欧单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=278",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "贝林妥欧单抗",
+        "en": "Blinatumomab",
+        "pdf_page": 278,
+        "source_heading": "二十八、贝林妥欧单抗 Blinatumomab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1597582",
+      "en": "olaparib",
+      "status": "project_draft",
+      "zh": "奥拉帕利",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=392",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "奥拉帕利",
+        "en": "Olaparib",
+        "pdf_page": 392,
+        "source_heading": "十四、奥拉帕利 Olaparib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1597876",
+      "en": "nivolumab",
+      "status": "project_draft",
+      "zh": "纳武利尤单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=98",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "纳武利尤单抗",
+        "en": "Nivolumab",
+        "pdf_page": 98,
+        "source_heading": "四十五、纳武利尤单抗 Nivolumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1601374",
+      "en": "palbociclib",
+      "status": "project_draft",
+      "zh": "哌柏西利",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=438",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "哌柏西利",
+        "en": "Palbociclib",
+        "pdf_page": 438,
+        "source_heading": "十三、哌柏西利 Palbociclib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1603296",
+      "en": "lenvatinib",
+      "status": "project_draft",
+      "zh": "仑伐替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=145",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "仑伐替尼",
+        "en": "Lenvatinib",
+        "pdf_page": 145,
+        "source_heading": "三、仑伐替尼 Lenvatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1659191",
+      "en": "sonidegib",
+      "status": "project_draft",
+      "zh": "索立德吉",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=497",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "索立德吉",
+        "en": "Sonidegib",
+        "pdf_page": 497,
+        "source_heading": "七、索立德吉 Sonidegib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1721560",
+      "en": "osimertinib",
+      "status": "project_draft",
+      "zh": "奥希替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=29",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "奥希替尼",
+        "en": "Osimertinib",
+        "pdf_page": 29,
+        "source_heading": "六、奥希替尼 Osimertinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1721947",
+      "en": "daratumumab",
+      "status": "project_draft",
+      "zh": "达雷妥尤单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=248",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "达雷妥尤单抗",
+        "en": "Daratumumab",
+        "pdf_page": 248,
+        "source_heading": "十九、达雷妥尤单抗 Daratumumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1723735",
+      "en": "ixazomib",
+      "status": "project_draft",
+      "zh": "伊沙佐米",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=241",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "伊沙佐米",
+        "en": "Ixazomib",
+        "pdf_page": 241,
+        "source_heading": "十五、伊沙佐米 Ixazomib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1727455",
+      "en": "alectinib",
+      "status": "project_draft",
+      "zh": "阿来替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=44",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿来替尼",
+        "en": "Alectinib",
+        "pdf_page": 44,
+        "source_heading": "十六、阿来替尼 Alectinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1747556",
+      "en": "venetoclax",
+      "status": "project_draft",
+      "zh": "维奈克拉",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=273",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "维奈克拉",
+        "en": "Venetoclax",
+        "pdf_page": 273,
+        "source_heading": "二十六、维奈克拉 Venetoclax",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1792776",
+      "en": "atezolizumab",
+      "status": "project_draft",
+      "zh": "阿替利珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=109",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿替利珠单抗",
+        "en": "Atezolizumab",
+        "pdf_page": 109,
+        "source_heading": "四十八、阿替利珠单抗 Atezolizumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:18475",
+      "en": "atipamezole",
+      "status": "project_draft",
+      "zh": "阿替美唑"
+    },
+    {
+      "identifier": "RXNORM:1873916",
+      "en": "ribociclib",
+      "status": "project_draft",
+      "zh": "瑞波西利",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=444",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "瑞波西利",
+        "en": "Ribociclib",
+        "pdf_page": 444,
+        "source_heading": "十六、瑞波西利 Ribociclib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1897",
+      "en": "calcium carbonate",
+      "status": "project_draft",
+      "zh": "碳酸钙"
+    },
+    {
+      "identifier": "RXNORM:1908",
+      "en": "calcium gluconate",
+      "status": "project_draft",
+      "zh": "葡萄糖酸钙"
+    },
+    {
+      "identifier": "RXNORM:1918231",
+      "en": "niraparib",
+      "status": "project_draft",
+      "zh": "尼拉帕利",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=534",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "尼拉帕利",
+        "en": "Niraparib",
+        "pdf_page": 534,
+        "source_heading": "二、尼拉帕利 Niraparib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1919503",
+      "en": "durvalumab",
+      "status": "project_draft",
+      "zh": "度伐利尤单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=105",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "度伐利尤单抗",
+        "en": "Durvalumab",
+        "pdf_page": 105,
+        "source_heading": "四十七、度伐利尤单抗 Durvalumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1921217",
+      "en": "brigatinib",
+      "status": "project_draft",
+      "zh": "布格替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=49",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "布格替尼",
+        "en": "Brigatinib",
+        "pdf_page": 49,
+        "source_heading": "十九、布格替尼 Brigatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1940643",
+      "en": "neratinib",
+      "status": "project_draft",
+      "zh": "奈拉替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=425",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "奈拉替尼",
+        "en": "Neratinib",
+        "pdf_page": 425,
+        "source_heading": "八、奈拉替尼 Neratinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1942950",
+      "en": "inotuzumab ozogamicin",
+      "status": "project_draft",
+      "zh": "奥加伊妥珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=309",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "奥加伊妥珠单抗",
+        "en": "Inotuzumab Ozogamicin",
+        "pdf_page": 309,
+        "source_heading": "四十一、奥加伊妥珠单抗 Inotuzumab Ozogamicin",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1942960",
+      "en": "vasoactive intestinal peptide",
+      "status": "project_draft",
+      "zh": "血管活性肠肽"
+    },
+    {
+      "identifier": "RXNORM:1946825",
+      "en": "abemaciclib",
+      "status": "project_draft",
+      "zh": "阿贝西利",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=440",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿贝西利",
+        "en": "Abemaciclib",
+        "pdf_page": 440,
+        "source_heading": "十四、阿贝西利 Abemaciclib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:19666",
+      "en": "nesiritide",
+      "status": "project_draft",
+      "zh": "奈西立肽"
+    },
+    {
+      "identifier": "RXNORM:1986808",
+      "en": "acalabrutinib",
+      "status": "project_draft",
+      "zh": "阿可替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=234",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿可替尼",
+        "en": "Acalabrutinib",
+        "pdf_page": 234,
+        "source_heading": "十一、阿可替尼 Acalabrutinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1987398",
+      "en": "axicabtagene ciloleucel",
+      "status": "project_draft",
+      "zh": "阿基仑赛",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=344",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿基仑赛",
+        "en": "Axicabtagene Ciloleucel",
+        "pdf_page": 344,
+        "source_heading": "五十四、阿基仑赛 Axicabtagene Ciloleucel",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:1999574",
+      "en": "apalutamide",
+      "status": "project_draft",
+      "zh": "阿帕他胺",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=388",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿帕他胺",
+        "en": "Apalutamide",
+        "pdf_page": 388,
+        "source_heading": "十、阿帕他胺 Apalutamide",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2044896",
+      "en": "fostamatinib",
+      "status": "project_draft",
+      "zh": "福他替尼"
+    },
+    {
+      "identifier": "RXNORM:2049106",
+      "en": "encorafenib",
+      "status": "project_draft",
+      "zh": "恩考芬尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=198",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "恩考芬尼",
+        "en": "Encorafenib",
+        "pdf_page": 198,
+        "source_heading": "三十一、恩考芬尼 Encorafenib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2049122",
+      "en": "binimetinib",
+      "status": "project_draft",
+      "zh": "比美替尼"
+    },
+    {
+      "identifier": "RXNORM:2049873",
+      "en": "ivosidenib",
+      "status": "project_draft",
+      "zh": "艾伏尼布",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=276",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "艾伏尼布",
+        "en": "Ivosidenib",
+        "pdf_page": 276,
+        "source_heading": "二十七、艾伏尼布 Ivosidenib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2054068",
+      "en": "mogamulizumab",
+      "status": "project_draft",
+      "zh": "莫格利珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=327",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "莫格利珠单抗",
+        "en": "Mogamulizumab",
+        "pdf_page": 327,
+        "source_heading": "五十、莫格利珠单抗 Mogamulizumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2058509",
+      "en": "duvelisib",
+      "status": "project_draft",
+      "zh": "度维利塞",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=319",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "度维利塞",
+        "en": "Duvelisib",
+        "pdf_page": 319,
+        "source_heading": "四十五、度维利塞 Duvelisib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2058849",
+      "en": "dacomitinib",
+      "status": "project_draft",
+      "zh": "达可替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=27",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "达可替尼",
+        "en": "Dacomitinib",
+        "pdf_page": 27,
+        "source_heading": "五、达可替尼 Dacomitinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2099704",
+      "en": "talazoparib",
+      "status": "project_draft",
+      "zh": "他拉唑帕利",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=394",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "他拉唑帕利",
+        "en": "Talazoparib",
+        "pdf_page": 394,
+        "source_heading": "十五、他拉唑帕利 Talazoparib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2103164",
+      "en": "lorlatinib",
+      "status": "project_draft",
+      "zh": "洛拉替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=51",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "洛拉替尼",
+        "en": "Lorlatinib",
+        "pdf_page": 51,
+        "source_heading": "二十、洛拉替尼 Lorlatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2105628",
+      "en": "larotrectinib",
+      "status": "project_draft",
+      "zh": "拉罗替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=585",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "拉罗替尼",
+        "en": "Larotrectinib",
+        "pdf_page": 585,
+        "source_heading": "一、拉罗替尼 Larotrectinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2105806",
+      "en": "gilteritinib",
+      "status": "project_draft",
+      "zh": "吉瑞替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=270",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "吉瑞替尼",
+        "en": "Gilteritinib",
+        "pdf_page": 270,
+        "source_heading": "二十五、吉瑞替尼 Gilteritinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:21183",
+      "en": "citric acid",
+      "status": "project_draft",
+      "zh": "枸橼酸"
+    },
+    {
+      "identifier": "RXNORM:2123125",
+      "en": "erdafitinib",
+      "status": "project_draft",
+      "zh": "厄达替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=408",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "厄达替尼",
+        "en": "Erdafitinib",
+        "pdf_page": 408,
+        "source_heading": "二十四、厄达替尼 Erdafitinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2169285",
+      "en": "alpelisib",
+      "status": "project_draft",
+      "zh": "阿培利司"
+    },
+    {
+      "identifier": "RXNORM:2174090",
+      "en": "polatuzumab vedotin",
+      "status": "project_draft",
+      "zh": "维泊妥珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=305",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "维泊妥珠单抗",
+        "en": "Polatuzumab Vedotin",
+        "pdf_page": 305,
+        "source_heading": "三十九、维泊妥珠单抗 Polatuzumab Vedotin",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2178390",
+      "en": "selinexor",
+      "status": "project_draft",
+      "zh": "塞利尼索",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=268",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "塞利尼索",
+        "en": "Selinexor",
+        "pdf_page": 268,
+        "source_heading": "二十四、塞利尼索 Selinexor",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2180325",
+      "en": "darolutamide",
+      "status": "project_draft",
+      "zh": "达罗他胺",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=390",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "达罗他胺",
+        "en": "Darolutamide",
+        "pdf_page": 390,
+        "source_heading": "十二、达罗他胺 Darolutamide",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2197862",
+      "en": "entrectinib",
+      "status": "project_draft",
+      "zh": "恩曲替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=80",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "恩曲替尼",
+        "en": "Entrectinib",
+        "pdf_page": 80,
+        "source_heading": "三十六、恩曲替尼 Entrectinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:224905",
+      "en": "trastuzumab",
+      "status": "project_draft",
+      "zh": "曲妥珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=161",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "曲妥珠单抗",
+        "en": "Trastuzumab",
+        "pdf_page": 161,
+        "source_heading": "十一、曲妥珠单抗 Trastuzumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2262276",
+      "en": "nicotinamide ribotide",
+      "status": "project_draft",
+      "zh": "烟酰胺单核苷酸"
+    },
+    {
+      "identifier": "RXNORM:2262435",
+      "en": "zanubrutinib",
+      "status": "project_draft",
+      "zh": "泽布替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=225",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "泽布替尼",
+        "en": "Zanubrutinib",
+        "pdf_page": 225,
+        "source_heading": "九、泽布替尼 Zanubrutinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2267406",
+      "en": "N-monoacetylcystine",
+      "status": "project_draft",
+      "zh": "N-单乙酰胱氨酸"
+    },
+    {
+      "identifier": "RXNORM:2272107",
+      "en": "avapritinib",
+      "status": "project_draft",
+      "zh": "阿伐替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=186",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿伐替尼",
+        "en": "Avapritinib",
+        "pdf_page": 186,
+        "source_heading": "二十三、阿伐替尼 Avapritinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2274378",
+      "en": "tazemetostat",
+      "status": "project_draft",
+      "zh": "他泽司他",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=326",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "他泽司他",
+        "en": "Tazemetostat",
+        "pdf_page": 326,
+        "source_heading": "四十九、他泽司他 Tazemetostat",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2274394",
+      "en": "ferric derisomaltose",
+      "status": "project_draft",
+      "zh": "异麦芽糖酐铁"
+    },
+    {
+      "identifier": "RXNORM:2282018",
+      "en": "isatuximab",
+      "status": "project_draft",
+      "zh": "艾沙妥昔单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=252",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "艾沙妥昔单抗",
+        "en": "Isatuximab",
+        "pdf_page": 252,
+        "source_heading": "二十、艾沙妥昔单抗 Isatuximab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:228833",
+      "en": "gadoversetamide",
+      "status": "project_draft",
+      "zh": "钆弗塞胺"
+    },
+    {
+      "identifier": "RXNORM:2289380",
+      "en": "selumetinib",
+      "status": "project_draft",
+      "zh": "司美替尼"
+    },
+    {
+      "identifier": "RXNORM:23437",
+      "en": "dirithromycin",
+      "status": "project_draft",
+      "zh": "地红霉素"
+    },
+    {
+      "identifier": "RXNORM:2358",
+      "en": "chlorhexidine",
+      "status": "project_draft",
+      "zh": "氯己定"
+    },
+    {
+      "identifier": "RXNORM:2359268",
+      "en": "pemigatinib",
+      "status": "project_draft",
+      "zh": "佩米替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=207",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "佩米替尼",
+        "en": "Pemigatinib",
+        "pdf_page": 207,
+        "source_heading": "三十五、佩米替尼 Pemigatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2361285",
+      "en": "tucatinib",
+      "status": "project_draft",
+      "zh": "图卡替尼"
+    },
+    {
+      "identifier": "RXNORM:2362165",
+      "en": "capmatinib",
+      "status": "project_draft",
+      "zh": "卡马替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=75",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "卡马替尼",
+        "en": "Capmatinib",
+        "pdf_page": 75,
+        "source_heading": "三十三、卡马替尼 Capmatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2369389",
+      "en": "ripretinib",
+      "status": "project_draft",
+      "zh": "瑞派替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=187",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "瑞派替尼",
+        "en": "Ripretinib",
+        "pdf_page": 187,
+        "source_heading": "二十四、瑞派替尼 Ripretinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2370147",
+      "en": "selpercatinib",
+      "status": "project_draft",
+      "zh": "塞普替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=66",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "塞普替尼",
+        "en": "Selpercatinib",
+        "pdf_page": 66,
+        "source_heading": "二十八、塞普替尼 Selpercatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2373951",
+      "en": "inebilizumab",
+      "status": "project_draft",
+      "zh": "伊奈利珠单抗"
+    },
+    {
+      "identifier": "RXNORM:2374729",
+      "en": "lurbinectedin",
+      "status": "project_draft",
+      "zh": "芦比替定",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=140",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "芦比替定",
+        "en": "Lurbinectedin",
+        "pdf_page": 140,
+        "source_heading": "六十二、芦比替定 Lurbinectedin",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2385339",
+      "en": "benzotriazole",
+      "status": "project_draft",
+      "zh": "苯并三唑"
+    },
+    {
+      "identifier": "RXNORM:2387211",
+      "en": "tafasitamab",
+      "status": "project_draft",
+      "zh": "坦昔妥单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=303",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "坦昔妥单抗",
+        "en": "Tafasitamab",
+        "pdf_page": 303,
+        "source_heading": "三十八、坦昔妥单抗 Tafasitamab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:239",
+      "en": "aclarubicin",
+      "status": "project_draft",
+      "zh": "阿柔比星"
+    },
+    {
+      "identifier": "RXNORM:2391541",
+      "en": "satralizumab",
+      "status": "project_draft",
+      "zh": "萨特利珠单抗"
+    },
+    {
+      "identifier": "RXNORM:2394936",
+      "en": "pralsetinib",
+      "status": "project_draft",
+      "zh": "普拉替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=64",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "普拉替尼",
+        "en": "Pralsetinib",
+        "pdf_page": 64,
+        "source_heading": "二十七、普拉替尼 Pralsetinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:24698",
+      "en": "fludarabine",
+      "status": "project_draft",
+      "zh": "氟达拉滨"
+    },
+    {
+      "identifier": "RXNORM:2472898",
+      "en": "imidazole",
+      "status": "project_draft",
+      "zh": "咪唑"
+    },
+    {
+      "identifier": "RXNORM:2475952",
+      "en": "acetamide",
+      "status": "project_draft",
+      "zh": "乙酰胺"
+    },
+    {
+      "identifier": "RXNORM:2477103",
+      "en": "tepotinib",
+      "status": "project_draft",
+      "zh": "特泊替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=73",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "特泊替尼",
+        "en": "Tepotinib",
+        "pdf_page": 73,
+        "source_heading": "三十二、特泊替尼 Tepotinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2479690",
+      "en": "trilaciclib",
+      "status": "project_draft",
+      "zh": "曲拉西利"
+    },
+    {
+      "identifier": "RXNORM:24909",
+      "en": "iron sucrose",
+      "status": "project_draft",
+      "zh": "蔗糖铁"
+    },
+    {
+      "identifier": "RXNORM:24941",
+      "en": "ferrous fumarate",
+      "status": "project_draft",
+      "zh": "富马酸亚铁"
+    },
+    {
+      "identifier": "RXNORM:24942",
+      "en": "ferrous gluconate",
+      "status": "project_draft",
+      "zh": "葡萄糖酸亚铁"
+    },
+    {
+      "identifier": "RXNORM:24947",
+      "en": "ferrous sulfate",
+      "status": "project_draft",
+      "zh": "硫酸亚铁"
+    },
+    {
+      "identifier": "RXNORM:253337",
+      "en": "bevacizumab",
+      "status": "project_draft",
+      "zh": "贝伐珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=57",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "贝伐珠单抗",
+        "en": "Bevacizumab",
+        "pdf_page": 57,
+        "source_heading": "二十三、贝伐珠单抗 Bevacizumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2549199",
+      "en": "amivantamab",
+      "status": "project_draft",
+      "zh": "埃万妥单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=135",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "埃万妥单抗",
+        "en": "Amivantamab",
+        "pdf_page": 135,
+        "source_heading": "六十、埃万妥单抗 Amivantamab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2567226",
+      "en": "belzutifan",
+      "status": "project_draft",
+      "zh": "贝组替凡",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=407",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "贝组替凡",
+        "en": "Belzutifan",
+        "pdf_page": 407,
+        "source_heading": "二十三、贝组替凡 Belzutifan",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2570736",
+      "en": "mobocertinib",
+      "status": "project_draft",
+      "zh": "莫博赛替尼"
+    },
+    {
+      "identifier": "RXNORM:2584304",
+      "en": "asciminib",
+      "status": "project_draft",
+      "zh": "阿思尼布",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=221",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "阿思尼布",
+        "en": "Asciminib",
+        "pdf_page": 221,
+        "source_heading": "七、阿思尼布 Asciminib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2591476",
+      "en": "abrocitinib",
+      "status": "project_draft",
+      "zh": "阿布昔替尼"
+    },
+    {
+      "identifier": "RXNORM:2601723",
+      "en": "tirzepatide",
+      "status": "project_draft",
+      "zh": "替尔泊肽"
+    },
+    {
+      "identifier": "RXNORM:2610417",
+      "en": "spesolimab",
+      "status": "project_draft",
+      "zh": "佩索利单抗"
+    },
+    {
+      "identifier": "RXNORM:2612087",
+      "en": "deucravacitinib",
+      "status": "project_draft",
+      "zh": "氘可来昔替尼"
+    },
+    {
+      "identifier": "RXNORM:2619426",
+      "en": "teclistamab",
+      "status": "project_draft",
+      "zh": "特立妥单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=257",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "特立妥单抗",
+        "en": "Teclistamab",
+        "pdf_page": 257,
+        "source_heading": "二十一、特立妥单抗 Teclistamab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2621548",
+      "en": "mirvetuximab soravtansine",
+      "status": "project_draft",
+      "zh": "索米妥昔单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=578",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "索米妥昔单抗",
+        "en": "Mirvetuximab Soravtansine",
+        "pdf_page": 578,
+        "source_heading": "十八、索米妥昔单抗 Mirvetuximab Soravtansine",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2625122",
+      "en": "mosunetuzumab",
+      "status": "project_draft",
+      "zh": "莫妥珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=369",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "莫妥珠单抗",
+        "en": "Mosunetuzumab",
+        "pdf_page": 369,
+        "source_heading": "五十七、莫妥珠单抗 Mosunetuzumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2626143",
+      "en": "lecanemab",
+      "status": "project_draft",
+      "zh": "仑卡奈单抗"
+    },
+    {
+      "identifier": "RXNORM:2629338",
+      "en": "pirtobrutinib",
+      "status": "project_draft",
+      "zh": "匹妥布替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=235",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "匹妥布替尼",
+        "en": "Pirtobrutinib",
+        "pdf_page": 235,
+        "source_heading": "十二、匹妥布替尼 Pirtobrutinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2639782",
+      "en": "glofitamab",
+      "status": "project_draft",
+      "zh": "格菲妥单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=311",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "格菲妥单抗",
+        "en": "Glofitamab",
+        "pdf_page": 311,
+        "source_heading": "四十二、格菲妥单抗 Glofitamab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2642190",
+      "en": "5-methyldeoxycytidine",
+      "status": "project_draft",
+      "zh": "5-甲基脱氧胞苷"
+    },
+    {
+      "identifier": "RXNORM:2642401",
+      "en": "nirsevimab",
+      "status": "project_draft",
+      "zh": "尼塞韦单抗"
+    },
+    {
+      "identifier": "RXNORM:2644447",
+      "en": "talquetamab",
+      "status": "project_draft",
+      "zh": "塔奎妥单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=260",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "塔奎妥单抗",
+        "en": "Talquetamab",
+        "pdf_page": 260,
+        "source_heading": "二十二、塔奎妥单抗 Talquetamab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2644880",
+      "en": "elranatamab",
+      "status": "project_draft",
+      "zh": "埃纳妥单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=265",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "埃纳妥单抗",
+        "en": "Elranatamab",
+        "pdf_page": 265,
+        "source_heading": "二十三、埃纳妥单抗 Elranatamab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2669406",
+      "en": "toripalimab",
+      "status": "project_draft",
+      "zh": "特瑞普利单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=122",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "特瑞普利单抗",
+        "en": "Toripalimab",
+        "pdf_page": 122,
+        "source_heading": "五十四、特瑞普利单抗 Toripalimab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2669967",
+      "en": "capivasertib",
+      "status": "project_draft",
+      "zh": "卡匹色替",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=465",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "卡匹色替",
+        "en": "Capivasertib",
+        "pdf_page": 465,
+        "source_heading": "二十三、卡匹色替 Capivasertib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2670179",
+      "en": "fruquintinib",
+      "status": "project_draft",
+      "zh": "呋喹替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=197",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "呋喹替尼",
+        "en": "Fruquintinib",
+        "pdf_page": 197,
+        "source_heading": "三十、呋喹替尼 Fruquintinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2670644",
+      "en": "repotrectinib",
+      "status": "project_draft",
+      "zh": "瑞普替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=84",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "瑞普替尼",
+        "en": "Repotrectinib",
+        "pdf_page": 84,
+        "source_heading": "三十八、瑞普替尼 Repotrectinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2677426",
+      "en": "tislelizumab",
+      "status": "project_draft",
+      "zh": "替雷利珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=114",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "替雷利珠单抗",
+        "en": "Tislelizumab",
+        "pdf_page": 114,
+        "source_heading": "五十、替雷利珠单抗 Tislelizumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2687966",
+      "en": "donanemab",
+      "status": "project_draft",
+      "zh": "多奈单抗"
+    },
+    {
+      "identifier": "RXNORM:2695422",
+      "en": "inavolisib",
+      "status": "project_draft",
+      "zh": "伊那利塞",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=461",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "伊那利塞",
+        "en": "Inavolisib",
+        "pdf_page": 461,
+        "source_heading": "二十二、伊那利塞 Inavolisib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2695869",
+      "en": "zolbetuximab",
+      "status": "project_draft",
+      "zh": "佐妥昔单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=180",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "佐妥昔单抗",
+        "en": "Zolbetuximab",
+        "pdf_page": 180,
+        "source_heading": "二十、佐妥昔单抗 Zolbetuximab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2698198",
+      "en": "zanidatamab",
+      "status": "project_draft",
+      "zh": "泽尼达妥单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=210",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "泽尼达妥单抗",
+        "en": "Zanidatamab",
+        "pdf_page": 210,
+        "source_heading": "三十七、泽尼达妥单抗 Zanidatamab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2712542",
+      "en": "penpulimab",
+      "status": "project_draft",
+      "zh": "派安普利单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=127",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "派安普利单抗",
+        "en": "Penpulimab",
+        "pdf_page": 127,
+        "source_heading": "五十六、派安普利单抗 Penpulimab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2712546",
+      "en": "ensartinib",
+      "status": "project_draft",
+      "zh": "恩沙替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=48",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "恩沙替尼",
+        "en": "Ensartinib",
+        "pdf_page": 48,
+        "source_heading": "十八、恩沙替尼 Ensartinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2716919",
+      "en": "taletrectinib",
+      "status": "project_draft",
+      "zh": "他雷替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=86",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "他雷替尼",
+        "en": "Taletrectinib",
+        "pdf_page": 86,
+        "source_heading": "三十九、他雷替尼 Taletrectinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:2719226",
+      "en": "sunvozertinib",
+      "status": "project_draft",
+      "zh": "舒沃替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=41",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "舒沃替尼",
+        "en": "Sunvozertinib",
+        "pdf_page": 41,
+        "source_heading": "十四、舒沃替尼 Sunvozertinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:272",
+      "en": "activated charcoal",
+      "status": "project_draft",
+      "zh": "活性炭"
+    },
+    {
+      "identifier": "RXNORM:282388",
+      "en": "imatinib",
+      "status": "project_draft",
+      "zh": "伊马替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=182",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "伊马替尼",
+        "en": "Imatinib",
+        "pdf_page": 182,
+        "source_heading": "二十一、伊马替尼 Imatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:284110",
+      "en": "Fe heme polypeptide",
+      "status": "project_draft",
+      "zh": "血红素铁多肽"
+    },
+    {
+      "identifier": "RXNORM:31435",
+      "en": "valrubicin",
+      "status": "project_draft",
+      "zh": "戊柔比星"
+    },
+    {
+      "identifier": "RXNORM:318341",
+      "en": "cetuximab",
+      "status": "project_draft",
+      "zh": "西妥昔单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=193",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "西妥昔单抗",
+        "en": "Cetuximab",
+        "pdf_page": 193,
+        "source_heading": "二十八、西妥昔单抗 Cetuximab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:32634",
+      "en": "oxfendazole",
+      "status": "project_draft",
+      "zh": "奥芬达唑"
+    },
+    {
+      "identifier": "RXNORM:328134",
+      "en": "gefitinib",
+      "status": "project_draft",
+      "zh": "吉非替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=21",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "吉非替尼",
+        "en": "Gefitinib",
+        "pdf_page": 21,
+        "source_heading": "一、吉非替尼 Gefitinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:337525",
+      "en": "erlotinib",
+      "status": "project_draft",
+      "zh": "厄洛替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=23",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "厄洛替尼",
+        "en": "Erlotinib",
+        "pdf_page": 23,
+        "source_heading": "二、厄洛替尼 Erlotinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:33764",
+      "en": "pirarubicin",
+      "status": "project_draft",
+      "zh": "吡柔比星"
+    },
+    {
+      "identifier": "RXNORM:342369",
+      "en": "lenalidomide",
+      "status": "project_draft",
+      "zh": "来那度胺",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=245",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "来那度胺",
+        "en": "Lenalidomide",
+        "pdf_page": 245,
+        "source_heading": "十七、来那度胺 Lenalidomide",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:34693",
+      "en": "propylene glycol",
+      "status": "project_draft",
+      "zh": "丙二醇"
+    },
+    {
+      "identifier": "RXNORM:357977",
+      "en": "sunitinib",
+      "status": "project_draft",
+      "zh": "舒尼替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=184",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "舒尼替尼",
+        "en": "Sunitinib",
+        "pdf_page": 184,
+        "source_heading": "二十二、舒尼替尼 Sunitinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:358258",
+      "en": "bortezomib",
+      "status": "project_draft",
+      "zh": "硼替佐米",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=237",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "硼替佐米",
+        "en": "Bortezomib",
+        "pdf_page": 237,
+        "source_heading": "十三、硼替佐米 Bortezomib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:36345",
+      "en": "selenium sulfide",
+      "status": "project_draft",
+      "zh": "硫化硒"
+    },
+    {
+      "identifier": "RXNORM:36435",
+      "en": "sertaconazole",
+      "status": "project_draft",
+      "zh": "舍他康唑"
+    },
+    {
+      "identifier": "RXNORM:36676",
+      "en": "sodium bicarbonate",
+      "status": "project_draft",
+      "zh": "碳酸氢钠"
+    },
+    {
+      "identifier": "RXNORM:37806",
+      "en": "terconazole",
+      "status": "project_draft",
+      "zh": "特康唑"
+    },
+    {
+      "identifier": "RXNORM:38323",
+      "en": "titanium dioxide",
+      "status": "project_draft",
+      "zh": "二氧化钛"
+    },
+    {
+      "identifier": "RXNORM:39954",
+      "en": "zinc sulfate",
+      "status": "project_draft",
+      "zh": "硫酸锌"
+    },
+    {
+      "identifier": "RXNORM:4089",
+      "en": "estramustine",
+      "status": "project_draft",
+      "zh": "雌莫司汀"
+    },
+    {
+      "identifier": "RXNORM:4126",
+      "en": "amifostine",
+      "status": "project_draft",
+      "zh": "氨磷汀"
+    },
+    {
+      "identifier": "RXNORM:448",
+      "en": "ethanol",
+      "status": "project_draft",
+      "zh": "乙醇"
+    },
+    {
+      "identifier": "RXNORM:4511",
+      "en": "folic acid",
+      "status": "project_draft",
+      "zh": "叶酸"
+    },
+    {
+      "identifier": "RXNORM:4570",
+      "en": "fructose",
+      "status": "project_draft",
+      "zh": "果糖"
+    },
+    {
+      "identifier": "RXNORM:475342",
+      "en": "dasatinib",
+      "status": "project_draft",
+      "zh": "达沙替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=214",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "达沙替尼",
+        "en": "Dasatinib",
+        "pdf_page": 214,
+        "source_heading": "二、达沙替尼 Dasatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:47613",
+      "en": "calcium citrate",
+      "status": "project_draft",
+      "zh": "枸橼酸钙"
+    },
+    {
+      "identifier": "RXNORM:480167",
+      "en": "lapatinib",
+      "status": "project_draft",
+      "zh": "拉帕替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=421",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "拉帕替尼",
+        "en": "Lapatinib",
+        "pdf_page": 421,
+        "source_heading": "六、拉帕替尼 Lapatinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:4910",
+      "en": "glycerin",
+      "status": "project_draft",
+      "zh": "甘油"
+    },
+    {
+      "identifier": "RXNORM:495881",
+      "en": "sorafenib",
+      "status": "project_draft",
+      "zh": "索拉非尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=142",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "索拉非尼",
+        "en": "Sorafenib",
+        "pdf_page": 142,
+        "source_heading": "一、索拉非尼 Sorafenib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:5499",
+      "en": "hydrogen peroxide",
+      "status": "project_draft",
+      "zh": "过氧化氢"
+    },
+    {
+      "identifier": "RXNORM:54993",
+      "en": "potassium citrate",
+      "status": "project_draft",
+      "zh": "枸橼酸钾"
+    },
+    {
+      "identifier": "RXNORM:5514",
+      "en": "hydroxocobalamin",
+      "status": "project_draft",
+      "zh": "羟钴胺"
+    },
+    {
+      "identifier": "RXNORM:56466",
+      "en": "sodium citrate",
+      "status": "project_draft",
+      "zh": "枸橼酸钠"
+    },
+    {
+      "identifier": "RXNORM:5650",
+      "en": "idarubicin",
+      "status": "project_draft",
+      "zh": "伊达比星"
+    },
+    {
+      "identifier": "RXNORM:58300",
+      "en": "zinc gluconate",
+      "status": "project_draft",
+      "zh": "葡萄糖酸锌"
+    },
+    {
+      "identifier": "RXNORM:6099",
+      "en": "kanamycin",
+      "status": "project_draft",
+      "zh": "卡那霉素"
+    },
+    {
+      "identifier": "RXNORM:6102",
+      "en": "kaolin",
+      "status": "project_draft",
+      "zh": "高岭土"
+    },
+    {
+      "identifier": "RXNORM:6211",
+      "en": "lactose",
+      "status": "project_draft",
+      "zh": "乳糖"
+    },
+    {
+      "identifier": "RXNORM:6581",
+      "en": "magnesium hydroxide",
+      "status": "project_draft",
+      "zh": "氢氧化镁"
+    },
+    {
+      "identifier": "RXNORM:6582",
+      "en": "magnesium oxide",
+      "status": "project_draft",
+      "zh": "氧化镁"
+    },
+    {
+      "identifier": "RXNORM:6585",
+      "en": "magnesium sulfate",
+      "status": "project_draft",
+      "zh": "硫酸镁"
+    },
+    {
+      "identifier": "RXNORM:662281",
+      "en": "nilotinib",
+      "status": "project_draft",
+      "zh": "尼洛替尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=216",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "尼洛替尼",
+        "en": "Nilotinib",
+        "pdf_page": 216,
+        "source_heading": "三、尼洛替尼 Nilotinib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:6628",
+      "en": "mannitol",
+      "status": "project_draft",
+      "zh": "甘露醇"
+    },
+    {
+      "identifier": "RXNORM:66958",
+      "en": "pristinamycin",
+      "status": "project_draft",
+      "zh": "普那霉素"
+    },
+    {
+      "identifier": "RXNORM:684879",
+      "en": "pyridoxine",
+      "status": "project_draft",
+      "zh": "吡哆醇"
+    },
+    {
+      "identifier": "RXNORM:6985",
+      "en": "miocamycin",
+      "status": "project_draft",
+      "zh": "米欧卡霉素"
+    },
+    {
+      "identifier": "RXNORM:69893",
+      "en": "pentetreotide",
+      "status": "project_draft",
+      "zh": "喷曲肽"
+    },
+    {
+      "identifier": "RXNORM:6995",
+      "en": "plicamycin",
+      "status": "project_draft",
+      "zh": "普卡霉素"
+    },
+    {
+      "identifier": "RXNORM:714438",
+      "en": "pazopanib",
+      "status": "project_draft",
+      "zh": "培唑帕尼",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=380",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "培唑帕尼",
+        "en": "Pazopanib",
+        "pdf_page": 380,
+        "source_heading": "三、培唑帕尼 Pazopanib",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:7405",
+      "en": "niacinamide",
+      "status": "project_draft",
+      "zh": "烟酰胺"
+    },
+    {
+      "identifier": "RXNORM:7629",
+      "en": "oleandomycin",
+      "status": "project_draft",
+      "zh": "竹桃霉素"
+    },
+    {
+      "identifier": "RXNORM:797541",
+      "en": "isopropyl alcohol",
+      "status": "project_draft",
+      "zh": "异丙醇"
+    },
+    {
+      "identifier": "RXNORM:8015",
+      "en": "pentylenetetrazole",
+      "status": "project_draft",
+      "zh": "戊四氮"
+    },
+    {
+      "identifier": "RXNORM:8559",
+      "en": "polysorbate 20",
+      "status": "project_draft",
+      "zh": "聚山梨酯20"
+    },
+    {
+      "identifier": "RXNORM:8560",
+      "en": "polysorbate 80",
+      "status": "project_draft",
+      "zh": "聚山梨酯80"
+    },
+    {
+      "identifier": "RXNORM:8591",
+      "en": "potassium chloride",
+      "status": "project_draft",
+      "zh": "氯化钾"
+    },
+    {
+      "identifier": "RXNORM:863035",
+      "en": "bepotastine",
+      "status": "project_draft",
+      "zh": "贝他斯汀"
+    },
+    {
+      "identifier": "RXNORM:9346",
+      "en": "riboflavin",
+      "status": "project_draft",
+      "zh": "核黄素"
+    },
+    {
+      "identifier": "RXNORM:9525",
+      "en": "salicylic acid",
+      "status": "project_draft",
+      "zh": "水杨酸"
+    },
+    {
+      "identifier": "RXNORM:974779",
+      "en": "obinutuzumab",
+      "status": "project_draft",
+      "zh": "奥妥珠单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=300",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "奥妥珠单抗",
+        "en": "Obinutuzumab",
+        "pdf_page": 300,
+        "source_heading": "三十七、奥妥珠单抗 Obinutuzumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:9771",
+      "en": "silicon dioxide",
+      "status": "project_draft",
+      "zh": "二氧化硅"
+    },
+    {
+      "identifier": "RXNORM:978673",
+      "en": "heme iron polypeptide",
+      "status": "project_draft",
+      "zh": "血红素铁多肽"
+    },
+    {
+      "identifier": "RXNORM:9863",
+      "en": "sodium chloride",
+      "status": "project_draft",
+      "zh": "氯化钠"
+    },
+    {
+      "identifier": "RXNORM:993449",
+      "en": "denosumab",
+      "status": "project_draft",
+      "zh": "地舒单抗",
+      "source_url": "https://www.nhc.gov.cn/yzygj/c100067/202601/460c2377aa294b55baacd339b8b19eb8/files/%E6%96%B0%E5%9E%8B%E6%8A%97%E8%82%BF%E7%98%A4%E8%8D%AF%E7%89%A9%E4%B8%B4%E5%BA%8A%E5%BA%94%E7%94%A8%E6%8C%87%E5%AF%BC%E5%8E%9F%E5%88%99%EF%BC%882025%E5%B9%B4%E7%89%88%EF%BC%89.pdf#page=502",
+      "match_basis": "exact_rxnorm_ingredient_name_to_nhc_bilingual_heading_casefold_only",
+      "verification": {
+        "zh": "地舒单抗",
+        "en": "Denosumab",
+        "pdf_page": 502,
+        "source_heading": "二、地舒单抗 Denosumab",
+        "pdf_sha256": "9003c2bd4525ca9097227da795f9d9b17af56e9138894d6fb5c4835dc37de48e",
+        "document": "新型抗肿瘤药物临床应用指导原则（2025年版）",
+        "scope": "ingredient display name only; no indication or approval inference"
+      }
+    },
+    {
+      "identifier": "RXNORM:9945",
+      "en": "sorbitol",
+      "status": "project_draft",
+      "zh": "山梨醇"
+    },
+    {
+      "identifier": "RXNORM:996051",
+      "en": "cabazitaxel",
+      "status": "project_draft",
+      "zh": "卡巴他赛"
+    }
+  ]
+}

@@ -771,7 +771,7 @@ class CurationTests(TestCase):
                 self.assertFalse(WorkItem.objects.exists())
                 self.assertFalse(WorkAttempt.objects.exists())
 
-    def test_idle_worker_does_not_hide_non_lock_database_failures(self):
+    def test_idle_worker_does_not_hide_database_corruption(self):
         from django.core.management import call_command
         from django.db import OperationalError
 
@@ -779,10 +779,13 @@ class CurationTests(TestCase):
         with (
             patch(module + ".signal.signal"),
             patch(
-                module + ".heartbeat", side_effect=OperationalError("disk I/O error")
+                module + ".heartbeat",
+                side_effect=OperationalError("database disk image is malformed"),
             ),
             patch(module + ".claim") as claim,
-            self.assertRaisesMessage(OperationalError, "disk I/O error"),
+            self.assertRaisesMessage(
+                OperationalError, "database disk image is malformed"
+            ),
         ):
             call_command("curation_worker", once=True, stderr=io.StringIO())
         claim.assert_not_called()

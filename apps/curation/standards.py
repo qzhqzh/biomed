@@ -1,5 +1,6 @@
 """Repeatable official source adapters; activate a complete snapshot in one transaction."""
 
+import json
 import re
 
 from django.db import transaction
@@ -19,7 +20,119 @@ SOURCES = {
         "rights": "NLM RxNorm API terms · non-proprietary RxNorm concepts (IN)",
         "url": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
     },
+    "ONCOTREE": {
+        "title": "癌种分类 · OncoTree",
+        "rights": "CC BY 4.0 · Memorial Sloan Kettering Cancer Center / OncoTree",
+        "url": "https://github.com/cBioPortal/oncotree/blob/master/LICENSE.md",
+    },
 }
+
+# Pin a reviewed official release; never silently consume the development tree.
+ONCOTREE_VERSION = "oncotree_2025_10_03"
+ONCOTREE_DATE = "2025-10-03"
+ONCOTREE_MIN_NODES = 700
+ONCOTREE_FETCH = {
+    "limit": 2 * 1024 * 1024,
+    "bytes_per_second": 256 * 1024,
+    "interval": 2,
+}
+
+
+def oncotree_release(versions):
+    if not isinstance(versions, list):
+        raise SourceBlocked("OncoTree 版本清单格式异常")
+    matches = [
+        item
+        for item in versions
+        if isinstance(item, dict) and item.get("api_identifier") == ONCOTREE_VERSION
+    ]
+    if len(matches) != 1 or matches[0].get("release_date") != ONCOTREE_DATE:
+        raise SourceBlocked("OncoTree 固定版本无法确认，保留当前版本")
+    return matches[0]
+
+
+def oncotree_terms(content):
+    """Flatten the official tree, retaining its real root and source xrefs.
+
+    Xrefs are references, not asserted equivalences. The immutable source blob
+    retains tissue/mainType, colors, history and all other provider attributes.
+    """
+
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise SourceBlocked("OncoTree JSON 包含重复键")
+            result[key] = value
+        return result
+
+    try:
+        tree = json.loads(content, object_pairs_hook=unique_object)
+    except (UnicodeError, ValueError, RecursionError) as exc:
+        raise SourceBlocked("OncoTree JSON 格式异常") from exc
+    if not isinstance(tree, dict) or set(tree) != {"TISSUE"}:
+        raise SourceBlocked("OncoTree 缺少唯一官方根节点")
+    pending = [("TISSUE", tree["TISSUE"], None, 0)]
+    seen = set()
+    terms = []
+    while pending:
+        key, node, parent, level = pending.pop()
+        if not isinstance(node, dict):
+            raise SourceBlocked("OncoTree 节点格式异常")
+        code = node.get("code")
+        name = node.get("name")
+        if (
+            not isinstance(code, str)
+            or not code
+            or len(code) > 71
+            or code != key
+            or code in seen
+            or not isinstance(name, str)
+            or not name.strip()
+            or len(name) > 700
+        ):
+            raise SourceBlocked("OncoTree 标识或名称异常，或存在重复节点")
+        if (
+            node.get("parent") != parent
+            or type(node.get("level")) is not int
+            or node["level"] != level
+            or level > 32
+        ):
+            raise SourceBlocked("OncoTree 父节点或层级不一致，未激活")
+        children = node.get("children")
+        xrefs = node.get("externalReferences")
+        if not isinstance(children, dict) or not isinstance(xrefs, dict):
+            raise SourceBlocked("OncoTree 子节点或交叉引用格式异常")
+        references = []
+        for source, codes in xrefs.items():
+            if (
+                not source
+                or not isinstance(codes, list)
+                or any(not isinstance(value, str) or not value for value in codes)
+            ):
+                raise SourceBlocked("OncoTree 交叉引用内容异常")
+            references.extend(f"{source}:{value}" for value in codes)
+        seen.add(code)
+        terms.append(
+            {
+                "id": f"ONCOTREE:{code}",
+                "name": name,
+                "synonyms": [],
+                "parents": [f"ONCOTREE:{parent}"] if parent else [],
+                "xrefs": references,
+            }
+        )
+        pending.extend(
+            (child, value, code, level + 1) for child, value in children.items()
+        )
+    if len(terms) < ONCOTREE_MIN_NODES:
+        raise SourceBlocked("OncoTree 记录数异常，保留当前版本")
+    # Matching nesting/parent/level and rejecting repeated codes above also rejects
+    # cycles. Keep an explicit closure guard before any database writes.
+    identifiers = {term["id"] for term in terms}
+    if any(parent not in identifiers for term in terms for parent in term["parents"]):
+        raise SourceBlocked("OncoTree 父节点不闭合，未激活")
+    return terms
 
 
 def mondo_terms(content):
@@ -78,8 +191,6 @@ def sync_standard(namespace):
         version = fetch_json("https://rxnav.nlm.nih.gov/REST/version.json")["version"]
         url = "https://rxnav.nlm.nih.gov/REST/allconcepts.json?tty=IN"
         content = fetch(url)
-        import json
-
         props = json.loads(content)["minConceptGroup"]["minConcept"]
         terms = [
             {
@@ -99,6 +210,16 @@ def sync_standard(namespace):
             != fetch_json("https://rxnav.nlm.nih.gov/REST/version.json")["version"]
         ):
             raise TransientSourceError("下载期间 RxNorm 版本发生变化，请重试")
+    elif namespace == "ONCOTREE":
+        versions_url = "https://oncotree.mskcc.org/api/versions"
+        before = oncotree_release(fetch_json(versions_url, **ONCOTREE_FETCH))
+        version = ONCOTREE_VERSION
+        url = f"https://oncotree.mskcc.org/api/tumorTypes/tree?version={version}"
+        content = fetch(url, **ONCOTREE_FETCH)
+        terms = oncotree_terms(content)
+        after = oncotree_release(fetch_json(versions_url, **ONCOTREE_FETCH))
+        if before != after:
+            raise TransientSourceError("下载期间 OncoTree 版本信息发生变化，请重试")
     else:
         raise SourceBlocked("不支持的数据来源")
     digest = store_blob(content)

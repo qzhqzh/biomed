@@ -1,0 +1,9 @@
+[Unit]
+Description=Biomed literature progress and bounded recovery
+
+[Service]
+Type=oneshot
+WorkingDirectory=/data/06_project/biomed
+ExecStart=/usr/bin/python3 /data/06_project/biomed/scripts/watch_literature.py --config /data/06_project/biomed/var/private/collection-watch.json
+TimeoutStartSec=240
+UMask=0077

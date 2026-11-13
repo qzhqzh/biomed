@@ -1,0 +1,115 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "study-context-guard-20261112",
+  "title": "033 · 研究来源、动物模型与用药比例",
+  "date": "2026-11-12T06:23:45.352646+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 3,
+  "sample_unit": "条反例",
+  "summary": "三条针对性反例均未放行；补充识别综述误标原发、PDX模型和用药比例，不证明有效知识增加。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "target-context-probe-v1",
+    "sample_versions": [
+      "b5a2e0656ee79d9287ca9e29ba3fb8a12597415f5ccf71c67dea0d0803503a55"
+    ],
+    "method_versions": [
+      "d952e07c6eb7c0e938a93ad388a0bc71f6205803f13e7e215304dcf3749d3c91",
+      "326fe82772915b8d4418f118f5456a13193dbc6af4f160e3b6cf96a3d6e3c181"
+    ],
+    "reference_versions": [
+      "319d2cb543e48c2bcbf1a52f3b8d5dc73e981e94c3356048e615641f851ea74b",
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "如何避免把综述、动物模型或用药人数误当成人体疗效？",
+    "outputs": [
+      "研究类型冲突提示",
+      "研究对象及结果类型标记",
+      "原始来源、模型结果和离线结构对照"
+    ],
+    "not_measured": [
+      "Astra或临床专家核验",
+      "随机样本准确率",
+      "有效知识净新增"
+    ]
+  },
+  "dataset": {
+    "label": "三条事后选择的困难反例",
+    "role": "post_hoc_probe",
+    "document_count": 3
+  },
+  "reference": {
+    "label": "源文段落核读",
+    "status": "model_reference_not_human_gold",
+    "note": "当前助手在此次模型输出前核读原文，不是Astra或临床专家。"
+  },
+  "methods": [
+    {
+      "id": "old",
+      "label": "原离线原型",
+      "version": "biomed.source-linked-target-preview.v1",
+      "conclusion": "没有新增结构，模型仍可能把综述说成原发。",
+      "metrics": [
+        {
+          "label": "离线结构通过",
+          "numerator": 0,
+          "denominator": 3,
+          "note": "三条被其他检查拦住，综述来源误标当时未单独说明。"
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "label": "增加研究来源和对象提示",
+      "version": "biomed.source-study-context.v1",
+      "conclusion": "来源诊断改善；目前不能推断知识准确率、净产出或默认部署收益。",
+      "metrics": [
+        {
+          "label": "发现综述与原发冲突",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "仅此一条事后选择的综述；不代表全库准确率。"
+        },
+        {
+          "label": "发现PDX研究对象",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "仅此一条事后选择的临床前反例。"
+        },
+        {
+          "label": "识别用药人数比例",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "只识别既有事实字段，不自动证明原文语义。"
+        },
+        {
+          "label": "离线结构通过",
+          "numerator": 0,
+          "denominator": 3,
+          "note": "仍无新增目标结构。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "对确认有具体分子事件与临床关系的原发文献做独立核验，检查新增有效知识及旧结果回归。",
+    "达成预定标准后才考虑将来源绑定和语境检查接入后台。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/study-context-guard-20261112.json",
+      "sha256": "04d0f251588ef8034ff565f1cee39e7deec49c32a884fd1e7744943d11fe664b"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "a9e9d120e79f32c314006ba5bd78a308762144ce36c906846a3e5ed1ac896d48",
+  "content_sha256": "5b6d933660ba14b68675218cbe53f36a5c317180eaa255e87fd5eda36b529a34"
+}

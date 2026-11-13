@@ -14,8 +14,8 @@ from django.db import close_old_connections, transaction
 from django.utils import timezone
 
 from apps.annotations.engines.base import AnnotationError
-from apps.annotations.models import AnnotationJob
 from apps.annotations.knowledge import store as knowledge_store
+from apps.annotations.models import AnnotationJob
 from apps.annotations.services import annotate as annotate_service
 
 logger = logging.getLogger("biotools.jobs")
@@ -36,6 +36,10 @@ def submit_cooldown_seconds() -> int:
 def _client_ident(request) -> str:
     if getattr(request, "auth", None):
         return f"key:{str(request.auth)[:24]}"
+
+    user_id = getattr(request, "biomed_authenticated_user_id", None)
+    if user_id is not None:
+        return f"user:{user_id}"
 
     # X-Forwarded-For is attacker-controlled unless the deployment explicitly
     # opts in after placing Django behind a trusted reverse proxy.
@@ -103,16 +107,17 @@ def create_and_enqueue(
 def claim_next_job() -> str | None:
     """Atomically move the oldest queued job to RUNNING and return its id."""
 
+    job_id = (
+        AnnotationJob.objects.filter(status=AnnotationJob.Status.QUEUED)
+        .order_by("created_at")
+        .values_list("pk", flat=True)
+        .first()
+    )
+    if job_id is None:
+        return None
+    # The conditional UPDATE is the claim. Idle polling must not acquire an
+    # IMMEDIATE transaction and contend with literature ingestion every second.
     with transaction.atomic():
-        job_id = (
-            AnnotationJob.objects.filter(status=AnnotationJob.Status.QUEUED)
-            .order_by("created_at")
-            .values_list("pk", flat=True)
-            .first()
-        )
-        if job_id is None:
-            return None
-
         claimed = AnnotationJob.objects.filter(
             pk=job_id,
             status=AnnotationJob.Status.QUEUED,
@@ -135,10 +140,13 @@ def recover_stale_jobs(stale_after_seconds: int | None = None) -> int:
         seconds = int(getattr(settings, "BIOTOOLS_JOB_STALE_AFTER_SECONDS", 1800))
     seconds = max(60, int(seconds))
     cutoff = timezone.now() - timedelta(seconds=seconds)
-    return AnnotationJob.objects.filter(
+    stale = AnnotationJob.objects.filter(
         status=AnnotationJob.Status.RUNNING,
         started_at__lt=cutoff,
-    ).update(
+    )
+    if not stale.exists():
+        return 0
+    return stale.update(
         status=AnnotationJob.Status.QUEUED,
         started_at=None,
         finished_at=None,

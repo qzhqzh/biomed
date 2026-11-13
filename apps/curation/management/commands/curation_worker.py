@@ -9,11 +9,14 @@ from datetime import timedelta
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from django.db import OperationalError
+from django.db import OperationalError, close_old_connections
 from django.utils import timezone
 
+from apps.curation.collection_notifications import schedule_notifications
 from apps.curation.models import WorkerHeartbeat, WorkItem
+from apps.curation.worker_heartbeat import heartbeat_path, single_worker_lock, touch_worker_heartbeat
 from apps.curation.workflows import LEASE_SECONDS, claim, finish
+from config.database import transient_database_error
 
 _last_heartbeat = 0.0
 
@@ -22,6 +25,13 @@ def heartbeat():
     global _last_heartbeat
     if time.monotonic() - _last_heartbeat < 10:
         return False
+    # Check that the database is readable before advertising worker liveness.
+    # A transient file timestamp avoids taking an exclusive SQLite write lock.
+    if heartbeat_path() is not None:
+        WorkerHeartbeat.objects.filter(name="curation").exists()
+        if touch_worker_heartbeat():
+            _last_heartbeat = time.monotonic()
+            return True
     # A single UPDATE avoids a deferred read-to-write transaction upgrade on SQLite.
     if not WorkerHeartbeat.objects.filter(name="curation").update(
         last_seen=timezone.now()
@@ -38,6 +48,10 @@ class Command(BaseCommand):
         parser.add_argument("--once", action="store_true")
 
     def handle(self, *args, **options):
+        with single_worker_lock():
+            return self.run_worker(*args, **options)
+
+    def run_worker(self, *args, **options):
         stopped = False
         process = None
 
@@ -52,15 +66,14 @@ class Command(BaseCommand):
         while not stopped:
             try:
                 heartbeat()
+                schedule_notifications()
                 item = claim()
             except OperationalError as exc:
                 # Idle polling must survive the same temporary contention as active jobs.
                 # Keep the old heartbeat timestamp: an unavailable database is not healthy.
-                if not any(
-                    message in str(exc).lower()
-                    for message in ("database is locked", "database table is locked")
-                ):
+                if not transient_database_error(exc):
                     raise
+                close_old_connections()
                 self.stderr.write("Worker polling delayed by database contention")
                 time.sleep(2)
                 continue

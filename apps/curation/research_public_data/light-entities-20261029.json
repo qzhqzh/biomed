@@ -1,0 +1,268 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "light-entities-20261029",
+  "title": "009 · 轻量实体抽取、词条关联与按需消歧",
+  "date": "2026-10-29",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同15组9B：核心身份遗漏15/52→7/52，覆盖完整5/15→11/15；类型问题未减少，35个已选关联中6个不支持，总处理耗时增加33.4%。保留轻量方向，本版不作自动确认词条的默认流程。",
+  "identity": {
+    "task_version": "light-entity-evaluation-v1",
+    "sample_versions": [
+      "a186af8678d4e974080406d3219f1da78ccb6888daf778a7eb5acc9cbcfb3dcf"
+    ],
+    "method_versions": [
+      "8591f2755da94f66465a6253b6e2f01abeededa9f3386d1ede296e29e6db4a58",
+      "6c7c13a927120c59c7b75599a7923726583628e75d366d4292673b617f83f970",
+      "4461e07008c7257e783ef6caee0390cb3f9a3b77a0731cafe61533145294aa4c",
+      "70cbf0006ec966fc6089476310b4b64a063b659c864b543a00b0ade05457fbd8"
+    ],
+    "reference_versions": [
+      "e7f5d3b8ffdb4241b06cb85b2dc5102500100e130757f5541529a7d2837f8d69",
+      "61dd42bb2fe62d5b1adba25268fff3e164d11f0d03c58580b7142d57d3971e66",
+      "3bb9b2fc87e0882c457bcb376e637c62f8cda450e221a7f4a667589dd65f4f53"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "轻量实体抽取、脚本词条召回与按需消歧，能否减少错误/遗漏并控制成本？",
+    "outputs": [
+      "原文实体及脚本位置",
+      "已有标准候选与按需消歧",
+      "原文修饰",
+      "同口径遗漏、错误及全部处理耗时"
+    ],
+    "not_measured": [
+      "完整实体关系与数值绑定",
+      "全库泛化或准确率",
+      "人工修改量和耗时的受控对照",
+      "微调或生产导入"
+    ]
+  },
+  "dataset": {
+    "label": "原5篇、15个开发片段组",
+    "role": "复用的开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "推理前冻结的助手参考 + 既有Astra参考",
+    "status": "model_reference_not_human_gold",
+    "note": "新模型结果产生前冻结实体参考；逐条审查为助手对照原文和标准资源，未声称新Astra金标准或人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "baseline",
+      "label": "007旧输出 · 同口径实体子任务",
+      "version": "shared-entity-development-reference-v1",
+      "conclusion": "冻结旧分数，仅追加同口径实体诊断。",
+      "metrics": [
+        {
+          "label": "共同核心身份信息遗漏",
+          "numerator": 15,
+          "denominator": 52,
+          "note": "越少越好；信息可明确保留在实体组合名中，粒度问题另列；不从独立修饰字段补实体分。"
+        },
+        {
+          "label": "核心身份覆盖完整的组",
+          "numerator": 5,
+          "denominator": 15,
+          "note": "不是整条知识通过率，不代表标准ID或关系正确。"
+        },
+        {
+          "label": "类型问题",
+          "value": 5,
+          "unit": "项",
+          "note": "新方案另有1项S100家族粒度边界，旧版无；实体提及数不同，不能把问题数直接当同分母准确率。"
+        },
+        {
+          "label": "交付实体提及",
+          "value": 51,
+          "unit": "项",
+          "note": "含同一实体不同写法及背景提及，不是唯一实体数量。"
+        },
+        {
+          "label": "同组原文精确定位",
+          "numerator": 48,
+          "denominator": 51,
+          "note": "由同一个定位脚本查全部段落；旧48/51不同于模型指定unit的40/51，也不同于原组装链通过的6/51。"
+        },
+        {
+          "label": "JSON有效",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "失败保留在总体分母，不抢救局部JSON充当整份成功。"
+        },
+        {
+          "label": "观察到背景冗余",
+          "value": 2,
+          "unit": "组",
+          "note": "有来源的背景实体与认错身份分开；不是全量误收率。"
+        }
+      ]
+    },
+    {
+      "id": "light",
+      "label": "009轻量抽取 · 原文实体与修饰",
+      "version": "shared-entity-development-reference-v1",
+      "conclusion": "遗漏减少，但实体类型与冗余问题未同步解决；K07重复修饰生成后截断，不将未交付内容补计成功。",
+      "metrics": [
+        {
+          "label": "共同核心身份信息遗漏",
+          "numerator": 7,
+          "denominator": 52,
+          "note": "越少越好；信息可明确保留在实体组合名中，粒度问题另列；不从独立修饰字段补实体分。"
+        },
+        {
+          "label": "核心身份覆盖完整的组",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "不是整条知识通过率，不代表标准ID或关系正确。"
+        },
+        {
+          "label": "类型问题",
+          "value": 7,
+          "unit": "项",
+          "note": "新方案另有1项S100家族粒度边界，旧版无；实体提及数不同，不能把问题数直接当同分母准确率。"
+        },
+        {
+          "label": "交付实体提及",
+          "value": 113,
+          "unit": "项",
+          "note": "含同一实体不同写法及背景提及，不是唯一实体数量。"
+        },
+        {
+          "label": "同组原文精确定位",
+          "numerator": 112,
+          "denominator": 113,
+          "note": "由同一个定位脚本查全部段落；旧48/51不同于模型指定unit的40/51，也不同于原组装链通过的6/51。"
+        },
+        {
+          "label": "JSON有效",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "失败保留在总体分母，不抢救局部JSON充当整份成功。"
+        },
+        {
+          "label": "观察到背景冗余",
+          "value": 5,
+          "unit": "组",
+          "note": "有来源的背景实体与认错身份分开；不是全量误收率。"
+        }
+      ]
+    },
+    {
+      "id": "linking",
+      "label": "标准关联：脚本候选 + 7组按需消歧",
+      "version": "70cbf0006ec966fc6089476310b4b64a063b659c864b543a00b0ade05457fbd8",
+      "conclusion": "消歧增加10个有支持的关联，也新增2个错链。当前不自动确认标准实体；未匹配和未覆盖类型保留原文与临时标识。",
+      "metrics": [
+        {
+          "label": "脚本已选关联获得原文/词库支持",
+          "numerator": 19,
+          "denominator": 23,
+          "note": "4处铂类泛称被误连到具体成分；唯一首选名称不保证同一概念层级。"
+        },
+        {
+          "label": "9B新增关联获得支持",
+          "numerator": 10,
+          "denominator": 12,
+          "note": "另2处泛称中线胶质瘤被错误缩窄到脑桥亚型。"
+        },
+        {
+          "label": "全部已选关联获得支持",
+          "numerator": 29,
+          "denominator": 35,
+          "note": "按提及计数，6处错误来自两种重复问题；助手参考审查，非人工金标准或全库准确率。"
+        },
+        {
+          "label": "按需消歧调用",
+          "value": 7,
+          "unit": "组",
+          "note": "按组处理13个待消歧提及，不逐词启动模型；S100字符串null保留未决。"
+        },
+        {
+          "label": "扩展词库增加候选覆盖",
+          "value": 6,
+          "unit": "个提及",
+          "note": "同一批新实体旧字典30个有候选，扩展后36个；词库覆盖收益不当作模型理解提升。"
+        }
+      ]
+    },
+    {
+      "id": "cost",
+      "label": "完整成本与原文修饰",
+      "version": "measured-runner-and-script-time-v1",
+      "conclusion": "主要收益在减少身份信息遗漏；本版尚未同时改善类型可靠性和成本。人工核验耗时未受控测量。",
+      "metrics": [
+        {
+          "label": "旧抽取与组装",
+          "value": 593.47,
+          "unit": "秒",
+          "note": "旧任务还包含事实字段，工作负载不同；此处对比当前方案实际成本。"
+        },
+        {
+          "label": "新抽取",
+          "value": 676.76,
+          "unit": "秒",
+          "note": "含K07失败的188.09秒，不排除失败美化速度。"
+        },
+        {
+          "label": "按需消歧",
+          "value": 98.41,
+          "unit": "秒",
+          "note": "7组全部调用耗时。"
+        },
+        {
+          "label": "脚本及词库初始化",
+          "value": 16.35,
+          "unit": "秒",
+          "note": "本轮还保留旧/扩展词库覆盖对照。"
+        },
+        {
+          "label": "新方案总处理",
+          "value": 791.51,
+          "unit": "秒",
+          "note": "约52.77秒/原片段组，比593.47秒增加33.4%；加载与预热另列。"
+        },
+        {
+          "label": "加载与预热",
+          "value": 288.09,
+          "unit": "秒",
+          "note": "初次模型加载196.40秒，第二次28.61秒；不混入稳定推理吞吐。"
+        },
+        {
+          "label": "GPU进程峰值",
+          "value": 18.88,
+          "unit": "GiB",
+          "note": "同9B FP16，GPU3为22GiB RTX2080Ti；没有换模型或量化。"
+        },
+        {
+          "label": "修饰精确原文命中",
+          "numerator": 132,
+          "denominator": 136,
+          "note": "不是必要条件完整率。字符串修饰无损包装，原始形状失败仍保留；K14不确定性与K15否定仍有遗漏。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "先限制非核心背景实体及重复修饰输出，保留完整否定，不增加全量审核链。",
+    "按类别/成员、泛称/亚型拦截错误关联；同文全称与缩写标准ID冲突时保留未决。",
+    "补有出处的常用别名和组合内明确成分，只对实际歧义调用模型；仍不微调。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/light-entities-20261029.json",
+      "sha256": "cfd0a4c36ad7af35cf57d4061b207bfca362369a92914613576dfa4553a1de7c"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "b84e98c7ba4ee0ec6e7a0797758f6dbe4ae0f798c2513a1e202a682faa15f1e6",
+  "content_sha256": "f895476f71ecfd6599c21b3eae6dc189313904dd662accb2cd7d95d5950fe215"
+}

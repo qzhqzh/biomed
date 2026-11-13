@@ -1,0 +1,194 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "knowledge-error-audit-20261029",
+  "title": "008 · 第6步错误拆解与实体词条方案",
+  "date": "2026-10-29",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "复用同15组旧输出：关系问题11组、条件问题8组；实体身份/类型4组、实体定位10组。协议消融仅使结构通过2→5，不代表完整通过提升。标准词条关联与事实绑定应分别验证。",
+  "identity": {
+    "task_version": "knowledge-error-audit-v1",
+    "sample_versions": [
+      "a186af8678d4e974080406d3219f1da78ccb6888daf778a7eb5acc9cbcfb3dcf",
+      "a328debae5e555fe7a0b718eb6ae53ad7eb91aff65bb022e126765e988ea0f9b"
+    ],
+    "method_versions": [
+      "f58b9c704b8abf14be590fd93c6506bfe2f947282eb59d9302f1d17314980b9f",
+      "a6457fb6393cd3f685259534d5db1463d8697226c7670af05eb5f325c31a43b7"
+    ],
+    "reference_versions": [
+      "cca596cc01491a24c6a5cb1b8768403ba99a36bbc16bdc598e84140e62940c42",
+      "adec4cd51e115e75590cfc71d10b26323e603f3b9921408d23fd5e5c82d302ce",
+      "77435e131bc0d90807d34c8f06463f82619fdb87d933ecb8c8632850697b787a",
+      "1988c6f7bbd89ac43b5f668f256060fd6f18a1cceba8639f8c2ae99241854bc7"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "第6步失败分别来自实体、关系、条件、数值还是协议/定位？标准词条能解决哪部分？",
+    "outputs": [
+      "分轴错误与逐组诊断",
+      "协议与实体定位的可复算诊断",
+      "现有标准库关联缺口及新词条方案"
+    ],
+    "not_measured": [
+      "新模型推理或微调收益",
+      "改进方案的完整通过率",
+      "全库准确率与数值召回",
+      "新词条发布或生产写入"
+    ]
+  },
+  "dataset": {
+    "label": "原5篇、15个开发片段组",
+    "role": "反复使用的开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "既有Astra参考 + 本轮助手回顾分析",
+    "status": "model_reference_not_human_gold",
+    "note": "本轮不是新Astra金标准；依据冻结原文、原始输出及旧Astra评审拆分错误。不同合法中心结论不因与参考字面不同而判错。"
+  },
+  "methods": [
+    {
+      "id": "retrospective-audit",
+      "label": "逐组错误拆解（非新模型评分）",
+      "version": "knowledge-error-audit-v1",
+      "conclusion": "关系与条件是主要语义短板，实体定位和输出协议也显著阻塞通过；不能把整条低分解释为所有内容都读错。",
+      "metrics": [
+        {
+          "label": "实体身份或类型问题",
+          "numerator": 4,
+          "denominator": 15,
+          "note": "如把放疗标为drug；与实体定位独立。"
+        },
+        {
+          "label": "实体原文定位问题",
+          "numerator": 10,
+          "denominator": 15,
+          "note": "含可读但JSON不完整记录；不等于认错实体。"
+        },
+        {
+          "label": "关系或组别角色问题",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "角色、关系强度、分子逻辑等。"
+        },
+        {
+          "label": "条件问题",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "另6组未见问题，K09上下文不足，无法充分判断。"
+        },
+        {
+          "label": "数值绑定问题",
+          "numerator": 1,
+          "denominator": 14,
+          "note": "K13终点/部位与p值绑定不完整；K15无数值任务。只检查已表达的值，不评价全部数值召回。"
+        },
+        {
+          "label": "格式协议问题",
+          "numerator": 10,
+          "denominator": 15,
+          "note": "格式与语义分开，各类可重叠。"
+        }
+      ]
+    },
+    {
+      "id": "mechanical-diagnosis",
+      "label": "脚本独立定位 + 仅移动reason的协议消融",
+      "version": "f58b9c704b8abf14be590fd93c6506bfe2f947282eb59d9302f1d17314980b9f",
+      "conclusion": "工程协议有独立贡献，但只修协议不能解决语义。所有变换仅在内存诊断副本，不发布知识。",
+      "metrics": [
+        {
+          "label": "原指定unit精确命中",
+          "numerator": 40,
+          "denominator": 51,
+          "note": "独立诊断，不经过前置整条协议门槛；旧成绩6/51不改。"
+        },
+        {
+          "label": "在同组其他unit精确命中",
+          "numerator": 8,
+          "denominator": 51,
+          "note": "提示词条名称与原文提及/位置应分开，不能自动任选匹配位置。"
+        },
+        {
+          "label": "同组无精确子串",
+          "numerator": 3,
+          "denominator": 51,
+          "note": "不自动当作不存在实体，可能为大小写、单复数或简称差异。"
+        },
+        {
+          "label": "原始结构通过",
+          "numerator": 2,
+          "denominator": 15,
+          "note": "007原结构检查，非整条医学语义通过。"
+        },
+        {
+          "label": "仅移动reason后结构通过",
+          "numerator": 5,
+          "denominator": 15,
+          "note": "新增K07/K10/K11；无实体、数值或来源改动，三条仍有语义问题，未修改旧成绩。"
+        },
+        {
+          "label": "本轮新增9B推理",
+          "value": 0,
+          "unit": "次",
+          "note": "全部复用旧输出，脚本诊断不计作新模型性能。"
+        }
+      ]
+    },
+    {
+      "id": "dictionary-diagnosis",
+      "label": "旧冻结标准字典的独立候选匹配",
+      "version": "b32910365ed7cf3ea711095bdcd1a4c083ff5495527420eeb3e85133fccfae59",
+      "conclusion": "复用已有Gene/RxNorm/MONDO基础，下一步补语义类型、局部别名、候选消歧与OncoTree/ChEMBL关联；变异规范化另行实现。",
+      "metrics": [
+        {
+          "label": "唯一标准候选",
+          "numerator": 11,
+          "denominator": 33,
+          "note": "40个定位正确提及中，33个属于当前字典覆盖的gene/drug/disease；唯一候选不等于正确链接。"
+        },
+        {
+          "label": "候选歧义",
+          "numerator": 3,
+          "denominator": 33,
+          "note": "保留候选与上下文，不强制取第一个。"
+        },
+        {
+          "label": "未匹配",
+          "numerator": 19,
+          "denominator": 33,
+          "note": "包含简称、复合名称、方案和误标类型；不能全部当作词库缺词。"
+        },
+        {
+          "label": "其他类型未覆盖",
+          "value": 7,
+          "unit": "个提及",
+          "note": "不纳入33个可查字典分母；另11个定位错误提及不做关联。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "固定15组，先测试原文提及+脚本定位+本地标准候选+9B消歧；用具名字段，协议变化和词典辅助收益分别报告。",
+    "再固定已核验实体，比较研究组—干预/对照—人群条件—终点—时间—数值/单位/区间/p值—出处绑定，避免两个环节同时变化无法归因。",
+    "核验先只报告字段问题，限制改写范围；重点回归K03/K05/K07/K12/K13/K15。保持未决，不强制所有记录输出答案。",
+    "分别报告定位、类型、标准ID、错误合并、未决率、关系/条件/数值错误及完整通过与耗时；改善后再用新论文验证。暂不微调。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/knowledge-error-audit-20261029.json",
+      "sha256": "db6204567d953967884578d07573e96624d1428bc9170a1ae3f1a7f923936ee2"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "cd3f84ffdc59fc2f86b9145d9c0fe8bb6d5fc9eadeed95a27de3fe97ddf851d0",
+  "content_sha256": "5fc629751cee50b21e58daa47b8aa9639d37ece2e4c3782bcae92cb2f3de127a"
+}

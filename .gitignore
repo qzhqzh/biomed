@@ -5,6 +5,7 @@ __pycache__/
 *.so
 .Python
 .venv/
+/.venv
 venv/
 env/
 *.egg-info/
@@ -25,6 +26,7 @@ media/
 
 # Node / frontend build
 node_modules/
+/frontend/node_modules
 frontend/dist/
 apps/portal/static/portal/dist/
 *.tsbuildinfo
@@ -88,6 +90,9 @@ online-vep/test_data/vep_output.txt
 
 # biomed runtime, backups and local agent state
 /var/
+# Detailed research records can contain licensed source passages. Public
+# metadata-only summaries are versioned under research_public_data instead.
+/apps/curation/research_data/*.json
 .local/
 .codex/
 .agents/

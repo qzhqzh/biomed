@@ -1,0 +1,357 @@
+{
+  "version": "solid-tumor-rules-v1",
+  "query_version": "neoplasm-recall-v1",
+  "query": "(\"Neoplasms\"[MeSH Terms] OR cancer*[Title/Abstract] OR carcinoma*[Title/Abstract] OR sarcoma*[Title/Abstract] OR melanoma*[Title/Abstract] OR glioma*[Title/Abstract] OR glioblastoma*[Title/Abstract] OR mesothelioma*[Title/Abstract] OR neuroblastoma*[Title/Abstract] OR retinoblastoma*[Title/Abstract] OR medulloblastoma*[Title/Abstract] OR \"solid tumor\"[Title/Abstract] OR \"solid tumors\"[Title/Abstract] OR \"solid tumour\"[Title/Abstract] OR \"solid tumours\"[Title/Abstract])",
+  "method": "weak_rules",
+  "description": "多标签候选分类。命中仅代表文本线索，不能确定原发部位、研究质量或临床适用；允许未知与血液肿瘤混合标签。",
+  "rules": [
+    {
+      "axis": "site",
+      "id": "breast",
+      "label": "乳腺",
+      "pattern": "breast|mammary"
+    },
+    {
+      "axis": "site",
+      "id": "lung",
+      "label": "肺",
+      "pattern": "lung|pulmonary|NSCLC|SCLC"
+    },
+    {
+      "axis": "site",
+      "id": "colorectal",
+      "label": "结直肠",
+      "pattern": "colorectal|colon|rectal|rectum"
+    },
+    {
+      "axis": "site",
+      "id": "liver",
+      "label": "肝",
+      "pattern": "hepatocellular|liver|hepatoblastoma"
+    },
+    {
+      "axis": "site",
+      "id": "biliary",
+      "label": "胆道",
+      "pattern": "cholangiocarcinoma|biliary|gallbladder"
+    },
+    {
+      "axis": "site",
+      "id": "pancreas",
+      "label": "胰腺",
+      "pattern": "pancrea\\w*"
+    },
+    {
+      "axis": "site",
+      "id": "stomach",
+      "label": "胃",
+      "pattern": "gastric|stomach"
+    },
+    {
+      "axis": "site",
+      "id": "esophagus",
+      "label": "食管",
+      "pattern": "esophag\\w*|oesophag\\w*"
+    },
+    {
+      "axis": "site",
+      "id": "small_intestine",
+      "label": "小肠",
+      "pattern": "small intestin\\w*|duoden\\w*|jejunal|ileal"
+    },
+    {
+      "axis": "site",
+      "id": "head_neck",
+      "label": "头颈",
+      "pattern": "head and neck|head neck|oral|oropharyn\\w*|laryn\\w*|salivary|nasopharyn\\w*|hypopharyn\\w*|sinonasal"
+    },
+    {
+      "axis": "site",
+      "id": "prostate",
+      "label": "前列腺",
+      "pattern": "prostat\\w*"
+    },
+    {
+      "axis": "site",
+      "id": "bladder",
+      "label": "膀胱 / 尿路",
+      "pattern": "bladder|urothelial"
+    },
+    {
+      "axis": "site",
+      "id": "kidney",
+      "label": "肾",
+      "pattern": "renal|kidney|Wilms"
+    },
+    {
+      "axis": "site",
+      "id": "testis",
+      "label": "睾丸",
+      "pattern": "testic\\w*|testis|seminoma"
+    },
+    {
+      "axis": "site",
+      "id": "penis",
+      "label": "阴茎",
+      "pattern": "penile|penis"
+    },
+    {
+      "axis": "site",
+      "id": "ovary",
+      "label": "卵巢 / 输卵管",
+      "pattern": "ovari\\w*|fallopian"
+    },
+    {
+      "axis": "site",
+      "id": "endometrium",
+      "label": "子宫内膜 / 子宫",
+      "pattern": "endometr\\w*|uterine"
+    },
+    {
+      "axis": "site",
+      "id": "cervix",
+      "label": "宫颈",
+      "pattern": "cervical cancer|cervical carcinoma|cervix|uterine cervical"
+    },
+    {
+      "axis": "site",
+      "id": "vulva_vagina",
+      "label": "外阴 / 阴道",
+      "pattern": "vulva\\w*|vagina\\w*"
+    },
+    {
+      "axis": "site",
+      "id": "thyroid",
+      "label": "甲状腺",
+      "pattern": "thyroid"
+    },
+    {
+      "axis": "site",
+      "id": "adrenal",
+      "label": "肾上腺",
+      "pattern": "adrenal|adrenocortical|pheochromocytoma|phaeochromocytoma"
+    },
+    {
+      "axis": "site",
+      "id": "cns",
+      "label": "中枢神经系统",
+      "pattern": "brain|glioma\\w*|glioblastoma\\w*|medulloblastoma\\w*|ependymoma\\w*|meningioma\\w*|spinal cord"
+    },
+    {
+      "axis": "site",
+      "id": "skin",
+      "label": "皮肤",
+      "pattern": "cutaneous|skin|melanoma\\w*|merkel cell"
+    },
+    {
+      "axis": "site",
+      "id": "bone",
+      "label": "骨",
+      "pattern": "osteosarcoma\\w*|chondrosarcoma\\w*|bone neoplasms|ewing"
+    },
+    {
+      "axis": "site",
+      "id": "soft_tissue",
+      "label": "软组织",
+      "pattern": "soft tissue|liposarcoma\\w*|leiomyosarcoma\\w*|rhabdomyosarcoma\\w*|angiosarcoma\\w*|synovial sarcoma"
+    },
+    {
+      "axis": "site",
+      "id": "eye",
+      "label": "眼",
+      "pattern": "uveal|retinoblastoma\\w*|ocular"
+    },
+    {
+      "axis": "site",
+      "id": "thymus",
+      "label": "胸腺",
+      "pattern": "thymoma\\w*|thymic"
+    },
+    {
+      "axis": "site",
+      "id": "pleura_peritoneum",
+      "label": "胸膜 / 腹膜",
+      "pattern": "mesothelioma\\w*|pleural|peritoneal"
+    },
+    {
+      "axis": "site",
+      "id": "unknown_primary",
+      "label": "原发灶不明",
+      "pattern": "unknown primary|unknown origin"
+    },
+    {
+      "axis": "site",
+      "id": "pan_solid",
+      "label": "泛实体瘤",
+      "pattern": "pan.cancer|solid tumou?rs?"
+    },
+    {
+      "axis": "histology",
+      "id": "carcinoma",
+      "label": "癌",
+      "pattern": "carcinoma\\w*|adenocarcinoma\\w*"
+    },
+    {
+      "axis": "histology",
+      "id": "sarcoma",
+      "label": "肉瘤",
+      "pattern": "\\w*sarcoma\\w*"
+    },
+    {
+      "axis": "histology",
+      "id": "melanoma",
+      "label": "黑色素瘤",
+      "pattern": "melanoma\\w*"
+    },
+    {
+      "axis": "histology",
+      "id": "glioma",
+      "label": "胶质瘤",
+      "pattern": "glioma\\w*|glioblastoma\\w*"
+    },
+    {
+      "axis": "histology",
+      "id": "neuroendocrine",
+      "label": "神经内分泌肿瘤",
+      "pattern": "neuroendocrine|carcinoid"
+    },
+    {
+      "axis": "histology",
+      "id": "germ_cell",
+      "label": "生殖细胞肿瘤",
+      "pattern": "germ cell|seminoma\\w*|teratoma\\w*"
+    },
+    {
+      "axis": "histology",
+      "id": "embryonal",
+      "label": "胚胎性肿瘤",
+      "pattern": "neuroblastoma\\w*|retinoblastoma\\w*|medulloblastoma\\w*|hepatoblastoma\\w*|Wilms"
+    },
+    {
+      "axis": "histology",
+      "id": "mesothelioma",
+      "label": "间皮瘤",
+      "pattern": "mesothelioma\\w*"
+    },
+    {
+      "axis": "study_type",
+      "id": "randomized_trial",
+      "label": "随机对照试验",
+      "pattern": "randomized controlled trial|randomised controlled trial|randomized|randomised"
+    },
+    {
+      "axis": "study_type",
+      "id": "clinical_trial",
+      "label": "临床试验",
+      "pattern": "clinical trial|phase (?:I{1,3}|IV|[1-4])\\b"
+    },
+    {
+      "axis": "study_type",
+      "id": "meta_analysis",
+      "label": "Meta 分析",
+      "pattern": "meta.analysis"
+    },
+    {
+      "axis": "study_type",
+      "id": "systematic_review",
+      "label": "系统综述",
+      "pattern": "systematic review"
+    },
+    {
+      "axis": "study_type",
+      "id": "review",
+      "label": "综述",
+      "pattern": "review"
+    },
+    {
+      "axis": "study_type",
+      "id": "observational",
+      "label": "观察性研究",
+      "pattern": "cohort|case.control|observational|retrospective|prospective"
+    },
+    {
+      "axis": "study_type",
+      "id": "case_report",
+      "label": "病例报告",
+      "pattern": "case report|case series"
+    },
+    {
+      "axis": "study_type",
+      "id": "guideline",
+      "label": "指南 / 共识",
+      "pattern": "practice guideline|guideline|consensus"
+    },
+    {
+      "axis": "topic",
+      "id": "therapy",
+      "label": "治疗",
+      "pattern": "therap\\w*|treatment|chemotherapy|immunotherapy|radiotherapy|surgery|surgical"
+    },
+    {
+      "axis": "topic",
+      "id": "biomarker",
+      "label": "生物标志物",
+      "pattern": "biomarker\\w*|molecular profiling|mutation\\w*|genomic\\w*"
+    },
+    {
+      "axis": "topic",
+      "id": "diagnosis_screening",
+      "label": "诊断 / 筛查",
+      "pattern": "diagnos\\w*|screening|early detection"
+    },
+    {
+      "axis": "topic",
+      "id": "prognosis",
+      "label": "预后",
+      "pattern": "prognos\\w*|survival|recurrence"
+    },
+    {
+      "axis": "topic",
+      "id": "epidemiology",
+      "label": "流行病学 / 预防",
+      "pattern": "epidemiolog\\w*|incidence|prevention|risk factor"
+    },
+    {
+      "axis": "topic",
+      "id": "mechanism",
+      "label": "机制",
+      "pattern": "mechanism\\w*|signaling|signalling|pathway\\w*|tumor microenvironment|tumour microenvironment"
+    },
+    {
+      "axis": "population",
+      "id": "human",
+      "label": "人体研究线索",
+      "pattern": "humans|patients?|participants?"
+    },
+    {
+      "axis": "population",
+      "id": "preclinical",
+      "label": "临床前研究线索",
+      "pattern": "mice|mouse|murine|xenograft|cell line|organoid|in vitro|in vivo"
+    },
+    {
+      "axis": "population",
+      "id": "pediatric",
+      "label": "儿童研究线索",
+      "pattern": "pediatric|paediatric|child\\w*|adolescent\\w*"
+    },
+    {
+      "axis": "boundary",
+      "id": "hematologic",
+      "label": "血液肿瘤线索",
+      "pattern": "leukemia\\w*|leukaemia\\w*|lymphoma\\w*|myeloma\\w*|myelodysplas\\w*|myeloproliferative"
+    },
+    {
+      "axis": "boundary",
+      "id": "benign",
+      "label": "良性 / 非恶性线索",
+      "pattern": "benign|non.malignant"
+    },
+    {
+      "axis": "boundary",
+      "id": "retraction",
+      "label": "撤稿线索",
+      "pattern": "retracted publication|retraction of publication"
+    }
+  ]
+}

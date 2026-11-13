@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录 · biomed</title>
+  <link rel="icon" href="{% static 'portal/dist/favicon.svg' %}" type="image/svg+xml">
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #142b2b; background: #f5f9f8; }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px; }
+    main { width: min(100%, 420px); padding: 34px; border: 1px solid #dce8e5; border-radius: 14px; background: #fff; box-shadow: 0 12px 32px #173f3610; }
+    .brand { color: #007d6a; font-weight: 750; font-size: 25px; letter-spacing: -.03em; }
+    h1 { margin: 26px 0 8px; font-size: 23px; }
+    p { color: #5b706b; font-size: 14px; line-height: 1.6; }
+    label { display: block; margin: 20px 0 7px; font-size: 14px; font-weight: 600; }
+    input { width: 100%; height: 44px; padding: 0 12px; border: 1px solid #bfcfca; border-radius: 7px; font: inherit; }
+    input:focus { outline: 2px solid #38a893; outline-offset: 2px; }
+    button { width: 100%; min-height: 44px; margin-top: 24px; border: 0; border-radius: 7px; color: #fff; background: #007d6a; font: inherit; font-weight: 650; cursor: pointer; }
+    button:hover { background: #006757; }
+    .errors { padding: 10px 12px; border-radius: 7px; color: #8b2727; background: #fff0ef; font-size: 14px; }
+    .errors ul { margin: 0; padding-left: 18px; }
+    @media (max-width: 480px) { main { padding: 26px 22px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">biomed</div>
+    <h1>登录工作台</h1>
+    <p>使用已分配的账号访问生信工具与知识库。</p>
+    {% if rate_limited %}<div class="errors" role="alert">登录尝试过多，请 5 分钟后重试。</div>{% elif form.errors %}<div class="errors" role="alert">{{ form.non_field_errors }}{% for field in form %}{{ field.errors }}{% endfor %}</div>{% endif %}
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
+      <label for="id_username">账号</label>
+      <input id="id_username" name="username" type="text" autocomplete="username" maxlength="150" required autofocus value="{{ form.username.value|default:'' }}">
+      <label for="id_password">密码</label>
+      <input id="id_password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit">登录</button>
+    </form>
+  </main>
+</body>
+</html>

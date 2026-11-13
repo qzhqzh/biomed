@@ -1,4 +1,16 @@
-# biomed 整合成果保存与远端同步（2026-10-15）
+# biomed 整合、主线合并与清理记录（2026-10-15）
+
+## 当前结果
+
+整合成果已通过 [PR #9](https://github.com/qzhqzh/biomed/pull/9) 合入 `main`，合并提交为 `d7f204e6b11c6006814a197d44ee79d4ee8608ab`。合并后本地 main 已与 origin/main 同步；本次记录描述已完成的整合和清理，不把历史开发分支作为当前主线。
+
+| 项目 | 最终状态 |
+| --- | --- |
+| `main` | 已包含统一工作台及原重构成果 |
+| `codex/biomed-consolidation-20261015` | 本地和远端均已删除，原头提交 `15dc56e` 已通过 PR #9 合并 |
+| `refactor/architecture-django-drf` | 本地和远端均已删除，原头提交 `cc3d2de` 的内容已通过 PR #1 squash 合并 |
+| `codex/biomed-snapshot-20261015` | 保留本地快照，提交 `2b020ce98278e4864fb4360c0ab776d0f5aebf76`；未推送该快照分支 |
+| 备份 | `/data/06_project/biomed/var/backups/git-consolidation-20261015T125759Z`，已有文件全部保留，不进入 Git |
 
 ## 来源与保存
 
@@ -9,9 +21,9 @@
 - 备份在 `var/backups/git-consolidation-20261015T125759Z`：源码归档、二进制 diff、已验证 Git bundle、两个一致性 SQLite 快照和受保护的本机配置备份。
 - 两个数据库备份均通过 quick_check。Django 共 21 张业务/框架表；教学问题库 1 张表、1 条历史问题。未删除迁移、参考数据、原文件或已有备份。
 
-## 远端差异
+## 保存时的远端差异与整合
 
-fetch 后确认：`origin/main` 为 `76683dd`，`origin/refactor/architecture-django-drf` 为 `cc3d2de`。远端重构分支比保存前的本地分支多 18 个提交；这些内容已 squash 合入 main，两个远端分支代码树相同。
+整合前 fetch 确认：当时 `origin/main` 为 `76683dd`，`origin/refactor/architecture-django-drf` 为 `cc3d2de`。远端重构分支比保存前的本地分支多 18 个提交；这些内容已 squash 合入 main，两个远端分支当时的代码树相同。
 
 整合分支 `codex/biomed-consolidation-20261015` 直接基于最新 main，并应用当前统一工作台成果。保留以下远端行为，同时沿用 biomed 领域和持久路径：
 
@@ -22,7 +34,15 @@ fetch 后确认：`origin/main` 为 `76683dd`，`origin/refactor/architecture-dj
 - 非调试启动要求密钥；主机白名单和代理信任显式配置。现用 `DATABASE_PATH` 优先，兼容旧 `DJANGO_DB_PATH`。
 - CI 先生成前端 manifest，再检查所有 Django 模块；肿瘤模块沿用 uv.lock 的独立测试。
 
-整合提交为 `b7a31c9`。本轮进行本地保存和同步，没有向远端推送或合入 main；原分支与保存分支保留。本地 main 与原重构分支分别安全快进到对应远端，当前开发分支为 `codex/biomed-consolidation-20261015`。
+整合提交为 `b7a31c9`，随后由 `15dc56e` 补充运行和清理记录。最初完成本地保存后，按后续授权推送整合分支、创建 PR #9，并在检查通过后合入 main；整合临时分支已清理。
+
+## GitHub 合并与旧分支清理
+
+- 分支推送 CI [38745261738](https://github.com/qzhqzh/biomed/actions/runs/38745261738)、PR CI [38745408386](https://github.com/qzhqzh/biomed/actions/runs/38745408386) 和合并后主线 CI [38745682707](https://github.com/qzhqzh/biomed/actions/runs/38745682707) 均通过。PR #9 采用 merge commit，已验证合并后的代码树与通过检查的整合分支一致。
+- 删除原重构分支前重新 fetch，并核对 [PR #1](https://github.com/qzhqzh/biomed/pull/1) 已合并。原头 `cc3d2deab6718cd44967430e90199811bc8d0b01` 与 squash 提交 `76683dd87feced80b009a67cbf09221853675165` 的完整代码树均为 `0e045122604741d570fe0645a7964b5609ffbb37`；后者是当前 main 的祖先。分支没有后续新增内容或未关闭 PR。
+- 由于 squash 合并不会保留原分支提交的祖先关系，清理依据是已合并 PR、完整代码树相等和后续主线继承关系，不能仅用 `git branch --merged` 判断。删除的仅是本地和远端分支引用。
+- `repository-after.bundle` 已通过验证，并保有原重构分支及快照分支的完整 Git 历史。快照分支提交和清理前已有的 30 个备份文件均未改变；数据库、原文和参考库未参与分支清理。
+- 同一备份目录中的 `github-integration-result.json`、`refactor-branch-cleanup.json` 保存精确提交、CI、分支核对与清理结果。清理完成时仅保留本地 main 和快照分支，工作区干净；后续文档或功能开发继续使用新的短期分支。
 
 ## 运行兼容
 

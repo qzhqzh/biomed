@@ -1,0 +1,4406 @@
+{
+  "schema": "biomed-oncotree-zh-supplement-v1",
+  "version": "biomed-oncotree-zh-supplement-2026-10-25-v2",
+  "source_version": "oncotree_2025_10_03",
+  "source_url": "https://oncotree.mskcc.org/api/tumorTypes/tree?version=oncotree_2025_10_03",
+  "source_input_sha256": "f0bb3ce91e686ed9b6993fec6febb2c23d1704b3d008ec605d10e3b1ca79b451",
+  "language": "zh-Hans",
+  "translation_method": "Project AI-assisted translation of each frozen English label; no model download, training or remote document upload.",
+  "status": "project_draft",
+  "scope": "Only the 722 labels missing Chinese in the frozen display input; preserve all 176 pre-existing translations.",
+  "review_policy": [
+    "All entries are project drafts, not externally sourced official Chinese labels or specialist-confirmed translations.",
+    "Preserve the source identity, exact English name, genetic symbols, cytogenetic coordinates, NOS, grades, behavior and differentiation qualifiers.",
+    "Do not infer organ names, diagnoses or molecular mechanisms absent from the English label. The tree retains parent context.",
+    "Retain historical source terminology instead of silently upgrading it to a newer disease classification.",
+    "Coverage measures label availability, not translation accuracy; rare or historical terms still need domain review."
+  ],
+  "terminology_spot_checks": [
+    {
+      "identifiers": [
+        "ONCOTREE:PORO"
+      ],
+      "url": "https://www.ncbi.nlm.nih.gov/medgen/404704",
+      "purpose": "Check Acrospiroma meaning without adding source-absent apocrine/eccrine qualifiers."
+    },
+    {
+      "identifiers": [
+        "ONCOTREE:PORO"
+      ],
+      "url": "https://ccdas.pmphai.com/appdisease/toPcDetail?id=23719&knowledgeLibPrefix=disease",
+      "purpose": "Chinese terminology context for acrospiroma; project draft remains the display status."
+    },
+    {
+      "identifiers": [
+        "ONCOTREE:SPIR"
+      ],
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12808026/",
+      "purpose": "Check spiradenoma sweat-gland context; retain source wording and draft status."
+    },
+    {
+      "identifiers": [
+        "ONCOTREE:GCTSTM"
+      ],
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37408409/",
+      "purpose": "Chinese Journal of Pathology 2023 uses 体细胞型 for somatic-type; correct the project draft terminology while retaining the source scope."
+    }
+  ],
+  "counts": {
+    "source_total": 898,
+    "existing_chinese_preserved": 176,
+    "project_draft_additions": 722,
+    "untranslated": 0
+  },
+  "entries": [
+    {
+      "identifier": "ONCOTREE:AA",
+      "en": "Aggressive Angiomyxoma",
+      "zh": "侵袭性血管黏液瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ABC",
+      "en": "Activated B-cell Type",
+      "zh": "活化 B 细胞型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACBC",
+      "en": "Adenoid Cystic Breast Cancer",
+      "zh": "乳腺腺样囊性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACCC",
+      "en": "Acinic Cell Carcinoma",
+      "zh": "腺泡细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACLG",
+      "en": "Adenoid Cystic Carcinoma of the Lacrimal Gland",
+      "zh": "泪腺腺样囊性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACML",
+      "en": "Atypical Chronic Myeloid Leukemia, BCR-ABL1-",
+      "zh": "非典型慢性髓性白血病，BCR-ABL1 阴性",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACN",
+      "en": "Acinar Cell Carcinoma, NOS",
+      "zh": "腺泡细胞癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACPG",
+      "en": "Craniopharyngioma, Adamantinomatous Type",
+      "zh": "颅咽管瘤，造釉细胞型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACPP",
+      "en": "Atypical Choroid Plexus Papilloma",
+      "zh": "非典型脉络丛乳头状瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ACRM",
+      "en": "Acral Melanoma",
+      "zh": "肢端黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ADIFG",
+      "en": "Adult-Type Diffuse Glioma",
+      "zh": "成人型弥漫性胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ADMA",
+      "en": "Adamantinoma",
+      "zh": "造釉细胞瘤",
+      "status": "project_draft",
+      "review_note": "保留源词 Adamantinoma 的项目译名；未将其改写为其他牙源性肿瘤分类。"
+    },
+    {
+      "identifier": "ONCOTREE:ADNOS",
+      "en": "Adenocarcinoma, NOS",
+      "zh": "腺癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ADPA",
+      "en": "Aggressive Digital Papillary Adenocarcinoma",
+      "zh": "侵袭性指（趾）乳头状腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AECA",
+      "en": "Sweat Gland Carcinoma/Apocrine Eccrine Carcinoma",
+      "zh": "汗腺癌／顶泌汗腺-小汗腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AFH",
+      "en": "Angiomatoid Fibrous Histiocytoma",
+      "zh": "血管瘤样纤维组织细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AFX",
+      "en": "Atypical Fibroxanthoma",
+      "zh": "非典型纤维黄色瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AGA",
+      "en": "Anal Gland Adenocarcinoma",
+      "zh": "肛门腺腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AGNG",
+      "en": "Anaplastic Ganglioglioma",
+      "zh": "间变性节细胞胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AHCD",
+      "en": "Alpha Heavy-Chain Disease",
+      "zh": "α 重链病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AIS",
+      "en": "Adenocarcinoma In Situ",
+      "zh": "原位腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ALAL",
+      "en": "Acute Leukemias of Ambiguous Lineage",
+      "zh": "谱系不明急性白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ALCL",
+      "en": "Anaplastic Large Cell Lymphoma",
+      "zh": "间变性大细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ALCLALKN",
+      "en": "Anaplastic Large-Cell Lymphoma ALK Negative",
+      "zh": "ALK 阴性间变性大细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ALCLALKP",
+      "en": "Anaplastic Large-Cell Lymphoma ALK Positive",
+      "zh": "ALK 阳性间变性大细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ALKLBCL",
+      "en": "ALK Positive Large B-Cell Lymphoma",
+      "zh": "ALK 阳性大 B 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ALT",
+      "en": "Atypical Lipomatous Tumor",
+      "zh": "非典型脂肪瘤样肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ALUCA",
+      "en": "Atypical Lung Carcinoid",
+      "zh": "非典型肺类癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMBL",
+      "en": "Large Cell/Anaplastic Medulloblastoma",
+      "zh": "大细胞型／间变性髓母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMBLNOS",
+      "en": "Anaplastic Medulloblastoma, NOS",
+      "zh": "间变性髓母细胞瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMBLNWS",
+      "en": "Anaplastic Medulloblastoma, Non-WNT, Non-SHH",
+      "zh": "间变性髓母细胞瘤，非 WNT、非 SHH 型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMBLNWSG3",
+      "en": "Anaplastic Medulloblastoma, Group 3",
+      "zh": "间变性髓母细胞瘤，第 3 组",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMBLNWSG4",
+      "en": "Anaplastic Medulloblastoma, Group 4",
+      "zh": "间变性髓母细胞瘤，第 4 组",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMBLSHH",
+      "en": "Anaplastic Medulloblastoma, SHH Subtype",
+      "zh": "间变性髓母细胞瘤，SHH 亚型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLBCRABL1",
+      "en": "AML with BCR-ABL1",
+      "zh": "伴 BCR-ABL1 的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLCBFBMYH11",
+      "en": "AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22);CBFB-MYH11",
+      "zh": "伴 inv(16)(p13.1q22) 或 t(16;16)(p13.1;q22)；CBFB-MYH11 的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLCEBPA",
+      "en": "AML with Biallelic Mutations of CEBPA",
+      "zh": "伴 CEBPA 双等位基因突变的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLDEKNUP214",
+      "en": "AML with t(6;9)(p23;q34.1);DEK-NUP214",
+      "zh": "伴 t(6;9)(p23;q34.1)；DEK-NUP214 的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLGATA2MECOM",
+      "en": "AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2); GATA2, MECOM",
+      "zh": "伴 inv(3)(q21.3q26.2) 或 t(3;3)(q21.3;q26.2)；GATA2、MECOM 的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLMD",
+      "en": "AML with Minimal Differentiation",
+      "zh": "微分化型急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLMLLT3KMT2A",
+      "en": "AML with t(9;11)(p21.3;q23.3);MLLT3-KMT2A",
+      "zh": "伴 t(9;11)(p21.3;q23.3)；MLLT3-KMT2A 的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLMRC",
+      "en": "AML with Myelodysplasia-Related Changes",
+      "zh": "伴骨髓增生异常相关改变的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLNOS",
+      "en": "AML, NOS",
+      "zh": "急性髓性白血病（AML），非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLNPM1",
+      "en": "AML with Mutated NPM1",
+      "zh": "伴 NPM1 突变的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLRARA",
+      "en": "AML with Variant RARA translocation",
+      "zh": "伴变异型 RARA 易位的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLRBM15MKL1",
+      "en": "AML (megakaryoblastic) with t(1;22)(p13.3;q13.3);RBM15-MKL1",
+      "zh": "伴 t(1;22)(p13.3;q13.3)；RBM15-MKL1 的急性髓性白血病（巨核母细胞型）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLRGA",
+      "en": "AML with Recurrent Genetic Abnormalities",
+      "zh": "伴重现性遗传学异常的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLRUNX1",
+      "en": "AML with Mutated RUNX1",
+      "zh": "伴 RUNX1 突变的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMLRUNX1RUNX1T1",
+      "en": "AML with t(8;21)(q22;q22.1);RUNX1-RUNX1T1",
+      "zh": "伴 t(8;21)(q22;q22.1)；RUNX1-RUNX1T1 的急性髓性白血病（AML）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AMOL",
+      "en": "Acute Monoblastic/Monocytic Leukemia",
+      "zh": "急性单核母细胞／单核细胞白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AN",
+      "en": "Atypical Nevus",
+      "zh": "非典型痣",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ANGL",
+      "en": "Angiocentric Glioma",
+      "zh": "血管中心性胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ANKL",
+      "en": "Aggressive NK-Cell Leukemia",
+      "zh": "侵袭性 NK 细胞白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ANM",
+      "en": "Anaplastic Meningioma",
+      "zh": "间变性脑膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ANSC",
+      "en": "Anal Squamous Cell Carcinoma",
+      "zh": "肛门鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:APE",
+      "en": "Anaplastic Ependymoma",
+      "zh": "间变性室管膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:APLPMLRARA",
+      "en": "APL with PML-RARA",
+      "zh": "伴 PML-RARA 的急性早幼粒细胞白血病（APL）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:APTAD",
+      "en": "Atypical Pituitary Adenoma",
+      "zh": "非典型垂体腺瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:APXA",
+      "en": "Anaplastic Pleomorphic Xanthoastrocytoma",
+      "zh": "间变性多形性黄色星形细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ARCH",
+      "en": "Adenocarcinoma in Retrorectal Cystic Hamartoma",
+      "zh": "直肠后囊性错构瘤内腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ARMM",
+      "en": "Anorectal Mucosal Melanoma",
+      "zh": "肛门直肠黏膜黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ARMS",
+      "en": "Alveolar Rhabdomyosarcoma",
+      "zh": "腺泡状横纹肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ASCT",
+      "en": "Adenosquamous Carcinoma of the Tongue",
+      "zh": "舌腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ASM",
+      "en": "Aggressive Systemic Mastocytosis",
+      "zh": "侵袭性系统性肥大细胞增生症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ASTB",
+      "en": "Astroblastoma",
+      "zh": "星形母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ASTR",
+      "en": "Astrocytoma, IDH-Mutant",
+      "zh": "星形细胞瘤，IDH 突变型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ASTR2",
+      "en": "Astrocytoma, IDH-Mutant, Grade 2",
+      "zh": "星形细胞瘤，IDH 突变型，2 级",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ASTR3",
+      "en": "Astrocytoma, IDH-Mutant, Grade 3",
+      "zh": "星形细胞瘤，IDH 突变型，3 级",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ASTR4",
+      "en": "Astrocytoma, IDH-Mutant, Grade 4",
+      "zh": "星形细胞瘤，IDH 突变型，4 级",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ATM",
+      "en": "Atypical Meningioma",
+      "zh": "非典型脑膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AUL",
+      "en": "Acute Undifferentiated Leukemia",
+      "zh": "急性未分化白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:AWDNET",
+      "en": "Well-Differentiated Neuroendocrine Tumor of the Appendix",
+      "zh": "阑尾高分化神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BA",
+      "en": "Breast Angiosarcoma",
+      "zh": "乳腺血管肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BCAC",
+      "en": "Basal Cell Adenocarcinoma",
+      "zh": "基底细胞腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BCCP",
+      "en": "Basal Cell Carcinoma of Prostate",
+      "zh": "前列腺基底细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BCLU",
+      "en": "B-Cell Lymphoma, Unclassifiable, with Features Intermediate between DLBCL and Classical Hodgkin lymphoma",
+      "zh": "不能分类的 B 细胞淋巴瘤，具有弥漫性大 B 细胞淋巴瘤（DLBCL）与经典型霍奇金淋巴瘤之间的中间特征",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BEC",
+      "en": "Embryonal Carcinoma",
+      "zh": "胚胎性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BFN",
+      "en": "Breast Fibroepithelial Neoplasms",
+      "zh": "乳腺纤维上皮性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BGCT",
+      "en": "Germ Cell Tumor, Brain",
+      "zh": "脑生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BIALCL",
+      "en": "Breast Implant-Associated Anaplastic Large-Cell Lymphoma",
+      "zh": "乳房植入物相关间变性大细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BIMT",
+      "en": "Immature Teratoma",
+      "zh": "未成熟性畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLAD",
+      "en": "Bladder Adenocarcinoma",
+      "zh": "膀胱腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLCLC",
+      "en": "Basaloid Large Cell Carcinoma of the Lung",
+      "zh": "肺基底样大细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLL",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma",
+      "zh": "B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLL11Q",
+      "en": "Burkitt-Like Lymphoma with 11q Aberration",
+      "zh": "伴 11q 异常的伯基特样淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLBCRABL1",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with t(9;22)(q34.1;q11.2);BCR-ABL1",
+      "zh": "伴 t(9;22)(q34.1;q11.2)；BCR-ABL1 的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLBCRABL1L",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma, BCR-ABL1 Like",
+      "zh": "BCR-ABL1 样 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLETV6RUNX1",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with t(12;21)(p13.2;q22.1); ETV6-RUNX1",
+      "zh": "伴 t(12;21)(p13.2;q22.1)；ETV6-RUNX1 的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLHYPER",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with Hyperdiploidy",
+      "zh": "伴超二倍体的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLHYPO",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with Hypodiploidy",
+      "zh": "伴亚二倍体的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLIAMP21",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with iAMP21",
+      "zh": "伴 iAMP21 的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLIL3IGH",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with t(5;14)(q31.1;q32.3) IL3-IGH",
+      "zh": "伴 t(5;14)(q31.1;q32.3)；IL3-IGH 的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLKMT2A",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with t(v;11q23.3);KMT2A Rearranged",
+      "zh": "伴 t(v;11q23.3)；KMT2A 重排的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLNOS",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma, NOS",
+      "zh": "B 淋巴母细胞白血病／淋巴瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLRGA",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with Recurrent Genetic Abnormalities",
+      "zh": "伴重现性遗传学异常的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLLTCF3PBX1",
+      "en": "B-Lymphoblastic Leukemia/Lymphoma with t(1;19)(q23;p13.3);TCF3-PBX1",
+      "zh": "伴 t(1;19)(q23;p13.3)；TCF3-PBX1 的 B 淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLPT",
+      "en": "Borderline Phyllodes Tumor of the Breast",
+      "zh": "乳腺交界性叶状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BLSC",
+      "en": "Bladder Squamous Cell Carcinoma",
+      "zh": "膀胱鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BMGCT",
+      "en": "Mixed Germ Cell Tumor",
+      "zh": "混合性生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BMGT",
+      "en": "Malignant Teratoma",
+      "zh": "恶性畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BMT",
+      "en": "Mature Teratoma",
+      "zh": "成熟性畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BNNOS",
+      "en": "Breast Neoplasm, NOS",
+      "zh": "乳腺肿瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BPDCN",
+      "en": "Blastic Plasmacytoid Dendritic Cell Neoplasm",
+      "zh": "母细胞性浆细胞样树突状细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BPLL",
+      "en": "B-Cell Prolymphocytic Leukemia",
+      "zh": "B 细胞幼淋巴细胞白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BPSCC",
+      "en": "Basaloid Penile Squamous Cell Carcinoma",
+      "zh": "阴茎基底样鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BPT",
+      "en": "Benign Phyllodes Tumor of the Breast",
+      "zh": "乳腺良性叶状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BRAME",
+      "en": "Adenomyoepithelioma of the Breast",
+      "zh": "乳腺腺肌上皮瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BRCANOS",
+      "en": "Breast Invasive Cancer, NOS",
+      "zh": "乳腺浸润性癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BRCNOS",
+      "en": "Breast Invasive Carcinoma, NOS",
+      "zh": "乳腺浸润性癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BRSRCC",
+      "en": "Breast Carcinoma with Signet Ring",
+      "zh": "伴印戒细胞的乳腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BTBEOV",
+      "en": "Brenner Tumor, Benign",
+      "zh": "良性 Brenner 瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BTBOV",
+      "en": "Brenner Tumor, Borderline",
+      "zh": "交界性 Brenner 瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BTMOV",
+      "en": "Brenner Tumor, Malignant",
+      "zh": "恶性 Brenner 瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:BYST",
+      "en": "Yolk Sac Tumor",
+      "zh": "卵黄囊瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CABC",
+      "en": "Cervical Adenoid Basal Carcinoma",
+      "zh": "宫颈腺样基底细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CACC",
+      "en": "Cervical Adenoid Cystic Carcinoma",
+      "zh": "宫颈腺样囊性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CAEXPA",
+      "en": "Carcinoma ex Pleomorphic Adenoma",
+      "zh": "多形性腺瘤癌变",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CAIS",
+      "en": "Colon Adenocarcinoma In Situ",
+      "zh": "结肠原位腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCBOV",
+      "en": "Clear Cell Borderline Ovarian Tumor",
+      "zh": "卵巢透明细胞交界性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCE",
+      "en": "Clear Cell Ependymoma",
+      "zh": "透明细胞型室管膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCHDM",
+      "en": "Conventional Type Chordoma",
+      "zh": "经典型脊索瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCHM",
+      "en": "Carcinoma with Chondroid Metaplasia",
+      "zh": "伴软骨样化生的癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCLC",
+      "en": "Clear Cell Carcinoma of the Lung",
+      "zh": "肺透明细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCM",
+      "en": "Clear cell Meningioma",
+      "zh": "透明细胞型脑膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCOC",
+      "en": "Clear Cell Odontogenic Carcinoma",
+      "zh": "透明细胞牙源性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCOV",
+      "en": "Clear Cell Ovarian Cancer",
+      "zh": "卵巢透明细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCPRC",
+      "en": "Clear Cell Papillary Renal Cell Carcinoma",
+      "zh": "透明细胞乳头状肾细胞癌",
+      "status": "project_draft",
+      "review_note": "严格翻译冻结来源 Carcinoma，不自行更新为其他版本的 Tumour 命名。"
+    },
+    {
+      "identifier": "ONCOTREE:CCS",
+      "en": "Clear Cell Sarcoma",
+      "zh": "透明细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CCSK",
+      "en": "Clear Cell Sarcoma of Kidney",
+      "zh": "肾透明细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CDRCC",
+      "en": "Collecting Duct Renal Cell Carcinoma",
+      "zh": "集合管肾细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CEAIS",
+      "en": "Cervical Adenocarcinoma In Situ",
+      "zh": "宫颈原位腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CEAS",
+      "en": "Cervical Adenosquamous Carcinoma",
+      "zh": "宫颈腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CECC",
+      "en": "Cervical Clear Cell Carcinoma",
+      "zh": "宫颈透明细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CEEN",
+      "en": "Cervical Endometrioid Carcinoma",
+      "zh": "宫颈子宫内膜样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CEGCC",
+      "en": "Glassy Cell Carcinoma of the Cervix",
+      "zh": "宫颈毛玻璃细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CELI",
+      "en": "Cervical Leiomyosarcoma",
+      "zh": "宫颈平滑肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CELNOS",
+      "en": "Chronic Eosinophilic Leukemia, NOS",
+      "zh": "慢性嗜酸性粒细胞白血病，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CEMN",
+      "en": "Mesonephric Carcinoma",
+      "zh": "中肾管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CEMU",
+      "en": "Mucinous Carcinoma",
+      "zh": "黏液癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CENE",
+      "en": "Cervical Neuroendocrine Tumor",
+      "zh": "宫颈神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CERMS",
+      "en": "Cervical Rhabdomyosarcoma",
+      "zh": "宫颈横纹肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CESE",
+      "en": "Cervical Serous Carcinoma",
+      "zh": "宫颈浆液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CEVG",
+      "en": "Villoglandular Carcinoma",
+      "zh": "绒毛腺状癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHBL",
+      "en": "Chondroblastoma",
+      "zh": "软骨母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHGL",
+      "en": "Chordoid Glioma of the Third Ventricle",
+      "zh": "第三脑室脊索样胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHL",
+      "en": "Classical Hodgkin Lymphoma",
+      "zh": "经典型霍奇金淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHLPTLD",
+      "en": "Classical Hodgkin Lymphoma PTLD",
+      "zh": "经典型霍奇金淋巴瘤型移植后淋巴增殖性疾病（PTLD）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHM",
+      "en": "Complete Hydatidiform Mole",
+      "zh": "完全性葡萄胎",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHOM",
+      "en": "Chordoid Meningioma",
+      "zh": "脊索样脑膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHOS",
+      "en": "Chondroblastic Osteosarcoma",
+      "zh": "软骨母细胞型骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CHRCC",
+      "en": "Chromophobe Renal Cell Carcinoma",
+      "zh": "嫌色性肾细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CLLSLL",
+      "en": "Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma",
+      "zh": "慢性淋巴细胞白血病／小淋巴细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CLNC",
+      "en": "Cerebellar Liponeurocytoma",
+      "zh": "小脑脂肪神经细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CLPDNK",
+      "en": "Chronic Lymphoproliferative Disorder of NK Cells",
+      "zh": "慢性 NK 细胞淋巴增殖性疾病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CM",
+      "en": "Conjunctival Melanoma",
+      "zh": "结膜黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMC",
+      "en": "Medullary Carcinoma of the Colon",
+      "zh": "结肠髓样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMCD",
+      "en": "Cutaneous Mastocytosis",
+      "zh": "皮肤肥大细胞增生症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMLBCRABL1",
+      "en": "Chronic Myeloid Leukemia, BCR-ABL1+",
+      "zh": "慢性髓性白血病，BCR-ABL1 阳性",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMML",
+      "en": "Chronic Myelomonocytic Leukemia",
+      "zh": "慢性粒单核细胞白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMML0",
+      "en": "Chronic Myelomonocytic Leukemia-0",
+      "zh": "慢性粒单核细胞白血病-0",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMML1",
+      "en": "Chronic Myelomonocytic Leukemia-1",
+      "zh": "慢性粒单核细胞白血病-1",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMML2",
+      "en": "Chronic Myelomonocytic Leukemia-2",
+      "zh": "慢性粒单核细胞白血病-2",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CMPT",
+      "en": "Ciliated Muconodular Papillary Tumor of the Lung",
+      "zh": "肺纤毛黏液结节性乳头状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CNC",
+      "en": "Central Neurocytoma",
+      "zh": "中枢神经细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:COAD",
+      "en": "Colon Adenocarcinoma",
+      "zh": "结肠腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:COM",
+      "en": "Carcinoma with Osseous Metaplasia",
+      "zh": "伴骨化生的癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CPC",
+      "en": "Choroid Plexus Carcinoma",
+      "zh": "脉络丛癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CPP",
+      "en": "Choroid Plexus Papilloma",
+      "zh": "脉络丛乳头状瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CPT",
+      "en": "Choroid Plexus Tumor",
+      "zh": "脉络丛肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CSCHW",
+      "en": "Cellular Schwannoma",
+      "zh": "富细胞型神经鞘瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CSCLC",
+      "en": "Combined Small Cell Lung Carcinoma",
+      "zh": "复合型小细胞肺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CSNOS",
+      "en": "Breast Invasive Carcinosarcoma, NOS",
+      "zh": "乳腺浸润性癌肉瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CTAAP",
+      "en": "Colonic Type Adenocarcinoma of the Appendix",
+      "zh": "阑尾结肠型腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:CUPNOS",
+      "en": "Cancer of Unknown Primary, NOS",
+      "zh": "原发灶不明癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DA",
+      "en": "Duodenal Adenocarcinoma",
+      "zh": "十二指肠腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DASTR",
+      "en": "Diffuse Astrocytoma, MYB- or MYBL1-Altered",
+      "zh": "弥漫性星形细胞瘤，MYB 或 MYBL1 改变型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DCS",
+      "en": "Dendritic Cell Sarcoma",
+      "zh": "树突状细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DDCHDM",
+      "en": "Dedifferentiated Chordoma",
+      "zh": "去分化脊索瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DDCHS",
+      "en": "Dedifferentiated Chondrosarcoma",
+      "zh": "去分化软骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DDLS",
+      "en": "Dedifferentiated Liposarcoma",
+      "zh": "去分化脂肪肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DES",
+      "en": "Desmoid/Aggressive Fibromatosis",
+      "zh": "硬纤维瘤／侵袭性纤维瘤病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DESM",
+      "en": "Desmoplastic Melanoma",
+      "zh": "促纤维增生性黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DF",
+      "en": "Dermatofibroma",
+      "zh": "皮肤纤维瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DFL",
+      "en": "Duodenal-Type Follicular Lymphoma",
+      "zh": "十二指肠型滤泡性淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DHG",
+      "en": "Diffuse Hemispheric Glioma, H3 G34-Mutant",
+      "zh": "弥漫性大脑半球胶质瘤，H3 G34 突变型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DIA",
+      "en": "Desmoplastic Infantile Astrocytoma",
+      "zh": "婴儿促纤维增生性星形细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DIG",
+      "en": "Desmoplastic Infantile Ganglioglioma",
+      "zh": "婴儿促纤维增生性节细胞胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DLBCLCI",
+      "en": "DLBCL Associated with Chronic Inflammation",
+      "zh": "慢性炎症相关弥漫性大 B 细胞淋巴瘤（DLBCL）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DLGGMAPK",
+      "en": "Diffuse Low-Grade Glioma, MAPK Pathway-Altered",
+      "zh": "弥漫性低级别胶质瘤，MAPK 通路改变型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DMBL",
+      "en": "Desmoplastic/Nodular Medulloblastoma",
+      "zh": "促纤维增生性／结节性髓母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DMBLNOS",
+      "en": "Desmoplastic/Nodular Medulloblastoma, NOS",
+      "zh": "促纤维增生性／结节性髓母细胞瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DMBLSHH",
+      "en": "Desmoplastic/Nodular Medulloblastoma, SHH Subtype",
+      "zh": "促纤维增生性／结节性髓母细胞瘤，SHH 亚型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DMG",
+      "en": "Diffuse Midline Glioma, H3 K27-Altered",
+      "zh": "弥漫性中线胶质瘤，H3 K27 改变型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DNT",
+      "en": "Dysembryoplastic Neuroepithelial Tumor",
+      "zh": "胚胎发育不良性神经上皮肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DPHGG",
+      "en": "Diffuse Pediatric-Type High-Grade Glioma, H3-Wildtype and IDH-Wildtype",
+      "zh": "弥漫性儿童型高级别胶质瘤，H3 野生型且 IDH 野生型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DSTAD",
+      "en": "Diffuse Type Stomach Adenocarcinoma",
+      "zh": "弥漫型胃腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:DTE",
+      "en": "Desmoplastic Trichoepithelioma",
+      "zh": "促纤维增生性毛发上皮瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EATL",
+      "en": "Enteropathy-Associated T-Cell Lymphoma",
+      "zh": "肠病相关 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EBOV",
+      "en": "Endometrioid Borderlin Ovarian Tumor",
+      "zh": "卵巢子宫内膜样交界性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EBVDLBCLNOS",
+      "en": "EBV Positive DLBCL, NOS",
+      "zh": "EBV 阳性弥漫性大 B 细胞淋巴瘤（DLBCL），非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EBVMCU",
+      "en": "EBV Positive Mucocutaneous Ulcer",
+      "zh": "EBV 阳性黏膜皮肤溃疡",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ECAD",
+      "en": "Endocervical Adenocarcinoma",
+      "zh": "宫颈管腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EGCT",
+      "en": "Extra Gonadal Germ Cell Tumor",
+      "zh": "性腺外生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EHCH",
+      "en": "Extrahepatic Cholangiocarcinoma",
+      "zh": "肝外胆管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EMALT",
+      "en": "Extranodal Marginal Zone Lymphoma of Mucosa-Associated Lymphoid Tissue (MALT lymphoma)",
+      "zh": "黏膜相关淋巴组织结外边缘区淋巴瘤（MALT 淋巴瘤）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EMBC",
+      "en": "Epithelial Type Metaplastic Breast Cancer",
+      "zh": "上皮型化生性乳腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EMBCA",
+      "en": "Embryonal Carcinoma",
+      "zh": "胚胎性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EMBT",
+      "en": "Embryonal Tumor",
+      "zh": "胚胎性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EMCHS",
+      "en": "Extraskeletal Myxoid Chondrosarcoma",
+      "zh": "骨外黏液样软骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EMPSGC",
+      "en": "Endocrine Mucin Producing Sweat Gland Carcinoma",
+      "zh": "内分泌黏液分泌性汗腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EMYOCA",
+      "en": "Epithelial-Myoepithelial Carcinoma",
+      "zh": "上皮-肌上皮癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ENCG",
+      "en": "Encapsulated Glioma",
+      "zh": "包裹性胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ENKL",
+      "en": "Extranodal NK-/T-Cell Lymphoma, Nasal Type",
+      "zh": "结外 NK/T 细胞淋巴瘤，鼻型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EOV",
+      "en": "Endometrioid Ovarian Cancer",
+      "zh": "卵巢子宫内膜样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EPDCA",
+      "en": "Esophageal Poorly Differentiated Carcinoma",
+      "zh": "食管低分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EPIS",
+      "en": "Epithelioid Sarcoma",
+      "zh": "上皮样肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EPMT",
+      "en": "Ependymomal Tumor",
+      "zh": "室管膜肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ESCA",
+      "en": "Esophageal Adenocarcinoma",
+      "zh": "食管腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ESMM",
+      "en": "Mucosal Melanoma of the Esophagus",
+      "zh": "食管黏膜黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ESST",
+      "en": "Ewing Sarcoma of Soft Tissue",
+      "zh": "软组织尤文肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ETANTR",
+      "en": "Embryonal Tumor with Abundant Neuropil and True Rosettes",
+      "zh": "伴丰富神经网和真性菊形团的胚胎性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ETMF",
+      "en": "Essential Thrombocythemia Myelofibrosis",
+      "zh": "原发性血小板增多症后骨髓纤维化",
+      "status": "project_draft",
+      "review_note": "原发性血小板增多症相关骨髓纤维化的项目译名，保留其与原发性骨髓纤维化的区别。"
+    },
+    {
+      "identifier": "ONCOTREE:ETPLL",
+      "en": "Early T-Cell Precursor Lymphoblastic Leukemia",
+      "zh": "早期 T 细胞前体淋巴母细胞白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:EVN",
+      "en": "Extraventricular Neurocytoma",
+      "zh": "脑室外神经细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:FHPTLD",
+      "en": "Florid Follicular Hyperplasia PTLD",
+      "zh": "旺盛滤泡增生型移植后淋巴增殖性疾病（PTLD）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:FHRCC",
+      "en": "FH-Deficient Renal Cell Carcinoma",
+      "zh": "FH 缺陷型肾细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:FIOS",
+      "en": "Fibroblastic Osteosarcoma",
+      "zh": "成纤维细胞型骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:FLC",
+      "en": "Fibrolamellar Carcinoma",
+      "zh": "纤维板层型癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:FRCT",
+      "en": "Fibroblastic Reticular Cell Tumor",
+      "zh": "成纤维网状细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:FT",
+      "en": "Fibrothecoma",
+      "zh": "纤维卵泡膜细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:FTCL",
+      "en": "Follicular T-Cell Lymphoma",
+      "zh": "滤泡性 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GB",
+      "en": "Glioblastoma, IDH-Wildtype",
+      "zh": "胶质母细胞瘤，IDH 野生型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GBAD",
+      "en": "Gallbladder Adenocarcinoma, NOS",
+      "zh": "胆囊腺癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GBASC",
+      "en": "Adenosquamous Carcinoma of the Gallbladder",
+      "zh": "胆囊腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GBC",
+      "en": "Gallbladder Cancer",
+      "zh": "胆囊癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GCB",
+      "en": "Germinal Center B-Cell Type",
+      "zh": "生发中心 B 细胞型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GCCAP",
+      "en": "Goblet Cell Adenocarcinoma of the Appendix",
+      "zh": "阑尾杯状细胞腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GCEMU",
+      "en": "Gastric Type Mucinous Carcinoma",
+      "zh": "胃型黏液癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GCLC",
+      "en": "Giant Cell Carcinoma of the Lung",
+      "zh": "肺巨细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GCT",
+      "en": "Granular Cell Tumor",
+      "zh": "颗粒细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GCTB",
+      "en": "Giant Cell Tumor of Bone",
+      "zh": "骨巨细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GCTSTM",
+      "en": "Germ Cell Tumor with Somatic-Type Malignancy",
+      "zh": "伴体细胞型恶性肿瘤的生殖细胞肿瘤",
+      "status": "project_draft",
+      "review_note": "Somatic-Type 按中华病理学杂志对应术语修正为体细胞型；保留源名未限定的部位，不加入纵隔等条件。"
+    },
+    {
+      "identifier": "ONCOTREE:GEJ",
+      "en": "Adenocarcinoma of the Gastroesophageal Junction",
+      "zh": "胃食管交界部腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GHCD",
+      "en": "Gamma Heavy-Chain Disease",
+      "zh": "γ 重链病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GINET",
+      "en": "Gastrointestinal Neuroendocrine Tumors",
+      "zh": "胃肠道神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GINETES",
+      "en": "Gastrointestinal Neuroendocrine Tumors of the Esophagus/Stomach",
+      "zh": "食管／胃的胃肠道神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GN",
+      "en": "Ganglioneuroma",
+      "zh": "节细胞神经瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GNBL",
+      "en": "Ganglioneuroblastoma",
+      "zh": "节细胞神经母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GNC",
+      "en": "Gangliocytoma",
+      "zh": "节细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GNG",
+      "en": "Ganglioglioma",
+      "zh": "节细胞胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GNOS",
+      "en": "Glioma, NOS",
+      "zh": "胶质瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GRC",
+      "en": "Gastric Remnant Adenocarcinoma",
+      "zh": "残胃腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GS",
+      "en": "Glomangiosarcoma",
+      "zh": "血管球肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GSARC",
+      "en": "Gliosarcoma",
+      "zh": "胶质肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:GTD",
+      "en": "Gestational Trophoblastic Disease",
+      "zh": "妊娠滋养细胞疾病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HCCIHCH",
+      "en": "Hepatocellular Carcinoma plus Intrahepatic Cholangiocarcinoma",
+      "zh": "肝细胞癌合并肝内胆管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HCL-V",
+      "en": "Hairy Cell Leukemia-Variant",
+      "zh": "毛细胞白血病变异型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HDCN",
+      "en": "Histiocytic and Dendritic Cell Neoplasms",
+      "zh": "组织细胞和树突状细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HDCS",
+      "en": "Histiocytic Dendritic Cell Sarcoma",
+      "zh": "组织细胞性树突状细胞肉瘤",
+      "status": "project_draft",
+      "review_note": "按冻结来源完整名称译为草稿；Histiocytic Dendritic Cell Sarcoma 为来源命名，未改写为当前分类中的其他实体。"
+    },
+    {
+      "identifier": "ONCOTREE:HGBCL",
+      "en": "High-Grade B-Cell Lymphoma, NOS",
+      "zh": "高级别 B 细胞淋巴瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGBCLMYCBCL2",
+      "en": "High-Grade B-Cell Lymphoma, with MYC and BCL2 and/or BCL6 Rearrangements",
+      "zh": "伴 MYC 和 BCL2 和／或 BCL6 重排的高级别 B 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGESS",
+      "en": "High-Grade Endometrial Stromal Sarcoma",
+      "zh": "高级别子宫内膜间质肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGGNOS",
+      "en": "High-Grade Glioma, NOS",
+      "zh": "高级别胶质瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGNEC",
+      "en": "High-Grade Neuroendocrine Carcinoma of the Colon and Rectum",
+      "zh": "结直肠高级别神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGNEE",
+      "en": "High-Grade Neuroendocrine Carcinoma of the Esophagus",
+      "zh": "食管高级别神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGNES",
+      "en": "High-Grade Neuroendocrine Carcinoma of the Stomach",
+      "zh": "胃高级别神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGNET",
+      "en": "High-Grade Neuroepithelial Tumor",
+      "zh": "高级别神经上皮肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGONEC",
+      "en": "High-Grade Neuroendocrine Carcinoma of the Ovary",
+      "zh": "卵巢高级别神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGSFT",
+      "en": "High-Grade Serous Fallopian Tube Cancer",
+      "zh": "输卵管高级别浆液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGSOC",
+      "en": "High-Grade Serous Ovarian Cancer",
+      "zh": "卵巢高级别浆液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HGSOS",
+      "en": "High-Grade Surface Osteosarcoma",
+      "zh": "高级别骨表面骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HHV8DLBCL",
+      "en": "HHV8 Positive DLBCL, NOS",
+      "zh": "HHV8 阳性弥漫性大 B 细胞淋巴瘤（DLBCL），非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HMBL",
+      "en": "Hemangioblastoma",
+      "zh": "血管母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HNMASC",
+      "en": "Mammary Analogue Secretory Carcinoma of Salivary Gland Origin",
+      "zh": "唾液腺来源的乳腺样分泌性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HNMUCM",
+      "en": "Head and Neck Mucosal Melanoma",
+      "zh": "头颈部黏膜黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HNNE",
+      "en": "Head and Neck Neuroendocrine Carcinoma",
+      "zh": "头颈部神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HNSCUP",
+      "en": "Head and Neck Squamous Cell Carcinoma of Unknown Primary",
+      "zh": "原发灶不明头颈部鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HPCCNS",
+      "en": "Hemangiopericytoma of the Central Nervous System",
+      "zh": "中枢神经系统血管外皮细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HPHSC",
+      "en": "Hypopharynx Squamous Cell Carcinoma",
+      "zh": "下咽鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HS",
+      "en": "Histiocytic Sarcoma",
+      "zh": "组织细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HSTCL",
+      "en": "Hepatosplenic T-cell Lymphoma",
+      "zh": "肝脾 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HTAT",
+      "en": "Hyalinizing Trabecular Adenoma of the Thyroid",
+      "zh": "甲状腺透明变性梁状腺瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:HVLL",
+      "en": "Hydroa Vacciniforme Like Lymphoproliferative Disorder",
+      "zh": "种痘样水疱病样淋巴增殖性疾病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IAMPCA",
+      "en": "Intestinal Ampullary Carcinoma",
+      "zh": "肠型壶腹部癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IBC",
+      "en": "Inflammatory Breast Cancer",
+      "zh": "炎性乳腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ICEMU",
+      "en": "Intestinal Type Mucinous Carcinoma",
+      "zh": "肠型黏液癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ICPN",
+      "en": "Intracholecystic Papillary Neoplasm",
+      "zh": "胆囊内乳头状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IDC",
+      "en": "Breast Invasive Ductal Carcinoma",
+      "zh": "乳腺浸润性导管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IDCS",
+      "en": "Interdigitating Dendritic Cell Sarcoma",
+      "zh": "指状突树突状细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IDCT",
+      "en": "Indeterminate Dendritic Cell Tumor",
+      "zh": "未定类树突状细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IFS",
+      "en": "Infantile Fibrosarcoma",
+      "zh": "婴儿纤维肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IHCH",
+      "en": "Intrahepatic Cholangiocarcinoma",
+      "zh": "肝内胆管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IHG",
+      "en": "Infant-Type Hemispheric Glioma",
+      "zh": "婴儿型大脑半球胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IHM",
+      "en": "Invasive Hydatidiform Mole",
+      "zh": "侵蚀性葡萄胎",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ILC",
+      "en": "Breast Invasive Lobular Carcinoma",
+      "zh": "乳腺浸润性小叶癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IMMC",
+      "en": "Breast Invasive Mixed Mucinous Carcinoma",
+      "zh": "乳腺浸润性混合性黏液癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IMPTLD",
+      "en": "Infectious Mononucleosis PTLD",
+      "zh": "传染性单核细胞增多症型移植后淋巴增殖性疾病（PTLD）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IMS",
+      "en": "Myofibromatosis",
+      "zh": "肌纤维瘤病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IMT",
+      "en": "Inflammatory Myofibroblastic Tumor",
+      "zh": "炎性肌纤维母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IMTB",
+      "en": "Inflammatory Myofibroblastic Bladder Tumor",
+      "zh": "膀胱炎性肌纤维母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IMTL",
+      "en": "Inflammatory Myofibroblastic Lung Tumor",
+      "zh": "肺炎性肌纤维母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:INTS",
+      "en": "Intimal Sarcoma",
+      "zh": "内膜肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IOPN",
+      "en": "Intraductal Oncocytic Papillary Neoplasm",
+      "zh": "导管内嗜酸细胞性乳头状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IPMN",
+      "en": "Intraductal Papillary Mucinous Neoplasm",
+      "zh": "导管内乳头状黏液性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IPN",
+      "en": "Intraductal Papillary Neoplasm of the Bile Duct",
+      "zh": "胆管内乳头状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ISFN",
+      "en": "In Situ Follicular Neoplasia",
+      "zh": "原位滤泡性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ISM",
+      "en": "Indolent Systemic Mastocytosis",
+      "zh": "惰性系统性肥大细胞增生症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ISMCL",
+      "en": "In Situ Mantle Cell Neoplasia",
+      "zh": "原位套细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ISTAD",
+      "en": "Intestinal Type Stomach Adenocarcinoma",
+      "zh": "肠型胃腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ITLPDGI",
+      "en": "Indolent T-Cell Lymphoproliferative Disorder of the GI Tract",
+      "zh": "胃肠道惰性 T 细胞淋巴增殖性疾病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ITPN",
+      "en": "Intraductal Tubulopapillary Neoplasm",
+      "zh": "导管内管状乳头状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IUP",
+      "en": "Inverted Urothelial Papilloma",
+      "zh": "内翻性尿路上皮乳头状瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:IVBCL",
+      "en": "Intravascular Large B-Cell Lymphoma",
+      "zh": "血管内大 B 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:JSCB",
+      "en": "Juvenile Secretory Carcinoma of the Breast",
+      "zh": "乳腺幼年性分泌性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:JXG",
+      "en": "Disseminated Juvenile Xanthogranuloma",
+      "zh": "播散性幼年性黄色肉芽肿",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LAIS",
+      "en": "Lung Adenocarcinoma In Situ",
+      "zh": "肺原位腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LAM",
+      "en": "Pulmonary Lymphangiomyomatosis",
+      "zh": "肺淋巴管平滑肌瘤病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LAMN",
+      "en": "Low-grade Appendiceal Mucinous Neoplasm",
+      "zh": "低级别阑尾黏液性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LATL",
+      "en": "Lymphoid Atypical",
+      "zh": "淋巴系非典型病变",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LBGN",
+      "en": "Lymphoid Benign",
+      "zh": "淋巴系良性病变",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LBLIRF4",
+      "en": "Large B-Cell Lymphoma with IRF4 Rearrangement",
+      "zh": "伴 IRF4 重排的大 B 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LCS",
+      "en": "Langerhans Cell Sarcoma",
+      "zh": "朗格汉斯细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LDCHL",
+      "en": "Lymphocyte-Depleted Classical Hodgkin Lymphoma",
+      "zh": "淋巴细胞消减型经典型霍奇金淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LDD",
+      "en": "Dysplastic Gangliocytoma of the Cerebellum/Lhermitte-Duclos Disease",
+      "zh": "小脑发育不良性神经节细胞瘤／Lhermitte-Duclos 病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LECLC",
+      "en": "Lymphoepithelioma-like Carcinoma of the Lung",
+      "zh": "肺淋巴上皮瘤样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LGCOS",
+      "en": "Low-Grade Central Osteosarcoma",
+      "zh": "低级别中央型骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LGESS",
+      "en": "Low-Grade Endometrial Stromal Sarcoma",
+      "zh": "低级别子宫内膜间质肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LGFMS",
+      "en": "Low-Grade Fibromyxoid Sarcoma",
+      "zh": "低级别纤维黏液样肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LGGNOS",
+      "en": "Low-Grade Glioma, NOS",
+      "zh": "低级别胶质瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LGNET",
+      "en": "Polymorphous Low-Grade Neuroepithelial Tumor of the Young",
+      "zh": "青年多形性低级别神经上皮肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LGSOC",
+      "en": "Low-Grade Serous Ovarian Cancer",
+      "zh": "卵巢低级别浆液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LGT",
+      "en": "Lacrimal Gland Tumor",
+      "zh": "泪腺肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LIAS",
+      "en": "Liver Angiosarcoma",
+      "zh": "肝血管肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LIHB",
+      "en": "Hepatoblastoma",
+      "zh": "肝母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LIMNET",
+      "en": "Malignant Nonepithelial Tumor of the Liver",
+      "zh": "肝恶性非上皮性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LM",
+      "en": "Leiomyoma",
+      "zh": "平滑肌瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LRCHL",
+      "en": "Lymphocyte-Rich Classical Hodgkin Lymphoma",
+      "zh": "富于淋巴细胞型经典型霍奇金淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LUACC",
+      "en": "Adenoid Cystic Carcinoma of the Lung",
+      "zh": "肺腺样囊性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LUAS",
+      "en": "Lung Adenosquamous Carcinoma",
+      "zh": "肺腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LUCA",
+      "en": "Lung Carcinoid",
+      "zh": "肺类癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LUMEC",
+      "en": "Mucoepidermoid Carcinoma of the Lung",
+      "zh": "肺黏液表皮样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LUNE",
+      "en": "Large Cell Neuroendocrine Carcinoma",
+      "zh": "大细胞神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LUPC",
+      "en": "Pleomorphic Carcinoma of the Lung",
+      "zh": "肺多形性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LXSC",
+      "en": "Larynx Squamous Cell Carcinoma",
+      "zh": "喉鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:LYP",
+      "en": "Lymphomatoid Papulosis",
+      "zh": "淋巴瘤样丘疹病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MAAP",
+      "en": "Mucinous Adenocarcinoma of the Appendix",
+      "zh": "阑尾黏液腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MAC",
+      "en": "Microcystic Adnexal Carcinoma",
+      "zh": "微囊性附属器癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MACR",
+      "en": "Mucinous Adenocarcinoma of the Colon and Rectum",
+      "zh": "结直肠黏液腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MAMPCA",
+      "en": "Mixed Ampullary Carcinoma",
+      "zh": "混合型壶腹部癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MASC",
+      "en": "Metaplastic Adenosquamous Carcinoma",
+      "zh": "化生性腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MASCC",
+      "en": "Metaplastic Adenocarcinoma with Spindle Cell Differentiation",
+      "zh": "伴梭形细胞分化的化生性腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MATPL",
+      "en": "Myeloid Atypical",
+      "zh": "髓系非典型病变",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBC",
+      "en": "Metaplastic Breast Cancer",
+      "zh": "化生性乳腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBEN",
+      "en": "Medulloblastoma with Extensive Nodularity",
+      "zh": "伴广泛结节形成的髓母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBENNOS",
+      "en": "Medulloblastoma with Extensive Nodularity, NOS",
+      "zh": "伴广泛结节形成的髓母细胞瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBENSHH",
+      "en": "Medulloblastoma with Extensive Nodularity, SHH Subtype",
+      "zh": "伴广泛结节形成的髓母细胞瘤，SHH 亚型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBGN",
+      "en": "Myeloid Benign",
+      "zh": "髓系良性病变",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBLG3",
+      "en": "Medulloblastoma, Group 3",
+      "zh": "髓母细胞瘤，第 3 组",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBLG4",
+      "en": "Medulloblastoma, Group 4",
+      "zh": "髓母细胞瘤，第 4 组",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBLNOS",
+      "en": "Medulloblastoma, NOS",
+      "zh": "髓母细胞瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBLNWS",
+      "en": "Medulloblastoma, Non-WNT, Non-SHH",
+      "zh": "髓母细胞瘤，非 WNT、非 SHH 型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBLSHH",
+      "en": "Medulloblastoma, SHH Subtype",
+      "zh": "髓母细胞瘤，SHH 亚型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBLWNT",
+      "en": "Medulloblastoma, WNT Subtype",
+      "zh": "髓母细胞瘤，WNT 亚型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBN",
+      "en": "Mature B-Cell Neoplasms",
+      "zh": "成熟 B 细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBOV",
+      "en": "Mucinous Borderline Ovarian Tumor",
+      "zh": "卵巢黏液性交界性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MBT",
+      "en": "Miscellaneous Brain Tumor",
+      "zh": "其他脑肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCBCL",
+      "en": "Monoclonal B-Cell Lymphocytosis",
+      "zh": "单克隆 B 细胞淋巴细胞增多症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCCE",
+      "en": "Mixed Cervical Carcinoma",
+      "zh": "混合型宫颈癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCCHL",
+      "en": "Mixed Cellularity Classical Hodgkin Lymphoma",
+      "zh": "混合细胞型经典型霍奇金淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCHS",
+      "en": "Mesenchymal Chondrosarcoma",
+      "zh": "间叶性软骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCHSCNS",
+      "en": "Mesenchymal Chondrosarcoma of the CNS",
+      "zh": "中枢神经系统间叶性软骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCN",
+      "en": "Mucinous Cystic Neoplasm",
+      "zh": "黏液性囊性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCS",
+      "en": "Metaplastic Carcinosarcoma",
+      "zh": "化生性癌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MCSL",
+      "en": "Mast Cell Sarcoma",
+      "zh": "肥大细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDEP",
+      "en": "Medulloepithelioma",
+      "zh": "髓上皮瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDLC",
+      "en": "Breast Mixed Ductal and Lobular Carcinoma",
+      "zh": "乳腺混合性导管和小叶癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDS/MPN",
+      "en": "Myelodysplastic/Myeloproliferative Neoplasms",
+      "zh": "骨髓增生异常／骨髓增殖性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSEB",
+      "en": "MDS with Excess Blasts",
+      "zh": "伴原始细胞增多的骨髓增生异常综合征（MDS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSEB1",
+      "en": "MDS with excess blasts-1",
+      "zh": "伴原始细胞增多的骨髓增生异常综合征（MDS）-1",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSEB2",
+      "en": "MDS with excess blasts-2",
+      "zh": "伴原始细胞增多的骨髓增生异常综合征（MDS）-2",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSID5Q",
+      "en": "MDS with Isolated Del(5q)",
+      "zh": "伴孤立性 del(5q) 的骨髓增生异常综合征（MDS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSMD",
+      "en": "MDS with Multilineage Dysplasia",
+      "zh": "伴多系发育异常的骨髓增生异常综合征（MDS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSMPNRST",
+      "en": "MDS/MPN with Ring Sideroblasts and Thrombocytosis",
+      "zh": "伴环状铁粒幼细胞和血小板增多的骨髓增生异常／骨髓增殖性肿瘤（MDS/MPN）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSMPNU",
+      "en": "MDS/MPN, Unclassifiable",
+      "zh": "骨髓增生异常／骨髓增殖性肿瘤（MDS/MPN），不能分类",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSRS",
+      "en": "MDS with Ring Sideroblasts",
+      "zh": "伴环状铁粒幼细胞的骨髓增生异常综合征（MDS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSRSMD",
+      "en": "MDS with Ring Sideroblasts and Multilineage Dysplasia",
+      "zh": "伴环状铁粒幼细胞和多系发育异常的骨髓增生异常综合征（MDS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSRSSLD",
+      "en": "MDS with Ring Sideroblasts and Single Lineage Dysplasia",
+      "zh": "伴环状铁粒幼细胞和单系发育异常的骨髓增生异常综合征（MDS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSSLD",
+      "en": "MDS with Single Lineage Dysplasia",
+      "zh": "伴单系发育异常的骨髓增生异常综合征（MDS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSU",
+      "en": "MDS, Unclassifiable",
+      "zh": "骨髓增生异常综合征（MDS），不能分类",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MDSWP",
+      "en": "Myelodysplastic Workup",
+      "zh": "骨髓增生异常相关诊断检查",
+      "status": "project_draft",
+      "review_note": "诊断检查分组，不是确诊疾病名称。"
+    },
+    {
+      "identifier": "ONCOTREE:MEITL",
+      "en": "Monomorphic Epitheliotropic Intestinal T-Cell Lymphoma",
+      "zh": "单形性亲上皮性肠道 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MELC",
+      "en": "Melanocytoma",
+      "zh": "黑色素细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MF",
+      "en": "Myofibroma",
+      "zh": "肌纤维瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MFH",
+      "en": "Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma",
+      "zh": "未分化多形性肉瘤／恶性纤维组织细胞瘤／高级别梭形细胞肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MFS",
+      "en": "Myxofibrosarcoma",
+      "zh": "黏液纤维肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MGCT",
+      "en": "Mixed Germ Cell Tumor",
+      "zh": "混合性生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MGST",
+      "en": "Malignant Glomus Tumor",
+      "zh": "恶性血管球瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MGUS",
+      "en": "Monoclonal Gammopathy of Undetermined Significance",
+      "zh": "意义未明的单克隆免疫球蛋白血症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MGUSIGA",
+      "en": "IgA",
+      "zh": "免疫球蛋白 A（IgA）型",
+      "status": "project_draft",
+      "review_note": "仅展开源名 IgA 为免疫球蛋白 A，不把上级疾病名称额外写入该子类。"
+    },
+    {
+      "identifier": "ONCOTREE:MGUSIGG",
+      "en": "IgG",
+      "zh": "免疫球蛋白 G（IgG）型",
+      "status": "project_draft",
+      "review_note": "仅展开源名 IgG 为免疫球蛋白 G，不把上级疾病名称额外写入该子类。"
+    },
+    {
+      "identifier": "ONCOTREE:MGUSIGM",
+      "en": "IgM",
+      "zh": "免疫球蛋白 M（IgM）型",
+      "status": "project_draft",
+      "review_note": "仅展开源名 IgM 为免疫球蛋白 M，不把上级疾病名称额外写入该子类。"
+    },
+    {
+      "identifier": "ONCOTREE:MHCD",
+      "en": "Mu Heavy-Chain Disease",
+      "zh": "μ 重链病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MIDD",
+      "en": "Monoclonal Immunoglobulin Deposition Diseases",
+      "zh": "单克隆免疫球蛋白沉积病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MIDDO",
+      "en": "Monoclonal Immunoglobulin Deposition Diseases, Other",
+      "zh": "其他单克隆免疫球蛋白沉积病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MIXED",
+      "en": "Mixed Cancer Types",
+      "zh": "混合癌种",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MLADS",
+      "en": "Myeloid Leukemia Associated with Down Syndrome",
+      "zh": "唐氏综合征相关髓性白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MLNER",
+      "en": "Myeloid/Lymphoid Neoplasms with Eosinophilia and Rearrangement of  PDGFRA/PDGFRB or FGFR1 or with PCM1-JAK2",
+      "zh": "伴嗜酸性粒细胞增多及 PDGFRA/PDGFRB 或 FGFR1 重排或 PCM1-JAK2 的髓系／淋巴系肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MLNFGFR1",
+      "en": "Myeloid/Lymphoid Neoplasms with FGFR1 Rearrangement",
+      "zh": "伴 FGFR1 重排的髓系／淋巴系肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MLNPCM1JAK2",
+      "en": "Myeloid/Lymphoid Neoplasms with PCM1-JAK2",
+      "zh": "伴 PCM1-JAK2 的髓系／淋巴系肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MLNPDGFRA",
+      "en": "Myeloid/Lymphoid Neoplasms with PDGFRA Rearrangement",
+      "zh": "伴 PDGFRA 重排的髓系／淋巴系肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MLNPDGFRB",
+      "en": "Myeloid/Lymphoid Neoplasms with PDGFRB Rearrangement",
+      "zh": "伴 PDGFRB 重排的髓系／淋巴系肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MMB",
+      "en": "Medullomyoblastoma",
+      "zh": "髓肌母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MMBC",
+      "en": "Mixed Type Metaplastic Breast Cancer",
+      "zh": "混合型化生性乳腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MMBL",
+      "en": "Melanotic Medulloblastoma",
+      "zh": "含黑色素性髓母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MNET",
+      "en": "Miscellaneous Neuroepithelial Tumor",
+      "zh": "其他神经上皮肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MNGLP",
+      "en": "Myeloid Neoplasms with Germ Line Predisposition",
+      "zh": "伴胚系易感性的髓系肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MNGT",
+      "en": "Meningothelial Tumor",
+      "zh": "脑膜上皮性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MOV",
+      "en": "Mucinous Ovarian Cancer",
+      "zh": "卵巢黏液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPALBCRABL1",
+      "en": "Mixed Phenotype Acute Leukemia with t(9;22)(q34.1;q11.2); BCR-ABL1",
+      "zh": "伴 t(9;22)(q34.1;q11.2)；BCR-ABL1 的混合表型急性白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPALBNOS",
+      "en": "Mixed Phenotype Acute Leukemia, B/Myeloid, NOS",
+      "zh": "混合表型急性白血病，B／髓系，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPALKMT2A",
+      "en": "Mixed Phenotype Acute Leukemia with t(v;11q23.3); KMT2A Rearranged",
+      "zh": "伴 t(v;11q23.3)；KMT2A 重排的混合表型急性白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPALTNOS",
+      "en": "Mixed Phenotype Acute Leukemia, T/Myeloid, NOS",
+      "zh": "混合表型急性白血病，T／髓系，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPC",
+      "en": "Myopericytoma",
+      "zh": "肌周细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPE",
+      "en": "Myxopapillary Ependymoma",
+      "zh": "黏液乳头状室管膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPN",
+      "en": "Myeloproliferative Neoplasms",
+      "zh": "骨髓增殖性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPNU",
+      "en": "Myeloproliferative Neoplasms, Unclassifiable",
+      "zh": "骨髓增殖性肿瘤，不能分类",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPNWP",
+      "en": "Myeloproliferative Workup",
+      "zh": "骨髓增殖性疾病相关诊断检查",
+      "status": "project_draft",
+      "review_note": "诊断检查分组，不是确诊疾病名称。"
+    },
+    {
+      "identifier": "ONCOTREE:MPRDS",
+      "en": "Myeloid Proliferations Related to Down Syndrome",
+      "zh": "唐氏综合征相关髓系增生",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPT",
+      "en": "Malignant Phyllodes Tumor of the Breast",
+      "zh": "乳腺恶性叶状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MPTLD",
+      "en": "Monomorphic PTLD (B- and T-/NK-cell types)",
+      "zh": "单形性移植后淋巴增殖性疾病（PTLD），B 细胞型及 T/NK 细胞型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MRC",
+      "en": "Renal Medullary Carcinoma",
+      "zh": "肾髓质癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MRLS",
+      "en": "Myxoid/Round-Cell Liposarcoma",
+      "zh": "黏液样／圆细胞脂肪肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MRT",
+      "en": "Rhabdoid Cancer",
+      "zh": "横纹肌样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MRTL",
+      "en": "Malignant Rhabdoid Tumor of the Liver",
+      "zh": "肝恶性横纹肌样瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MSCC",
+      "en": "Metaplastic Squamous Cell Carcinoma",
+      "zh": "化生性鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MSCHW",
+      "en": "Melanotic Schwannoma",
+      "zh": "黑色素性神经鞘瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MSTAD",
+      "en": "Mucinous Stomach Adenocarcinoma",
+      "zh": "胃黏液腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MTNN",
+      "en": "Mature T and NK Neoplasms",
+      "zh": "成熟 T 细胞和 NK 细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MTSCC",
+      "en": "Renal Mucinous Tubular Spindle Cell Carcinoma",
+      "zh": "肾黏液性管状和梭形细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MUP",
+      "en": "Melanoma of Unknown Primary",
+      "zh": "原发灶不明黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MXOV",
+      "en": "Mixed Ovarian Carcinoma",
+      "zh": "卵巢混合性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MYCHS",
+      "en": "Myxoid Chondrosarcoma",
+      "zh": "黏液样软骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MYEC",
+      "en": "Myoepithelial Carcinoma",
+      "zh": "肌上皮癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MYXO",
+      "en": "Myxoma",
+      "zh": "黏液瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:MZL",
+      "en": "Marginal Zone Lymphoma",
+      "zh": "边缘区淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NCCRCC",
+      "en": "Renal Non-Clear Cell Carcinoma",
+      "zh": "肾非透明细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NECNOS",
+      "en": "Neuroendocrine Carcinoma, NOS",
+      "zh": "神经内分泌癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NETNOS",
+      "en": "Neuroendocrine Tumor, NOS",
+      "zh": "神经内分泌肿瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NKCLL",
+      "en": "Natural Killer (NK) Cell Lymphoblastic Leukemia/Lymphoma",
+      "zh": "自然杀伤（NK）细胞淋巴母细胞白血病／淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NLPHL",
+      "en": "Nodular Lymphocyte-Predominant Hodgkin Lymphoma",
+      "zh": "结节性淋巴细胞为主型霍奇金淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NMCHN",
+      "en": "NUT Midline Carcinoma of the Head and Neck",
+      "zh": "头颈部 NUT 中线癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NMZL",
+      "en": "Nodal Marginal Zone Lymphoma",
+      "zh": "淋巴结边缘区淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NPTLTFH",
+      "en": "Nodal Peripheral T-Cell Lymphoma with TFH Phenotype",
+      "zh": "具有滤泡辅助性 T 细胞（TFH）表型的淋巴结外周 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NRCC",
+      "en": "NUTM1 Renal Cell Carcinoma",
+      "zh": "NUTM1 肾细胞癌",
+      "status": "project_draft",
+      "review_note": "原名仅有 NUTM1；未额外推断其改变机制为突变、重排或融合。"
+    },
+    {
+      "identifier": "ONCOTREE:NSCHL",
+      "en": "Nodular Sclerosis Classical Hodgkin Lymphoma",
+      "zh": "结节硬化型经典型霍奇金淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NSCLCPD",
+      "en": "Poorly Differentiated Non-Small Cell Lung Cancer",
+      "zh": "低分化非小细胞肺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NSGCT",
+      "en": "Non-Seminomatous Germ Cell Tumor",
+      "zh": "非精原细胞瘤性生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NST",
+      "en": "Nerve Sheath Tumor",
+      "zh": "神经鞘肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NUTCL",
+      "en": "NUT Carcinoma of the Lung",
+      "zh": "肺 NUT 癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:NVRINT",
+      "en": "Neoplastic Vs Reactive",
+      "zh": "肿瘤性与反应性病变鉴别",
+      "status": "project_draft",
+      "review_note": "鉴别分组，不是确诊疾病名称。"
+    },
+    {
+      "identifier": "ONCOTREE:OAT",
+      "en": "Oncocytic Adenoma of the Thyroid",
+      "zh": "甲状腺嗜酸细胞腺瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OCNOS",
+      "en": "Ovarian Choriocarcinoma, NOS",
+      "zh": "卵巢绒毛膜癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OCS",
+      "en": "Ovarian Carcinosarcoma/Malignant Mixed Mesodermal Tumor",
+      "zh": "卵巢癌肉瘤／恶性混合性中胚层肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ODG",
+      "en": "Oligodendroglioma, IDH-mutant, and 1p/19q-Codeleted",
+      "zh": "少突胶质细胞瘤，IDH 突变且 1p/19q 共缺失",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ODG2",
+      "en": "Oligodendroglioma, IDH-mutant, and 1p/19q-Codeleted, Grade 2",
+      "zh": "少突胶质细胞瘤，IDH 突变且 1p/19q 共缺失，2 级",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ODG3",
+      "en": "Oligodendroglioma, IDH-mutant, and 1p/19q-Codeleted, Grade 3",
+      "zh": "少突胶质细胞瘤，IDH 突变且 1p/19q 共缺失，3 级",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ODGC",
+      "en": "Odontogenic Carcinoma",
+      "zh": "牙源性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ODYS",
+      "en": "Dysgerminoma",
+      "zh": "无性细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OEC",
+      "en": "Embryonal Carcinoma",
+      "zh": "胚胎性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OFMT",
+      "en": "Ossifying Fibromyxoid Tumor",
+      "zh": "骨化性纤维黏液样肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OGBL",
+      "en": "Gonadoblastoma",
+      "zh": "性腺母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OGCT",
+      "en": "Ovarian Germ Cell Tumor",
+      "zh": "卵巢生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OHNCA",
+      "en": "Head and Neck Carcinoma, Other",
+      "zh": "其他头颈部癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OIMT",
+      "en": "Immature Teratoma",
+      "zh": "未成熟性畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OM",
+      "en": "Ocular Melanoma",
+      "zh": "眼黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OMGCT",
+      "en": "Mixed Germ Cell Tumor",
+      "zh": "混合性生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OMT",
+      "en": "Mature Teratoma",
+      "zh": "成熟性畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ONBL",
+      "en": "Olfactory Neuroblastoma",
+      "zh": "嗅神经母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OOVC",
+      "en": "Ovarian Cancer, Other",
+      "zh": "其他卵巢癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OPE",
+      "en": "Polyembryoma",
+      "zh": "多胚瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OPHSC",
+      "en": "Oropharynx Squamous Cell Carcinoma",
+      "zh": "口咽鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OSACA",
+      "en": "Salivary Carcinoma, Other",
+      "zh": "其他唾液腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OSGCT",
+      "en": "Osteoclastic Giant Cell Tumor",
+      "zh": "破骨细胞型巨细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OSMAD",
+      "en": "Ovarian Seromucinous Adenoma",
+      "zh": "卵巢浆黏液性腺瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OSMBT",
+      "en": "Ovarian Seromucinous Borderline Tumor",
+      "zh": "卵巢浆黏液性交界性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OSMCA",
+      "en": "Ovarian Seromucinous Carcinoma",
+      "zh": "卵巢浆黏液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OSOS",
+      "en": "Osteoblastic Osteosarcoma",
+      "zh": "骨母细胞型骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OUSARC",
+      "en": "Uterine Sarcoma, Other",
+      "zh": "其他子宫肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OUTT",
+      "en": "Other Uterine Tumor",
+      "zh": "其他子宫肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:OYST",
+      "en": "Yolk Sac Tumor",
+      "zh": "卵黄囊瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PAAC",
+      "en": "Acinar Cell Carcinoma of the Pancreas",
+      "zh": "胰腺腺泡细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PAASC",
+      "en": "Adenosquamous Carcinoma of the Pancreas",
+      "zh": "胰腺腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PAC",
+      "en": "Polymorphous Adenocarcinoma",
+      "zh": "多形性腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PACT",
+      "en": "Cystic Tumor of the Pancreas",
+      "zh": "胰腺囊性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PADA",
+      "en": "Pleomorphic Adenoma",
+      "zh": "多形性腺瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PAMPCA",
+      "en": "Pancreatobiliary Ampullary Carcinoma",
+      "zh": "胰胆管型壶腹部癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PANEC",
+      "en": "Pancreatic Neuroendocrine Carcinoma",
+      "zh": "胰腺神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PAOS",
+      "en": "Parosteal Osteosarcoma",
+      "zh": "骨旁骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PBT",
+      "en": "Primary Brain Tumor",
+      "zh": "原发性脑肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCAECTCL",
+      "en": "Primary Cutaneous CD8 Positive Aggressive Epidermotropic Cytotoxic T-Cell Lymphoma",
+      "zh": "原发性皮肤 CD8 阳性侵袭性亲表皮性细胞毒性 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCALCL",
+      "en": "Primary Cutaneous Anaplastic Large Cell Lymphoma",
+      "zh": "原发性皮肤间变性大细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCATCL",
+      "en": "Primary Cutaneous Acral CD8 Positive T-Cell Lymphoma",
+      "zh": "原发性皮肤肢端 CD8 阳性 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCFCL",
+      "en": "Primary Cutaneous Follicle Center Lymphoma",
+      "zh": "原发性皮肤滤泡中心淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCGDTCL",
+      "en": "Primary Cutaneous Gamma Delta T-Cell Lymphoma",
+      "zh": "原发性皮肤 γδ T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCGP",
+      "en": "Craniopharyngioma, Papillary Type",
+      "zh": "颅咽管瘤，乳头状型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCLBCLLT",
+      "en": "Primary Cutaneous DLBCL, Leg Type",
+      "zh": "原发性皮肤弥漫性大 B 细胞淋巴瘤（DLBCL），腿型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCLPD",
+      "en": "Primary Cutaneous CD30 Positive T-Cell Lymphoproliferative Disorders",
+      "zh": "原发性皮肤 CD30 阳性 T 细胞淋巴增殖性疾病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCNSL",
+      "en": "Primary DLBCL of the central nervous system",
+      "zh": "中枢神经系统原发性弥漫性大 B 细胞淋巴瘤（DLBCL）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCNSM",
+      "en": "Primary CNS Melanoma",
+      "zh": "原发性中枢神经系统黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCNSMT",
+      "en": "Primary CNS Melanocytic Tumors",
+      "zh": "原发性中枢神经系统黑色素细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PCSMTPLD",
+      "en": "Primary Cutaneous CD4 Positive Small/Medium T-Cell Lymphoproliferative Disorder",
+      "zh": "原发性皮肤 CD4 阳性小／中等大小 T 细胞淋巴增殖性疾病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PD",
+      "en": "Paget Disease of the Nipple",
+      "zh": "乳头 Paget 病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PDC",
+      "en": "Poorly Differentiated Carcinoma, NOS",
+      "zh": "低分化癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PDIFHG",
+      "en": "Pediatric-Type Diffuse High-Grade Glioma",
+      "zh": "儿童型弥漫性高级别胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PDIFLG",
+      "en": "Pediatric-Type Diffuse Low-Grade Glioma",
+      "zh": "儿童型弥漫性低级别胶质瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PECOMA",
+      "en": "Perivascular Epithelioid Cell Tumor",
+      "zh": "血管周上皮样细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PEOS",
+      "en": "Periosteal Osteosarcoma",
+      "zh": "骨膜骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PERL",
+      "en": "Pure Erythroid Leukemia",
+      "zh": "纯红系白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PGNT",
+      "en": "Papillary Glioneuronal Tumor",
+      "zh": "乳头状胶质神经元肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PHC",
+      "en": "Pheochromocytoma",
+      "zh": "嗜铬细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PHCH",
+      "en": "Perihilar Cholangiocarcinoma",
+      "zh": "肝门部胆管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PHM",
+      "en": "Partial Hydatidiform Mole",
+      "zh": "部分性葡萄胎",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PHPTLD",
+      "en": "Plasmacytic Hyperplasia PTLD",
+      "zh": "浆细胞增生型移植后淋巴增殖性疾病（PTLD）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PINC",
+      "en": "Pineocytoma",
+      "zh": "松果体细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PLBL",
+      "en": "Plasmablastic Lymphoma",
+      "zh": "浆母细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PLBMESO",
+      "en": "Pleural Mesothelioma, Biphasic Type",
+      "zh": "胸膜间皮瘤，双相型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PLEMESO",
+      "en": "Pleural Mesothelioma, Epithelioid Type",
+      "zh": "胸膜间皮瘤，上皮样型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PLLS",
+      "en": "Pleomorphic Liposarcoma",
+      "zh": "多形性脂肪肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PLRMS",
+      "en": "Pleomorphic Rhabdomyosarcoma",
+      "zh": "多形性横纹肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PLSMESO",
+      "en": "Pleural Mesothelioma, Sarcomatoid Type",
+      "zh": "胸膜间皮瘤，肉瘤样型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PMA",
+      "en": "Pilomyxoid Astrocytoma",
+      "zh": "毛黏液样星形细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PMBL",
+      "en": "Primary Mediastinal (Thymic) Large B-Cell Lymphoma",
+      "zh": "原发性纵隔（胸腺）大 B 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PMFOFS",
+      "en": "Primary Myelofibrosis,Overt Fibrotic Stage",
+      "zh": "原发性骨髓纤维化，明显纤维化期",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PMFPES",
+      "en": "Primary Myelofibrosis, Prefibrotic/Early Stage",
+      "zh": "原发性骨髓纤维化，纤维化前期／早期",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PMHE",
+      "en": "Pseudomyogenic Hemangioendothelioma",
+      "zh": "假肌源性血管内皮瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:POCA",
+      "en": "Porocarcinoma/Spiroadenocarcinoma",
+      "zh": "汗孔癌／螺旋腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PORO",
+      "en": "Poroma/Acrospiroma",
+      "zh": "汗孔瘤／末端汗管瘤（Acrospiroma）",
+      "status": "project_draft",
+      "review_note": "保留源中 Poroma/Acrospiroma 的并列方式；Acrospiroma 不补加 apocrine 或 eccrine 等源中没有的限定。"
+    },
+    {
+      "identifier": "ONCOTREE:PPCT",
+      "en": "Proliferating Pilar Cystic Tumor",
+      "zh": "增生性毛鞘囊性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PPM",
+      "en": "Papillary Meningioma",
+      "zh": "乳头状脑膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PPTID",
+      "en": "Pineal Parenchymal Tumor of Intermediate Differentiation",
+      "zh": "中度分化松果体实质肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PPTLD",
+      "en": "Polymorphic PTLD",
+      "zh": "多形性移植后淋巴增殖性疾病（PTLD）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PRCC",
+      "en": "Papillary Renal Cell Carcinoma",
+      "zh": "乳头状肾细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PRNE",
+      "en": "Prostate Neuroendocrine Carcinoma",
+      "zh": "前列腺神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PRNET",
+      "en": "Primary Neuroepithelial Tumor",
+      "zh": "原发性神经上皮肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PRSC",
+      "en": "Prostate Squamous Cell Carcinoma",
+      "zh": "前列腺鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PRSCC",
+      "en": "Prostate Small Cell Carcinoma",
+      "zh": "前列腺小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PSCC",
+      "en": "Penile Squamous Cell Carcinoma",
+      "zh": "阴茎鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PSEC",
+      "en": "Peritoneal Serous Carcinoma",
+      "zh": "腹膜浆液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PSTAD",
+      "en": "Papillary Stomach Adenocarcinoma",
+      "zh": "胃乳头状腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PSTT",
+      "en": "Placental Site Trophoblastic Tumor",
+      "zh": "胎盘部位滋养细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PT",
+      "en": "Phyllodes Tumor of the Breast",
+      "zh": "乳腺叶状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTCA",
+      "en": "Pituitary Carcinoma",
+      "zh": "垂体癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTCL",
+      "en": "Peripheral T-Cell lymphoma, NOS",
+      "zh": "外周 T 细胞淋巴瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTCY",
+      "en": "Pituicytoma",
+      "zh": "垂体细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTES",
+      "en": "Proximal-Type Epithelioid Sarcoma",
+      "zh": "近端型上皮样肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTFL",
+      "en": "Pediatric-Type Follicular Lymphoma",
+      "zh": "儿童型滤泡性淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTH",
+      "en": "Parathyroid Cancer",
+      "zh": "甲状旁腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTHC",
+      "en": "Parathyroid Carcinoma",
+      "zh": "甲状旁腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTLD",
+      "en": "Posttransplant Lymphoproliferative Disorders",
+      "zh": "移植后淋巴增殖性疾病（PTLD）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PTPR",
+      "en": "Papillary Tumor of the Pineal Region",
+      "zh": "松果体区乳头状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:PVMF",
+      "en": "Polycythaemia Vera Myelofibrosis",
+      "zh": "真性红细胞增多症后骨髓纤维化",
+      "status": "project_draft",
+      "review_note": "真性红细胞增多症相关骨髓纤维化的项目译名，保留其与原发性骨髓纤维化的区别。"
+    },
+    {
+      "identifier": "ONCOTREE:PXA",
+      "en": "Pleomorphic Xanthoastrocytoma",
+      "zh": "多形性黄色星形细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RAML",
+      "en": "Renal Angiomyolipoma",
+      "zh": "肾血管平滑肌脂肪瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RAS",
+      "en": "Radiation-Associated Sarcoma",
+      "zh": "放射相关肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RCSNOS",
+      "en": "Round Cell Sarcoma, NOS",
+      "zh": "圆细胞肉瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RCYC",
+      "en": "Refractory Cytopenia of Childhood",
+      "zh": "儿童难治性血细胞减少症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:READ",
+      "en": "Rectal Adenocarcinoma",
+      "zh": "直肠腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RGNT",
+      "en": "Rosette-forming Glioneuronal Tumor of the Fourth Ventricle",
+      "zh": "第四脑室菊形团形成性胶质神经元肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RHM",
+      "en": "Rhabdoid Meningioma",
+      "zh": "横纹肌样脑膜瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RLCLC",
+      "en": "Large Cell Lung Carcinoma With Rhabdoid Phenotype",
+      "zh": "具有横纹肌样表型的肺大细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RNET",
+      "en": "Renal Neuroendocrine Tumor",
+      "zh": "肾神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RSCC",
+      "en": "Renal Small Cell Carcinoma",
+      "zh": "肾小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:RWDNET",
+      "en": "Well-Differentiated Neuroendocrine Tumor of the Rectum",
+      "zh": "直肠高分化神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SAAD",
+      "en": "Salivary Adenocarcinoma",
+      "zh": "唾液腺腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SACA",
+      "en": "Salivary Carcinoma",
+      "zh": "唾液腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SARCL",
+      "en": "Sarcomatoid Carcinoma of the Lung",
+      "zh": "肺肉瘤样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SBC",
+      "en": "Small Bowel Cancer",
+      "zh": "小肠癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SBL",
+      "en": "Sialoblastoma",
+      "zh": "涎腺母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SBLU",
+      "en": "Splenic B-Cell Lymphoma/Leukemia, Unclassifiable",
+      "zh": "脾 B 细胞淋巴瘤／白血病，不能分类",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SBMOV",
+      "en": "Serous Borderline Ovarian Tumor, Micropapillary",
+      "zh": "卵巢浆液性交界性肿瘤，微乳头型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SBOV",
+      "en": "Serous Borderline Ovarian Tumor",
+      "zh": "卵巢浆液性交界性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SBWDNET",
+      "en": "Small Bowel Well-Differentiated Neuroendocrine Tumor",
+      "zh": "小肠高分化神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCB",
+      "en": "Sarcomatoid Carcinoma of the Urinary Bladder",
+      "zh": "膀胱肉瘤样癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCBC",
+      "en": "Small Cell Bladder Cancer",
+      "zh": "膀胱小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCCE",
+      "en": "Small Cell Carcinoma of the Cervix",
+      "zh": "宫颈小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCCNOS",
+      "en": "Squamous Cell Carcinoma, NOS",
+      "zh": "鳞状细胞癌，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCCO",
+      "en": "Small Cell Carcinoma of the Ovary",
+      "zh": "卵巢小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCCRCC",
+      "en": "Renal Clear Cell Carcinoma with Sarcomatoid Features",
+      "zh": "伴肉瘤样特征的肾透明细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCEMU",
+      "en": "Signet Ring Mucinous Carcinoma",
+      "zh": "印戒细胞型黏液癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCGBC",
+      "en": "Small Cell Gallbladder Carcinoma",
+      "zh": "胆囊小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCGBM",
+      "en": "Small Cell Glioblastoma",
+      "zh": "小细胞胶质母细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCHW",
+      "en": "Schwannoma",
+      "zh": "神经鞘瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCLG",
+      "en": "Squamous Cell Carcinoma of the Lacrimal Gland",
+      "zh": "泪腺鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCOAH",
+      "en": "Spindle Cell Oncocytoma of the Adenohypophysis",
+      "zh": "腺垂体梭形细胞嗜酸细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCOS",
+      "en": "Small Cell Osteosarcoma",
+      "zh": "小细胞骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCRMS",
+      "en": "Spindle Cell Rhabdomyosarcoma",
+      "zh": "梭形细胞横纹肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCSRMS",
+      "en": "Spindle Cell/Sclerosing Rhabdomyosarcoma",
+      "zh": "梭形细胞／硬化性横纹肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCST",
+      "en": "Sex Cord Stromal Tumor",
+      "zh": "性索间质肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCT",
+      "en": "Steroid Cell Tumor, NOS",
+      "zh": "类固醇细胞瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SCUP",
+      "en": "Small Cell Carcinoma of Unknown Primary",
+      "zh": "原发灶不明小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SDCA",
+      "en": "Salivary Duct Carcinoma",
+      "zh": "唾液腺导管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SDRPL",
+      "en": "Splenic Diffuse Red Pulp Small B-Cell Lymphoma",
+      "zh": "脾弥漫性红髓小 B 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SEBA",
+      "en": "Sebaceous Carcinoma",
+      "zh": "皮脂腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SEBVTLC",
+      "en": "Systemic EBV Positive T-Cell Lymphoma of Childhood",
+      "zh": "儿童系统性 EBV 阳性 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SECOS",
+      "en": "Secondary Osteosarcoma",
+      "zh": "继发性骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SEF",
+      "en": "Sclerosing Epithelioid Fibrosarcoma",
+      "zh": "硬化性上皮样纤维肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SELT",
+      "en": "Sellar Tumor",
+      "zh": "鞍区肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SFT",
+      "en": "Solitary Fibrous Tumor/Hemangiopericytoma",
+      "zh": "孤立性纤维性肿瘤／血管外皮细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SFTCNS",
+      "en": "Solitary Fibrous Tumor of the Central Nervous System",
+      "zh": "中枢神经系统孤立性纤维性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SGAD",
+      "en": "Sweat Gland Adenocarcinoma",
+      "zh": "汗腺腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SGO",
+      "en": "Salivary Gland Oncocytoma",
+      "zh": "唾液腺嗜酸细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SGTTL",
+      "en": "Salivary Gland-Type Tumor of the Lung",
+      "zh": "肺唾液腺型肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SIC",
+      "en": "Small Intestinal Carcinoma",
+      "zh": "小肠癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SKAC",
+      "en": "Skin Adnexal Carcinoma",
+      "zh": "皮肤附属器癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SKCN",
+      "en": "Congenital Nevus",
+      "zh": "先天性痣",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SKLMM",
+      "en": "Lentigo Maligna Melanoma",
+      "zh": "恶性雀斑样痣型黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SLCT",
+      "en": "Sertoli-Leydig Cell Tumor",
+      "zh": "支持细胞-间质细胞瘤（Sertoli-Leydig 细胞瘤）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SM",
+      "en": "Systemic Mastocytosis",
+      "zh": "系统性肥大细胞增生症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SMAHN",
+      "en": "Systemic Mastocytosis with an Associated Hematological Neoplasm",
+      "zh": "伴相关血液肿瘤的系统性肥大细胞增生症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SMMCL",
+      "en": "Mast Cell Leukemia",
+      "zh": "肥大细胞白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SMN",
+      "en": "Smooth Muscle Neoplasm, NOS",
+      "zh": "平滑肌肿瘤，非特指型（NOS）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SMZL",
+      "en": "Splenic Marginal Zone Lymphoma",
+      "zh": "脾边缘区淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SNA",
+      "en": "Sinonasal Adenocarcinoma",
+      "zh": "鼻腔鼻窦腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SNSC",
+      "en": "Sinonasal Squamous Cell Carcinoma",
+      "zh": "鼻腔鼻窦鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SNUC",
+      "en": "Sinonasal Undifferentiated Carcinoma",
+      "zh": "鼻腔鼻窦未分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SOC",
+      "en": "Serous Ovarian Cancer",
+      "zh": "卵巢浆液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SPB",
+      "en": "Solitary Plasmacytoma of Bone",
+      "zh": "骨孤立性浆细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SPC",
+      "en": "Solid Papillary Carcinoma of the Breast",
+      "zh": "乳腺实性乳头状癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SPCC",
+      "en": "Spindle Cell Carcinoma of the Lung",
+      "zh": "肺梭形细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SPDAC",
+      "en": "Poorly Differentiated Carcinoma of the Stomach",
+      "zh": "胃低分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SPIR",
+      "en": "Spiroma/Spiradenoma",
+      "zh": "螺旋腺瘤（Spiroma/Spiradenoma）",
+      "status": "project_draft",
+      "review_note": "源名称含 Spiroma/Spiradenoma 两种写法；中文使用螺旋腺瘤并同时保留原词，待术语核对。"
+    },
+    {
+      "identifier": "ONCOTREE:SPN",
+      "en": "Solid Pseudopapillary Neoplasm of the Pancreas",
+      "zh": "胰腺实性假乳头状肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SPTCL",
+      "en": "Subcutaneous Panniculitis-Like T-Cell Lymphoma",
+      "zh": "皮下脂膜炎样 T 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SPZM",
+      "en": "Spitzoid Melanoma",
+      "zh": "Spitz 样黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SRAP",
+      "en": "Signet Ring Cell Type of the Appendix",
+      "zh": "阑尾印戒细胞型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SRCBC",
+      "en": "Plasmacytoid/Signet Ring Cell Bladder Carcinoma",
+      "zh": "膀胱浆细胞样／印戒细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SRCC",
+      "en": "Sarcomatoid Renal Cell Carcinoma",
+      "zh": "肉瘤样肾细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SRCCR",
+      "en": "Signet Ring Cell Adenocarcinoma of the Colon and Rectum",
+      "zh": "结直肠印戒细胞腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SSM",
+      "en": "Smoldering Systemic Mastocytosis",
+      "zh": "冒烟型系统性肥大细胞增生症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SSRCC",
+      "en": "Signet Ring Cell Carcinoma of the Stomach",
+      "zh": "胃印戒细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:STAD",
+      "en": "Stomach Adenocarcinoma",
+      "zh": "胃腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:STAS",
+      "en": "Adenosquamous Carcinoma of the Stomach",
+      "zh": "胃腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:STMYEC",
+      "en": "Soft Tissue Myoepithelial Carcinoma",
+      "zh": "软组织肌上皮癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:STSC",
+      "en": "Small Cell Carcinoma of the Stomach",
+      "zh": "胃小细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SUBE",
+      "en": "Subependymoma",
+      "zh": "室管膜下瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:SWDNET",
+      "en": "Well-Differentiated Neuroendocrine Tumors of the Stomach",
+      "zh": "胃高分化神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TAC",
+      "en": "Tubular Adenoma of the Colon",
+      "zh": "结肠管状腺瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TAM",
+      "en": "Transient Abnormal Myelopoiesis",
+      "zh": "一过性异常骨髓增生",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TAML",
+      "en": "Therapy-Related Acute Myeloid Leukemia",
+      "zh": "治疗相关急性髓性白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TCCA",
+      "en": "Choriocarcinoma",
+      "zh": "绒毛膜癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TEOS",
+      "en": "Telangiectatic Osteosarcoma",
+      "zh": "毛细血管扩张型骨肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TET",
+      "en": "Thymic Epithelial Tumor",
+      "zh": "胸腺上皮性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TGCT",
+      "en": "Tenosynovial Giant Cell Tumor Diffuse Type",
+      "zh": "腱鞘巨细胞瘤，弥漫型",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:THHC",
+      "en": "Hurthle Cell Thyroid Cancer",
+      "zh": "甲状腺 Hürthle 细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:THPD",
+      "en": "Poorly Differentiated Thyroid Cancer",
+      "zh": "低分化甲状腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:THRLBCL",
+      "en": "T-Cell/Histiocyte-Rich Large B-Cell Lymphoma",
+      "zh": "富于 T 细胞／组织细胞的大 B 细胞淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:THYC",
+      "en": "Thymic Carcinoma",
+      "zh": "胸腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TLGL",
+      "en": "T-Cell Large Granular Lymphocytic Leukemia",
+      "zh": "T 细胞大颗粒淋巴细胞白血病",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TLYM",
+      "en": "Testicular Lymphoma",
+      "zh": "睾丸淋巴瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TMDS",
+      "en": "Therapy-Related Myelodysplastic Syndrome",
+      "zh": "治疗相关骨髓增生异常综合征",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TMESO",
+      "en": "Testicular Mesothelioma",
+      "zh": "睾丸间皮瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TMN",
+      "en": "Therapy-Related Myeloid Neoplasms",
+      "zh": "治疗相关髓系肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TNET",
+      "en": "Thymic Neuroendocrine Tumor",
+      "zh": "胸腺神经内分泌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TRCC",
+      "en": "Translocation-Associated Renal Cell Carcinoma",
+      "zh": "易位相关肾细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TSCST",
+      "en": "Sex Cord Stromal Tumor",
+      "zh": "性索间质肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TSTAD",
+      "en": "Tubular Stomach Adenocarcinoma",
+      "zh": "胃管状腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TT",
+      "en": "Teratoma",
+      "zh": "畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:TYST",
+      "en": "Yolk Sac Tumor",
+      "zh": "卵黄囊瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UA",
+      "en": "Urachal Adenocarcinoma",
+      "zh": "脐尿管腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UAD",
+      "en": "Urethral Adenocarcinoma",
+      "zh": "尿道腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UAS",
+      "en": "Uterine Adenosarcoma",
+      "zh": "子宫腺肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UASC",
+      "en": "Uterine Adenosquamous Carcinoma",
+      "zh": "子宫腺鳞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UCCA",
+      "en": "Choriocarcinoma",
+      "zh": "绒毛膜癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UCCC",
+      "en": "Uterine Clear Cell Carcinoma",
+      "zh": "子宫透明细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UCP",
+      "en": "Undifferentiated Carcinoma of the Pancreas",
+      "zh": "胰腺未分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UCS",
+      "en": "Uterine Carcinosarcoma/Uterine Malignant Mixed Mullerian Tumor",
+      "zh": "子宫癌肉瘤／子宫恶性混合性苗勒管肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UCU",
+      "en": "Urethral Urothelial Carcinoma",
+      "zh": "尿道尿路上皮癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UDDC",
+      "en": "Uterine Dedifferentiated Carcinoma",
+      "zh": "子宫去分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UDMN",
+      "en": "Undifferentiated Malignant Neoplasm",
+      "zh": "未分化恶性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UEC",
+      "en": "Uterine Endometrioid Carcinoma",
+      "zh": "子宫内膜样癌（子宫）",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UELMS",
+      "en": "Uterine Epithelioid Leiomyosarcoma",
+      "zh": "子宫上皮样平滑肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UESL",
+      "en": "Undifferentiated Embryonal Sarcoma of the Liver",
+      "zh": "肝未分化胚胎性肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:ULMS",
+      "en": "Uterine Leiomyosarcoma",
+      "zh": "子宫平滑肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UMC",
+      "en": "Uterine Mucinous Carcinoma",
+      "zh": "子宫黏液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UMEC",
+      "en": "Uterine Mixed Endometrial Carcinoma",
+      "zh": "子宫混合性子宫内膜癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UMLMS",
+      "en": "Uterine Myxoid Leiomyosarcoma",
+      "zh": "子宫黏液样平滑肌肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UMNC",
+      "en": "Uterine Mesonephric Carcinoma",
+      "zh": "子宫中肾管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UNEC",
+      "en": "Uterine Neuroendocrine Carcinoma",
+      "zh": "子宫神经内分泌癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UPA",
+      "en": "Urothelial Papilloma",
+      "zh": "尿路上皮乳头状瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UPDC",
+      "en": "Poorly Differentiated Carcinoma of the Uterus",
+      "zh": "子宫低分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UPECOMA",
+      "en": "Uterine Perivascular Epithelioid Cell Tumor",
+      "zh": "子宫血管周上皮样细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:URCA",
+      "en": "Urachal Carcinoma",
+      "zh": "脐尿管癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:URCC",
+      "en": "Unclassified Renal Cell Carcinoma",
+      "zh": "未分类肾细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:URMM",
+      "en": "Mucosal Melanoma of the Urethra",
+      "zh": "尿道黏膜黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:USARC",
+      "en": "Uterine Sarcoma/Mesenchymal",
+      "zh": "子宫肉瘤／间叶性肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:USC",
+      "en": "Uterine Serous Carcinoma/Uterine Papillary Serous Carcinoma",
+      "zh": "子宫浆液性癌／子宫乳头状浆液性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:USCC",
+      "en": "Urethral Squamous Cell Carcinoma",
+      "zh": "尿道鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:USMT",
+      "en": "Uterine Smooth Muscle Tumor",
+      "zh": "子宫平滑肌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:USTAD",
+      "en": "Undifferentiated Stomach Adenocarcinoma",
+      "zh": "胃未分化腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:USTUMP",
+      "en": "Uterine Smooth Muscle Tumor of Uncertain Malignant Potential",
+      "zh": "恶性潜能未定的子宫平滑肌肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UUC",
+      "en": "Uterine Undifferentiated Carcinoma",
+      "zh": "子宫未分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:UUS",
+      "en": "Undifferentiated Uterine Sarcoma",
+      "zh": "子宫未分化肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VA",
+      "en": "Vaginal Adenocarcinoma",
+      "zh": "阴道腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VDYS",
+      "en": "Dysgerminoma",
+      "zh": "无性细胞瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VGCE",
+      "en": "Villoglandular Adenocarcinoma of the Cervix",
+      "zh": "宫颈绒毛腺状腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VGCT",
+      "en": "Germ Cell Tumor of the Vulva",
+      "zh": "外阴生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VIMT",
+      "en": "Immature Teratoma",
+      "zh": "未成熟性畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VMA",
+      "en": "Mucinous Adenocarcinoma of the Vulva/Vagina",
+      "zh": "外阴／阴道黏液腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VMGCT",
+      "en": "Mixed Germ Cell Tumor",
+      "zh": "混合性生殖细胞肿瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VMM",
+      "en": "Mucosal Melanoma of the Vulva/Vagina",
+      "zh": "外阴／阴道黏膜黑色素瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VMT",
+      "en": "Mature Teratoma",
+      "zh": "成熟性畸胎瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VOEC",
+      "en": "Embryonal Carcinoma",
+      "zh": "胚胎性癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VPDC",
+      "en": "Poorly Differentiated Vaginal Carcinoma",
+      "zh": "阴道低分化癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VPE",
+      "en": "Polyembryoma",
+      "zh": "多胚瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VPSCC",
+      "en": "Verrucous Penile Squamous Cell Carcinoma",
+      "zh": "阴茎疣状鳞状细胞癌",
+      "status": "project_draft",
+      "review_note": "对应 Verrucous，不能与 WPSCC 的 Warty 型合并。"
+    },
+    {
+      "identifier": "ONCOTREE:VSC",
+      "en": "Squamous Cell Carcinoma of the Vulva/Vagina",
+      "zh": "外阴／阴道鳞状细胞癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:VYST",
+      "en": "Yolk Sac Tumor",
+      "zh": "卵黄囊瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:WDLS",
+      "en": "Well-Differentiated Liposarcoma",
+      "zh": "高分化脂肪肉瘤",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:WDTC",
+      "en": "Well-Differentiated Thyroid Cancer",
+      "zh": "高分化甲状腺癌",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:WM",
+      "en": "Waldenstrom Macroglobulinemia",
+      "zh": "华氏巨球蛋白血症",
+      "status": "project_draft"
+    },
+    {
+      "identifier": "ONCOTREE:WPSCC",
+      "en": "Warty Penile Squamous Cell Carcinoma",
+      "zh": "阴茎疣状（Warty 型）鳞状细胞癌",
+      "status": "project_draft",
+      "review_note": "保留 Warty 型区分，避免与另一节点 VPSCC 的 Verrucous 型合并。"
+    },
+    {
+      "identifier": "ONCOTREE:XGA",
+      "en": "Xanthogranuloma",
+      "zh": "黄色肉芽肿",
+      "status": "project_draft"
+    }
+  ],
+  "untranslated": []
+}

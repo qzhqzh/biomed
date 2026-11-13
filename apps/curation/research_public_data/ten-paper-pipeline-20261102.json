@@ -1,0 +1,456 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "ten-paper-pipeline-20261102",
+  "title": "025 · 十篇文献批量提取与目标结构验收",
+  "date": "2026-11-02",
+  "stage": "knowledge",
+  "status": "unscored",
+  "sample_count": 12,
+  "sample_unit": "篇",
+  "summary": "3 个来源批次，共 12 篇去重文献，210 条提取记录：结构合格 184、结构待处理 26、结构排除 0、结构未知 0；执行完成 188、部分完成 11、失败 11、未知 0；1 条离线目标结构检查通过。结构与执行状态分别统计，均不代表语义正确或真实目标匹配。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "literature-batch-research-v1",
+    "sample_versions": [
+      "45cf3c16d5d9e25ef8242df1ba8de834f7d3e41642c859b7cf6983be430408a1",
+      "25b8a3b8a2e86b1e51f27bf6a64b40b5df10b0a87a47f7b9e4ba01236f937467",
+      "55616aa947dec89108793d05e6d7bd9d25a6777c656e87e9e2fb52318b71f911",
+      "69c8fe036811345ceb2c6ccf3449cd6fdf5c34c2af7e2be314f7f22880ef1f7a",
+      "f5a837a5c43623bff396999eaacd7325c528862d3c42b4f80e3a9b22161098ae",
+      "d90f91c59cf6af872faa3e8a2f0109da031437949e0dc84eabfcadff0ee6250c",
+      "4775a2488f20fcf84a3a1fd6c32dfc1fd608ac9b04963fc97da31a37b2f17b1e",
+      "6f1b71fef9135b0c2f11953462e2a0d41537d3fd4a84f2fbddc97f70c85087c0",
+      "b993f8de1979144f17d44064bc5032978fe8af0975dd7cdc3e79509638247df7",
+      "4d209f7f54d291fa78093fa42f69ba2ec2835e133538f6b6164377c1fb0fb266",
+      "69bb6c685ac5e3ae20445d87c99d579628743d8b097c35e735c99b92e004a1c0",
+      "1424a152500e6d69fa9f4e665421d40f02b4586a6a7149217e92c65df26d5dea",
+      "a706b3d1f78d779e90170831bef5a01660e0960e77947b80656271e4854867cb",
+      "7be8b5de0a6c9c6c1284f37c59fae2c7bc93649511659d59dca052d1b039e05f",
+      "9dbd31e0bc21620c6fa2bf1a161d76d2a5585ff9c8bc3e04436dab5aa941ca4d",
+      "cbdcff64ab9cc993f9a18093d3bae0f43ff8b03738bcfc6339d6a68391caeaca",
+      "7ba0f2776fcca8337e0956bd10f6f869fa1159759cd0654870c2881432098263",
+      "70272cb7d23d859d265f08f11a9a396eecf452850b1d39dd2ca1d2a70933a654",
+      "48c3717311e63240e066d2524985f72b92fc1161b38e2d96a96d709b40953377"
+    ],
+    "method_versions": [
+      "9781fc6cd80c9eb1907030b81e32ea9618873f6e843e00012028be13ecef22ea"
+    ],
+    "reference_versions": [
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737",
+      "77492ac67f001368a7561afcf1d04fc5db07ca4d40bf5b6854684fba0a24c6f2",
+      "a7baddff5e854c5f3ba6ad7b29fc14d0c5505349ec49d428f56d789ddb8b9c51",
+      "ff2788fff0b9a1deeb94fd0577c19cfa33058233e81e36e95b1373e2387ec139",
+      "a24c454c2813afc10cdf6ff6cb2811e7d9f69c9b09081356230256bd29c02ae7"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "这些真实文献的已保存知识如何映射到冻结目标契约与字典？",
+    "outputs": [
+      "逐篇分类与执行、结构状态统计",
+      "目标实体、分子条件和治疗逻辑的离线兼容结果",
+      "原始记录及可回查的原文出处"
+    ],
+    "not_measured": [
+      "未计算提取准确率或全文召回率",
+      "未重新调用模型或自动执行质量审核",
+      "未向目标系统写入或验证真实样本匹配"
+    ]
+  },
+  "dataset": {
+    "label": "3 个目的性来源批次，12 篇去重文献",
+    "role": "compatibility_preview",
+    "document_count": 12
+  },
+  "reference": {
+    "label": "冻结目标字典与离线结构契约",
+    "status": "snapshot",
+    "note": "目标字典可能只包含部分变异键；结构检查、知识质量和真实匹配各自独立。"
+  },
+  "methods": [
+    {
+      "id": "literature-batch-research-v1",
+      "label": "已保存知识的离线目标兼容核对",
+      "version": "literature-batch-research-v1",
+      "conclusion": "所有状态来自实际批次文件；无目标写入或自动语义审核。",
+      "metrics": [
+        {
+          "label": "主批10篇 · 输入文章",
+          "value": 10,
+          "note": "按该批逐篇分类 ledger 计数，含未生成知识的文章。"
+        },
+        {
+          "label": "主批10篇 · 提取记录",
+          "value": 182,
+          "note": "包含待处理及失败占位记录，不等同于成功知识。"
+        },
+        {
+          "label": "主批10篇 · 结构合格候选",
+          "value": 160,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "主批10篇 · 结构待处理",
+          "value": 22,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "主批10篇 · 结构排除",
+          "value": 0,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "主批10篇 · 结构未知",
+          "value": 0,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "主批10篇 · 执行完成",
+          "value": 164,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "主批10篇 · 执行部分完成",
+          "value": 11,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "主批10篇 · 执行失败",
+          "value": 7,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "主批10篇 · 执行未知",
+          "value": 0,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "主批10篇 · 离线结构通过",
+          "value": 0,
+          "note": "不代表目标实际匹配、导入或临床适用。"
+        },
+        {
+          "label": "主批10篇 · 元数据分类 · 已处理输入",
+          "value": 10,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "主批10篇 · 元数据分类 · 推理累计（秒）",
+          "value": 9.78692,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included。"
+        },
+        {
+          "label": "主批10篇 · 元数据分类 · NVML 进程峰值（MiB）",
+          "value": 9442.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "主批10篇 · 全文段落筛选 · 已处理输入",
+          "value": 404,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "主批10篇 · 全文段落筛选 · 推理累计（秒）",
+          "value": 418.585451,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included and reported separately。"
+        },
+        {
+          "label": "主批10篇 · 全文段落筛选 · NVML 进程峰值（MiB）",
+          "value": 19634.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "主批10篇 · 实体抽取 · 已处理输入",
+          "value": 182,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "主批10篇 · 实体抽取 · 推理累计（秒）",
+          "value": 6258.024484,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included。 来源标记为断点续跑。"
+        },
+        {
+          "label": "主批10篇 · 实体抽取 · NVML 进程峰值（MiB）",
+          "value": 19916.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。 来源标记为断点续跑。"
+        },
+        {
+          "label": "主批10篇 · 关系抽取 · 已处理输入",
+          "value": 176,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "主批10篇 · 关系抽取 · 推理累计（秒）",
+          "value": 3305.007655,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch1 HTTP template/tokenization + inference + validation; no prompt cache; excludes load/warmup。"
+        },
+        {
+          "label": "主批10篇 · 关系抽取 · NVML 进程峰值（MiB）",
+          "value": 7922.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "主批10篇 · 全文补判 · 已处理输入",
+          "value": 1,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "主批10篇 · 全文补判 · 推理累计（秒）",
+          "value": 3.028808,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included。"
+        },
+        {
+          "label": "主批10篇 · 全文补判 · NVML 进程峰值（MiB）",
+          "value": 15246.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "ctDNA边界对照 · 输入文章",
+          "value": 1,
+          "note": "按该批逐篇分类 ledger 计数，含未生成知识的文章。"
+        },
+        {
+          "label": "ctDNA边界对照 · 提取记录",
+          "value": 25,
+          "note": "包含待处理及失败占位记录，不等同于成功知识。"
+        },
+        {
+          "label": "ctDNA边界对照 · 结构合格候选",
+          "value": 21,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "ctDNA边界对照 · 结构待处理",
+          "value": 4,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "ctDNA边界对照 · 结构排除",
+          "value": 0,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "ctDNA边界对照 · 结构未知",
+          "value": 0,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "ctDNA边界对照 · 执行完成",
+          "value": 21,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "ctDNA边界对照 · 执行部分完成",
+          "value": 0,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "ctDNA边界对照 · 执行失败",
+          "value": 4,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "ctDNA边界对照 · 执行未知",
+          "value": 0,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "ctDNA边界对照 · 离线结构通过",
+          "value": 0,
+          "note": "不代表目标实际匹配、导入或临床适用。"
+        },
+        {
+          "label": "ctDNA边界对照 · 元数据分类 · 已处理输入",
+          "value": 1,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "ctDNA边界对照 · 元数据分类 · 推理累计（秒）",
+          "value": 0.965093,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included。"
+        },
+        {
+          "label": "ctDNA边界对照 · 元数据分类 · NVML 进程峰值（MiB）",
+          "value": 9282.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "ctDNA边界对照 · 全文段落筛选 · 已处理输入",
+          "value": 44,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "ctDNA边界对照 · 全文段落筛选 · 推理累计（秒）",
+          "value": 49.310138,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included and reported separately。"
+        },
+        {
+          "label": "ctDNA边界对照 · 全文段落筛选 · NVML 进程峰值（MiB）",
+          "value": 19886.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "ctDNA边界对照 · 实体抽取 · 已处理输入",
+          "value": 25,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "ctDNA边界对照 · 实体抽取 · 推理累计（秒）",
+          "value": 1378.222513,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included。"
+        },
+        {
+          "label": "ctDNA边界对照 · 实体抽取 · NVML 进程峰值（MiB）",
+          "value": 19762.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "ctDNA边界对照 · 关系抽取 · 已处理输入",
+          "value": 21,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "ctDNA边界对照 · 关系抽取 · 推理累计（秒）",
+          "value": 384.804791,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch1 HTTP template/tokenization + inference + validation; no prompt cache; excludes load/warmup。"
+        },
+        {
+          "label": "ctDNA边界对照 · 关系抽取 · NVML 进程峰值（MiB）",
+          "value": 7854.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 输入文章",
+          "value": 1,
+          "note": "按该批逐篇分类 ledger 计数，含未生成知识的文章。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 提取记录",
+          "value": 3,
+          "note": "包含待处理及失败占位记录，不等同于成功知识。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 结构合格候选",
+          "value": 3,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 结构待处理",
+          "value": 0,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 结构排除",
+          "value": 0,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 结构未知",
+          "value": 0,
+          "note": "直接取自结构状态；结构合格不代表语义正确。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 执行完成",
+          "value": 3,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 执行部分完成",
+          "value": 0,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 执行失败",
+          "value": 0,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 执行未知",
+          "value": 0,
+          "note": "执行状态与结构状态分别统计。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 离线结构通过",
+          "value": 1,
+          "note": "不代表目标实际匹配、导入或临床适用。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 元数据分类 · 已处理输入",
+          "value": 1,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 元数据分类 · 推理累计（秒）",
+          "value": 1.141044,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 元数据分类 · NVML 进程峰值（MiB）",
+          "value": 9386.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 全文段落筛选 · 已处理输入",
+          "value": 33,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 全文段落筛选 · 推理累计（秒）",
+          "value": 35.386985,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included and reported separately。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 全文段落筛选 · NVML 进程峰值（MiB）",
+          "value": 19184.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 实体抽取 · 已处理输入",
+          "value": 3,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 实体抽取 · 推理累计（秒）",
+          "value": 66.31175,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch=1 tokenization + transfers + inference + decoding/validation; excludes writes/load/warmup; input-too-long checks included。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 实体抽取 · NVML 进程峰值（MiB）",
+          "value": 18588.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 关系抽取 · 已处理输入",
+          "value": 3,
+          "note": "阶段 summary 的 processed，可能包含失败或截断，不等同于有效知识数。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 关系抽取 · 推理累计（秒）",
+          "value": 60.809081,
+          "note": "阶段 summary 的 total_inference_seconds；不是包含加载、预热和暂停的总墙钟时间。 原始计时范围：warm batch1 HTTP template/tokenization + inference + validation; no prompt cache; excludes load/warmup。"
+        },
+        {
+          "label": "单药试验验收（限3片段） · 关系抽取 · NVML 进程峰值（MiB）",
+          "value": 8002.0,
+          "note": "阶段 summary 的 NVML 采样进程显存峰值（MiB），不是整机显存使用量。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "对未决目标条件及实体保留原始证据，按实际需要独立核对。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/ten-paper-pipeline-20261102.json",
+      "sha256": "ee829529a69bb1dead640a477fd97330078be66d8302a74875c8c5bda42be7e9"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "b575b30f57da73455661dc27ea58b4e282a753341fd6768eedb2d6b8dd3a2e11",
+  "content_sha256": "90e10aed8c53051266565c624aafe13f388a2cad6862cb9820e2adb7b650096c"
+}

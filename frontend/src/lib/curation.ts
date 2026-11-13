@@ -29,6 +29,16 @@ export type Concept = {
   synonyms: string[];
   cross_references: string[];
   parents: string[];
+  child_count?: number;
+  translations?: {
+    label: string;
+    language: string;
+    provider: string;
+    status: "reference" | "project_draft" | "confirmed";
+    source_url: string;
+    source_version: string;
+    match_basis: string;
+  }[];
 };
 export type Material = {
   id: string;
@@ -141,6 +151,8 @@ export const STATES: Record<string, string> = {
   retry: "自动重试",
 };
 export const KINDS: Record<string, string> = {
+  notify_collection: "采集告警邮件",
+  collect_literature: "批量文献采集步骤",
   sync_standard: "更新标准库",
   pubmed_search: "PubMed 检索",
   acquire_pubmed: "获取文献元数据",
@@ -184,33 +196,52 @@ export function useCuration<T>(path: string | null, interval = 0) {
   const [revision, setRevision] = useState(0);
   const [loading, setLoading] = useState(Boolean(path));
   useEffect(() => {
-    const controller = new AbortController();
+    let controller: AbortController | null = null;
+    let disposed = false;
+    let hasLoaded = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
     setData(null);
     setError("");
     setLoading(Boolean(path));
-    if (!path) return () => controller.abort();
+    if (!path) return;
     async function load() {
+      if (disposed || document.hidden) return;
+      clearTimeout(timer);
+      controller?.abort();
+      const request = new AbortController();
+      controller = request;
       try {
-        const result = await curation<T>(path!, { signal: controller.signal });
-        if (!controller.signal.aborted) {
+        const result = await curation<T>(path!, { signal: request.signal });
+        if (!disposed && !request.signal.aborted) {
+          hasLoaded = true;
           setData(result);
           setError("");
         }
       } catch (err) {
-        if (!controller.signal.aborted)
+        if (!disposed && !request.signal.aborted)
           setError(err instanceof Error ? err.message : "读取失败");
       } finally {
-        if (!controller.signal.aborted) {
+        if (!disposed && !request.signal.aborted) {
           setLoading(false);
-          if (interval) timer = setTimeout(load, interval);
+          if (interval && !document.hidden) timer = setTimeout(load, interval);
         }
       }
     }
+    function visibility() {
+      if (document.hidden) {
+        clearTimeout(timer);
+        controller?.abort();
+      } else if (interval || !hasLoaded) {
+        void load();
+      }
+    }
+    document.addEventListener("visibilitychange", visibility);
     void load();
     return () => {
-      controller.abort();
+      disposed = true;
+      controller?.abort();
       clearTimeout(timer);
+      document.removeEventListener("visibilitychange", visibility);
     };
   }, [path, revision, interval]);
   return { data, error, loading, refresh: () => setRevision((v) => v + 1) };

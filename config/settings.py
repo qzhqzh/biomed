@@ -1,10 +1,12 @@
 """Django settings for biomed."""
 
-from pathlib import Path
 import os
 import sys
+from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
+
+from config.static_assets import immutable_file_test
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -18,6 +20,10 @@ def env_bool(name: str, default: bool = False) -> bool:
 
 IS_TESTING = "test" in sys.argv or "pytest" in Path(sys.argv[0]).name.lower()
 DEBUG = env_bool("DJANGO_DEBUG", False)
+BIOMED_REQUIRE_LOGIN = env_bool("BIOMED_REQUIRE_LOGIN", False)
+BIOMED_ALL_AUTHENTICATED_CAN_REVIEW = env_bool(
+    "BIOMED_ALL_AUTHENTICATED_CAN_REVIEW", False
+)
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "").strip()
 if not SECRET_KEY:
@@ -82,9 +88,18 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "apps.portal.access.RequireWorkbenchLoginMiddleware",
+    "apps.portal.access.EnforceApiSessionCsrfMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "apps.portal.access.WorkbenchPermissionsBackend",
+]
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
 
 ROOT_URLCONF = "config.urls"
 
@@ -130,6 +145,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+WHITENOISE_IMMUTABLE_FILE_TEST = immutable_file_test
 # This project is currently served over plain HTTP on a trusted LAN. Browsers
 # ignore COOP on non-trustworthy origins, so do not emit a misleading header.
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
@@ -268,7 +284,21 @@ EVIDENCE_API_URL = os.environ.get("EVIDENCE_API_URL", "http://127.0.0.1:18765")
 
 # Versioned document storage and the optional, explicitly configured model adapter.
 CURATION_STORAGE_DIR = Path(os.environ.get("CURATION_STORAGE_DIR", BASE_DIR / "var" / "library"))
+TRANSCRIPT_STRUCTURE_DIR = Path(os.environ.get(
+    "TRANSCRIPT_STRUCTURE_DIR", CURATION_STORAGE_DIR / "reference" / "transcript-structures"
+))
+if os.environ.get("BIOMED_STORAGE_MARKER") and not IS_TESTING:
+    for storage_path in (Path(DATABASES["default"]["NAME"]).parent, CURATION_STORAGE_DIR):
+        try:
+            marker = (storage_path / ".biomed-storage").read_text().strip()
+        except OSError as exc:
+            raise ImproperlyConfigured("biomed 持久存储未挂载，拒绝创建空数据库或资料库") from exc
+        if marker != os.environ["BIOMED_STORAGE_MARKER"]:
+            raise ImproperlyConfigured("biomed 持久存储身份不符，拒绝启动")
 CURATION_MODEL_BACKEND = os.environ.get("CURATION_MODEL_BACKEND", "")
+CURATION_MAIL_CONFIG = Path(os.environ.get(
+    "CURATION_MAIL_CONFIG", BASE_DIR / "var" / "private" / "collection-mail" / "config.json"
+))
 CURATION_POLICY_VERSION = "ai-publish-human-audit-v1"
 FILE_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024
 FILE_UPLOAD_HANDLERS = [

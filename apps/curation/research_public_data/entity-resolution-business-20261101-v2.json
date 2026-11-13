@@ -1,0 +1,213 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "entity-resolution-business-20261101-v2",
+  "title": "023 · 癌种主类业务口径（v2）",
+  "date": "2026-11-01T07:42:10.223374+00:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 20,
+  "sample_unit": "项（14疾病＋5药物＋1独立挑战）",
+  "summary": "按用户定义重评原输出：14个疾病中，9B主类字段直接正确13/14，Bonsai 14/14；药物5项单列。字段完整度不否决主类正确，本环节建议Bonsai 2 27B。",
+  "task_kind": "entity_resolution",
+  "identity": {
+    "task_version": "entity-resolution-business-v2",
+    "sample_versions": [
+      "7c9a6ace2185e48c809d5e22faaca57450c4fb82c961f8a3e52d586428c876e5"
+    ],
+    "method_versions": [
+      "bonsai2-27b:463e25287432425abe514ff36d3b488782c145c04a43ad394a99fcafd5f79cfb",
+      "qwen35-9b:a97332b92ba8f6b2e4118052fb91c059e35bc8df625e12d0845c17aba1c98f50"
+    ],
+    "reference_versions": [
+      "6944c67a37411ca078e1ba5a0da6c3c9d9b691bd25f95788268067ca3070b2f9",
+      "business-policy:7f4b5e784d060684415bee5ee262fd1077d6511cf83c23545a1791b2ef4832d4",
+      "candidate-main-map:91af0513417658a67b956cdea48450d77b64e5a827560bb9dbe0980286298391"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "癌种是否归到正确主类（如前列腺癌）；药物判断是否正确？",
+    "outputs": [
+      "主癌种字段正确且可用；字典回填另列",
+      "药物明确匹配与正确保留未决分开",
+      "亚型、分期／限定和出处字段完整度独立显示"
+    ],
+    "not_measured": [
+      "新样本泛化或新推理性能",
+      "改变实体库确认状态、原知识或生产导入",
+      "之前9B从原文抽取实体任务的选型"
+    ]
+  },
+  "dataset": {
+    "label": "现有30条知识中的实体名称开发集",
+    "role": "development"
+  },
+  "reference": {
+    "label": "用户确认的主类业务口径＋原冻结参考",
+    "status": "model_reference_not_human_gold",
+    "note": "这是看到原输出后，按用户澄清的验收目标重新评分；非新的盲测。仅改计分，原模型输出和历史严格记录保留。"
+  },
+  "methods": [
+    {
+      "id": "qwen35-9b",
+      "label": "Qwen3.5-9B",
+      "version": "qwen35-9b:a97332b92ba8f6b2e4118052fb91c059e35bc8df625e12d0845c17aba1c98f50",
+      "conclusion": "保留对照；主类字段问题与扩展信息完整度分别处理。",
+      "metrics": [
+        {
+          "label": "疾病：主癌种字段直接正确",
+          "numerator": 13,
+          "denominator": 14,
+          "note": "主要指标。主类正确即可；不要求亚型、分期或限定同时完整。解释提及但主类字段为空，单列待组装。"
+        },
+        {
+          "label": "疾病：本地字典回填后主类正确",
+          "numerator": 13,
+          "denominator": 14,
+          "note": "包含直接正确项；本次额外回填 0 项。只用原输出实体候选与冻结层级映射，不从解释补答案。"
+        },
+        {
+          "label": "疾病：解释已识别、字段待组装",
+          "value": 1,
+          "unit": "项",
+          "note": "不属于医学概念认错；没有计入直接可用主类字段。"
+        },
+        {
+          "label": "药物：判断符合参考",
+          "numerator": 1,
+          "denominator": 5,
+          "note": "药物单独计分。其中明确匹配成分 1 项，正确保留未决 0 项；未决不等于已找到药物。"
+        },
+        {
+          "label": "药物：明确匹配具体成分",
+          "value": "1 / 5",
+          "note": "只计选对已有具体药物的MATCH结果。"
+        },
+        {
+          "label": "独立DMG挑战：主癌种字段正确",
+          "value": "1 / 1",
+          "note": "挑战单列，不纳入14个实际疾病原词。"
+        },
+        {
+          "label": "疾病：独立扩展字段填报完整",
+          "numerator": 9,
+          "denominator": 14,
+          "note": "独立亚型字段、必要限定和出处格式的填报状态；candidate_id已表达亚型但独立字段缺填仍标待组装，不代表未识别亚型，不否决主类正确。"
+        },
+        {
+          "label": "独立亚型字段已填写且符合参考",
+          "numerator": 0,
+          "denominator": 4,
+          "note": "仅以确有亚型字段要求的原词为分母，不影响主类正确。candidate_id中已有亚型身份与此重复字段的填报分开评价，不能称作亚型识别率。"
+        },
+        {
+          "label": "限定字段已填写且符合参考",
+          "numerator": 9,
+          "denominator": 10,
+          "note": "仅以确有限定字段要求的原词为分母，不影响主类正确。"
+        },
+        {
+          "label": "原19项暖推理耗时",
+          "value": 282.381,
+          "unit": "秒",
+          "note": "复用原测量：14疾病＋5药物，不含独立挑战、加载与预热；此次没有再次推理。"
+        },
+        {
+          "label": "原运行进程峰值显存",
+          "value": 20.0,
+          "unit": "GiB",
+          "note": "复用原20项测量；两模型量化／运行时不同。"
+        }
+      ]
+    },
+    {
+      "id": "bonsai2-27b",
+      "label": "Bonsai 2 27B",
+      "version": "bonsai2-27b:463e25287432425abe514ff36d3b488782c145c04a43ad394a99fcafd5f79cfb",
+      "conclusion": "按当前主类业务口径，建议用于本环节的实体归一歧义处理。",
+      "metrics": [
+        {
+          "label": "疾病：主癌种字段直接正确",
+          "numerator": 14,
+          "denominator": 14,
+          "note": "主要指标。主类正确即可；不要求亚型、分期或限定同时完整。解释提及但主类字段为空，单列待组装。"
+        },
+        {
+          "label": "疾病：本地字典回填后主类正确",
+          "numerator": 14,
+          "denominator": 14,
+          "note": "包含直接正确项；本次额外回填 0 项。只用原输出实体候选与冻结层级映射，不从解释补答案。"
+        },
+        {
+          "label": "疾病：解释已识别、字段待组装",
+          "value": 0,
+          "unit": "项",
+          "note": "不属于医学概念认错；没有计入直接可用主类字段。"
+        },
+        {
+          "label": "药物：判断符合参考",
+          "numerator": 3,
+          "denominator": 5,
+          "note": "药物单独计分。其中明确匹配成分 1 项，正确保留未决 2 项；未决不等于已找到药物。"
+        },
+        {
+          "label": "药物：明确匹配具体成分",
+          "value": "1 / 5",
+          "note": "只计选对已有具体药物的MATCH结果。"
+        },
+        {
+          "label": "独立DMG挑战：主癌种字段正确",
+          "value": "1 / 1",
+          "note": "挑战单列，不纳入14个实际疾病原词。"
+        },
+        {
+          "label": "疾病：独立扩展字段填报完整",
+          "numerator": 12,
+          "denominator": 14,
+          "note": "独立亚型字段、必要限定和出处格式的填报状态；candidate_id已表达亚型但独立字段缺填仍标待组装，不代表未识别亚型，不否决主类正确。"
+        },
+        {
+          "label": "独立亚型字段已填写且符合参考",
+          "numerator": 2,
+          "denominator": 4,
+          "note": "仅以确有亚型字段要求的原词为分母，不影响主类正确。candidate_id中已有亚型身份与此重复字段的填报分开评价，不能称作亚型识别率。"
+        },
+        {
+          "label": "限定字段已填写且符合参考",
+          "numerator": 10,
+          "denominator": 10,
+          "note": "仅以确有限定字段要求的原词为分母，不影响主类正确。"
+        },
+        {
+          "label": "原19项暖推理耗时",
+          "value": 197.284,
+          "unit": "秒",
+          "note": "复用原测量：14疾病＋5药物，不含独立挑战、加载与预热；此次没有再次推理。"
+        },
+        {
+          "label": "原运行进程峰值显存",
+          "value": 7.82,
+          "unit": "GiB",
+          "note": "复用原20项测量；两模型量化／运行时不同。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "后续按主类可用性与字段完整度分别核对；只处理实际出现的缺口。",
+    "药物候选同义词和药物专用判断仍需独立完善，未决药物不自动录入。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/entity-resolution-business-20261101-v2.json",
+      "sha256": "287b6be5b8b216045354908b3ec4ec1c43cb4c88956402e98de6f99d17d656e7"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "d4e7c7983f57853efe0659016b5a85405efd764e8027f920495d89ecaf72bccc",
+  "content_sha256": "2f84a0622dbdd7864f9a1edc30a9d40f13f04c956f0b883e6ef58fba4aedc461"
+}

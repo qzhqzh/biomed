@@ -1,0 +1,232 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "core-knowledge-20261029",
+  "title": "012 · 原文药名与主癌种知识收录",
+  "date": "2026-10-29T18:44:44+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同业务口径核心通过9/15→13/15，中心段有效覆盖6/15→12/15；大小写对齐后核心通过14/15，导出13条研究知识。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "core-knowledge-evaluation-v2",
+    "completeness": "frozen",
+    "sample_versions": [
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8",
+      "58f20161bd46ac0f5397477818083349ec24b82037c31fb133b878c59e7600a5"
+    ],
+    "method_versions": [
+      "afea1802cacb1386ebd778df15d474dec54784c7d8b6b0f8b24ae2fadfa8a3bb",
+      "3499aac88aa8051d6a5335ff84ddbbe3969af11e56a39ac117d8bb126549ab9d",
+      "4105a4f7c7e325f639c5ff57e48494b7e5d2d4dce4f2df5ffcfb2f2eaa749f59",
+      "d1819d1c07e8192913c2fabe429866b90af7683f08c36c6d3d9e2bb086988bbd",
+      "66691e110a75a3d1e04def923160304cf6aaef4dfcfd506f98e7aafaf17a0304",
+      "6303439c36d49e4a6a472778d484d9be88e3d8cedecfedae41ecfb05fa9c03e6",
+      "6bca11ff4a8de39793eda34143a6bd62b8bd828db30b22acdd9afcba2ad3493c",
+      "84dec4f5a04aacf513b6764fe58c01e4bc5f7ca90a71eafe205945cdf368baab"
+    ],
+    "reference_versions": [
+      "a6ff7b0c0e3a90b5c3960d0894bf896da4971b98d177fe6ace918f705ed8067e",
+      "a29f8561dadb0f3417b56ec7e6ad8152f9355bdd40b1d62747f805d8c493284e"
+    ]
+  },
+  "task": {
+    "question": "保留具体原名、将主癌种作为业务关联后，一次9B能形成多少可用知识？",
+    "outputs": [
+      "原始核心事实及具体药名",
+      "同政策新旧对照",
+      "实体类型分流与两层出处",
+      "带未决项的研究条目导出"
+    ],
+    "not_measured": [
+      "全库泛化或全文召回率",
+      "临床适用性",
+      "生产接口导入",
+      "人工修订耗时",
+      "微调效果"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇15组开发回归集",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "实际gpt-6-astra业务口径参考及逐条核验",
+    "status": "model_reference_not_human_gold",
+    "note": "011按同一政策重评后再对照012；实际模型参考，不是人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "old",
+      "label": "011旧输出按新业务口径重评",
+      "version": "core-knowledge-intake-v1",
+      "conclusion": "同一政策成对比较；011原严格评分保持不变。",
+      "metrics": [
+        {
+          "label": "核心内容及原名通过",
+          "numerator": 9,
+          "denominator": 15,
+          "note": "按相同新业务口径。阶段/剂量细节缺失可延后，实际错事实仍拦截。"
+        },
+        {
+          "label": "主事实语义有原文支持",
+          "numerator": 10,
+          "denominator": 15,
+          "note": "语义与逐字药名/技术格式分开；不代表临床适用。"
+        },
+        {
+          "label": "药名字面保留",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "全名、缩写及大小写按输入原文；不等于drug_names里每项类型都正确。"
+        },
+        {
+          "label": "核心通过且中心段命中",
+          "numerator": 6,
+          "denominator": 15,
+          "note": "通过但取到背景事实另计，不能当中心段覆盖。"
+        }
+      ]
+    },
+    {
+      "id": "new",
+      "label": "012原文药名＋中心段后置",
+      "version": "core-knowledge-intake-v1",
+      "conclusion": "输入顺序与提示同时调整，不能把收益归因到单一改动。",
+      "metrics": [
+        {
+          "label": "核心内容及原名通过",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "按相同新业务口径。阶段/剂量细节缺失可延后，实际错事实仍拦截。"
+        },
+        {
+          "label": "主事实语义有原文支持",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "语义与逐字药名/技术格式分开；不代表临床适用。"
+        },
+        {
+          "label": "药名字面保留",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "全名、缩写及大小写按输入原文；不等于drug_names里每项类型都正确。"
+        },
+        {
+          "label": "核心通过且中心段命中",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "通过但取到背景事实另计，不能当中心段覆盖。"
+        }
+      ]
+    },
+    {
+      "id": "assembly",
+      "label": "脚本组装、类型分流与可导出条目",
+      "version": "core-knowledge-name-resolution-evaluation-v1",
+      "conclusion": "导出含原始事实、具体原词药名、方案/类别/非药词、主癌种、文章及原段落；标准ID候选与原名分存。",
+      "metrics": [
+        {
+          "label": "名称对齐后核心通过",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "仅解除已有语义支持的大小写差异；保留原始评分，不重新调用模型。"
+        },
+        {
+          "label": "结构与定位通过",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "包含显式的无损格式兼容；未改原模型事实。"
+        },
+        {
+          "label": "核心与技术均通过",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "卡片通过状态按此口径；阻断条目仍完整保留供研究。"
+        },
+        {
+          "label": "研究条目导出",
+          "value": 13,
+          "unit": "条",
+          "note": "来自5篇文献；只合并字面完全相同事实，语义重叠单列，不能称为全部独立知识。"
+        },
+        {
+          "label": "名称对齐及重新组装投影",
+          "value": 0.028,
+          "unit": "秒",
+          "note": "15组脚本处理，包含对齐验证和组装投影，不含文件写入。"
+        },
+        {
+          "label": "新增修复模型调用",
+          "value": 0,
+          "unit": "次",
+          "note": "类型分流只读既有实体和选中原词；不补未选药、不推断联合关系。"
+        }
+      ]
+    },
+    {
+      "id": "cost",
+      "label": "保持每组一次9B，复用上游实体",
+      "version": "single-pass-9b-v1",
+      "conclusion": "主干仍为已有实体＋一次9B抽取＋脚本；不引入全量模型修订链。",
+      "metrics": [
+        {
+          "label": "本轮9B推理",
+          "value": 616.03,
+          "unit": "秒",
+          "note": "15组；Astra研究参考与审核耗时不包含在此。"
+        },
+        {
+          "label": "上一轮9B推理",
+          "value": 592.94,
+          "unit": "秒",
+          "note": "同15组，运行条件相同，只有一次测量。"
+        },
+        {
+          "label": "模型进程总时长",
+          "value": 695.61,
+          "unit": "秒",
+          "note": "包含加载及预热；不含Astra及导出。"
+        },
+        {
+          "label": "显存进程峰值",
+          "value": 19.68,
+          "unit": "GiB",
+          "note": "GPU3 RTX2080Ti，Qwen3.5-9B FP16，无微调。"
+        },
+        {
+          "label": "任务模型调用",
+          "value": 15,
+          "unit": "次",
+          "note": "每组一次，预热另计；010实体不重跑。"
+        },
+        {
+          "label": "实体＋关系累计处理",
+          "value": 1023.98,
+          "unit": "秒",
+          "note": "010既有实体处理＋本轮推理和组装；未含Astra、投影、冷启动或人工。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留一次9B主干与脚本来源/类型/大小写对齐；下一步处理无位置附加实体，不做全量自由改写。",
+    "研究范围/给药模型错误仍需定向语义核验；对阻断项按需处理，先明确是否有收益和退化。",
+    "完成少量定向修复后换未见论文验证，避免在同15组上继续堆规则；暂不微调、不接入生产。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/core-knowledge-20261029.json",
+      "sha256": "619c8f4922b555a6cc4ff015d421b26145c1f2a608148f0626df180e32cf6571"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "f07cbb3c2189bfc2797575066bda649d411524e0c43fc02504f022a68562c5c0",
+  "content_sha256": "e600acb62f9970ba0f6d1a4e93115604ce6f209cb88b85d5c2cfec15ece2d484"
+}

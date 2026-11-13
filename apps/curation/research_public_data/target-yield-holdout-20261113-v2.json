@@ -1,0 +1,140 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "target-yield-holdout-20261113-v2",
+  "title": "038 · 新文章知识利用率与融合隔离验收",
+  "date": "2026-11-12T20:08:18.805112+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 20,
+  "sample_unit": "篇文献",
+  "summary": "20 篇 58 条旧候选离线通过 0；1 条融合预览通过目标隔离保存和合成匹配，尚未用于生产报告。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "target-yield-holdout-v2",
+    "sample_versions": [
+      "9a0d2592c42e592a6ecf193e609205835735525e420e3a3fc06892e9cd718bc7"
+    ],
+    "method_versions": [
+      "015e16fd679d23044402915486e2b10d95c214e75029041b9b6a56e7e9d88bba",
+      "64aaf0be19b2e192db86c562a4203812fa72e82e457f29a16392754e4e145385"
+    ],
+    "reference_versions": [
+      "e526bc9f18b6960e9a30f24fbd93c0708ccc459dade6e031c1488c23123fa4a3",
+      "eca13517aa7a25cb8689e67d19808ae4b7cd1253311aa45388d5441b0f3a6649",
+      "f4bb4b4a9eec8dd07daaf241382f27a479ad9b55c3cbe02326f96eaa0a0a7cc2",
+      "cfa8d391cc9b322361d672fdf5eb79a63284a316bee193a5603f77f247b8b8af"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "新文章中的结构知识为何未通过目标适配？哪些修复有可核对依据？",
+    "outputs": [
+      "Astra 原文参考及更正",
+      "旧候选复核",
+      "精确融合开发预览",
+      "目标内存库保存及合成正反例"
+    ],
+    "not_measured": [
+      "035 点突变修复在新正例上的效果",
+      "本病例未分级治疗报告消费",
+      "全文召回、全库比例与新模型吞吐",
+      "真实患者适用性"
+    ]
+  },
+  "dataset": {
+    "label": "20 篇全文、58 条旧候选",
+    "role": "bounded_holdout_and_followup_development",
+    "document_count": 20
+  },
+  "reference": {
+    "label": "Astra 原文参考与逐字引用检查",
+    "status": "model_reference_not_human_gold",
+    "note": "初审 7 篇，后续追加综述中的机构病例；原文支持不等于目标可用。"
+  },
+  "methods": [
+    {
+      "id": "reference",
+      "label": "固定文章与原文参考",
+      "version": "target-holdout-v1",
+      "conclusion": "有可提取线索，但参考样本不等于可用知识。",
+      "metrics": [
+        {
+          "label": "初审和补充后有人类分子事件及临床关系",
+          "numerator": 8,
+          "denominator": 20,
+          "note": "至少 8 篇；不等于治疗有效或目标通过。"
+        },
+        {
+          "label": "原文核对的旧候选核心内容获支持",
+          "numerator": 15,
+          "denominator": 30,
+          "note": "有目的选出的 30 条；另 15 条需补充，不是全库准确率。"
+        }
+      ]
+    },
+    {
+      "id": "fusion",
+      "label": "旧适配与精确融合开发",
+      "version": "source-fusion-pair-development-v1",
+      "conclusion": "明确融合不能简单视为单基因泛融合；结果并非独立盲测。",
+      "metrics": [
+        {
+          "label": "旧适配器离线通过",
+          "numerator": 0,
+          "denominator": 58,
+          "note": "仅这 58 条既有候选。"
+        },
+        {
+          "label": "开发得到的未启用融合结构预览",
+          "numerator": 1,
+          "denominator": 58,
+          "note": "看过参考后开发；Astra 核心支持、完整预览部分支持。"
+        }
+      ]
+    },
+    {
+      "id": "target",
+      "label": "目标只读核对及隔离运行",
+      "version": "biomed.target-fusion-memory.v1",
+      "conclusion": "目标能够精确表达该病例核心；目标生产报告与来源条件仍需单独处理。",
+      "metrics": [
+        {
+          "label": "当前目标药物和主癌种 ID 与字典一致",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "只读查询；未查询患者。"
+        },
+        {
+          "label": "目标内存库保存与正确融合匹配",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "保存未启用；匹配仅内存库模拟启用和合成样本。"
+        },
+        {
+          "label": "反向融合、不同伙伴、错误癌种及缺失伙伴未命中",
+          "numerator": 4,
+          "denominator": 4,
+          "note": "合成反例。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "定位新增全文发现的数据库错误，保持查询有界。",
+    "补充未参与开发的新融合正例和反例，比较独立通过数，再考虑后台接入。",
+    "补充 035 点突变修复适用的新正例。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/target-yield-holdout-20261113-v2.json",
+      "sha256": "e47f9f3a0b8992ef270055018cef5d77cb0591f352586ab0674e9e0937f50620"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "1e2ffecdec400f23d3b129b8eb216bb75385610ebb8d7128c03eda10d4f22bcd",
+  "content_sha256": "26109aaffbd72d680727300b1439300906cea390216fd33f7f468f32e8a93097"
+}

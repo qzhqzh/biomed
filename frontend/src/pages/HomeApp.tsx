@@ -26,6 +26,7 @@ import { Separator } from "@/components/ui/separator";
 import { fetchKnowledgeMeta, type KnowledgeMeta } from "@/lib/api";
 import { useCuration, type Overview } from "@/lib/curation";
 import { ErrorMessage } from "@/components/curation/Common";
+import { navigate } from "@/lib/navigation";
 
 function Entry({
   icon: Icon,
@@ -77,10 +78,11 @@ export default function HomeApp() {
   }, []);
   function search(event: FormEvent) {
     event.preventDefault();
-    window.location.href =
+    navigate(
       scope === "gene"
         ? `/knowledge/genes/?q=${encodeURIComponent(query.trim())}`
-        : `/knowledge/${scope === "RXNORM" ? "drugs" : "diseases"}/?q=${encodeURIComponent(query.trim())}`;
+        : `/knowledge/${scope === "RXNORM" ? "drugs" : "diseases"}/?q=${encodeURIComponent(query.trim())}`,
+    );
   }
   const mondo = overview.data?.sources.find(
     (source) => source.namespace === "MONDO",

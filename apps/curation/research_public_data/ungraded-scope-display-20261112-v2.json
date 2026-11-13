@@ -1,0 +1,118 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "ungraded-scope-display-20261112-v2",
+  "title": "037 · 未分级知识查询与文献范围对照（补列案例实体）",
+  "date": "2026-11-12T08:17:23.381227+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 2,
+  "sample_unit": "条知识",
+  "summary": "两条真实文献候选均保持未知等级与药效；不同或缺失研究范围时仍可查看并回溯原文。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "ungraded-scope-display-v2",
+    "sample_versions": [
+      "574cc368ec9c980bf1c713653968b2504000675c2ebea8d9b5175eb03420cb8c"
+    ],
+    "method_versions": [
+      "e2b36fd7657c918e1c43b4adbf5a28c739cdb412ea2963e0da3885815be0eb17",
+      "e4de3b64c79dfd2874acbdd030004216da21e21e68781e3785ceb4c4728017f6"
+    ],
+    "reference_versions": [
+      "bc12bc1b373283f29c1c8ae10014327ed0987ac8c8ad9abeed2988028897d82f",
+      "d5665fca04ff07b714ce10e4b0d84d804e2b4a1d7217b01595ec0f31d32cf573",
+      "98b396617e450f8f10a7ef63c5fdffde402f6576a37978dc45f06501abd6b31d",
+      "872ce02078a6335f2d800b962b79c13900dd6a5ff051d33608c31999cf25ff13"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "未分级、药效未知和研究条件缺失或不一致时，biomed 能否安全展示和查询？",
+    "outputs": [
+      "候选及已发布接口的未知状态",
+      "原文范围一致、不同、未知的页面对照",
+      "来源和查询检查"
+    ],
+    "not_measured": [
+      "其他文章条件抽取的准确率和覆盖率",
+      "真实患者适用性",
+      "目标生产报告支持",
+      "百万文献库压力测试"
+    ]
+  },
+  "dataset": {
+    "label": "两篇真实文献的隔离研究候选",
+    "role": "isolated_display",
+    "document_count": 2
+  },
+  "reference": {
+    "label": "原文定位、隔离 API 和真实浏览器行为",
+    "status": "model_reference_not_human_gold",
+    "note": "沿用 035 的 Astra 原文参考；本次不计算模型准确率，不新增 AI 发布核验。"
+  },
+  "methods": [
+    {
+      "id": "unknowns",
+      "label": "未知等级、药效与发布状态",
+      "version": "biomed.knowledge-presentation.v1",
+      "conclusion": "未知信息可展示并回查，不放宽现有发布门槛。",
+      "metrics": [
+        {
+          "label": "候选查询找到且保持未发布",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "临时库按 PMID 查询；正式发布列表不包含未发布案例。"
+        },
+        {
+          "label": "等级和药效保持未知",
+          "numerator": 4,
+          "denominator": 4,
+          "note": "两条各检查两个字段；不由生存期或部分缓解推断。"
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "label": "原文范围对照与来源",
+      "version": "source-bound-context-v1",
+      "conclusion": "页面只比较明确记录的研究范围，不判断患者适用性。",
+      "metrics": [
+        {
+          "label": "未知、一致和不同的页面行为",
+          "numerator": 6,
+          "denominator": 6,
+          "note": "两条各三种选择；不同和未知均不隐藏知识。"
+        },
+        {
+          "label": "条件能定位到同版原文",
+          "numerator": 2,
+          "denominator": 2,
+          "note": "仅本次固定表达；不代表其他条件已覆盖。"
+        },
+        {
+          "label": "隔离列表查询数",
+          "value": "7 → 7",
+          "unit": "次 SQL",
+          "note": "分别取 1 条和 2 条；非全库压力测试。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "在更多新文章中验证必要条件识别，未识别时继续保留原始信息。",
+    "后续若需要目标生产报告消费未分级知识，应单独解决目标报告限制并评估。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/ungraded-scope-display-20261112-v2.json",
+      "sha256": "1dc8795ae1e13d367e08c155a19b66cdc531ef76bf35816756524736e867a410"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "1df3ff28647556e9afb9931443ad917aa8bbf1eb8ca831033f7954783ce6a46b",
+  "content_sha256": "23a74e436c9d36b44c8ebf7316481408cbc2ceaccc18837d4285a9525b8cfc64"
+}

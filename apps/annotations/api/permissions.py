@@ -24,4 +24,6 @@ class AnnotationRateThrottle(SimpleRateThrottle):
         ident = self.get_ident(request)
         if request.auth:
             ident = f"key:{str(request.auth)[:16]}"
+        elif getattr(request, "biomed_authenticated_user_id", None) is not None:
+            ident = f"user:{request.biomed_authenticated_user_id}"
         return self.cache_format % {"scope": self.scope, "ident": ident}

@@ -1,9 +1,10 @@
 # biomed 项目约定
 
 - 唯一项目来源是 `/data/06_project/biomed`；沿用 https://github.com/qzhqzh/biomed 的历史与分支。不得在旧工作目录重建第二个项目。
+- 本机开发依赖、工具缓存、实验结果等多文件写入优先放 `/appdata/02_resource/apps/biomed/`，保留项目内兼容入口；新开发命令可使用 `scripts/with_appdata.sh COMMAND ...`。模型继续统一使用 `/data/models`。不要为解决 inode 不足重新下载模型、复制第二份项目或移动冻结备份；实际目录见 `docs/DEPLOY.md`。
 - 开始前读 README 与当前任务相关文档；保留用户未提交修改。普通代码修改不自动授权提交、推送或发布。
 - 根目录 Docker Compose 管理 web、资料 worker、annotation-worker 与内部 oncology API，只有 50011 对外提供统一 React 界面。保留既有 API 和持久数据兼容。
-- 业务数据库在 `var/django` 和 `var/oncology`，原始资料在 `var/library`，私有账号在 `var/private`，专属参考库在 `var/reference`；初始/更新知识库在 `data/knowledge*`。备份在 `var/backups`，均不得提交。
+- 当前生产 Django 数据库与原始资料分别在 `/appdata/02_resource/apps/biomed/production/var/django`、`/appdata/02_resource/apps/biomed/production/var/library`，由 `.env` 的 `DJANGO_HOST_DIR` / `LIBRARY_HOST_DIR` 指定；旧副本冻结于 `var/backups/literature-db-repair-20261022T084748Z/`，不得当作运行库。教学数据库仍在 `var/oncology`，私有账号在 `var/private`，专属参考库在 `var/reference`；初始/更新知识库在 `data/knowledge*`。备份在 `var/backups`，均不得提交。
 - 不删除数据库、migration、历史数据、参考缓存或 Docker volume。部署/迁移按当次授权处理；新依赖与组件由实际需求决定。
 - 先做生信、资料与审核流程；英文论文 PDF 为首批目标，模型方式未定。真实资料来源、权利、版本、适用条件和更新责任需记录。
 - 肿瘤模块仍只用虚构病例和教学资料；不能自动证明临床适用或入组资格，不能上传真实患者资料。模块约定见 `services/oncology/AGENTS.md`。

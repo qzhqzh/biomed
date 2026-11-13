@@ -1,0 +1,791 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "bonsai-stages-20261101",
+  "title": "020 · Bonsai 2在分类、段落筛选与实体抽取中的对照",
+  "date": "2026-11-01T09:45:01+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 397,
+  "sample_unit": "任务输入",
+  "summary": "Bonsai不能整体替换：三分类93/95但比4B慢2.26倍；段落漏检9、误收33，均多于9B且更慢；实体推理快63%，同规则后核心13/15，低于9B的15/15。保留按环节选型。",
+  "task_kind": "multi_stage_comparison",
+  "identity": {
+    "task_version": "bonsai-stages-publication-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "e08930f177a613f98a733f01f0d92f6989b31a04d2bb0563f0dd7b746b642d68",
+      "b173231ce48a9be3d66a3a27cde684675257c4d06877cbfca37d409a66231b8c",
+      "4c54409987e08d02326258d058dbf06fa9da3ca1ce3d6c37f679973b558a88df",
+      "ea45ceffd992401e96e4f17d2cd7a5908228afde51576f8cde7c07d037b0d55e",
+      "a0bd558e45c775bf29649653adb4c03fb81c6f1416676cc5e51e83b086b164ab",
+      "a186af8678d4e974080406d3219f1da78ccb6888daf778a7eb5acc9cbcfb3dcf",
+      "cc0cd38475436cf2a87917887215a4913145ace2a31d6ac4d5b80ce29d2d3c09",
+      "ea45ceffd992401e96e4f17d2cd7a5908228afde51576f8cde7c07d037b0d55e"
+    ],
+    "method_versions": [
+      "f9f857920db01e5a00da37a37c36976d99d8d221b64d394180a8ee2fb68f7706",
+      "06b1b12efa9598fd93cd2c0254c162226f547015c880ed4125dd0ec3664c4992",
+      "e6c224b3bb75c3a105f150f5385680df1142894a898a8c15c94c169326cb55d1",
+      "bd0cb85560da37efb8f6426bff4a8c9f839bba2d4071334db99dfae0a9bbbceb",
+      "901ec301ae421b6ff0dc6966dea0a1ccd0c39680e9b1a9a403b309465ce06a67",
+      "b3cf5804bad572c86aa7e30fb88a0a7e04322f60bbfdaddaa53983be3100b61b",
+      "b9a91d8aefa17cf386893e16942f2b606f97e7ae27b726f6df59e0796fdda879",
+      "9a3b739d535d8baa5082b1dd3829c3f8d9704d2ff94181e1bb564e0993c6a62a",
+      "6110227dee6261af868de05fd169f386accb5d1f703248f8b84ad46723bf30c8",
+      "4653fd23917bf6edff4a402a20b98241791a1180df039d3967b22d7960ff7a82",
+      "f1c280696342dfd532193ebcbca36d006da72b06d1aecc744372ff3d1866ff08",
+      "c29efa45a9237db8a61bc30c160e968d0f31df64b02a82d39585fe24d7fbd1b9",
+      "1f0b83f037ab55ac161d397d35c1d7649ee137200db1a951b8741bf81f60c35e",
+      "a20ff615172dccfb0acb332b33dd43b938b0decd5d3797fe1e28f32ab994ac31",
+      "26fe0dd3c1dd11e5548010beae10128918addb86f344c6c01e347ec602bc5bf1",
+      "f82a4457c939762157ed99f57158edc82b8f55d7aa6cace5ff8e039aeacc3173",
+      "5da65d314ce488891dce4141d59d298f4b7d55a94d9ab985304a645df203c9b3",
+      "0c9861c7b34709ca20d344a20133ebfd4a36bd330531c533f53a891b738de523",
+      "186857c79ebf420acedd776737de694b37110c140d37e3c83eef2387f98e0a72",
+      "5e38f20b2651845fa7ea9b4c69f2e0ba910f448a82d59e5b4af7dea4b3570ff1",
+      "3519db174a6d04306cee542e0918257162e6377a8eeddcbe834923b7ef3a53c7",
+      "2f839846170fea53de3b562e52163acadf572be274f576f9de6520e062b9af8f",
+      "e4776b0f9d8d905024e3a03452d54665133f0f936aa745555c64ae25a5bb7d8e",
+      "4b044f671efc04225cf7ffe04c9b5169f878db6efe45b74e996dfde68c1747fe",
+      "e6b42930fe11840c89b4e8b37688273c275be30823d554e9426764d63295c0aa",
+      "fcda4eda112630eeaf1b51e81206192f79e98a26ebb8c213503b21a63109a788"
+    ],
+    "reference_versions": [
+      "f6b76381d448d8886158bd5a9ee5ba5cebd49ac36b54e406f0f789106126a0ea",
+      "48b5c4f327a5c40a8901157cb497ef54f19f7c08faa9176707f04f3bc1a45020",
+      "805a79e6329f9eae4ba69aef8492ff1fe5c7290d170601b3dbbc0e7d63b57410",
+      "fe4ee353e136946e94757924200216a4e4c1eceac48ba8d2ae87b9a70861e201",
+      "ca54b2762a849e0c83e1e7f1b94cc474185da1c29fb6dc32b7f537e2f190148c",
+      "9cdfbeb10501d739477b400ada0463ea6bea09d1338797524e54f1136582c4fd",
+      "e7f5d3b8ffdb4241b06cb85b2dc5102500100e130757f5541529a7d2837f8d69",
+      "eb328c57dc274466488d0ecd1085f2d7f89d56763a1a82674e72c474fb9ddcd3",
+      "2d2ed43a10ebc490f340a3df2e05538dbb234b034f8b94605aa27490756824b7"
+    ]
+  },
+  "task": {
+    "question": "Bonsai 2在文献三分类、有效段落筛选、实体抽取中能否改善质量，耗时和显存代价如何？",
+    "outputs": [
+      "三分类准确率与各类召回",
+      "证据段落漏检、误收与F1",
+      "实体原始核心、共同映射后和同规则后核心可用率",
+      "同样本配对得失及本机耗时、显存"
+    ],
+    "not_measured": [
+      "独立测试集或全库效果",
+      "全实体精确率、标准ID准确率及生产知识质量",
+      "仅由参数量导致的效果变化",
+      "训练或微调效果"
+    ]
+  },
+  "dataset": {
+    "label": "100篇三分类；5篇全文的282段筛选；同5篇15个实体组",
+    "role": "冻结开发回归集"
+  },
+  "reference": {
+    "label": "冻结Astra参考；实体按016同口径审核",
+    "status": "model_reference_not_human_gold",
+    "note": "分类复用冻结100篇参考；段落复用冻结v2参考。实体复用016当前核心门槛和旧9B审核，新审Bonsai并核验相同规则修改；Astra是模型参考，不是人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "classification-qwen35-4b",
+      "label": "文献三分类 · Qwen3.5-4B（复用）",
+      "version": "bonsai-screening-pair-v1",
+      "conclusion": "复用100篇开发样本、原提示和冻结Astra参考；该任务只判断实体瘤、血液肿瘤、非肿瘤。",
+      "metrics": [
+        {
+          "label": "三分类准确率",
+          "numerator": 88,
+          "denominator": 95,
+          "note": "100篇输入中95篇参考已定；5篇参考未决排除。模型未完成仍计入95篇分母。"
+        },
+        {
+          "label": "实体瘤召回",
+          "numerator": 47,
+          "denominator": 54,
+          "note": "TP 47；FN 7；FP 0。按该类参考文献计数。"
+        },
+        {
+          "label": "血液肿瘤召回",
+          "numerator": 24,
+          "denominator": 24,
+          "note": "TP 24；FN 0；FP 1。按该类参考文献计数。"
+        },
+        {
+          "label": "非肿瘤召回",
+          "numerator": 17,
+          "denominator": 17,
+          "note": "TP 17；FN 0；FP 6。按该类参考文献计数。"
+        },
+        {
+          "label": "三类宏平均F1",
+          "value": 92.01,
+          "unit": "%",
+          "note": ""
+        },
+        {
+          "label": "肿瘤误判为非肿瘤",
+          "value": 6,
+          "unit": "篇",
+          "note": ""
+        },
+        {
+          "label": "计分样本中未完成",
+          "value": 0,
+          "unit": "篇",
+          "note": "弃答、截断或协议失败不自动当作非肿瘤。"
+        },
+        {
+          "label": "参考未决（不计准确率）",
+          "value": 5,
+          "unit": "篇",
+          "note": ""
+        },
+        {
+          "label": "推理总耗时",
+          "value": 109.6,
+          "unit": "秒",
+          "note": "同100篇单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每篇耗时",
+          "value": 1.096,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 9650.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "float16",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "classification-qwen35-9b",
+      "label": "文献三分类 · Qwen3.5-9B（复用）",
+      "version": "bonsai-screening-pair-v1",
+      "conclusion": "复用100篇开发样本、原提示和冻结Astra参考；该任务只判断实体瘤、血液肿瘤、非肿瘤。",
+      "metrics": [
+        {
+          "label": "三分类准确率",
+          "numerator": 92,
+          "denominator": 95,
+          "note": "100篇输入中95篇参考已定；5篇参考未决排除。模型未完成仍计入95篇分母。"
+        },
+        {
+          "label": "实体瘤召回",
+          "numerator": 52,
+          "denominator": 54,
+          "note": "TP 52；FN 2；FP 1。按该类参考文献计数。"
+        },
+        {
+          "label": "血液肿瘤召回",
+          "numerator": 24,
+          "denominator": 24,
+          "note": "TP 24；FN 0；FP 0。按该类参考文献计数。"
+        },
+        {
+          "label": "非肿瘤召回",
+          "numerator": 16,
+          "denominator": 17,
+          "note": "TP 16；FN 1；FP 2。按该类参考文献计数。"
+        },
+        {
+          "label": "三类宏平均F1",
+          "value": 96.21,
+          "unit": "%",
+          "note": ""
+        },
+        {
+          "label": "肿瘤误判为非肿瘤",
+          "value": 2,
+          "unit": "篇",
+          "note": ""
+        },
+        {
+          "label": "计分样本中未完成",
+          "value": 0,
+          "unit": "篇",
+          "note": "弃答、截断或协议失败不自动当作非肿瘤。"
+        },
+        {
+          "label": "参考未决（不计准确率）",
+          "value": 5,
+          "unit": "篇",
+          "note": ""
+        },
+        {
+          "label": "推理总耗时",
+          "value": 104.73,
+          "unit": "秒",
+          "note": "同100篇单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每篇耗时",
+          "value": 1.047,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 19062.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "float16",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "classification-bonsai27b",
+      "label": "文献三分类 · Bonsai 2 27B（本轮，PQ2_0）",
+      "version": "bonsai-screening-pair-v1",
+      "conclusion": "复用100篇开发样本、原提示和冻结Astra参考；该任务只判断实体瘤、血液肿瘤、非肿瘤。",
+      "metrics": [
+        {
+          "label": "三分类准确率",
+          "numerator": 93,
+          "denominator": 95,
+          "note": "100篇输入中95篇参考已定；5篇参考未决排除。模型未完成仍计入95篇分母。"
+        },
+        {
+          "label": "实体瘤召回",
+          "numerator": 53,
+          "denominator": 54,
+          "note": "TP 53；FN 1；FP 1。按该类参考文献计数。"
+        },
+        {
+          "label": "血液肿瘤召回",
+          "numerator": 24,
+          "denominator": 24,
+          "note": "TP 24；FN 0；FP 0。按该类参考文献计数。"
+        },
+        {
+          "label": "非肿瘤召回",
+          "numerator": 16,
+          "denominator": 17,
+          "note": "TP 16；FN 1；FP 1。按该类参考文献计数。"
+        },
+        {
+          "label": "三类宏平均F1",
+          "value": 97.42,
+          "unit": "%",
+          "note": ""
+        },
+        {
+          "label": "肿瘤误判为非肿瘤",
+          "value": 1,
+          "unit": "篇",
+          "note": ""
+        },
+        {
+          "label": "计分样本中未完成",
+          "value": 0,
+          "unit": "篇",
+          "note": "弃答、截断或协议失败不自动当作非肿瘤。"
+        },
+        {
+          "label": "参考未决（不计准确率）",
+          "value": 5,
+          "unit": "篇",
+          "note": ""
+        },
+        {
+          "label": "推理总耗时",
+          "value": 247.5,
+          "unit": "秒",
+          "note": "同100篇单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每篇耗时",
+          "value": 2.475,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 7982.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "PQ2_0",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "passages-qwen35-4b",
+      "label": "证据段落筛选 · Qwen3.5-4B（复用）",
+      "version": "bonsai-screening-pair-v1",
+      "conclusion": "同5篇全文的282个已解析段落，122正、160负；复用原提示与冻结v2参考。全文解析遗漏不在此分母中。",
+      "metrics": [
+        {
+          "label": "证据段落召回",
+          "numerator": 93,
+          "denominator": 122,
+          "note": "分母为冻结v2参考中的122个正段落；未完成的正段落计入漏检。"
+        },
+        {
+          "label": "所选段落精确率",
+          "numerator": 93,
+          "denominator": 119,
+          "note": "分母为模型选中的段落；不是独立知识条数。"
+        },
+        {
+          "label": "段落F1",
+          "value": 77.18,
+          "unit": "%",
+          "note": ""
+        },
+        {
+          "label": "正确选中 TP",
+          "value": 93,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "漏检 FN",
+          "value": 29,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "误收 FP",
+          "value": 26,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "未完成输出",
+          "value": 0,
+          "unit": "段",
+          "note": "未完成的负段落不当作正确排除。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 267.19,
+          "unit": "秒",
+          "note": "同282段单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每段耗时",
+          "value": 0.947,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 11126.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "float16",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "passages-qwen35-9b",
+      "label": "证据段落筛选 · Qwen3.5-9B（复用）",
+      "version": "bonsai-screening-pair-v1",
+      "conclusion": "同5篇全文的282个已解析段落，122正、160负；复用原提示与冻结v2参考。全文解析遗漏不在此分母中。",
+      "metrics": [
+        {
+          "label": "证据段落召回",
+          "numerator": 116,
+          "denominator": 122,
+          "note": "分母为冻结v2参考中的122个正段落；未完成的正段落计入漏检。"
+        },
+        {
+          "label": "所选段落精确率",
+          "numerator": 116,
+          "denominator": 144,
+          "note": "分母为模型选中的段落；不是独立知识条数。"
+        },
+        {
+          "label": "段落F1",
+          "value": 87.22,
+          "unit": "%",
+          "note": ""
+        },
+        {
+          "label": "正确选中 TP",
+          "value": 116,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "漏检 FN",
+          "value": 6,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "误收 FP",
+          "value": 28,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "未完成输出",
+          "value": 0,
+          "unit": "段",
+          "note": "未完成的负段落不当作正确排除。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 286.1,
+          "unit": "秒",
+          "note": "同282段单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每段耗时",
+          "value": 1.015,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 20362.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "float16",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "passages-bonsai27b",
+      "label": "证据段落筛选 · Bonsai 2 27B（本轮，PQ2_0）",
+      "version": "bonsai-screening-pair-v1",
+      "conclusion": "同5篇全文的282个已解析段落，122正、160负；复用原提示与冻结v2参考。全文解析遗漏不在此分母中。",
+      "metrics": [
+        {
+          "label": "证据段落召回",
+          "numerator": 113,
+          "denominator": 122,
+          "note": "分母为冻结v2参考中的122个正段落；未完成的正段落计入漏检。"
+        },
+        {
+          "label": "所选段落精确率",
+          "numerator": 113,
+          "denominator": 146,
+          "note": "分母为模型选中的段落；不是独立知识条数。"
+        },
+        {
+          "label": "段落F1",
+          "value": 84.33,
+          "unit": "%",
+          "note": ""
+        },
+        {
+          "label": "正确选中 TP",
+          "value": 113,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "漏检 FN",
+          "value": 9,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "误收 FP",
+          "value": 33,
+          "unit": "段",
+          "note": ""
+        },
+        {
+          "label": "未完成输出",
+          "value": 0,
+          "unit": "段",
+          "note": "未完成的负段落不当作正确排除。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 740.88,
+          "unit": "秒",
+          "note": "同282段单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每段耗时",
+          "value": 2.627,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 8144.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "PQ2_0",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "entities-qwen9b",
+      "label": "实体抽取 · Qwen3.5-9B（复用）",
+      "version": "bonsai-entities-evaluation-v1",
+      "conclusion": "同5篇15组、相同原文与提示；按016冻结口径新审Bonsai，复用旧9B审核。未测全实体Precision/Recall或标准ID准确率。",
+      "metrics": [
+        {
+          "label": "原始实体核心可用",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "按冻结016当前核心要求核验原始实体抽取。"
+        },
+        {
+          "label": "共同类别映射后核心可用",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "两臂应用相同的既有类别映射，不使用Bonsai专属修正。"
+        },
+        {
+          "label": "相同原文规则后核心可用",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "两臂均应用016已有原文类型规则，并分别核验修改是否有原文支持。"
+        },
+        {
+          "label": "必要身份完整",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "只计冻结参考所需的实体身份；身份完整不等于类型、关系或标准ID全部正确。"
+        },
+        {
+          "label": "必要实体身份覆盖",
+          "numerator": 52,
+          "denominator": 52,
+          "note": "按片段组所需身份计数；同实体跨组可重复，不是全实体召回率。"
+        },
+        {
+          "label": "必要身份遗漏",
+          "value": 0,
+          "unit": "项",
+          "note": ""
+        },
+        {
+          "label": "明确类型错误",
+          "value": 10,
+          "unit": "项",
+          "note": "原输出审核计数；不含家族/粒度边界，不能当作全实体FP。"
+        },
+        {
+          "label": "家族或粒度边界",
+          "value": 2,
+          "unit": "项",
+          "note": ""
+        },
+        {
+          "label": "原文精确定位",
+          "numerator": 172,
+          "denominator": 173,
+          "note": "分母为每组去重后的输出提及；文字可定位不证明语义或关系正确。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 399.1,
+          "unit": "秒",
+          "note": "同15组单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每组耗时",
+          "value": 26.606,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 19246.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "float16",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "entities-bonsai27b",
+      "label": "实体抽取 · Bonsai 2 27B（本轮，PQ2_0）",
+      "version": "bonsai-entities-evaluation-v1",
+      "conclusion": "同5篇15组、相同原文与提示；按016冻结口径新审Bonsai，复用旧9B审核。未测全实体Precision/Recall或标准ID准确率。",
+      "metrics": [
+        {
+          "label": "原始实体核心可用",
+          "numerator": 10,
+          "denominator": 15,
+          "note": "按冻结016当前核心要求核验原始实体抽取。"
+        },
+        {
+          "label": "共同类别映射后核心可用",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "两臂应用相同的既有类别映射，不使用Bonsai专属修正。"
+        },
+        {
+          "label": "相同原文规则后核心可用",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "两臂均应用016已有原文类型规则，并分别核验修改是否有原文支持。"
+        },
+        {
+          "label": "必要身份完整",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "只计冻结参考所需的实体身份；身份完整不等于类型、关系或标准ID全部正确。"
+        },
+        {
+          "label": "必要实体身份覆盖",
+          "numerator": 50,
+          "denominator": 52,
+          "note": "按片段组所需身份计数；同实体跨组可重复，不是全实体召回率。"
+        },
+        {
+          "label": "必要身份遗漏",
+          "value": 2,
+          "unit": "项",
+          "note": ""
+        },
+        {
+          "label": "明确类型错误",
+          "value": 7,
+          "unit": "项",
+          "note": "原输出审核计数；不含家族/粒度边界，不能当作全实体FP。"
+        },
+        {
+          "label": "家族或粒度边界",
+          "value": 0,
+          "unit": "项",
+          "note": ""
+        },
+        {
+          "label": "原文精确定位",
+          "numerator": 167,
+          "denominator": 169,
+          "note": "分母为每组去重后的输出提及；文字可定位不证明语义或关系正确。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 147.66,
+          "unit": "秒",
+          "note": "同15组单次实测；不含加载、预热、Astra审核。精度和运行库不同，只比较本机部署。"
+        },
+        {
+          "label": "平均每组耗时",
+          "value": 9.844,
+          "unit": "秒",
+          "note": ""
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 7848.0,
+          "unit": "MiB",
+          "note": "NVML进程峰值；包含推理开销，不等于模型权重大小。"
+        },
+        {
+          "label": "精度/格式",
+          "value": "PQ2_0",
+          "unit": "",
+          "note": ""
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti",
+          "unit": "",
+          "note": ""
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "保留4B分类、9B段落筛选与9B加脚本实体抽取；Bonsai保留关系抽取优先候选。分类排除前复核方案先做独立样本验证，不直接推广全库。",
+    "先处理关系目标ANCHOR偏移和实体实际参与关系的问题；核验只判断当前原文支持，不把背景或否定用药直接挂入治疗关系。",
+    "若继续探索Bonsai实体提速，仅验证受原文约束的独立组合成分和嵌套分子检查，保留原词、字符位置及派生规则版本，再用未参与本轮的新文献测试；本轮不补答案改分。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/bonsai-stages-20261101.json",
+      "sha256": "840bd384220d6997ac4f56315e0a7b2b19e113214f6b5a90f9ba593f1ab6ee52"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "9dd6e92c25d34851e26e1e81b0903052427d3ad2ab5370495805cf5b217986f9",
+  "content_sha256": "85dc30273893051f73277258e840f122045abc888f5e28c7baf3c1700ab525fd"
+}

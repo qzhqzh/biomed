@@ -1,0 +1,11 @@
+[Unit]
+Description=Report biomed overnight observation at 09:00 Asia/Shanghai
+
+[Timer]
+OnCalendar=2026-11-07 09:00:00 Asia/Shanghai
+Persistent=true
+AccuracySec=30
+Unit=biomed-knowledge-observation-20261107.service
+
+[Install]
+WantedBy=timers.target

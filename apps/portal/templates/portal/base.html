@@ -4,11 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="csrf-token" content="{{ csrf_token }}" />
   <title>{% block title %}生信与基因知识库{% endblock %} · biomed</title>
   <link rel="icon" href="{% static 'portal/dist/favicon.svg' %}" type="image/svg+xml" />
   {% vite_assets %}
 </head>
-<body>
+<body data-biomed-user="{{ request.user.get_username|default:'' }}">
   {% block app %}{% endblock %}
   <noscript>请启用 JavaScript 以使用 biomed 工作台。</noscript>
 </body>

@@ -6,8 +6,10 @@ import time
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
+from django.db import OperationalError, close_old_connections
 
 from apps.annotations.services import jobs as jobs_service
+from config.database import transient_database_error
 
 
 class Command(BaseCommand):
@@ -28,9 +30,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--stale-after",
             type=int,
-            default=int(
-                getattr(settings, "BIOTOOLS_JOB_STALE_AFTER_SECONDS", 1800)
-            ),
+            default=int(getattr(settings, "BIOTOOLS_JOB_STALE_AFTER_SECONDS", 1800)),
             help="Requeue RUNNING jobs older than this many seconds",
         )
         parser.add_argument(
@@ -55,16 +55,25 @@ class Command(BaseCommand):
         )
 
         while True:
-            now = time.monotonic()
-            if now - last_recovery >= recovery_interval:
-                recovered = jobs_service.recover_stale_jobs(stale_after)
-                if recovered:
-                    self.stdout.write(
-                        self.style.WARNING(f"requeued {recovered} stale job(s)")
-                    )
-                last_recovery = now
-
-            job_id = jobs_service.claim_next_job()
+            try:
+                now = time.monotonic()
+                if now - last_recovery >= recovery_interval:
+                    recovered = jobs_service.recover_stale_jobs(stale_after)
+                    if recovered:
+                        self.stdout.write(
+                            self.style.WARNING(f"requeued {recovered} stale job(s)")
+                        )
+                    last_recovery = now
+                job_id = jobs_service.claim_next_job()
+            except OperationalError as exc:
+                if not transient_database_error(exc):
+                    raise
+                close_old_connections()
+                self.stderr.write(
+                    "Annotation polling delayed by temporary database failure"
+                )
+                time.sleep(max(2, poll_interval))
+                continue
             if job_id:
                 self.stdout.write(f"running job {job_id}")
                 jobs_service.run_job_safe(job_id)

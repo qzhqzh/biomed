@@ -1,0 +1,122 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "positive-context-retrieval-20261112",
+  "title": "034 · 临床正例：同文检索补全一线治疗",
+  "date": "2026-11-12T06:33:06.461005+00:00",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 1,
+  "sample_unit": "条候选",
+  "summary": "同一临床正例补充原文后找回一线治疗；目标结构仍0→0，尚未证明新增可用知识。",
+  "task_kind": "target_compatibility",
+  "identity": {
+    "task_version": "target-positive-retrieved-context-v2",
+    "sample_versions": [
+      "f2d2a3067bc5eddcb220432ff2c321196ea5436fce60dd9c33cc151d60810792",
+      "f449a20426096d0461a09055575f2a4f67328cf5a80807ab7607a921375f80fb"
+    ],
+    "method_versions": [
+      "d952e07c6eb7c0e938a93ad388a0bc71f6205803f13e7e215304dcf3749d3c91",
+      "d952e07c6eb7c0e938a93ad388a0bc71f6205803f13e7e215304dcf3749d3c91",
+      "c566c2ad81f41a727dace32dc4bb55a66862c3f7061d215ec514847acc179f1d"
+    ],
+    "reference_versions": [
+      "1b0d5e5f93bd1f3be038a93f792c8b7d43e36220ca78c621d1a99a30f8f9e7cc",
+      "5bd0c5f54c2fab01855d35f4f62c4adbb21fa61d5f5fcd04da563239ab102737"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "原始证据遗漏必要条件时，能否从同一文章找到补充段落？",
+    "outputs": [
+      "自动找到同文补充段落并保留来源",
+      "原模型与补充上下文后的模型输出对照",
+      "原始目标映射缺口"
+    ],
+    "not_measured": [
+      "Astra或临床专家核验",
+      "多文献召回率与误收率",
+      "真正可用的独立知识净新增"
+    ]
+  },
+  "dataset": {
+    "label": "一条事后选择的真实临床正例",
+    "role": "post_hoc_probe",
+    "document_count": 1
+  },
+  "reference": {
+    "label": "原文段落核读",
+    "status": "model_reference_not_human_gold",
+    "note": "当前助手在探针输出前核读摘要及正文；非Astra或临床专家。"
+  },
+  "methods": [
+    {
+      "id": "original",
+      "label": "原有引用段落",
+      "version": "source-linked-clinical-facts-pilot-v1",
+      "conclusion": "模型认出了变异与药物，但漏掉一线治疗条件。",
+      "metrics": [
+        {
+          "label": "必要条件一线治疗",
+          "numerator": 0,
+          "denominator": 1,
+          "note": "本条模型输出未保留一线。"
+        },
+        {
+          "label": "目标结构通过",
+          "numerator": 0,
+          "denominator": 1,
+          "note": "旧实体角色和癌种别名未处理完。"
+        },
+        {
+          "label": "关系模型热推理",
+          "value": 14.531441,
+          "unit": "秒",
+          "note": "不含加载和其他阶段。"
+        }
+      ]
+    },
+    {
+      "id": "retrieved",
+      "label": "自动检索补充同文段落",
+      "version": "biomed.source-context-retrieval.v1",
+      "conclusion": "来源完整性在本例改善；尚未产生可计入目标的新增知识。",
+      "metrics": [
+        {
+          "label": "必要条件一线治疗",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "仅一条事后诊断案例，未评估总体召回。"
+        },
+        {
+          "label": "目标结构通过",
+          "numerator": 0,
+          "denominator": 1,
+          "note": "来源更完整，分子角色与别名映射仍待解决。"
+        },
+        {
+          "label": "关系模型热推理",
+          "value": 15.100333,
+          "unit": "秒",
+          "note": "不含加载和其他阶段。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "基于原文检查基因与位点归属、癌种同义词与必要条件；对多个正负例复测后再考虑后台接入。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/positive-context-retrieval-20261112.json",
+      "sha256": "a94d90a25b8bcdb1da175e003047544ca4211b66499eed69873307cb720b331d"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "0880841ac3e100fcc1decc063b96e7db23549824b966ff248b0681a0567679ff",
+  "content_sha256": "63395729d90d8579f93b06372ea254dc2bc315b2771c6d1e6365600249af6a1a"
+}

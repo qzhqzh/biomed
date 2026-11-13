@@ -1,0 +1,360 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "summary-assist-20261029",
+  "title": "015 · 先概括能否改善实体与关系抽取",
+  "date": "2026-10-29T21:19:36+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同5篇15组，独立概括未证明值得默认加入：实体核心13→12/15，关系内容12→13/15，但同时通过原文/结构与核心检查的关系12→11/15；总推理增加62.5%。默认研究入口直接从原文抽实体和关系，取消概括与自由statement，旧结果保留。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "summary-assist-evaluation-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8",
+      "3f6e1325925f6d095a842efad52acaf311f7e9332cf9fef6720800f1b81ebcc6",
+      "7f47316c6a2b0f8d72f200eed65abbebaff6d59f7666f10f3e115fa78876b78a",
+      "8ceea120140e3a843c11a44369f376350a0d0b23b271c60cfda7eec902356d56"
+    ],
+    "method_versions": [
+      "3c685d50bbe67f1461b14a98820c5ffb2079b6d198a53a1e6b5219de15936748",
+      "05be1317d49dc7e7f001c7396d6fac4884d7fa5d7837c8b17f3bc505926a76dc",
+      "1f0b83f037ab55ac161d397d35c1d7649ee137200db1a951b8741bf81f60c35e",
+      "c9ccffa7ed987165b8c2575764ab26411cabad910fbdd618d28e0e01f284cf17",
+      "28f3c38bdf49689dd738adba946fd24e141d888d35c72fb071c2a9f8aa14740a"
+    ],
+    "reference_versions": [
+      "806206e3b218188b2ce808bdd7bac9718558f4d7a9ac6ccc6260d880465bc09f",
+      "196d426f85fd4a98c7919c934645566d4bbe3c672306adf32b094883f52e24a7"
+    ]
+  },
+  "task": {
+    "question": "独立生成的短概括能否改善实体、关系抽取，且收益是否抵得过新增推理成本？",
+    "outputs": [
+      "实体、关系各自的核心质量、原始输出与共同脚本后结果",
+      "配对改善、退步、错误与遗漏",
+      "包含一次概括成本的合计推理耗时",
+      "英文原文、原始输出及Astra参考审核"
+    ],
+    "not_measured": [
+      "新实体串入新关系的完整流程",
+      "全库质量与统计显著性",
+      "标准ID正确率与人工审核耗时",
+      "生产知识库导入"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇15组开发回归集",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "Astra冻结原文参考及逐组审核",
+    "status": "model_reference_not_human_gold",
+    "note": "原文是唯一证据；Astra模型参考不是人工金标准。概括不得补充原文没有的实体、关系或条件。"
+  },
+  "methods": [
+    {
+      "id": "source_only",
+      "label": "A · 直接依据原文抽取",
+      "version": "summary-assist-evaluation-v1",
+      "conclusion": "实体、关系分别对照；关系输入始终固定010实体清单，未使用本轮新抽出的实体。载入、预热及Astra审核不计入上述推理时间。",
+      "metrics": [
+        {
+          "label": "实体核心可用（共同脚本后）",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "同一原文定位、类型保护及投影作用于各臂自身输出；新增概括不参与定位。"
+        },
+        {
+          "label": "实体核心可用（模型原始输出）",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "单列尚未经过共同脚本处理的原始模型质量。"
+        },
+        {
+          "label": "当前具体实体身份完整",
+          "numerator": 15,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "历史52项身份覆盖",
+          "numerator": 51,
+          "denominator": 52,
+          "note": "固定历史口径；不能替代当前实体类型和具体药物身份评估。"
+        },
+        {
+          "label": "关系共同字段核心可用",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "人群、具体药物、条件、结论与数值绑定由Astra对照原文审核。"
+        },
+        {
+          "label": "关系原始结构且核心通过",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "原始输出同时满足严格共同字段结构与核心语义。"
+        },
+        {
+          "label": "关系诊断后核心就绪",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "仅使用两臂相同的格式、大小写及附加实体诊断。"
+        },
+        {
+          "label": "关系核心可用且聚焦ANCHOR",
+          "numerator": 12,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "实体阶段成本",
+          "value": 399.1,
+          "unit": "秒",
+          "note": "复用历史同配置单次推理测量。"
+        },
+        {
+          "label": "关系阶段成本",
+          "value": 511.28,
+          "unit": "秒",
+          "note": "复用历史同配置单次推理测量。"
+        },
+        {
+          "label": "两阶段合计推理",
+          "value": 910.37,
+          "unit": "秒",
+          "note": "概括成本只计一次；两个独立阶段的成本相加，不是完整串联流程测速。"
+        },
+        {
+          "label": "合计输出tokens",
+          "value": 9863,
+          "unit": "tokens",
+          "note": "辅助臂含独立概括输出一次。"
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 20106.0,
+          "unit": "MiB",
+          "note": "各顺序运行进程的最大实测NVML峰值，不叠加。"
+        }
+      ]
+    },
+    {
+      "id": "summary_assisted",
+      "label": "B · 原文加机器概括辅助",
+      "version": "summary-assist-evaluation-v1",
+      "conclusion": "实体、关系分别对照；关系输入始终固定010实体清单，未使用本轮新抽出的实体。载入、预热及Astra审核不计入上述推理时间。",
+      "metrics": [
+        {
+          "label": "实体核心可用（共同脚本后）",
+          "numerator": 12,
+          "denominator": 15,
+          "note": "同一原文定位、类型保护及投影作用于各臂自身输出；新增概括不参与定位。"
+        },
+        {
+          "label": "实体核心可用（模型原始输出）",
+          "numerator": 8,
+          "denominator": 15,
+          "note": "单列尚未经过共同脚本处理的原始模型质量。"
+        },
+        {
+          "label": "当前具体实体身份完整",
+          "numerator": 13,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "历史52项身份覆盖",
+          "numerator": 47,
+          "denominator": 52,
+          "note": "固定历史口径；不能替代当前实体类型和具体药物身份评估。"
+        },
+        {
+          "label": "关系共同字段核心可用",
+          "numerator": 13,
+          "denominator": 15,
+          "note": "人群、具体药物、条件、结论与数值绑定由Astra对照原文审核。"
+        },
+        {
+          "label": "关系原始结构且核心通过",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "原始输出同时满足严格共同字段结构与核心语义。"
+        },
+        {
+          "label": "关系诊断后核心就绪",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "仅使用两臂相同的格式、大小写及附加实体诊断。"
+        },
+        {
+          "label": "关系核心可用且聚焦ANCHOR",
+          "numerator": 13,
+          "denominator": 15,
+          "note": ""
+        },
+        {
+          "label": "实体阶段成本",
+          "value": 840.03,
+          "unit": "秒",
+          "note": "含该阶段使用的摘要生成成本。"
+        },
+        {
+          "label": "关系阶段成本",
+          "value": 893.99,
+          "unit": "秒",
+          "note": "含该阶段使用的摘要生成成本。"
+        },
+        {
+          "label": "两阶段合计推理",
+          "value": 1479.22,
+          "unit": "秒",
+          "note": "概括成本只计一次；两个独立阶段的成本相加，不是完整串联流程测速。"
+        },
+        {
+          "label": "合计输出tokens",
+          "value": 15892,
+          "unit": "tokens",
+          "note": "辅助臂含独立概括输出一次。"
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 20504.0,
+          "unit": "MiB",
+          "note": "各顺序运行进程的最大实测NVML峰值，不叠加。"
+        }
+      ]
+    },
+    {
+      "id": "paired-entities",
+      "label": "实体独立阶段：配对结果",
+      "version": "summary-assist-evaluation-v1",
+      "conclusion": "同15组、5篇开发回归样本；净增数量和出错变化分别报告，不外推全库。",
+      "metrics": [
+        {
+          "label": "两臂均通过",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "组别：K01、K02、K03、K04、K05、K06、K09、K10、K11、K12、K14"
+        },
+        {
+          "label": "仅A通过",
+          "numerator": 2,
+          "denominator": 15,
+          "note": "组别：K07、K13"
+        },
+        {
+          "label": "仅B通过",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "组别：K15"
+        },
+        {
+          "label": "两臂均未通过",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "组别：K08"
+        },
+        {
+          "label": "概括辅助净增核心通过",
+          "value": -1,
+          "unit": "组"
+        },
+        {
+          "label": "新增核心错绑",
+          "value": 1,
+          "unit": "项",
+          "note": "按冻结参考核对，不能以召回增加抵消新错误。"
+        }
+      ]
+    },
+    {
+      "id": "paired-relations",
+      "label": "关系独立阶段：配对结果",
+      "version": "summary-assist-evaluation-v1",
+      "conclusion": "同15组、5篇开发回归样本；净增数量和出错变化分别报告，不外推全库。",
+      "metrics": [
+        {
+          "label": "两臂均通过",
+          "numerator": 11,
+          "denominator": 15,
+          "note": "组别：K01、K02、K03、K04、K05、K06、K08、K09、K10、K11、K13"
+        },
+        {
+          "label": "仅A通过",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "组别：K07"
+        },
+        {
+          "label": "仅B通过",
+          "numerator": 2,
+          "denominator": 15,
+          "note": "组别：K14、K15"
+        },
+        {
+          "label": "两臂均未通过",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "组别：K12"
+        },
+        {
+          "label": "概括辅助净增核心通过",
+          "value": 1,
+          "unit": "组"
+        },
+        {
+          "label": "新增核心错绑",
+          "value": 1,
+          "unit": "项",
+          "note": "按冻结参考核对，不能以召回增加抵消新错误。"
+        }
+      ]
+    },
+    {
+      "id": "orientation-diagnostic",
+      "label": "机器概括自身诊断与预登记判定",
+      "version": "summary-assist-evaluation-v1",
+      "conclusion": "原文始终保留；摘要质量、下游质量和包含摘要的总成本分别评估。",
+      "metrics": [
+        {
+          "label": "概括自身有原文支持",
+          "numerator": 7,
+          "denominator": 15,
+          "note": "仅诊断概括忠实度；不能证明它提高了抽取效果。"
+        },
+        {
+          "label": "概括生成推理",
+          "value": 254.8,
+          "unit": "秒"
+        },
+        {
+          "label": "预登记默认启用条件",
+          "value": "未达到",
+          "note": "只表示本批开发样本是否达到预设工程收益条件，不是显著性或通用有效性结论。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "默认研究输入使用scripts/prepare_knowledge_workflow.py，直接原文→实体→脚本定位/关联→关系→脚本组装；不生成独立概括或自由statement。",
+    "保持流程简单，后续针对关键关系绑定和原文定位改进，再用未见文献验证；本轮不继续调概括提示词、扩集或训练。",
+    "旧实验、概括和失败输出保留；未配置的生产模型继续waiting_configuration，未改Evidence.assertion、tumor_api或采集设置。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/summary-assist-20261029.json",
+      "sha256": "20e83264c0113cdc94a636c8bcb9990f2bf400f06ababcdd560b96845765b018"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "9e946ca6655ef0386c522c0e039b55f1347357752d73b347464fe679aaf2b7f5",
+  "content_sha256": "226bdd641c0f55762ac16251f3c2d3e0a6dd970a38ba93b4177f64740f3cd9c8"
+}

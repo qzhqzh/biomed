@@ -56,6 +56,18 @@ class CooldownRegressionTests(SimpleTestCase):
         )
         self.assertEqual(jobs_service._client_ident(request), "ip:203.0.113.50")
 
+    def test_signed_in_users_behind_same_gateway_have_independent_limits(self):
+        first = self.factory.post("/api/v1/jobs/", REMOTE_ADDR="10.0.0.2")
+        second = self.factory.post("/api/v1/jobs/", REMOTE_ADDR="10.0.0.2")
+        first.biomed_authenticated_user_id = 1
+        second.biomed_authenticated_user_id = 2
+        self.assertEqual(jobs_service._client_ident(first), "user:1")
+        self.assertEqual(jobs_service._client_ident(second), "user:2")
+        jobs_service.check_submit_cooldown(first)
+        jobs_service.check_submit_cooldown(second)
+        with self.assertRaises(jobs_service.JobSubmitTooSoon):
+            jobs_service.check_submit_cooldown(first)
+
 
 class KnowledgeStoreRegressionTests(SimpleTestCase):
     def setUp(self):

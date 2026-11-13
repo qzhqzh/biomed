@@ -1,0 +1,197 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "entity-resolution-20261101",
+  "title": "023 · 本地实体库、名称对齐与歧义模型比较",
+  "date": "2026-11-01T06:31:02.192183+00:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 20,
+  "sample_unit": "项（19真实原词＋1独立挑战）",
+  "summary": "30条源知识中29条有本轮药物／疾病参与者，共89处引用，规则先处理56处；19个真实待解原词对比9B与Bonsai，另列1个DMG挑战。本阶段选择Qwen3.5-9B处理歧义。",
+  "task_kind": "entity_resolution",
+  "identity": {
+    "task_version": "entity-resolution-comparison-v1",
+    "sample_versions": [
+      "7c9a6ace2185e48c809d5e22faaca57450c4fb82c961f8a3e52d586428c876e5"
+    ],
+    "method_versions": [
+      "bonsai2-27b:463e25287432425abe514ff36d3b488782c145c04a43ad394a99fcafd5f79cfb",
+      "qwen35-9b:a97332b92ba8f6b2e4118052fb91c059e35bc8df625e12d0845c17aba1c98f50"
+    ],
+    "reference_versions": [
+      "6944c67a37411ca078e1ba5a0da6c3c9d9b691bd25f95788268067ca3070b2f9"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "已有知识中的药物、癌种／疾病名称应对应哪个本地实体；何时新增、保留待定或保留亚型与限定？",
+    "outputs": [
+      "实体身份对应或新增／待定",
+      "主癌种、亚型与必要限定",
+      "可回溯依据和可复用的本地规则"
+    ],
+    "not_measured": [
+      "全库泛化准确率与客户部署表现",
+      "tumor_api真实导入与报告匹配",
+      "模型训练或新增知识语义核验"
+    ]
+  },
+  "dataset": {
+    "label": "现有30条知识中的实体名称开发集",
+    "role": "development"
+  },
+  "reference": {
+    "label": "推理前冻结的原文与字典参考",
+    "status": "model_reference_not_human_gold",
+    "note": "参考先于模型输出冻结；接受明确列出的等价身份形式，同时检查必要限定。这是开发集参考，不是临床验证。"
+  },
+  "methods": [
+    {
+      "id": "bonsai2-27b",
+      "label": "Bonsai 2 27B",
+      "version": "bonsai2-27b:463e25287432425abe514ff36d3b488782c145c04a43ad394a99fcafd5f79cfb",
+      "conclusion": "保留实测对照，本阶段不设逐项挑选最优模型的流程。",
+      "metrics": [
+        {
+          "label": "真实待解原词：身份与对应关系",
+          "numerator": 11,
+          "denominator": 19,
+          "note": "不把核心疾病与带限定疾病视为无条件同义词。"
+        },
+        {
+          "label": "真实待解原词：主癌种／亚型",
+          "numerator": 17,
+          "denominator": 19,
+          "note": "按冻结的业务主癌种与亚型参考判断。"
+        },
+        {
+          "label": "真实待解原词：必要限定",
+          "numerator": 19,
+          "denominator": 19,
+          "note": "要求保留参考规定的必要限定，并有输入原文依据。"
+        },
+        {
+          "label": "真实待解原词：完整结果通过",
+          "numerator": 11,
+          "denominator": 19,
+          "note": "身份、层级、必要限定、原文与输出格式同时通过。"
+        },
+        {
+          "label": "真实待解原词：错误合并",
+          "value": "2 / 19",
+          "note": "错误地选中不应合并的已有实体，越少越好。"
+        },
+        {
+          "label": "真实待解原词：遗漏已有身份",
+          "value": "5 / 19",
+          "note": "有明确对应却回答新增或待定，越少越好。"
+        },
+        {
+          "label": "完整通过中正确保留待定",
+          "value": 2,
+          "unit": "项",
+          "note": "不确定时保留待定可以是正确答案；这些项仍须补充依据，不计作已完成实体对应。"
+        },
+        {
+          "label": "真实19项暖推理总耗时",
+          "value": 197.284,
+          "unit": "秒",
+          "note": "只统计这19项请求，不包含模型加载和独立挑战。"
+        },
+        {
+          "label": "独立DMG挑战：完整结果",
+          "value": "1 / 1",
+          "note": "单独挑战已知风险同义词，不计入真实待解工作量。"
+        },
+        {
+          "label": "推理进程峰值显存",
+          "value": 7.82,
+          "unit": "GiB",
+          "note": "本次完整20项运行的NVML采样峰值；两模型精度／量化及运行时不同，不能只按参数规模解释。"
+        }
+      ]
+    },
+    {
+      "id": "qwen35-9b",
+      "label": "Qwen3.5-9B",
+      "version": "qwen35-9b:a97332b92ba8f6b2e4118052fb91c059e35bc8df625e12d0845c17aba1c98f50",
+      "conclusion": "本阶段歧义处理选用此模型。",
+      "metrics": [
+        {
+          "label": "真实待解原词：身份与对应关系",
+          "numerator": 12,
+          "denominator": 19,
+          "note": "不把核心疾病与带限定疾病视为无条件同义词。"
+        },
+        {
+          "label": "真实待解原词：主癌种／亚型",
+          "numerator": 14,
+          "denominator": 19,
+          "note": "按冻结的业务主癌种与亚型参考判断。"
+        },
+        {
+          "label": "真实待解原词：必要限定",
+          "numerator": 18,
+          "denominator": 19,
+          "note": "要求保留参考规定的必要限定，并有输入原文依据。"
+        },
+        {
+          "label": "真实待解原词：完整结果通过",
+          "numerator": 9,
+          "denominator": 19,
+          "note": "身份、层级、必要限定、原文与输出格式同时通过。"
+        },
+        {
+          "label": "真实待解原词：错误合并",
+          "value": "0 / 19",
+          "note": "错误地选中不应合并的已有实体，越少越好。"
+        },
+        {
+          "label": "真实待解原词：遗漏已有身份",
+          "value": "3 / 19",
+          "note": "有明确对应却回答新增或待定，越少越好。"
+        },
+        {
+          "label": "完整通过中正确保留待定",
+          "value": 0,
+          "unit": "项",
+          "note": "不确定时保留待定可以是正确答案；这些项仍须补充依据，不计作已完成实体对应。"
+        },
+        {
+          "label": "真实19项暖推理总耗时",
+          "value": 282.381,
+          "unit": "秒",
+          "note": "只统计这19项请求，不包含模型加载和独立挑战。"
+        },
+        {
+          "label": "独立DMG挑战：完整结果",
+          "value": "1 / 1",
+          "note": "单独挑战已知风险同义词，不计入真实待解工作量。"
+        },
+        {
+          "label": "推理进程峰值显存",
+          "value": 20.0,
+          "unit": "GiB",
+          "note": "本次完整20项运行的NVML采样峰值；两模型精度／量化及运行时不同，不能只按参数规模解释。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "在实体库页面核对剩余歧义及新增实体，决定按名称和适用范围复用。",
+    "后续文献仅查本地库，确实出现未登记实体时扩展；稳定后不再拉取tumor_api。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/entity-resolution-20261101.json",
+      "sha256": "4022302daed683e0a7025d629b9edda0294740b5e6fd8678ef9f1ae959b4f0ae"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "a43038682eae5a0a24ae7a8906376279f6e856c4e93d04a785d723ca93b8e017",
+  "content_sha256": "935fda96a33b4e710bd0a2fc4c7480f01f538d493c63808ea3456e3db45aee66"
+}

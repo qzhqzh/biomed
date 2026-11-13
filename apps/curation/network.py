@@ -19,6 +19,7 @@ ALLOWED_HOSTS = frozenset(
         "api.github.com",
         "github.com",
         "release-assets.githubusercontent.com",
+        "oncotree.mskcc.org",
     }
 )
 
@@ -49,10 +50,14 @@ class SourceRedirect(HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
-def fetch(url, limit=MAX_BYTES):
+def fetch(url, limit=MAX_BYTES, *, bytes_per_second=None, interval=0.4):
     allowed(url)
+    if bytes_per_second is not None and (
+        type(bytes_per_second) is not int or bytes_per_second <= 0
+    ):
+        raise ValueError("下载限速须为正整数")
     # Worker is serial, including NCBI acquisition; remain below the unkeyed 3 rps limit.
-    time.sleep(0.4)
+    time.sleep(interval)
     request = Request(
         url,
         headers={
@@ -62,7 +67,22 @@ def fetch(url, limit=MAX_BYTES):
     )
     try:
         with build_opener(SourceRedirect()).open(request, timeout=60) as response:
-            data = response.read(limit + 1)
+            if bytes_per_second is None:
+                data = response.read(limit + 1)
+            else:
+                chunks = []
+                size = 0
+                started = time.monotonic()
+                while size <= limit:
+                    chunk = response.read(min(64 * 1024, limit + 1 - size))
+                    if not chunk:
+                        break
+                    chunks.append(chunk)
+                    size += len(chunk)
+                    wait = size / bytes_per_second - (time.monotonic() - started)
+                    if wait > 0:
+                        time.sleep(wait)
+                data = b"".join(chunks)
             encoding = response.headers.get("Content-Encoding", "")
             if len(data) > limit:
                 raise SourceBlocked("来源文件超过下载上限")
@@ -87,8 +107,8 @@ def fetch(url, limit=MAX_BYTES):
         raise TransientSourceError("官方来源连接失败，请稍后重试") from exc
 
 
-def fetch_json(url):
-    return json.loads(fetch(url))
+def fetch_json(url, **kwargs):
+    return json.loads(fetch(url, **kwargs))
 
 
 def xml(content):

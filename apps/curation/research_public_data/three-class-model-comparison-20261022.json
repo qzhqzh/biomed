@@ -1,0 +1,500 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "three-class-model-comparison-20261022",
+  "title": "002 · 模型选择与规模对比（30篇）",
+  "date": "2026-10-22",
+  "stage": "classification",
+  "status": "evaluated",
+  "sample_count": 30,
+  "summary": "GLiNER2.5-Decide 25/29；Qwen3-1.7B 23/29；Qwen3.5-4B 27/29；Qwen3-8B 26/29；Qwen3.5-9B 27/29",
+  "task_kind": "three_class",
+  "identity": {
+    "task_version": "literature-three-class-v1",
+    "sample_versions": [
+      "a8f28bf08b9454cdcd36f10c83a2561caf187f866ef0fcee8c259222766e4c9f"
+    ],
+    "method_versions": [
+      "0fac7a2636669d4e634e1da441081f16d3be540c464f7804d036e636a9c1d0ff",
+      "f5a94876985f750c933e3f1a1d0ba6cbd0127bd61a3089b65aaf56b5495c8cd3",
+      "5c7b27d6110f5cb3702c2055977f69aea3d9f8eea67cb822187922024fb3006c",
+      "8b16e5aca4e1af9eec367d09df0a0b8572acbe6f160c0913f4428084433e606e",
+      "99fe7a45adc74e14402482e2e5730fba76377b2c416b4b6d2f4486924b7523d4"
+    ],
+    "reference_versions": [
+      "dac604ef7f3c02b176d5e0c44055bc5518ff1dd1185fe87432361906f6349f3b"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "同一批文献的实体瘤、血液肿瘤、非肿瘤三分类：模型变大是否改善判断？",
+    "outputs": [
+      "实体瘤",
+      "血液肿瘤",
+      "非肿瘤"
+    ],
+    "not_measured": [
+      "全库与独立留出集效果",
+      "微调和量化收益",
+      "全文证据、实体及关系抽取效果"
+    ]
+  },
+  "dataset": {
+    "label": "统一30篇开发测试集",
+    "role": "development"
+  },
+  "reference": {
+    "label": "冻结Astra独立参考 v1",
+    "status": "model_reference_not_human_gold",
+    "note": "29篇确定参考计分，另1篇保留展示。少数类样本不足，不能以总准确率宣布可生产使用。"
+  },
+  "methods": [
+    {
+      "id": "gliner-decide",
+      "label": "GLiNER2.5-Decide",
+      "version": "9d1bfb848cd16d93ee56ccbc59cd92bf0f284d90",
+      "conclusion": "同一冻结开发集的零样本结果；没有微调，也没有用新输出修订参考答案。",
+      "metrics": [
+        {
+          "label": "三分类与参考一致",
+          "numerator": 25,
+          "denominator": 29,
+          "note": "29篇确定参考；错误、拒答和协议失败都保留在分母。"
+        },
+        {
+          "label": "三类召回率均值",
+          "value": 41.7,
+          "unit": "%",
+          "note": "三类等权；本集只有1篇血液肿瘤和4篇非肿瘤，不能据此推断全库。"
+        },
+        {
+          "label": "宏平均 F1",
+          "value": 44.1,
+          "unit": "%",
+          "note": "每类F1等权，含失败导致的漏判；参考未决样本排除。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 24,
+          "denominator": 24,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "血液肿瘤识别",
+          "numerator": 0,
+          "denominator": 1,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 1,
+          "denominator": 4,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "平均处理耗时",
+          "value": 0.221,
+          "unit": "秒/篇",
+          "note": "预热后单篇分词、推理和解析；不含模型装载、下载和写盘。"
+        },
+        {
+          "label": "进程显存采样峰值",
+          "value": 2.29,
+          "unit": "GiB",
+          "note": "NVML每0.1秒采样，包含运行时与缓存；单次运行，可能漏掉更短峰值。"
+        },
+        {
+          "label": "PyTorch分配峰值",
+          "value": 2.06,
+          "unit": "GiB",
+          "note": "分配器记录的峰值，包含加载和预热；不等于全部进程占用。"
+        },
+        {
+          "label": "模型装载耗时",
+          "value": 22.188,
+          "unit": "秒",
+          "note": "单独记录，不计入单篇处理耗时。"
+        },
+        {
+          "label": "输出失败",
+          "value": 0,
+          "unit": "篇",
+          "note": "确定参考内协议失败；原始输出保留。"
+        },
+        {
+          "label": "信息不足而未完成",
+          "value": 0,
+          "unit": "篇",
+          "note": "模型返回null，保留为未完成；在确定参考分母内不计为正确。"
+        },
+        {
+          "label": "肿瘤误筛为非肿瘤",
+          "value": 0,
+          "unit": "篇",
+          "note": "参考为实体瘤或血液肿瘤，却判为非肿瘤。"
+        }
+      ]
+    },
+    {
+      "id": "qwen3-1.7b-v3",
+      "label": "Qwen3-1.7B",
+      "version": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "conclusion": "同一冻结开发集的零样本结果；没有微调，也没有用新输出修订参考答案。",
+      "metrics": [
+        {
+          "label": "三分类与参考一致",
+          "numerator": 23,
+          "denominator": 29,
+          "note": "29篇确定参考；错误、拒答和协议失败都保留在分母。"
+        },
+        {
+          "label": "三类召回率均值",
+          "value": 38.9,
+          "unit": "%",
+          "note": "三类等权；本集只有1篇血液肿瘤和4篇非肿瘤，不能据此推断全库。"
+        },
+        {
+          "label": "宏平均 F1",
+          "value": 42.7,
+          "unit": "%",
+          "note": "每类F1等权，含失败导致的漏判；参考未决样本排除。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 22,
+          "denominator": 24,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "血液肿瘤识别",
+          "numerator": 0,
+          "denominator": 1,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 1,
+          "denominator": 4,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "平均处理耗时",
+          "value": 0.414,
+          "unit": "秒/篇",
+          "note": "预热后单篇分词、推理和解析；不含模型装载、下载和写盘。"
+        },
+        {
+          "label": "进程显存采样峰值",
+          "value": 4.34,
+          "unit": "GiB",
+          "note": "NVML每0.1秒采样，包含运行时与缓存；单次运行，可能漏掉更短峰值。"
+        },
+        {
+          "label": "PyTorch分配峰值",
+          "value": 4.07,
+          "unit": "GiB",
+          "note": "分配器记录的峰值，包含加载和预热；不等于全部进程占用。"
+        },
+        {
+          "label": "模型装载耗时",
+          "value": 7.164,
+          "unit": "秒",
+          "note": "单独记录，不计入单篇处理耗时。"
+        },
+        {
+          "label": "输出失败",
+          "value": 1,
+          "unit": "篇",
+          "note": "确定参考内协议失败；原始输出保留。"
+        },
+        {
+          "label": "信息不足而未完成",
+          "value": 0,
+          "unit": "篇",
+          "note": "模型返回null，保留为未完成；在确定参考分母内不计为正确。"
+        },
+        {
+          "label": "肿瘤误筛为非肿瘤",
+          "value": 0,
+          "unit": "篇",
+          "note": "参考为实体瘤或血液肿瘤，却判为非肿瘤。"
+        }
+      ]
+    },
+    {
+      "id": "qwen35-4b",
+      "label": "Qwen3.5-4B",
+      "version": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "conclusion": "同一冻结开发集的零样本结果；没有微调，也没有用新输出修订参考答案。",
+      "metrics": [
+        {
+          "label": "三分类与参考一致",
+          "numerator": 27,
+          "denominator": 29,
+          "note": "29篇确定参考；错误、拒答和协议失败都保留在分母。"
+        },
+        {
+          "label": "三类召回率均值",
+          "value": 97.2,
+          "unit": "%",
+          "note": "三类等权；本集只有1篇血液肿瘤和4篇非肿瘤，不能据此推断全库。"
+        },
+        {
+          "label": "宏平均 F1",
+          "value": 91.9,
+          "unit": "%",
+          "note": "每类F1等权，含失败导致的漏判；参考未决样本排除。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 22,
+          "denominator": 24,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "血液肿瘤识别",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 4,
+          "denominator": 4,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "平均处理耗时",
+          "value": 1.013,
+          "unit": "秒/篇",
+          "note": "预热后单篇分词、推理和解析；不含模型装载、下载和写盘。"
+        },
+        {
+          "label": "进程显存采样峰值",
+          "value": 9.28,
+          "unit": "GiB",
+          "note": "NVML每0.1秒采样，包含运行时与缓存；单次运行，可能漏掉更短峰值。"
+        },
+        {
+          "label": "PyTorch分配峰值",
+          "value": 8.78,
+          "unit": "GiB",
+          "note": "分配器记录的峰值，包含加载和预热；不等于全部进程占用。"
+        },
+        {
+          "label": "模型装载耗时",
+          "value": 145.978,
+          "unit": "秒",
+          "note": "单独记录，不计入单篇处理耗时。"
+        },
+        {
+          "label": "输出失败",
+          "value": 0,
+          "unit": "篇",
+          "note": "确定参考内协议失败；原始输出保留。"
+        },
+        {
+          "label": "信息不足而未完成",
+          "value": 0,
+          "unit": "篇",
+          "note": "模型返回null，保留为未完成；在确定参考分母内不计为正确。"
+        },
+        {
+          "label": "肿瘤误筛为非肿瘤",
+          "value": 2,
+          "unit": "篇",
+          "note": "参考为实体瘤或血液肿瘤，却判为非肿瘤。"
+        }
+      ]
+    },
+    {
+      "id": "qwen3-8b",
+      "label": "Qwen3-8B",
+      "version": "b968826d9c46dd6066d109eabc6255188de91218",
+      "conclusion": "同一冻结开发集的零样本结果；没有微调，也没有用新输出修订参考答案。",
+      "metrics": [
+        {
+          "label": "三分类与参考一致",
+          "numerator": 26,
+          "denominator": 29,
+          "note": "29篇确定参考；错误、拒答和协议失败都保留在分母。"
+        },
+        {
+          "label": "三类召回率均值",
+          "value": 81.9,
+          "unit": "%",
+          "note": "三类等权；本集只有1篇血液肿瘤和4篇非肿瘤，不能据此推断全库。"
+        },
+        {
+          "label": "宏平均 F1",
+          "value": 84.3,
+          "unit": "%",
+          "note": "每类F1等权，含失败导致的漏判；参考未决样本排除。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 23,
+          "denominator": 24,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "血液肿瘤识别",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 2,
+          "denominator": 4,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "平均处理耗时",
+          "value": 0.782,
+          "unit": "秒/篇",
+          "note": "预热后单篇分词、推理和解析；不含模型装载、下载和写盘。"
+        },
+        {
+          "label": "进程显存采样峰值",
+          "value": 16.45,
+          "unit": "GiB",
+          "note": "NVML每0.1秒采样，包含运行时与缓存；单次运行，可能漏掉更短峰值。"
+        },
+        {
+          "label": "PyTorch分配峰值",
+          "value": 15.78,
+          "unit": "GiB",
+          "note": "分配器记录的峰值，包含加载和预热；不等于全部进程占用。"
+        },
+        {
+          "label": "模型装载耗时",
+          "value": 123.927,
+          "unit": "秒",
+          "note": "单独记录，不计入单篇处理耗时。"
+        },
+        {
+          "label": "输出失败",
+          "value": 0,
+          "unit": "篇",
+          "note": "确定参考内协议失败；原始输出保留。"
+        },
+        {
+          "label": "信息不足而未完成",
+          "value": 1,
+          "unit": "篇",
+          "note": "模型返回null，保留为未完成；在确定参考分母内不计为正确。"
+        },
+        {
+          "label": "肿瘤误筛为非肿瘤",
+          "value": 1,
+          "unit": "篇",
+          "note": "参考为实体瘤或血液肿瘤，却判为非肿瘤。"
+        }
+      ]
+    },
+    {
+      "id": "qwen35-9b",
+      "label": "Qwen3.5-9B",
+      "version": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "conclusion": "同一冻结开发集的零样本结果；没有微调，也没有用新输出修订参考答案。",
+      "metrics": [
+        {
+          "label": "三分类与参考一致",
+          "numerator": 27,
+          "denominator": 29,
+          "note": "29篇确定参考；错误、拒答和协议失败都保留在分母。"
+        },
+        {
+          "label": "三类召回率均值",
+          "value": 90.3,
+          "unit": "%",
+          "note": "三类等权；本集只有1篇血液肿瘤和4篇非肿瘤，不能据此推断全库。"
+        },
+        {
+          "label": "宏平均 F1",
+          "value": 90.3,
+          "unit": "%",
+          "note": "每类F1等权，含失败导致的漏判；参考未决样本排除。"
+        },
+        {
+          "label": "实体瘤识别",
+          "numerator": 23,
+          "denominator": 24,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "血液肿瘤识别",
+          "numerator": 1,
+          "denominator": 1,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "非肿瘤识别",
+          "numerator": 3,
+          "denominator": 4,
+          "note": "该参考类别内的召回，非预测精确率。"
+        },
+        {
+          "label": "平均处理耗时",
+          "value": 1.097,
+          "unit": "秒/篇",
+          "note": "预热后单篇分词、推理和解析；不含模型装载、下载和写盘。"
+        },
+        {
+          "label": "进程显存采样峰值",
+          "value": 18.34,
+          "unit": "GiB",
+          "note": "NVML每0.1秒采样，包含运行时与缓存；单次运行，可能漏掉更短峰值。"
+        },
+        {
+          "label": "PyTorch分配峰值",
+          "value": 17.86,
+          "unit": "GiB",
+          "note": "分配器记录的峰值，包含加载和预热；不等于全部进程占用。"
+        },
+        {
+          "label": "模型装载耗时",
+          "value": 457.985,
+          "unit": "秒",
+          "note": "单独记录，不计入单篇处理耗时。"
+        },
+        {
+          "label": "输出失败",
+          "value": 0,
+          "unit": "篇",
+          "note": "确定参考内协议失败；原始输出保留。"
+        },
+        {
+          "label": "信息不足而未完成",
+          "value": 0,
+          "unit": "篇",
+          "note": "模型返回null，保留为未完成；在确定参考分母内不计为正确。"
+        },
+        {
+          "label": "肿瘤误筛为非肿瘤",
+          "value": 1,
+          "unit": "篇",
+          "note": "参考为实体瘤或血液肿瘤，却判为非肿瘤。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "先从已有资料中补齐血液肿瘤、非肿瘤及良性肿瘤、癌前病变、癌后随访、背景提及等边界；冻结新参考，并划分未参与提示词调整的留出集。本轮30篇继续作为开发集。",
+    "以4B为主候选，预先固定“纯模型”与“规则协同”方案后再比较。优先检查实体瘤漏筛、血液肿瘤召回、非肿瘤精确率和未完成比例；不能看到测试答案后挑规则组合。",
+    "分类基线和留出评测稳定后再比较量化、LoRA或蒸馏；本轮不训练、不扩大模型全库推理，也不将实验分类写入正式知识库。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/three-class-model-comparison-20261022.json",
+      "sha256": "a07fceeb80f743c2144b1db6f96c90e7b7c8f905c6835b39a3db015839f5561b"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "aa4870de5f24b4d65b3911ab3d1d574d010f8673bf91c19e34e7d2c8a0e80f12",
+  "content_sha256": "84e784ef5139e67bed5229909f2d7d82e74102556cb6b55a435934331b714aab"
+}

@@ -1,0 +1,256 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "bonsai-relations-20261030",
+  "title": "019 · Bonsai 2与9B关系抽取对照",
+  "date": "2026-10-30T10:57:24+08:00",
+  "stage": "entities",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同5篇15组、复用已有9B输出，Bonsai 2在本轮共同审核及既有脚本后主任务通过14/15，9B为6/15；推理约快2.03倍、进程显存减少61%。仍有目标段落偏移和多余实体关联风险，尚未切换生产。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "bonsai-relations-evaluation-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "58f20161bd46ac0f5397477818083349ec24b82037c31fb133b878c59e7600a5",
+      "a4177496f3cc3776b99326802fa1ac1c1d837ca3123075005fbe2cfb369574d8"
+    ],
+    "method_versions": [
+      "5e5a3c5c5ce11ee5f7cee74db023da5fd24640c1055ca4f511af6328b9129cd4",
+      "c9ccffa7ed987165b8c2575764ab26411cabad910fbdd618d28e0e01f284cf17",
+      "f84afbbe1fb158b8ea49eb8baaeeda5165dfbcb26c1db16628be0adc7503cf40",
+      "823f1da0828476bd3dcf494035965824d1025535075ab6486b0bc86bc526fa51"
+    ],
+    "reference_versions": [
+      "a1a2c8ad378fdfac9e0691f49f7077f82d2b501565e2904dc18808266fcb669b",
+      "11e1e9cf675042d335606a764def96b1390e37196f0cc9bb2290f29ee1352feb"
+    ]
+  },
+  "task": {
+    "question": "同一批有效英文片段与实体提示，Bonsai 2能否提高关系、条件及数值绑定的完整通过率，耗时和显存代价如何？",
+    "outputs": [
+      "同标双臂审核与完整任务通过率",
+      "每组错误和配对通过结果",
+      "本机部署耗时、token量与显存",
+      "文章和原始段落两层出处"
+    ],
+    "not_measured": [
+      "独立临床准确率或全库效果",
+      "单独由参数量变化引起的因果效果",
+      "训练或微调效果",
+      "生产知识导入"
+    ]
+  },
+  "dataset": {
+    "label": "同5篇15组开发回归集",
+    "role": "开发回归集",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "Astra本轮同标准原文参考审核",
+    "status": "model_reference_not_human_gold",
+    "note": "旧9B输出也重新核验，不继承018发布比例；不是人工金标准。"
+  },
+  "methods": [
+    {
+      "id": "qwen9b",
+      "label": "Qwen3.5-9B（复用014）",
+      "version": "bonsai-relations-evaluation-v1",
+      "conclusion": "同5篇15组开发样本、同英文提示内容；比较实际部署，不是独立临床准确率。",
+      "metrics": [
+        {
+          "label": "完整任务通过",
+          "numerator": 6,
+          "denominator": 15,
+          "note": "相同014脚本诊断结构通过、语义核心可用、且聚焦ANCHOR；两模型本轮同标复核。"
+        },
+        {
+          "label": "语义核心可用",
+          "numerator": 6,
+          "denominator": 15,
+          "note": "Astra依据英文原文核验；不是人工金标准。"
+        },
+        {
+          "label": "严格结构通过",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "原始输出满足无statement结构，尚未应用无损格式适配。"
+        },
+        {
+          "label": "相同脚本诊断后结构通过",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "两臂均只用014既有格式适配、原词大小写定位、附加实体ID处理；不修医学语义。"
+        },
+        {
+          "label": "诊断后核心就绪",
+          "numerator": 6,
+          "denominator": 15,
+          "note": "结构和语义均通过，另以完整任务指标检查是否聚焦ANCHOR。"
+        },
+        {
+          "label": "数值、条件与场景绑定",
+          "numerator": 9,
+          "denominator": 15,
+          "note": "不适用0组。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 511.28,
+          "unit": "秒",
+          "note": "同15组，单次实测；不含加载、预热、参考审核。运行库和精度不同，不能仅归因为参数量。"
+        },
+        {
+          "label": "平均每组耗时",
+          "value": 34.09,
+          "unit": "秒"
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 20106.0,
+          "unit": "MiB",
+          "note": "NVML进程实测峰值，包含推理开销，不等于权重文件体积。"
+        },
+        {
+          "label": "输出tokens",
+          "value": 5527,
+          "unit": "tokens",
+          "note": "各模型原生tokenizer；跨模型不能视为相同计量单位。"
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti"
+        },
+        {
+          "label": "精度/格式",
+          "value": "float16"
+        }
+      ]
+    },
+    {
+      "id": "bonsai27b",
+      "label": "Bonsai 2 27B（本轮）",
+      "version": "bonsai-relations-evaluation-v1",
+      "conclusion": "同5篇15组开发样本、同英文提示内容；比较实际部署，不是独立临床准确率。",
+      "metrics": [
+        {
+          "label": "完整任务通过",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "相同014脚本诊断结构通过、语义核心可用、且聚焦ANCHOR；两模型本轮同标复核。"
+        },
+        {
+          "label": "语义核心可用",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "Astra依据英文原文核验；不是人工金标准。"
+        },
+        {
+          "label": "严格结构通过",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "原始输出满足无statement结构，尚未应用无损格式适配。"
+        },
+        {
+          "label": "相同脚本诊断后结构通过",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "两臂均只用014既有格式适配、原词大小写定位、附加实体ID处理；不修医学语义。"
+        },
+        {
+          "label": "诊断后核心就绪",
+          "numerator": 14,
+          "denominator": 15,
+          "note": "结构和语义均通过，另以完整任务指标检查是否聚焦ANCHOR。"
+        },
+        {
+          "label": "数值、条件与场景绑定",
+          "numerator": 15,
+          "denominator": 15,
+          "note": "不适用0组。"
+        },
+        {
+          "label": "推理总耗时",
+          "value": 251.64,
+          "unit": "秒",
+          "note": "同15组，单次实测；不含加载、预热、参考审核。运行库和精度不同，不能仅归因为参数量。"
+        },
+        {
+          "label": "平均每组耗时",
+          "value": 16.78,
+          "unit": "秒"
+        },
+        {
+          "label": "进程显存峰值",
+          "value": 7854.0,
+          "unit": "MiB",
+          "note": "NVML进程实测峰值，包含推理开销，不等于权重文件体积。"
+        },
+        {
+          "label": "输出tokens",
+          "value": 7969,
+          "unit": "tokens",
+          "note": "各模型原生tokenizer；跨模型不能视为相同计量单位。"
+        },
+        {
+          "label": "GPU",
+          "value": "NVIDIA GeForce RTX 2080 Ti"
+        },
+        {
+          "label": "精度/格式",
+          "value": "PQ2_0"
+        }
+      ]
+    },
+    {
+      "id": "paired-complete-task",
+      "label": "完整任务通过：同组对照",
+      "version": "bonsai-relations-evaluation-v1",
+      "conclusion": "旧9B原始结果和新Bonsai结果均按本轮同一标准重新审核；不是直接对照旧014或018分数。",
+      "metrics": [
+        {
+          "label": "两臂均通过",
+          "numerator": 5,
+          "denominator": 15,
+          "note": "组别：K01、K02、K03、K10、K11"
+        },
+        {
+          "label": "仅9B通过",
+          "numerator": 1,
+          "denominator": 15,
+          "note": "组别：K04"
+        },
+        {
+          "label": "仅Bonsai通过",
+          "numerator": 9,
+          "denominator": 15,
+          "note": "组别：K05、K06、K07、K08、K09、K12、K13、K14、K15"
+        },
+        {
+          "label": "两臂均未通过",
+          "numerator": 0,
+          "denominator": 15,
+          "note": "组别：无"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "关系抽取优先考虑Bonsai 2候选；先针对目标ANCHOR偏移和实际参与关系的实体做小规模回归，保留9B基线。",
+    "用新文献做独立验证后再决定是否切换流水线；本轮不训练、不重跑争取高分、不自动发布知识、不改tumor_api。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/bonsai-relations-20261030.json",
+      "sha256": "af45396f3e53f70bbfcda7bdd621c9b08e33ac1b1942b04f9123b4311f8cfd87"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "3cd72a88368ff36fd4ac893bca69c5e124fb28225a60db1227a24b9f1685f765",
+  "content_sha256": "b7d7f293881fb7b350cb99ae693f2b7a01b66ec58422995166ef826a9b2a53eb"
+}

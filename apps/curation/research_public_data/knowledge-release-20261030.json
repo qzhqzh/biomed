@@ -1,0 +1,111 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "knowledge-release-20261030",
+  "title": "018 · 候选核验、发布与知识检索",
+  "date": "2026-10-30",
+  "stage": "knowledge",
+  "status": "evaluated",
+  "sample_count": 15,
+  "sample_unit": "片段组",
+  "summary": "同5篇15组完成新的Astra独立核验：11组通过并实际发布、4组保留未发布。胆道癌＋durvalumab＋CRP按同一主关系AND检索命中K08/K09，英文原文与文章、段落两层溯源完整保留。",
+  "task_kind": "knowledge_candidates",
+  "identity": {
+    "task_version": "knowledge-release-v1",
+    "completeness": "frozen",
+    "sample_versions": [
+      "702b9dea58d28775750f2a36fc15ff302c537f4d9ef9a8b3d58b1310f23532c1"
+    ],
+    "method_versions": [
+      "0eb6b11abae2ff4a6ba146366bc16530b8568d59276584c3050d027645f72a5c",
+      "8b91c1a9ef5194669b643092745e51f1f2edb4ed2113cb79031b3ce9f7f47935"
+    ],
+    "reference_versions": [
+      "437cee1733a3088f70374000ef03c7041e5270d323cec6b3f1e5924381f506a0"
+    ]
+  },
+  "task": {
+    "question": "现有抽取结果能否通过可追溯核验，直接发布并准确检索？",
+    "outputs": [
+      "不可变独立审核",
+      "AI通过自动发布、人工抽查独立",
+      "已核验实体AND检索",
+      "实际网页和原文双层出处"
+    ],
+    "not_measured": [
+      "新9B抽取准确率",
+      "新文章泛化",
+      "纯模型推理延迟",
+      "生产报告适用性",
+      "全库自动抽取"
+    ]
+  },
+  "dataset": {
+    "label": "现有5篇15组开发回归集",
+    "role": "最小知识发布闭环",
+    "document_count": 5
+  },
+  "reference": {
+    "label": "新的Astra独立发布核验",
+    "status": "model_reference_not_human_gold",
+    "note": "实际模型参考，不是人工金标准；旧12/15不继承为发布结果。"
+  },
+  "methods": [
+    {
+      "id": "independent-review-and-publish",
+      "label": "独立核验＋脚本定位校验＋已批准词条检索",
+      "version": "frozen-source-relation-review-v1",
+      "conclusion": "知识发布与原文支持一致性单独审核；仅背景共现不参与默认检索。",
+      "metrics": [
+        {
+          "label": "新的AI核验通过",
+          "numerator": 11,
+          "denominator": 15,
+          "value": "11/15"
+        },
+        {
+          "label": "实际发布",
+          "value": 11,
+          "unit": "条"
+        },
+        {
+          "label": "未通过保留候选",
+          "value": 4,
+          "unit": "条"
+        },
+        {
+          "label": "三条件检索命中",
+          "value": 2,
+          "unit": "条"
+        },
+        {
+          "label": "精确原文位置保持",
+          "value": 441,
+          "unit": "条"
+        },
+        {
+          "label": "新9B抽取",
+          "value": 0,
+          "unit": "次"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "先查看实际检索条目及英文证据，确认适合日常知识使用。",
+    "后续在同组中修复未通过的具体绑定错误，形成新候选版本再审核；本轮不自动改写。",
+    "扩大前先验证批处理断点、成本与吞吐；本轮不扩大样本。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/knowledge-release-20261030.json",
+      "sha256": "0303c3de972db608c26d8318800844b33b2d12c441e235d4afcdf60e278f0af8"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "87327863c77bf63fae28657be4ae03317cc3a24e2978a19c75afd7e5f989d688",
+  "content_sha256": "593383e6b4087e78b1c3343409b1b85927a508a93d5f0c4cb9dd190ed8718b77"
+}

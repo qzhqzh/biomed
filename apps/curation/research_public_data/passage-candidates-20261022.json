@@ -1,0 +1,90 @@
+{
+  "schema_version": "research-history-v1",
+  "id": "passage-candidates-20261022",
+  "title": "证据候选段落：已生成 368 段，尚无质量评分",
+  "date": "2026-10-22",
+  "stage": "passages",
+  "status": "unscored",
+  "sample_count": 30,
+  "summary": "宽松关键词脚本召回 368 个候选段落：前 20 篇 127 段、补充 10 篇 241 段；这不是 368 条已验证证据。",
+  "identity": {
+    "task_version": "evidence-pilot-v1/candidate_passages",
+    "sample_versions": [
+      "72f63ba1495b7bb05be2ea670d6bb2a46679bb2ba491fd0e9c3fbacad6baab65",
+      "b0d45e9fe1d9b9695a5beec25f5ec1f1a21c782b585b787bc41495f50dd283ab"
+    ],
+    "method_versions": [
+      "6244fd374870b339a342fa88a58f0f50580703fe540a9e91d473538acc79fa36",
+      "a3906355fbca419f1dc51f8d0b4fb104559c5126b4954037b433a576af23faf7"
+    ],
+    "reference_versions": [
+      "not_configured"
+    ],
+    "completeness": "frozen"
+  },
+  "task": {
+    "question": "哪些已解析段落值得进入后续证据句筛选？",
+    "outputs": [
+      "候选段落、原文定位与命中原因"
+    ],
+    "not_measured": [
+      "证据句精确率/召回率",
+      "实体识别与标准化",
+      "关系与适用条件",
+      "临床证据可发布性"
+    ]
+  },
+  "dataset": {
+    "label": "固定最早入库 20 篇 + 独立补充实体瘤 10 篇",
+    "role": "development"
+  },
+  "reference": {
+    "label": "尚无段落/证据句参考",
+    "status": "not_configured",
+    "note": "Astra v1 只核读文章主对象分类，不是全文证据金标准。"
+  },
+  "methods": [
+    {
+      "id": "wide_rules",
+      "label": "宽松关键词候选召回",
+      "version": "evidence-pilot-v1 / pilot_candidates",
+      "conclusion": "先证明原文定位和恢复链路可运行；没有足够参考判断哪种证据筛选方法更好。",
+      "metrics": [
+        {
+          "label": "前 20 篇候选",
+          "value": 127,
+          "unit": "段",
+          "note": "16 篇有候选；数量不代表正确。"
+        },
+        {
+          "label": "实体瘤补充候选",
+          "value": 241,
+          "unit": "段",
+          "note": "10 篇均有候选；数量不代表正确。"
+        },
+        {
+          "label": "已发布临床证据",
+          "value": 0,
+          "unit": "条",
+          "note": "候选仍是研究材料，未通过正式证据提取/审核。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "公开摘要保留方法和指标；原文片段与逐条证据保存在本机完整记录。"
+  ],
+  "next_steps": [
+    "先给候选标注章节与句子边界，再建立少量证据句正负例和困难例；引用和适用条件保留到后续关系抽取。"
+  ],
+  "provenance": [
+    {
+      "label": "本机完整研究记录",
+      "artifact": "apps/curation/research_data/passage-candidates-20261022.json",
+      "sha256": "e2b49c3e8f63768dd913b33cecedd66efa5efe2ca9732f8acec9ea9d22b0ca8d"
+    }
+  ],
+  "summary_level": "metadata_only",
+  "fingerprint": "958f836744047574bd0c5431490365638f77d9f55f049e14e641b246d982251a",
+  "content_sha256": "ffcf17459a5d56c5c819998756f1695a10197542954ce618681ae4b042d33695"
+}

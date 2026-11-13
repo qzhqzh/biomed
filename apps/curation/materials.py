@@ -4,6 +4,7 @@ import io
 import re
 from pathlib import Path
 from urllib.parse import urlencode
+from xml.etree.ElementTree import tostring
 
 from django.db import transaction
 
@@ -58,40 +59,132 @@ def pubmed_search(query):
     }
 
 
-def acquire_pubmed(pmid):
-    from apps.curation.workflows import enqueue
+def pubmed_record_id(article):
+    path = {
+        "PubmedArticle": "./MedlineCitation/PMID",
+        "PubmedBookArticle": "./BookDocument/PMID",
+    }.get(article.tag)
+    return text(article.find(path)) if path else ""
 
-    if not re.fullmatch(r"\d{1,10}", pmid):
-        raise SourceBlocked("请输入有效的 PMID")
-    url = (
-        EUTILS
-        + "efetch.fcgi?"
-        + urlencode({"db": "pubmed", "id": pmid, "retmode": "xml", "tool": "biomed"})
-    )
-    content = fetch(url, 8 * 1024 * 1024)
-    root = xml(content)
-    article = root.find(".//PubmedArticle")
-    if article is None or text(article.find("./MedlineCitation/PMID")) != pmid:
-        raise SourceBlocked("PubMed 没有返回指定 PMID")
+
+def pubmed_records(root):
+    if root.tag != "PubmedArticleSet":
+        raise SourceBlocked("PubMed 未返回可识别的记录集合")
+    return [node for node in root if node.tag in ("PubmedArticle", "PubmedBookArticle")]
+
+
+def pubmed_identifiers(article):
+    paths = ["./PubmedData/ArticleIdList/ArticleId"]
+    if article.tag == "PubmedBookArticle":
+        paths = [
+            "./BookDocument/ArticleIdList/ArticleId",
+            "./PubmedBookData/ArticleIdList/ArticleId",
+        ]
     identifiers = {
-        a.attrib.get("IdType"): text(a)
-        for a in article.findall("./PubmedData/ArticleIdList/ArticleId")
+        node.attrib.get("IdType"): text(node)
+        for path in paths
+        for node in article.findall(path)
     }
-    identifiers["pubmed"] = pmid
+    identifiers["pubmed"] = pubmed_record_id(article)
+    return identifiers
+
+
+def pubmed_metadata(article):
+    if article.tag == "PubmedBookArticle":
+        document = article.find("./BookDocument")
+        if document is None:
+            raise SourceBlocked("PubMed 图书记录缺少 BookDocument")
+        return {
+            "identifiers": pubmed_identifiers(article),
+            "source_parser_version": "pubmed-book-metadata-v1",
+            "record_type": "book_chapter",
+            "title": text(document.find("./ArticleTitle")),
+            "abstract": "\n".join(
+                text(n) for n in document.findall("./Abstract/AbstractText")
+            ),
+            "journal": "",
+            "book_title": text(document.find("./Book/BookTitle")),
+            # The book's founding date is not the chapter's publication date.
+            "publication_date": text(document.find("./PubDate")),
+            "book_publication_date": text(document.find("./Book/PubDate")),
+            "languages": [text(n) for n in document.findall("./Language")],
+            "mesh": [
+                text(n)
+                for n in document.findall(
+                    "./MeshHeadingList/MeshHeading/DescriptorName"
+                )
+            ],
+            "mesh_ids": [
+                n.attrib.get("UI", "")
+                for n in document.findall(
+                    "./MeshHeadingList/MeshHeading/DescriptorName"
+                )
+            ],
+            "publication_types": ["Book Chapter"],
+            "keywords": [text(n) for n in document.findall("./KeywordList/Keyword")],
+        }
+    return {
+        "identifiers": pubmed_identifiers(article),
+        "source_parser_version": "pubmed-metadata-v3",
+        "title": text(article.find("./MedlineCitation/Article/ArticleTitle")),
+        "abstract": "\n".join(
+            text(n)
+            for n in article.findall("./MedlineCitation/Article/Abstract/AbstractText")
+        ),
+        "journal": text(article.find(".//Journal/Title")),
+        "publication_date": text(article.find(".//Journal/JournalIssue/PubDate")),
+        "languages": [text(n) for n in article.findall(".//Article/Language")],
+        "mesh": [text(n) for n in article.findall(".//MeshHeading/DescriptorName")],
+        "mesh_ids": [
+            n.attrib.get("UI", "")
+            for n in article.findall(".//MeshHeading/DescriptorName")
+        ],
+        "publication_types": [text(n) for n in article.findall(".//PublicationType")],
+        "keywords": [text(n) for n in article.findall(".//Keyword")],
+    }
+
+
+def prepare_pubmed_article(article, content=None):
+    """Parse and fsync immutable content before taking the shared database write lock."""
+    pmid = pubmed_record_id(article)
+    if not re.fullmatch(r"\d{1,10}", pmid):
+        raise SourceBlocked("PubMed 返回的 PMID 无效")
+    identifiers = pubmed_identifiers(article)
+    metadata = pubmed_metadata(article)
+    metadata["source_url"] = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
+    if content is None:
+        content = (
+            b"<PubmedArticleSet>"
+            + tostring(article, encoding="utf-8")
+            + b"</PubmedArticleSet>"
+        )
     digest = store_blob(content)
+    return {
+        "pmid": pmid,
+        "kind": Material.Kind.OTHER
+        if article.tag == "PubmedBookArticle"
+        else Material.Kind.PAPER,
+        "identifiers": identifiers,
+        "metadata": metadata,
+        "digest": digest,
+    }
+
+
+def save_prepared_pubmed_article(prepared, url):
+    pmid, identifiers, metadata, digest = (
+        prepared[key] for key in ("pmid", "identifiers", "metadata", "digest")
+    )
     with transaction.atomic():
         material, _ = Material.objects.get_or_create(
             source_key="pubmed:" + pmid,
             defaults={
-                "title": text(article.find("./MedlineCitation/Article/ArticleTitle")),
+                "kind": prepared["kind"],
+                "title": metadata["title"][:2000],
                 "identifiers": identifiers,
-                "metadata": {
-                    "journal": text(article.find(".//Journal/Title")),
-                    "source_url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
-                },
+                "metadata": metadata,
             },
         )
-        MaterialVersion.objects.get_or_create(
+        version, _ = MaterialVersion.objects.get_or_create(
             material=material,
             sha256=digest,
             defaults={
@@ -103,12 +196,35 @@ def acquire_pubmed(pmid):
         )
         # Metadata changes cannot silently mutate or invalidate previous text/evidence versions.
         material.identifiers = identifiers
-        material.metadata = {
-            "journal": text(article.find(".//Journal/Title")),
-            "source_url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
-        }
-        material.title = text(article.find("./MedlineCitation/Article/ArticleTitle"))
+        material.metadata = material.metadata | metadata
+        material.title = metadata["title"][:2000]
         material.save(update_fields=["identifiers", "metadata", "title"])
+    return material, version, metadata
+
+
+def save_pubmed_article(article, url, content=None):
+    """Save an immutable article snapshot; batch responses remain in the fetch ledger."""
+    return save_prepared_pubmed_article(prepare_pubmed_article(article, content), url)
+
+
+def acquire_pubmed(pmid):
+    from apps.curation.workflows import enqueue
+
+    if not re.fullmatch(r"\d{1,10}", pmid):
+        raise SourceBlocked("请输入有效的 PMID")
+    url = (
+        EUTILS
+        + "efetch.fcgi?"
+        + urlencode({"db": "pubmed", "id": pmid, "retmode": "xml", "tool": "biomed"})
+    )
+    content = fetch(url, 8 * 1024 * 1024)
+    records = pubmed_records(xml(content))
+    if len(records) != 1 or pubmed_record_id(records[0]) != pmid:
+        raise SourceBlocked("PubMed 没有返回指定 PMID")
+    article = records[0]
+    with transaction.atomic():
+        material, _, _ = save_pubmed_article(article, url, content)
+        identifiers = material.identifiers
         pmcid = identifiers.get("pmc")
         job = (
             enqueue("acquire_pmc", {"material_id": str(material.pk), "pmcid": pmcid})
@@ -130,19 +246,10 @@ def strip_namespaces(root):
     return root
 
 
-def acquire_pmc(material_id, pmcid):
-    from apps.curation.workflows import enqueue
-
+def validate_pmc(content, pmcid, identifiers):
+    """Validate both cached and downloaded text against the caller's fixed identity."""
     if not re.fullmatch(r"PMC\d{1,12}", pmcid or ""):
         raise SourceBlocked("无效的 PMC 标识")
-    url = "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?" + urlencode(
-        {
-            "verb": "GetRecord",
-            "identifier": "oai:pubmedcentral.nih.gov:" + pmcid[3:],
-            "metadataPrefix": "pmc",
-        }
-    )
-    content = fetch(url, 25 * 1024 * 1024)
     root = strip_namespaces(xml(content))
     article = root.find(".//article")
     if article is None or article.find("body") is None:
@@ -156,13 +263,12 @@ def acquire_pmc(material_id, pmcid):
     ]
     if pmcid[3:] not in ids:
         raise SourceBlocked("PMC 返回的全文标识与请求不符")
-    material = Material.objects.get(pk=material_id)
     article_ids = {
         node.attrib.get("pub-id-type"): text(node)
         for node in article.findall("./front/article-meta/article-id")
     }
-    expected_pmid = material.identifiers.get("pubmed")
-    expected_doi = material.identifiers.get("doi")
+    expected_pmid = identifiers.get("pubmed")
+    expected_doi = identifiers.get("doi")
     if expected_pmid and article_ids.get("pmid") != expected_pmid:
         raise SourceBlocked("PMC 全文的 PMID 与入库论文不一致或缺失，未建立关联")
     if expected_doi and article_ids.get("doi", "").lower() != expected_doi.lower():
@@ -176,6 +282,27 @@ def acquire_pmc(material_id, pmcid):
         value for key, value in license_node.attrib.items() if key.endswith("href")
     ]
     rights += (" " + " ".join(hrefs)) if hrefs else ""
+    return rights
+
+
+def acquire_pmc(
+    material_id, pmcid, *, fetcher=None, start_parse=True, identifiers=None
+):
+    from apps.curation.workflows import enqueue
+
+    if not re.fullmatch(r"PMC\d{1,12}", pmcid or ""):
+        raise SourceBlocked("无效的 PMC 标识")
+    url = "https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/?" + urlencode(
+        {
+            "verb": "GetRecord",
+            "identifier": "oai:pubmedcentral.nih.gov:" + pmcid[3:],
+            "metadataPrefix": "pmc",
+        }
+    )
+    content = (fetcher or fetch)(url, 25 * 1024 * 1024)
+    if identifiers is None:
+        identifiers = Material.objects.get(pk=material_id).identifiers
+    rights = validate_pmc(content, pmcid, identifiers)
     # PMC's full-text OAI endpoint only serves reusable content; preserve exact per-article terms.
     digest = store_blob(content)
     with transaction.atomic():
@@ -189,10 +316,19 @@ def acquire_pmc(material_id, pmcid):
                 "rights": rights,
             },
         )
-        job = enqueue(
-            "parse", {"version_id": str(version.pk), "parser_version": PARSER_VERSION}
+        job = (
+            enqueue(
+                "parse",
+                {"version_id": str(version.pk), "parser_version": PARSER_VERSION},
+            )
+            if start_parse
+            else None
         )
-    return {"version_id": str(version.pk), "next_job": str(job.pk), "rights": rights}
+    return {
+        "version_id": str(version.pk),
+        "next_job": str(job.pk) if job else None,
+        "rights": rights,
+    }
 
 
 def upload_pdf(
@@ -236,7 +372,7 @@ def upload_pdf(
     return material, version, job
 
 
-def parse_material(version_id, parser_version):
+def parse_material(version_id, parser_version, *, start_extract=True):
     from apps.curation.workflows import enqueue
 
     if parser_version != PARSER_VERSION:
@@ -296,18 +432,22 @@ def parse_material(version_id, parser_version):
                 ],
                 batch_size=100,
             )
-        job = enqueue(
-            "extract",
-            {
-                "version_id": str(version.pk),
-                "parser_version": parser_version,
-                "pipeline_version": "evidence-v1",
-            },
+        job = (
+            enqueue(
+                "extract",
+                {
+                    "version_id": str(version.pk),
+                    "parser_version": parser_version,
+                    "pipeline_version": "evidence-v1",
+                },
+            )
+            if start_extract
+            else None
         )
     return {
         "version_id": str(version.pk),
         "passages": len(blocks),
-        "next_job": str(job.pk),
+        "next_job": str(job.pk) if job else None,
     }
 
 
@@ -315,7 +455,7 @@ def quarantine_version(version_id, reason):
     """Retain suspect source bytes and audit notes, while preventing downstream publication."""
     from django.utils import timezone
 
-    from apps.curation.models import Evidence, WorkItem
+    from apps.curation.models import Evidence, KnowledgeCandidate, WorkItem
 
     with transaction.atomic():
         version = MaterialVersion.objects.select_for_update().get(pk=version_id)
@@ -328,6 +468,9 @@ def quarantine_version(version_id, reason):
         candidates.filter(publication_status="published").update(
             publication_status="withdrawn"
         )
+        KnowledgeCandidate.objects.filter(
+            version=version, publication_status="published"
+        ).update(publication_status="withdrawn")
         WorkItem.objects.filter(
             payload__version_id=str(version.pk),
             state__in=["queued", "waiting_configuration", "running"],

@@ -3,6 +3,15 @@ from django.urls import path
 from apps.portal import views
 
 urlpatterns = [
+    path("knowledge/search/", views.knowledge_search_page, name="knowledge-search"),
+    path("knowledge/candidates/", views.knowledge_candidates_page, name="knowledge-candidates"),
+    path("knowledge/entities/", views.entity_registry_page, name="entity-registry"),
+    path(
+        "knowledge/cancers/",
+        views.standards_page,
+        {"namespace": "ONCOTREE"},
+        name="cancers",
+    ),
     path(
         "knowledge/diseases/",
         views.standards_page,
@@ -24,6 +33,7 @@ urlpatterns = [
         name="guidelines",
     ),
     path("management/workflows/", views.workflows_page, name="management-workflows"),
+    path("management/research/", views.research_page, name="management-research"),
     path("knowledge/evidence/", views.clinical_evidence_page, name="clinical-evidence"),
     path("knowledge/standards/", views.standards_page, name="standards"),
     path("library/", views.library_page, name="library"),
